@@ -9,10 +9,10 @@
 
 
 // Starts the group
-void setup();
+void setup_group();
 
 // Ends the group
-void terminate();
+void terminate_group();
 
 
 #endif

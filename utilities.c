@@ -19,7 +19,7 @@
 void program_err(const char * const s) {
     fprintf(stderr, "ERROR: %s\n", s);
 	perror("");
-	terminate();
+	terminate_group();
     exit(EXIT_FAILURE);
 }
 

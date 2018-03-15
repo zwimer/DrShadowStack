@@ -20,5 +20,8 @@
 #define RET "RET-"
 #define NEW_PROC "NEWP"
 
+// The continue message
+#define CONTINUE "CONT"
+
 
 #endif
