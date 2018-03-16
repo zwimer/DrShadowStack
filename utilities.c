@@ -15,9 +15,9 @@
 
 // To be called in case of an error
 // Prints s to stderr, perrors, kill's child processes,
-// Finall exits the program
+// Finally exits the program
 void program_err(const char * const s) {
-    fprintf(stderr, "ERROR: %s\n", s);
+    fprintf(stderr, "\nERROR: %s\n", s);
 	perror("");
 	terminate_group();
     exit(EXIT_FAILURE);

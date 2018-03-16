@@ -8,6 +8,7 @@ extern "C" {
 
 #include <sys/socket.h>
 #include <unistd.h>
+#include <stdio.h>
 #include <string>
 #include <stack>
 #include <map>
@@ -99,6 +100,7 @@ void start_shadow_stack( const int sock ) {
 		// Read num_bytes bytes, wait until all bytes have been read.
 		const int bytes_recv = recv( sock, buffer, num_bytes, MSG_WAITALL );
 		assert( (bytes_recv == num_bytes) || (bytes_recv == 0), "recv() failed" );
+fprintf(stderr, "RECV: %d bytes - %.*s\n", bytes_recv, bytes_recv, buffer);
 
 		// If the client disconnected, break
 		if (bytes_recv == 0) {

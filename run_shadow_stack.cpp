@@ -8,10 +8,17 @@ extern "C" {
 }
 
 #include <unistd.h>
+#include <signal.h>
 
 
 // TODO: delete
 #include <iostream>
+#include <stdio.h>
+#include <string.h>
+#include <sys/socket.h>
+extern "C" {
+	#include "constants.h"
+}
 
 void snd(std::string s, int set_s = -1) {
 	static int sock = -1; if ( set_s != -1 ) { sock = set_s; return; }
@@ -47,8 +54,15 @@ void start_program(char ** argv, int sock) {
 		call( std::string(1, std::string("123456789")[i]) );
 	}
 
-	for(int i = 4; i >= 0; --i) {
+	const int num_bytes = sizeof(CONTINUE);
+	char buffer[num_bytes];
+	for(int i = 4; i > 0; --i) {
 		ret( std::string(1, std::string("123456789")[i]) );
+		const int bytes_recv = recv( sock, buffer, num_bytes, MSG_WAITALL );
+		assert( bytes_recv == num_bytes, "recv() failed" );
+		assert( memcmp(buffer, CONTINUE, num_bytes) == 0, "CONT is wrong!");
+		std::cout << "CONT" << std::endl;
+		sleep(1);
 	}
 
 	ret("Fail");
@@ -59,16 +73,25 @@ void start_program(char ** argv, int sock) {
 	/* 	std::getline(std::cin, line); */
 	/* 	std::cout << "SENDING: " << line << "\n\tBytes = " << line.size() << std::endl; */
 	/* } */
+	fprintf(stderr, "Process Send death\n");
 }
 
 // Main function
 int main(int argc, char * argv[]) {
 
+	// TODO: remove
+setvbuf(stdout, NULL, _IONBF, 0);
+
+
 	// TODO: run everything in 1, try catch block and 2, with exception handlers to kill all if error
 
 	// Create a new process group by starting a new session
 	// Many terminals will automatically do this, but just in case...
+	// Also changes many default signal handlers to kill the process group
 	setup_group();
+
+	// We check for the return statuses of functions, so ignore sigpipe
+	signal(SIGPIPE, SIG_IGN);
 
 	// Setup a unix server
 	char * const server_name = gen_new_filename( 50 );

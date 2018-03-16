@@ -8,7 +8,8 @@
 /*********************************************************/
 
 
-// Starts the group
+// Start the group, then change the default signal handlers
+// of common program killing signals to terminate the group
 void setup_group();
 
 // Ends the group

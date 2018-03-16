@@ -35,7 +35,7 @@ char * gen_tmp_filename(const unsigned int size) {
 
 	// Allocate the filename and initalize it
 	assert(size >= 7, "Filename size too short." );
-	char * ret = safe_malloc( 1, size );
+	char * ret = (char *) safe_malloc( 1, size );
 	strcpy(	ret, "/tmp/" );
 
 	// Fill the rest of the filename with random characters
@@ -77,7 +77,7 @@ char * gen_new_filename(const unsigned int size) {
 
 // Create a unix socket, and a server for it
 // Returns the server file descriptor
-const int create_server(const char * const fname) {
+int create_server(const char * const fname) {
 
 	// Create the server
 	int server_sock = socket(AF_UNIX, SOCK_STREAM, 0);
@@ -100,7 +100,7 @@ const int create_server(const char * const fname) {
 // Create a client for a unix socket
 // Joins the socket descriped by the file descriptor fd
 // Returns the file descriptor for the client
-const int create_client(const char * sock_name) {
+int create_client(const char * sock_name) {
 
 	// Create the client
 	int client = socket(AF_UNIX, SOCK_STREAM, 0);
@@ -117,7 +117,7 @@ const int create_client(const char * sock_name) {
 
 // Wait for a client to connect to sock
 // Once the client connects, accept then return the file descriptor
-const int accept_client(const int sock) {
+int accept_client(const int sock) {
 	const int accepted_sock = accept(sock, 0, 0);
 	assert( accepted_sock != -1, "accept() failed" );
 	return accepted_sock;
