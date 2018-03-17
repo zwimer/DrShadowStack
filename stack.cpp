@@ -60,8 +60,15 @@ const char * ret_handler(pointer_stack & stk, std::string & ptr, const int sock)
 	return nullptr;
 }
 
-// Called when a fork or thread event occurs
-const char * new_proc_handler(pointer_stack & stk, std::string & ptr, const int sock) {
+// Called when a fork event occurs
+const char * fork_handler(pointer_stack & stk, std::string & ptr, const int sock) {
+	return nullptr;
+	// TODO: write
+}
+
+
+// Called when a thread event occurs
+const char * thread_handler(pointer_stack & stk, std::string & ptr, const int sock) {
 	return nullptr;
 	// TODO: write
 }
@@ -73,7 +80,8 @@ void start_shadow_stack( const int sock ) {
 
 	// Create the message handling function map and populate it
 	std::map<std::string, message_handler> call_correct_function;
-	call_correct_function[NEW_PROC] = new_proc_handler;
+	call_correct_function[THREAD] = thread_handler;
+	call_correct_function[FORK] = fork_handler;
 	call_correct_function[CALL] = call_handler;
 	call_correct_function[RET] = ret_handler;
 

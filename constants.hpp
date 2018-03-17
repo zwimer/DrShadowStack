@@ -20,12 +20,11 @@
 #define MESSAGE_HEADER_LENGTH 4
 
 // The message 'headers'
+#define CONTINUE "CONT"
+#define THREAD "PTHD"
+#define FORK "FORK"
 #define CALL "CALL"
 #define RET "RET-"
-#define NEW_PROC "NEWP"
-
-// The continue message
-#define CONTINUE "CONT"
 
 
 /*********************************************************/
@@ -35,10 +34,8 @@
 /*********************************************************/
 
 
-// TODO: check to see if compatible with mac
+// The max number of signals on linux allowed
 #ifdef __APPLE__
-
-	// The max number of signals on linux allowed
 	#define _NSIG 65
 #endif
 

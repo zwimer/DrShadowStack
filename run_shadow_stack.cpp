@@ -10,8 +10,7 @@
 
 // TODO: delete
 #include "delete_me.hpp"
-#include <iostream>
-using std::cout; using std::endl;
+
 
 // Start's the program passed in via drrun
 void start_program(char ** argv, int sock) {
@@ -34,8 +33,6 @@ std::string temp_name() {
 
 // Main function
 int main(int argc, char * argv[]) {
-
-	// TODO: run everything in 1, try catch block and 2, with exception handlers to kill all if error
 
 	// Create a new process group by starting a new session
 	// Many terminals will automatically do this, but just in case...
