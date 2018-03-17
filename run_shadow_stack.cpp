@@ -5,6 +5,7 @@
 #include "group.hpp"
 
 #include <unistd.h>
+#include <signal.h>
 #include <string>
 
 // TODO: delete

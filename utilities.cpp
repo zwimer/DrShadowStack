@@ -3,6 +3,7 @@
 #include "group.hpp"
 
 #include <stdarg.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <vector>
 
