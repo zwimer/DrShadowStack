@@ -9,14 +9,14 @@ find_package (Threads)
 set(DEBUG_MODE "ON")
 
 # Debug mode
-	message("Debug Mode ON!")
 if(DEFINED DEBUG_MODE)
+	message("Debug Mode ON!")
 
 	# For YouCompleteMe
 	set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 	# For code coverage tools
-	set (CMAKE_CXX_FLAGS "-g -O0 -std=c++11")
+	set (CMAKE_CXX_FLAGS "-g -O0 -std=c++11 -Wall -Wextra -Wpedantic")
 
 # Not debug mode
 else()

@@ -117,6 +117,10 @@ void start_shadow_stack( const int sock ) {
 	// The process died, decrement the 
 	// reference count of processes
 	valid_dec_proc_count();
+
+	// If the program reached this point, another
+	// thread / process must be active, gracefully
+	// exit the current process without terminating the group
 	tod.disable();
 	exit(EXIT_SUCCESS);
 }

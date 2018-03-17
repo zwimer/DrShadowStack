@@ -70,7 +70,7 @@ void ss_log_error(const char * const format, ...) {
 	};	
 
 	// Write to the files
-	for ( int i = 0; i < fs.size(); ++i ) {
+	for ( unsigned int i = 0; i < fs.size(); ++i ) {
 		va_list args;
 		va_start(args, format);
 		ss_write_log(fs[i], format, args);
