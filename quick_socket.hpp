@@ -1,7 +1,5 @@
-#ifndef __QUICK_SOCKET_H__
-#define __QUICK_SOCKET_H__
-
-#include "utilities.h"
+#ifndef __QUICK_SOCKET_HPP__
+#define __QUICK_SOCKET_HPP__
 
 
 /*********************************************************/
@@ -23,10 +21,6 @@ int create_client(const char * const sock_name);
 // Wait for a client to connect to sock
 // Once the client connects, accept then return the file descriptor
 int accept_client(const int sock);
-
-// Generate an unused temp filename of max length size - 1
-// Returns the file name, dynamically allocated
-char * gen_new_filename(const unsigned int size);
 
 
 #endif

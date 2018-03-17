@@ -1,5 +1,5 @@
-#ifndef __CONSTANTS_H__
-#define __CONSTANTS_H__
+#ifndef __CONSTANTS_HPP__
+#define __CONSTANTS_HPP__
 
 
 /*********************************************************/
@@ -8,6 +8,10 @@
 /*                                                       */
 /*********************************************************/
 
+
+// The default log and error files
+#define LOG_FILE stdout
+#define ERROR_FILE stderr
 
 // The size of a pointer (8 for 64 bit programs, 4 for 32 bit)
 #define POINTER_SIZE 8
@@ -22,6 +26,21 @@
 
 // The continue message
 #define CONTINUE "CONT"
+
+
+/*********************************************************/
+/*                                                       */
+/*	  				   Due to the OS					 */
+/*                                                       */
+/*********************************************************/
+
+
+// TODO: check to see if compatible with mac
+#ifdef __APPLE__
+
+	// The max number of signals on linux allowed
+	#define _NSIG 65
+#endif
 
 
 #endif

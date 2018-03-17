@@ -13,8 +13,7 @@ if(DEFINED DEBUG_MODE)
 	set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 	# For code coverage tools
-	set (CMAKE_C_FLAGS "-g -O0")
-	set (CMAKE_CXX_FLAGS "-g -O0")
+	set (CMAKE_CXX_FLAGS "-g -O0 -std=c++11")
 
 # Not debug mode
 else()
@@ -22,8 +21,7 @@ else()
 
 	# Optimizations
 	# TODO: add more
-	set (CMAKE_C_FLAGS "-O2")
-	set (CMAKE_CXX_FLAGS "-O2")
+	set (CMAKE_CXX_FLAGS "-O2 -std=c++11")
 
 endif()
 
@@ -31,6 +29,7 @@ endif()
 add_executable(ShadowStack.out
 	run_shadow_stack.cpp
 	stack.cpp
-	group.c
-	utilities.c
-	quick_socket.c )
+	group.cpp
+	utilities.cpp
+	delete_me.cpp # TODO
+	quick_socket.cpp )
