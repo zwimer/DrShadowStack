@@ -166,7 +166,7 @@ void terminate_group() {
 	// If setup was complete, kill the group
 	if ( setup_complete ) {
 		ss_log_error("Terminating process group\n");
-		killpg(0, 9);
+		killpg(0, SIGKILL);
 	}
 
 	// Otherwise, something major went wrong
