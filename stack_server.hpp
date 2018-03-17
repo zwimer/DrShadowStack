@@ -1,5 +1,5 @@
-#ifndef __STACK_HPP__
-#define __STACK_HPP__
+#ifndef __STACK_SERVER_HPP__
+#define __STACK_SERVER_HPP__
 
 
 // The function for running the shadow stack

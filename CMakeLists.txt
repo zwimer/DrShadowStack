@@ -28,10 +28,10 @@ else()
 
 endif()
 
-# Build the executable
+# Build the shadow stack executable
 add_executable(ShadowStack.out
-	run_shadow_stack.cpp
-	stack.cpp
+	shadow_stack.cpp
+	stack_server.cpp
 	group.cpp
 	utilities.cpp
 	delete_me.cpp # TODO

@@ -1,7 +1,7 @@
-#include "run_shadow_stack.hpp"
+#include "shadow_stack.hpp"
+#include "stack_server.hpp"
 #include "quick_socket.hpp"
 #include "utilities.hpp"
-#include "stack.hpp"
 #include "group.hpp"
 
 #include <unistd.h>
