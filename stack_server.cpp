@@ -79,11 +79,12 @@ void start_shadow_stack( const int sock ) {
 	TerminateOnDestruction tod;
 
 	// Create the message handling function map and populate it
-	std::map<std::string, message_handler> call_correct_function;
-	call_correct_function[THREAD] = thread_handler;
-	call_correct_function[FORK] = fork_handler;
-	call_correct_function[CALL] = call_handler;
-	call_correct_function[RET] = ret_handler;
+	std::map<std::string, message_handler> call_correct_function {
+		{ THREAD, thread_handler },
+		{ FORK, fork_handler },
+		{ CALL, call_handler },
+		{ RET, ret_handler }
+	};
 
 	// Create the 2 dimensional map of stacks
 	// This map exists so different threads / processes don't use the same stack
