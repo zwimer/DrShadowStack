@@ -36,13 +36,4 @@ void ss_log(const char * const format, ...);
 void ss_log_error(const char * const format, ...);
 
 
-// Memory allocators
-
-
-// Malloc that takes in a count and size argument
-// calls ss_assert to ensure no malloc faliure
-// Returns malloc(size*count), 
-void * safe_malloc(size_t count, size_t size);
-
-
 #endif /* utilities_h */
