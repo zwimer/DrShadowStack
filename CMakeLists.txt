@@ -32,10 +32,11 @@ endif()
 add_executable(ShadowStack.out
 	shadow_stack.cpp
 	stack_server.cpp
-	group.cpp
+	quick_socket.cpp
 	utilities.cpp
+	group.cpp
 	delete_me.cpp # TODO
-	quick_socket.cpp )
+	)
 
 # Link threads
 target_link_libraries (ShadowStack.out ${CMAKE_THREAD_LIBS_INIT})

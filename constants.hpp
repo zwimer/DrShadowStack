@@ -13,8 +13,9 @@
 #define LOG_FILE stdout
 #define ERROR_FILE stderr
 
-// The size of a pointer (8 for 64 bit programs, 4 for 32 bit)
-#define POINTER_SIZE 8
+// The size of a pointer in the target program
+// To run on 32 bit programs, change this value!
+#define POINTER_SIZE sizeof(void *)
 
 // The number of characters a message header can be
 #define MESSAGE_HEADER_LENGTH 4
