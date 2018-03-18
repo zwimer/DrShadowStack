@@ -1,0 +1,67 @@
+\hypertarget{class_terminate_on_destruction}{}\section{Terminate\+On\+Destruction Class Reference}
+\label{class_terminate_on_destruction}\index{Terminate\+On\+Destruction@{Terminate\+On\+Destruction}}
+
+
+A class that terminates the group when its destructor is called.  
+
+
+
+
+{\ttfamily \#include $<$group.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_terminate_on_destruction_ac1b230c0858db2e39b83188eae7c5a8e}{Terminate\+On\+Destruction}} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_terminate_on_destruction_a1e2e372004731b788bb9df84d618181f}{$\sim$\+Terminate\+On\+Destruction}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_terminate_on_destruction_a3ee7e31e435328d6ff97edd5627f7c27}{disable}} ()
+\begin{DoxyCompactList}\small\item\em Disable termination of the group on destruction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class that terminates the group when its destructor is called. 
+
+This is called even if a C++ exception is thrown Note\+: this should be used as a backup, terminate\+\_\+group should still be called if termination is desired! 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_terminate_on_destruction_ac1b230c0858db2e39b83188eae7c5a8e}\label{class_terminate_on_destruction_ac1b230c0858db2e39b83188eae7c5a8e}} 
+\index{Terminate\+On\+Destruction@{Terminate\+On\+Destruction}!Terminate\+On\+Destruction@{Terminate\+On\+Destruction}}
+\index{Terminate\+On\+Destruction@{Terminate\+On\+Destruction}!Terminate\+On\+Destruction@{Terminate\+On\+Destruction}}
+\subsubsection{\texorpdfstring{Terminate\+On\+Destruction()}{TerminateOnDestruction()}}
+{\footnotesize\ttfamily Terminate\+On\+Destruction\+::\+Terminate\+On\+Destruction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+Enabled terminateion on destruction by default \mbox{\Hypertarget{class_terminate_on_destruction_a1e2e372004731b788bb9df84d618181f}\label{class_terminate_on_destruction_a1e2e372004731b788bb9df84d618181f}} 
+\index{Terminate\+On\+Destruction@{Terminate\+On\+Destruction}!````~Terminate\+On\+Destruction@{$\sim$\+Terminate\+On\+Destruction}}
+\index{````~Terminate\+On\+Destruction@{$\sim$\+Terminate\+On\+Destruction}!Terminate\+On\+Destruction@{Terminate\+On\+Destruction}}
+\subsubsection{\texorpdfstring{$\sim$\+Terminate\+On\+Destruction()}{~TerminateOnDestruction()}}
+{\footnotesize\ttfamily Terminate\+On\+Destruction\+::$\sim$\+Terminate\+On\+Destruction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+On destruction, terminate the group if enabled 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_terminate_on_destruction_a3ee7e31e435328d6ff97edd5627f7c27}\label{class_terminate_on_destruction_a3ee7e31e435328d6ff97edd5627f7c27}} 
+\index{Terminate\+On\+Destruction@{Terminate\+On\+Destruction}!disable@{disable}}
+\index{disable@{disable}!Terminate\+On\+Destruction@{Terminate\+On\+Destruction}}
+\subsubsection{\texorpdfstring{disable()}{disable()}}
+{\footnotesize\ttfamily void Terminate\+On\+Destruction\+::disable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Disable termination of the group on destruction. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group_8hpp}{group.\+hpp}}\item 
+group.\+cpp\end{DoxyCompactItemize}

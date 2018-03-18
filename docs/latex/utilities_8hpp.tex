@@ -1,0 +1,58 @@
+\hypertarget{utilities_8hpp}{}\section{utilities.\+hpp File Reference}
+\label{utilities_8hpp}\index{utilities.\+hpp@{utilities.\+hpp}}
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{utilities_8hpp_a76ddbcaa2a2c9d3396144da8208bfe65}{program\+\_\+err}} (const char $\ast$const s)
+\begin{DoxyCompactList}\small\item\em To be called in case of an error. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utilities_8hpp_ad5def302e8991c95286c90e13e3112a8}{ss\+\_\+assert}} (const bool b, const char $\ast$const s)
+\begin{DoxyCompactList}\small\item\em assert b, if false call program\+\_\+err(s) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utilities_8hpp_a912f9bab120313bda1582daa1aaf07df}{ss\+\_\+log}} (const char $\ast$const format,...)
+\begin{DoxyCompactList}\small\item\em Logs the arguments as printf would to the log file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utilities_8hpp_a0aa54ceccad0614831b832077dedfaf5}{ss\+\_\+log\+\_\+error}} (const char $\ast$const format,...)
+\begin{DoxyCompactList}\small\item\em Logs the arguments as printf would to the error and log files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{utilities_8hpp_a76ddbcaa2a2c9d3396144da8208bfe65}\label{utilities_8hpp_a76ddbcaa2a2c9d3396144da8208bfe65}} 
+\index{utilities.\+hpp@{utilities.\+hpp}!program\+\_\+err@{program\+\_\+err}}
+\index{program\+\_\+err@{program\+\_\+err}!utilities.\+hpp@{utilities.\+hpp}}
+\subsubsection{\texorpdfstring{program\+\_\+err()}{program\_err()}}
+{\footnotesize\ttfamily void program\+\_\+err (\begin{DoxyParamCaption}\item[{const char $\ast$const}]{s }\end{DoxyParamCaption})}
+
+
+
+To be called in case of an error. 
+
+Prints log s to the error file, perrors, then kills the process group \mbox{\Hypertarget{utilities_8hpp_ad5def302e8991c95286c90e13e3112a8}\label{utilities_8hpp_ad5def302e8991c95286c90e13e3112a8}} 
+\index{utilities.\+hpp@{utilities.\+hpp}!ss\+\_\+assert@{ss\+\_\+assert}}
+\index{ss\+\_\+assert@{ss\+\_\+assert}!utilities.\+hpp@{utilities.\+hpp}}
+\subsubsection{\texorpdfstring{ss\+\_\+assert()}{ss\_assert()}}
+{\footnotesize\ttfamily void ss\+\_\+assert (\begin{DoxyParamCaption}\item[{const bool}]{b,  }\item[{const char $\ast$const}]{s }\end{DoxyParamCaption})}
+
+
+
+assert b, if false call program\+\_\+err(s) 
+
+\mbox{\Hypertarget{utilities_8hpp_a912f9bab120313bda1582daa1aaf07df}\label{utilities_8hpp_a912f9bab120313bda1582daa1aaf07df}} 
+\index{utilities.\+hpp@{utilities.\+hpp}!ss\+\_\+log@{ss\+\_\+log}}
+\index{ss\+\_\+log@{ss\+\_\+log}!utilities.\+hpp@{utilities.\+hpp}}
+\subsubsection{\texorpdfstring{ss\+\_\+log()}{ss\_log()}}
+{\footnotesize\ttfamily void ss\+\_\+log (\begin{DoxyParamCaption}\item[{const char $\ast$const}]{format,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+Logs the arguments as printf would to the log file. 
+
+Ends the printed line with a newline then flushes the buffer This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure \mbox{\Hypertarget{utilities_8hpp_a0aa54ceccad0614831b832077dedfaf5}\label{utilities_8hpp_a0aa54ceccad0614831b832077dedfaf5}} 
+\index{utilities.\+hpp@{utilities.\+hpp}!ss\+\_\+log\+\_\+error@{ss\+\_\+log\+\_\+error}}
+\index{ss\+\_\+log\+\_\+error@{ss\+\_\+log\+\_\+error}!utilities.\+hpp@{utilities.\+hpp}}
+\subsubsection{\texorpdfstring{ss\+\_\+log\+\_\+error()}{ss\_log\_error()}}
+{\footnotesize\ttfamily void ss\+\_\+log\+\_\+error (\begin{DoxyParamCaption}\item[{const char $\ast$const}]{format,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+Logs the arguments as printf would to the error and log files. 
+
+Ends the printed line with a newline then flushes the buffer This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure 

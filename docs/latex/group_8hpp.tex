@@ -1,0 +1,61 @@
+\hypertarget{group_8hpp}{}\section{group.\+hpp File Reference}
+\label{group_8hpp}\index{group.\+hpp@{group.\+hpp}}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_terminate_on_destruction}{Terminate\+On\+Destruction}}
+\begin{DoxyCompactList}\small\item\em A class that terminates the group when its destructor is called. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group_8hpp_aa063e92af56a00869642eeb78e9d20ed}{setup\+\_\+group}} ()
+\begin{DoxyCompactList}\small\item\em Setup the group. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group_8hpp_a6f14c23366226bbee4c8a7536ee48160}{terminate\+\_\+group}} ()
+\begin{DoxyCompactList}\small\item\em Terminates the process group via S\+I\+G\+K\+I\+LL. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group_8hpp_ae3a9323687b075bd8582c09c3aa80a03}{valid\+\_\+inc\+\_\+proc\+\_\+count}} ()
+\begin{DoxyCompactList}\small\item\em This function increases the reference count. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group_8hpp_a7fa6697c30620cb6a980a316d2b46dfd}{valid\+\_\+dec\+\_\+proc\+\_\+count}} ()
+\begin{DoxyCompactList}\small\item\em This function decreases the reference count. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group_8hpp_aa063e92af56a00869642eeb78e9d20ed}\label{group_8hpp_aa063e92af56a00869642eeb78e9d20ed}} 
+\index{group.\+hpp@{group.\+hpp}!setup\+\_\+group@{setup\+\_\+group}}
+\index{setup\+\_\+group@{setup\+\_\+group}!group.\+hpp@{group.\+hpp}}
+\subsubsection{\texorpdfstring{setup\+\_\+group()}{setup\_group()}}
+{\footnotesize\ttfamily void setup\+\_\+group (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Setup the group. 
+
+Then change the default signal handlers of all non-\/excluded signals to terminate the group when called. Also sets up the group refrence counter. This function is {\bfseries N\+OT} thread safe, and should never be run after threading / forking has occured! \mbox{\Hypertarget{group_8hpp_a6f14c23366226bbee4c8a7536ee48160}\label{group_8hpp_a6f14c23366226bbee4c8a7536ee48160}} 
+\index{group.\+hpp@{group.\+hpp}!terminate\+\_\+group@{terminate\+\_\+group}}
+\index{terminate\+\_\+group@{terminate\+\_\+group}!group.\+hpp@{group.\+hpp}}
+\subsubsection{\texorpdfstring{terminate\+\_\+group()}{terminate\_group()}}
+{\footnotesize\ttfamily void terminate\+\_\+group (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Terminates the process group via S\+I\+G\+K\+I\+LL. 
+
+\mbox{\Hypertarget{group_8hpp_a7fa6697c30620cb6a980a316d2b46dfd}\label{group_8hpp_a7fa6697c30620cb6a980a316d2b46dfd}} 
+\index{group.\+hpp@{group.\+hpp}!valid\+\_\+dec\+\_\+proc\+\_\+count@{valid\+\_\+dec\+\_\+proc\+\_\+count}}
+\index{valid\+\_\+dec\+\_\+proc\+\_\+count@{valid\+\_\+dec\+\_\+proc\+\_\+count}!group.\+hpp@{group.\+hpp}}
+\subsubsection{\texorpdfstring{valid\+\_\+dec\+\_\+proc\+\_\+count()}{valid\_dec\_proc\_count()}}
+{\footnotesize\ttfamily void valid\+\_\+dec\+\_\+proc\+\_\+count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function decreases the reference count. 
+
+If the count hits 0, the group is terminated \mbox{\Hypertarget{group_8hpp_ae3a9323687b075bd8582c09c3aa80a03}\label{group_8hpp_ae3a9323687b075bd8582c09c3aa80a03}} 
+\index{group.\+hpp@{group.\+hpp}!valid\+\_\+inc\+\_\+proc\+\_\+count@{valid\+\_\+inc\+\_\+proc\+\_\+count}}
+\index{valid\+\_\+inc\+\_\+proc\+\_\+count@{valid\+\_\+inc\+\_\+proc\+\_\+count}!group.\+hpp@{group.\+hpp}}
+\subsubsection{\texorpdfstring{valid\+\_\+inc\+\_\+proc\+\_\+count()}{valid\_inc\_proc\_count()}}
+{\footnotesize\ttfamily void valid\+\_\+inc\+\_\+proc\+\_\+count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function increases the reference count. 
+

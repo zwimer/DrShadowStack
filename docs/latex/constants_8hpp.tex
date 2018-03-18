@@ -1,0 +1,117 @@
+\hypertarget{constants_8hpp}{}\section{constants.\+hpp File Reference}
+\label{constants_8hpp}\index{constants.\+hpp@{constants.\+hpp}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{constants_8hpp_a69d4676733f5e850f451942b6d901382}{L\+O\+G\+\_\+\+F\+I\+LE}}~stdout
+\begin{DoxyCompactList}\small\item\em The default log file. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{constants_8hpp_a9fdff3d78b754d4b831816d0560dbb57}{E\+R\+R\+O\+R\+\_\+\+F\+I\+LE}}~stderr
+\begin{DoxyCompactList}\small\item\em The default error log file. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{constants_8hpp_a70eafdf190b8f3be16349543fe1b39ae}{P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE}}~sizeof(void $\ast$)
+\begin{DoxyCompactList}\small\item\em The size of a pointer in the target program. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{constants_8hpp_ac119f42bacd57152815371e9527d1059}{M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+L\+E\+N\+G\+TH}}~4
+\begin{DoxyCompactList}\small\item\em The number of characters a message header can be. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{constants_8hpp_ab711666ad09d7f6c0b91576525ea158e}{C\+O\+N\+T\+I\+N\+UE}}~\char`\"{}C\+O\+NT\char`\"{}
+\begin{DoxyCompactList}\small\item\em The \textquotesingle{}continue\textquotesingle{} message \textquotesingle{}header\textquotesingle{}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{constants_8hpp_a2b2e4a3c09db701069f4e529ebde6402}{T\+H\+R\+E\+AD}}~\char`\"{}T\+H\+DE\char`\"{}
+\begin{DoxyCompactList}\small\item\em The \textquotesingle{}threading event\textquotesingle{} message header. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{constants_8hpp_a93182e924cb059b7c3639d5bf3b12c9e}{F\+O\+RK}}~\char`\"{}F\+O\+RK\char`\"{}
+\begin{DoxyCompactList}\small\item\em The \textquotesingle{}fork event\textquotesingle{} message header. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{constants_8hpp_aa980b5e5e502cf62bdca6c0452b97516}{C\+A\+LL}}~\char`\"{}C\+A\+LL\char`\"{}
+\begin{DoxyCompactList}\small\item\em The \textquotesingle{}call instruction about to run\textquotesingle{} message header. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{constants_8hpp_ac2544c8b4fe3113b0d6bb62530692c21}{R\+ET}}~\char`\"{}R\+ET-\/\char`\"{}
+\begin{DoxyCompactList}\small\item\em The \textquotesingle{}ret instruction about to run\textquotesingle{} message header. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{constants_8hpp_aa980b5e5e502cf62bdca6c0452b97516}\label{constants_8hpp_aa980b5e5e502cf62bdca6c0452b97516}} 
+\index{constants.\+hpp@{constants.\+hpp}!C\+A\+LL@{C\+A\+LL}}
+\index{C\+A\+LL@{C\+A\+LL}!constants.\+hpp@{constants.\+hpp}}
+\subsubsection{\texorpdfstring{C\+A\+LL}{CALL}}
+{\footnotesize\ttfamily \#define C\+A\+LL~\char`\"{}C\+A\+LL\char`\"{}}
+
+
+
+The \textquotesingle{}call instruction about to run\textquotesingle{} message header. 
+
+This message has a body of size P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE This message is sent from the client to the shadow stack This content of the body is current value of the PC \mbox{\Hypertarget{constants_8hpp_ab711666ad09d7f6c0b91576525ea158e}\label{constants_8hpp_ab711666ad09d7f6c0b91576525ea158e}} 
+\index{constants.\+hpp@{constants.\+hpp}!C\+O\+N\+T\+I\+N\+UE@{C\+O\+N\+T\+I\+N\+UE}}
+\index{C\+O\+N\+T\+I\+N\+UE@{C\+O\+N\+T\+I\+N\+UE}!constants.\+hpp@{constants.\+hpp}}
+\subsubsection{\texorpdfstring{C\+O\+N\+T\+I\+N\+UE}{CONTINUE}}
+{\footnotesize\ttfamily \#define C\+O\+N\+T\+I\+N\+UE~\char`\"{}C\+O\+NT\char`\"{}}
+
+
+
+The \textquotesingle{}continue\textquotesingle{} message \textquotesingle{}header\textquotesingle{}. 
+
+This message has no body and contains only the header. This message is sent by the shadow stack when a ret is detected if no address mis-\/match is detected. It allows the client program to continue operation \mbox{\Hypertarget{constants_8hpp_a9fdff3d78b754d4b831816d0560dbb57}\label{constants_8hpp_a9fdff3d78b754d4b831816d0560dbb57}} 
+\index{constants.\+hpp@{constants.\+hpp}!E\+R\+R\+O\+R\+\_\+\+F\+I\+LE@{E\+R\+R\+O\+R\+\_\+\+F\+I\+LE}}
+\index{E\+R\+R\+O\+R\+\_\+\+F\+I\+LE@{E\+R\+R\+O\+R\+\_\+\+F\+I\+LE}!constants.\+hpp@{constants.\+hpp}}
+\subsubsection{\texorpdfstring{E\+R\+R\+O\+R\+\_\+\+F\+I\+LE}{ERROR\_FILE}}
+{\footnotesize\ttfamily \#define E\+R\+R\+O\+R\+\_\+\+F\+I\+LE~stderr}
+
+
+
+The default error log file. 
+
+\mbox{\Hypertarget{constants_8hpp_a93182e924cb059b7c3639d5bf3b12c9e}\label{constants_8hpp_a93182e924cb059b7c3639d5bf3b12c9e}} 
+\index{constants.\+hpp@{constants.\+hpp}!F\+O\+RK@{F\+O\+RK}}
+\index{F\+O\+RK@{F\+O\+RK}!constants.\+hpp@{constants.\+hpp}}
+\subsubsection{\texorpdfstring{F\+O\+RK}{FORK}}
+{\footnotesize\ttfamily \#define F\+O\+RK~\char`\"{}F\+O\+RK\char`\"{}}
+
+
+
+The \textquotesingle{}fork event\textquotesingle{} message header. 
+
+This message has no body and contains only the header. This message is sent by the client program to the shadow stack when a fork event occurs \mbox{\Hypertarget{constants_8hpp_a69d4676733f5e850f451942b6d901382}\label{constants_8hpp_a69d4676733f5e850f451942b6d901382}} 
+\index{constants.\+hpp@{constants.\+hpp}!L\+O\+G\+\_\+\+F\+I\+LE@{L\+O\+G\+\_\+\+F\+I\+LE}}
+\index{L\+O\+G\+\_\+\+F\+I\+LE@{L\+O\+G\+\_\+\+F\+I\+LE}!constants.\+hpp@{constants.\+hpp}}
+\subsubsection{\texorpdfstring{L\+O\+G\+\_\+\+F\+I\+LE}{LOG\_FILE}}
+{\footnotesize\ttfamily \#define L\+O\+G\+\_\+\+F\+I\+LE~stdout}
+
+
+
+The default log file. 
+
+\mbox{\Hypertarget{constants_8hpp_ac119f42bacd57152815371e9527d1059}\label{constants_8hpp_ac119f42bacd57152815371e9527d1059}} 
+\index{constants.\+hpp@{constants.\+hpp}!M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+L\+E\+N\+G\+TH@{M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+L\+E\+N\+G\+TH}}
+\index{M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+L\+E\+N\+G\+TH@{M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+L\+E\+N\+G\+TH}!constants.\+hpp@{constants.\+hpp}}
+\subsubsection{\texorpdfstring{M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+L\+E\+N\+G\+TH}{MESSAGE\_HEADER\_LENGTH}}
+{\footnotesize\ttfamily \#define M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+L\+E\+N\+G\+TH~4}
+
+
+
+The number of characters a message header can be. 
+
+\mbox{\Hypertarget{constants_8hpp_a70eafdf190b8f3be16349543fe1b39ae}\label{constants_8hpp_a70eafdf190b8f3be16349543fe1b39ae}} 
+\index{constants.\+hpp@{constants.\+hpp}!P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE@{P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE}}
+\index{P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE@{P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE}!constants.\+hpp@{constants.\+hpp}}
+\subsubsection{\texorpdfstring{P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE}{POINTER\_SIZE}}
+{\footnotesize\ttfamily \#define P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE~sizeof(void $\ast$)}
+
+
+
+The size of a pointer in the target program. 
+
+To run on 32 bit programs, change this value! \mbox{\Hypertarget{constants_8hpp_ac2544c8b4fe3113b0d6bb62530692c21}\label{constants_8hpp_ac2544c8b4fe3113b0d6bb62530692c21}} 
+\index{constants.\+hpp@{constants.\+hpp}!R\+ET@{R\+ET}}
+\index{R\+ET@{R\+ET}!constants.\+hpp@{constants.\+hpp}}
+\subsubsection{\texorpdfstring{R\+ET}{RET}}
+{\footnotesize\ttfamily \#define R\+ET~\char`\"{}R\+ET-\/\char`\"{}}
+
+
+
+The \textquotesingle{}ret instruction about to run\textquotesingle{} message header. 
+
+This message has a body of size P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE This message is sent from the client to the shadow stack This content of the body is the value stored at the top of the client\textquotesingle{}s stack; the address ret will be returning to \mbox{\Hypertarget{constants_8hpp_a2b2e4a3c09db701069f4e529ebde6402}\label{constants_8hpp_a2b2e4a3c09db701069f4e529ebde6402}} 
+\index{constants.\+hpp@{constants.\+hpp}!T\+H\+R\+E\+AD@{T\+H\+R\+E\+AD}}
+\index{T\+H\+R\+E\+AD@{T\+H\+R\+E\+AD}!constants.\+hpp@{constants.\+hpp}}
+\subsubsection{\texorpdfstring{T\+H\+R\+E\+AD}{THREAD}}
+{\footnotesize\ttfamily \#define T\+H\+R\+E\+AD~\char`\"{}T\+H\+DE\char`\"{}}
+
+
+
+The \textquotesingle{}threading event\textquotesingle{} message header. 
+
+This message has no body and contains only the header. This message is sent by the client program to the shadow stack when a threading event occurs 
