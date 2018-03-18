@@ -17,10 +17,22 @@ typedef long proc_rc;
 // Used to tell if the process group has started
 static bool setup_complete = false;
 
-// A reference counter for the number of 
-// processes and the mutex that protects it
+// A reference counter for the number of processes
+// And a mutex to protect the reference counter
 static proc_rc * num_proc_rc = nullptr;
 static boost::interprocess::interprocess_mutex rc_lock;
+
+// Signals whose handlers should not be changed
+const static std::set<int> no_change {
+	SIGKILL,
+	SIGSTOP,
+	SIGURG,
+	SIGCONT,
+	SIGCHLD,
+	SIGIO, /* SIGPOLL */
+	SIGWINCH,
+	0
+};	
 
 
 /*********************************************************/
@@ -31,25 +43,15 @@ static boost::interprocess::interprocess_mutex rc_lock;
 
 
 // A default signal handler
+// This handler will terminate the process group 
 void default_signal_handler(int sig) {
 	ss_log_error("\nSignal %d caught. Terminating process group...", sig);
 	terminate_group();
 }
 
-// Change the default signal handler of common program killing signals
+// Change the default signal handler of most signals
+// Sets the signal handler of each to the argument handler
 void set_default_signal_handler(void (*handler) (int sig)) {
-	
-	// Signals not to change the handlers of
-	const static std::set<int> no_change {
-		SIGKILL,
-		SIGSTOP,
-		SIGURG,
-		SIGCONT,
-		SIGCHLD,
-		SIGIO, /* SIGPOLL */
-		SIGWINCH,
-		0
-	};	
 
 	// For all possible signals, if it should be changed...
 	for ( int i = 1; i <= _NSIG; ++i ) {
@@ -67,6 +69,8 @@ void set_default_signal_handler(void (*handler) (int sig)) {
 }
 
 // Create a chunk of chared memory of size size
+// This memory will be readable, writeable, and anonymous
+// On failure, this function terminates the group
 void * create_shared_memory(const size_t size) {
 
 	// Our memory buffer will be readable and writable:
@@ -91,7 +95,7 @@ void * create_shared_memory(const size_t size) {
 /*********************************************************/
 
 
-// Constructor
+// Constructor. Enabled terminateion on destruction by default
 TerminateOnDestruction::TerminateOnDestruction() : enabled(true) {}
 
 // On destruction, terminate the group if enabled
@@ -148,17 +152,17 @@ void setup_group() {
 }
 
 
-// Terminate the group
+// Terminates the process group via SIGKILL
 void terminate_group() {
-	TerminateOnDestruction tod;
 
 	// If this is ever true coming in, temrinate_group()
 	// caused an error. Take no chances, kill everything instantly.
 	static bool terminate_already_called = false;
 	if ( terminate_already_called ) {
-		killpg(0, 9);
+		killpg(0, SIGKILL);
 	}
 	terminate_already_called = true;
+	TerminateOnDestruction tod;
 
 	// Flush buffers
 	fflush(nullptr);

@@ -40,7 +40,7 @@ void ss_assert(const bool b, const char * const s) {
 
 
 // The helper that writes args in the format of format to f
-// Ends the printed line with a '\n' then flushes the buffer
+// Ends the printed line with a newline then flushes the buffer
 // This function promises NOTHING on failure
 void ss_write_log(FILE * f, const char * const format, va_list args) {
 	vfprintf(f, format, args);
@@ -49,7 +49,7 @@ void ss_write_log(FILE * f, const char * const format, va_list args) {
 }
 
 // Logs the arguments as printf would to the log file
-// Ends the printed line with a '\n' then flushes the buffer
+// Ends the printed line with a newline then flushes the buffer
 // This function promises NOTHING on failure
 void ss_log(const char * const format, ...) {
 	va_list args;
@@ -59,7 +59,7 @@ void ss_log(const char * const format, ...) {
 }
 
 // Logs the arguments as printf would to the error and log files
-// Ends the printed line with a '\n' then flushes the buffer
+// Ends the printed line with a newline then flushes the buffer
 // This function promises NOTHING on failure
 void ss_log_error(const char * const format, ...) {
 

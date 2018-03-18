@@ -13,12 +13,14 @@
 
 
 // Start's the program passed in via drrun
-void start_program(char ** argv, int sock) {
+void start_program(char ** argv, const char * const socket_path) {
 
 	// TODO: write
+	const int sock = create_client(socket_path);
 	delete_me(sock);
 }
 
+// TODO: maybe boost_uniquepath, and getsockopt(SO_REUSEADDR) ?
 // Wraps std::tmpnam(0)
 // std::tmpnam is warned against due to security reasons
 // these reasons, however, are of no concern for it's use
@@ -47,8 +49,6 @@ int main(int argc, char * argv[]) {
 	const int sock = create_server(server_name.c_str());
 
 	// Create a client then accept the client
-	const int client_sock = create_client(server_name.c_str());
-	const int server_sock = accept_client(sock);
 
 	// Just in case an exception occurs, setup a class
 	// whose desctructor will terminate the group
@@ -62,19 +62,17 @@ int main(int argc, char * argv[]) {
 	// If this is the child process,
 	// start the program to be protected
 	if (pid == 0) {
-		ss_assert( close(server_sock) != -1 , "close() failed" );
-		start_program(argv, client_sock);
+		start_program(argv, server_name.c_str());
 	}
 
 	// Otherwise, this is the parent process,
-	// start the shadow stack
+	// wait for hte client then start the shadow stack
 	else {
-		ss_assert( close(client_sock) != -1 , "close() failed" );
-		start_shadow_stack(server_sock);
-	}
+		start_shadow_stack(accept_client(sock));
 
-	// If the program made it to this point, nothing
-	// went wrong, gracefully exit
-	tod.disable();
-	exit(EXIT_SUCCESS);
+		// If the program made it to this point, nothing
+		// went wrong, gracefully exit
+		tod.disable();
+		exit(EXIT_SUCCESS);
+	}
 }
