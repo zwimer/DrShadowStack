@@ -1,4 +1,5 @@
 #include "get_tid.hpp"
+#include "utilities.hpp"
 
 
 // If this is an apple
@@ -23,7 +24,9 @@ pid_t gettid() {
 
 // Define a gettid function
 pid_t gettid() {
-	return syscall(SYS_gettid);
+	pid_t ret = syscall(SYS_gettid);
+	ss_assert(ret != -1, "syscall(SYS_gettid) failed.");
+	return ret;
 }
 
 #endif
