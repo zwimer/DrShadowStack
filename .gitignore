@@ -32,5 +32,6 @@
 *.app
 
 # Directories
+scratch_work/*
 build/*
 old/*
