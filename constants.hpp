@@ -67,13 +67,12 @@
 /*********************************************************/
 
 
-/** The max number of signals on linux allowed
- *
- */
+/** If this is on a mac */
 #ifdef __APPLE__
-	#define _NSIG 65
+
+/** The max number of signals on linux allowed */
+#define _NSIG 65
 #endif
 
 
 #endif
-

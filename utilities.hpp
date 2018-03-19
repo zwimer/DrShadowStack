@@ -38,4 +38,21 @@ void ss_log(const char * const format, ...);
 void ss_log_error(const char * const format, ...);
 
 
+/*********************************************************/
+/*                                                       */
+/*	  					OS Specific						 */
+/*                                                       */
+/*********************************************************/
+
+
+/** If this is on a mac */
+#ifdef __APPLE__
+#include <unistd.h>
+
+	/** Define a mac-equivalent gettid function */
+	pid_t gettid();
+
+#endif
+
+
 #endif /* utilities_h */

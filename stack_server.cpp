@@ -4,6 +4,7 @@
 #include "group.hpp"
 
 #include <sys/socket.h>
+#include <sys/types.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <string>
@@ -30,14 +31,14 @@ typedef const char * (*message_handler)
 
 // Called when a 'call' was detected
 const char * call_handler(pointer_stack & stk, std::string & ptr, const int sock) {
-	ss_log("PID %d: Push %.*s", getpid(), POINTER_SIZE, ptr.c_str());
+	ss_log("TID %d: Push %.*s", gettid(), POINTER_SIZE, ptr.c_str());
 	stk.push(ptr);
 	return nullptr;
 }
 
 // Called when a 'ret' was detected
 const char * ret_handler(pointer_stack & stk, std::string & ptr, const int sock) {
-	ss_log("PID %d: Pop %.*s", getpid(), POINTER_SIZE, ptr.c_str());
+	ss_log("TID %d: Pop %.*s", gettid(), POINTER_SIZE, ptr.c_str());
 
 	// If the stack is empty or the top of the stack doesn't match ptr, kill all
 	if ( stk.empty() || ( stk.top() != ptr ) ) {
