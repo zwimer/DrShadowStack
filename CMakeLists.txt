@@ -24,7 +24,7 @@ else()
 
 	# Optimizations
 	# TODO: add more
-	set (CMAKE_CXX_FLAGS "-O2 -std=c++11")
+	set (CMAKE_CXX_FLAGS "-O2 -std=c++11 -Wall -Wextra")
 
 endif()
 
@@ -34,6 +34,7 @@ add_executable(ShadowStack.out
 	stack_server.cpp
 	quick_socket.cpp
 	utilities.cpp
+	get_tid.cpp
 	group.cpp
 	delete_me.cpp # TODO
 	)

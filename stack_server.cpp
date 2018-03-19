@@ -1,6 +1,7 @@
 #include "stack_server.hpp"
 #include "utilities.hpp"
 #include "constants.hpp"
+#include "get_tid.hpp"
 #include "group.hpp"
 
 #include <sys/socket.h>
