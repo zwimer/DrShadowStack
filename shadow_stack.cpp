@@ -11,14 +11,42 @@
 // TODO: delete
 #include "delete_me.hpp"
 #include <iostream>
+#include <vector>
 
 
 // Start's the program passed in via drrun
-void start_program(char ** argv, const char * const socket_path) {
+void start_program( char * drrun, char * a_out,
+					char ** client_argv, char * socket_path ) {
 
-	// TODO: write
-	const int sock = create_client(socket_path);
-	delete_me(sock);
+	// Construct args to give to exec
+	std::vector<const char *> args;
+
+	// Add DynamoRIO args
+	args.push_back("-c");
+#define DYNAMORIO_CLIENT_SO "/home/vagrant/ShadowStack/scratch_work/" \
+							"build/libshadow_stack_dr_client.so"
+	args.push_back(DYNAMORIO_CLIENT_SO);
+// TODO: pass in socket
+	args.push_back("--");
+	args.push_back(a_out);
+
+	// Add a.out's args
+	for(int i = 0; client_argv[i] != NULL; ++i ) {
+		args.push_back(client_argv[i]);
+	}
+
+	// Null terminate the array
+	args.push_back(nullptr);
+
+	// Exec DynamoRIO
+	std::cout << drrun << " ";
+	for ( unsigned int i = 0; i < args.size(); ++i) 
+		std::cout << args[i] << " ";
+	std::cout << std::endl;
+
+	fflush(NULL); // TODO?
+	execvp(drrun, (char **) args.data());
+	program_err("execvp() failed.");
 }
 
 // TODO: maybe boost_uniquepath, and getsockopt(SO_REUSEADDR) ?
@@ -29,7 +57,7 @@ void start_program(char ** argv, const char * const socket_path) {
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 std::string temp_name() {
 	const char * const str = std::tmpnam(nullptr);
-	std::cout << "Socket = \n" << str << std::endl;
+	ss_log("Socket %s", str);
 	ss_assert( str != nullptr, "std::tmpnam() failed." );
 	return str;
 }
@@ -41,16 +69,15 @@ int main(int argc, char * argv[]) {
 	// Create a new process group by starting a new session
 	// Many terminals will automatically do this, but just in case...
 	// Also changes many default signal handlers to kill the process group
-	setup_group();
+//TODO	setup_group();
 
 	// We check for the return statuses of functions, so ignore sigpipe
-	ss_assert( signal(SIGPIPE, SIG_IGN) != SIG_ERR, "signal() failed." );
+// TODO ss_assert( signal(SIGPIPE, SIG_IGN) != SIG_ERR, "signal() failed." );
 
 	// Setup a unix server
 	const std::string server_name = temp_name();
 	const int sock = create_server(server_name.c_str());
-
-	// Create a client then accept the client
+start_program( argv[1], argv[2], & argv[3], (char *) server_name.c_str());
 
 	// Just in case an exception occurs, setup a class
 	// whose desctructor will terminate the group
@@ -64,12 +91,17 @@ int main(int argc, char * argv[]) {
 	// If this is the child process,
 	// start the program to be protected
 	if (pid == 0) {
-		start_program(argv, server_name.c_str());
+		start_program( argv[1], argv[2], & argv[3], (char *) server_name.c_str());
 	}
 
 	// Otherwise, this is the parent process,
-	// wait for hte client then start the shadow stack
+	// wait for the client then start the shadow stack
 	else {
+		// TODO: delete
+		std::cout << "Waiting for client..." << std::endl;
+		const int sk = accept_client(sock);
+		std::cout << "GOT CLIENT " << sock << std::endl;
+		start_shadow_stack(sk);
 		start_shadow_stack(accept_client(sock));
 
 		// If the program made it to this point, nothing

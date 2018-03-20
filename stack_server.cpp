@@ -50,15 +50,12 @@ const char * ret_handler(pointer_stack & stk, std::string & ptr, const int sock)
 	// Otherwise, just pop the stack
 	stk.pop();
 
-	// If the stack is now empty, the program should exit
-	if ( stk.empty() ) {
-		return "Program ran out of stack frames to pop.";
-	}
-
+ss_log("Sending Cont");
 	// Tell the child proccess it may continue
 	ss_assert( write(sock, CONTINUE, sizeof(CONTINUE)) == sizeof(CONTINUE),
 		"write() failed." );
 
+ss_log("Sent!");
 	// Do not exit the program
 	return nullptr;
 }
@@ -121,6 +118,7 @@ void start_shadow_stack( const int sock ) {
 
 		// Call the appropriate function and note the message returned
 		msg = call_correct_function[message_type](stk, pointer, sock);
+		msg = nullptr; // TODO
 	}
 
 	// Print the reason the shadow stack is ending

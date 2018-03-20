@@ -16,7 +16,7 @@ if(DEFINED DEBUG_MODE)
 	set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 	# For code coverage tools
-	set (CMAKE_CXX_FLAGS "-g -O0 -std=c++11 -Wall -Wextra -Wpedantic")
+	set (CMAKE_CXX_FLAGS "-g -O0 -std=c++11 -Wno-unused-parameter -Wall -Wextra")
 
 # Not debug mode
 else()
@@ -24,7 +24,7 @@ else()
 
 	# Optimizations
 	# TODO: add more
-	set (CMAKE_CXX_FLAGS "-O2 -std=c++11 -Wall -Wextra")
+	set (CMAKE_CXX_FLAGS "-O2 -std=c++11 -Wno-unused-parameter -Wall -Wextra")
 
 endif()
 
@@ -37,7 +37,6 @@ add_executable(ShadowStack.out
 	get_tid.cpp
 	proc_rc.cpp
 	group.cpp
-	delete_me.cpp # TODO
 	)
 
 # Link threads
