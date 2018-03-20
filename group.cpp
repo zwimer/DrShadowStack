@@ -3,10 +3,10 @@
 #include "constants.hpp"
 
 #include <stdlib.h>
-#include <signal.h>
 #include <unistd.h>
-#include <stdio.h>
+#include <signal.h>
 #include <errno.h>
+#include <stdio.h>
 #include <set>
 
 

@@ -31,11 +31,10 @@
 *.out
 *.app
 
-# For YouCompleteMe
+# For vim
 **/.ycm_extra_conf.py
+**/*.swp
 
 # Directories
-scratch_work/*
-ex_buf_oflow/*
 **/build/*
 old/*

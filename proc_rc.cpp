@@ -44,6 +44,8 @@ ProgRC::ProgRC() : proc_rc((prc_t*) create_shared_memory(sizeof(prc_t))) {
 	*proc_rc = 0;
 }
 
+// TODO: destroy shmem if it is a thing, on termination
+
 // This function increases the reference count
 void ProgRC::inc() {
 	TerminateOnDestruction tod;
