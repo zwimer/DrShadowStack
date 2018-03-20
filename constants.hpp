@@ -5,21 +5,33 @@
 
 /*********************************************************/
 /*                                                       */
-/*	  Global constants needed across multiple programs	 */
+/*						 General						 */ 
 /*                                                       */
 /*********************************************************/
 
+/** The program name */
+#define PROGRAM_NAME "Placeholder" // TODO
 
-/** The default log file */
+
+/** The default log file
+ *  This fill may be nullptr, but may not be NULL */
 #define LOG_FILE stdout
 
-/** The default error log file */
+/** The default error log file
+ *  This fill may be nullptr, but may not be NULL */
 #define ERROR_FILE stderr
 
 
 /// The size of a pointer in the target program
 /** To run on 32 bit programs, change this value! */
 #define POINTER_SIZE sizeof(void *)
+
+
+/*********************************************************/
+/*                                                       */
+/*				Message header information				 */
+/*                                                       */
+/*********************************************************/
 
 
 /** The number of characters a message header can be */

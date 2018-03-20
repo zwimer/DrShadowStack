@@ -50,30 +50,37 @@ void ss_write_log(FILE * f, const char * const format, va_list args) {
 
 // Logs the arguments as printf would to the log file
 // Ends the printed line with a newline then flushes the buffer
+// If LOG_FILE is nullptr, this function is a no op
 // This function promises NOTHING on failure
 void ss_log(const char * const format, ...) {
-	va_list args;
-	va_start(args, format);
-	ss_write_log(LOG_FILE, format, args);
-	va_end(args);
+	if ( LOG_FILE != nullptr ) {
+		va_list args;
+		va_start(args, format);
+		ss_write_log(LOG_FILE, format, args);
+		va_end(args);
+	}
 }
 
 // Logs the arguments as printf would to the error and log files
 // Ends the printed line with a newline then flushes the buffer
+// If either LOG_FILE is nullptr, that file is skipped
 // This function promises NOTHING on failure
 void ss_log_error(const char * const format, ...) {
+	
 
 	// What files to write to
 	std::vector<FILE *> fs = { 
 		ERROR_FILE, 
-		LOG_FILE 
+		LOG_FILE, 
 	};	
 
 	// Write to the files
 	for ( unsigned int i = 0; i < fs.size(); ++i ) {
-		va_list args;
-		va_start(args, format);
-		ss_write_log(fs[i], format, args);
-		va_end(args);
+		if ( fs[i] != nullptr ) {
+			va_list args;
+			va_start(args, format);
+			ss_write_log(fs[i], format, args);
+			va_end(args);
+		}
 	}
 }
