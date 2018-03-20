@@ -3,6 +3,8 @@
 
 #include <sys/mman.h>
 
+// A global process rc
+ProgRC prc;
 
 // Initalize the setup variable of ProgRC
 bool ProgRC::setup = false;

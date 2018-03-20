@@ -52,7 +52,7 @@ public:
 };
 
 // A global process rc
-ProgRC prc;
+extern ProgRC prc;
 
 
 #endif
