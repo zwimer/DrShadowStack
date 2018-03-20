@@ -5,17 +5,31 @@
 
 /*********************************************************/
 /*                                                       */
+/*					Libraries for drrun					 */ 
+/*                                                       */
+/*********************************************************/
+
+
+// The .so of the shadow stack DynamoRIO client.
+// This should be defined by the cmake on compilation
+/* #define DYNAMORIO_CLIENT_SO "/path/to/.so/" */
+
+
+/*********************************************************/
+/*                                                       */
 /*						 General						 */ 
 /*                                                       */
 /*********************************************************/
 
-/** The program name */
-#define PROGRAM_NAME "Placeholder" // TODO
 
+// The name of the program
+// This should be defined by the cmake on compilation
+/* #define PROGRAM_NAME "DrShadowStack" */
 
-/** The default log file
- *  This fill may be nullptr, but may not be NULL */
-#define LOG_FILE stdout
+// The default log file. 
+// This fill may be nullptr, but may not be NULL 
+// This should be defined by the cmake on compilation
+/* #define LOG_FILE stdout */
 
 /** The default error log file
  *  This fill may be nullptr, but may not be NULL */
