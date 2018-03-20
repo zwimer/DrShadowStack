@@ -2,7 +2,7 @@
 #include "utilities.hpp"
 #include "constants.hpp"
 #include "get_tid.hpp"
-#include "proc_rc.cpp"
+#include "proc_rc.hpp"
 #include "group.hpp"
 
 #include <sys/socket.h>
