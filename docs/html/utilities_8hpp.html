@@ -99,6 +99,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ad5def302e8991c95286c90e13e3112a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8hpp.html#ad5def302e8991c95286c90e13e3112a8">ss_assert</a> (const bool b, const char *const s)</td></tr>
 <tr class="memdesc:ad5def302e8991c95286c90e13e3112a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">assert b, if false call program_err(s)  <a href="#ad5def302e8991c95286c90e13e3112a8">More...</a><br /></td></tr>
 <tr class="separator:ad5def302e8991c95286c90e13e3112a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb962634b198704ae9e2a73e29d8e26d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8hpp.html#abb962634b198704ae9e2a73e29d8e26d">ss_log_no_newline</a> (const char *const format,...)</td></tr>
+<tr class="memdesc:abb962634b198704ae9e2a73e29d8e26d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs the arguments as printf would to the log file.  <a href="#abb962634b198704ae9e2a73e29d8e26d">More...</a><br /></td></tr>
+<tr class="separator:abb962634b198704ae9e2a73e29d8e26d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a912f9bab120313bda1582daa1aaf07df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8hpp.html#a912f9bab120313bda1582daa1aaf07df">ss_log</a> (const char *const format,...)</td></tr>
 <tr class="memdesc:a912f9bab120313bda1582daa1aaf07df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs the arguments as printf would to the log file.  <a href="#a912f9bab120313bda1582daa1aaf07df">More...</a><br /></td></tr>
 <tr class="separator:a912f9bab120313bda1582daa1aaf07df"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -209,6 +212,35 @@ Functions</h2></td></tr>
 
 <p>Logs the arguments as printf would to the error and log files. </p>
 <p>Ends the printed line with a newline then flushes the buffer This function promises <b>NOTHING</b> on failure </p>
+
+</div>
+</div>
+<a class="anchor" id="abb962634b198704ae9e2a73e29d8e26d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ss_log_no_newline </td>
+          <td>(</td>
+          <td class="paramtype">const char *const&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Logs the arguments as printf would to the log file. </p>
+<p>This function promises <b>NOTHING</b> on failure </p>
 
 </div>
 </div>

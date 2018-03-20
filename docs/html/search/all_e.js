@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['utilities_2ehpp',['utilities.hpp',['../utilities_8hpp.html',1,'']]]
+  ['_7eterminateondestruction',['~TerminateOnDestruction',['../class_terminate_on_destruction.html#a1e2e372004731b788bb9df84d618181f',1,'TerminateOnDestruction']]]
 ];

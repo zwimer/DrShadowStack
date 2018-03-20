@@ -8,6 +8,8 @@ void \hyperlink{utilities_8hpp_a76ddbcaa2a2c9d3396144da8208bfe65}{program\+\_\+e
 \begin{DoxyCompactList}\small\item\em To be called in case of an error. \end{DoxyCompactList}\item 
 void \hyperlink{utilities_8hpp_ad5def302e8991c95286c90e13e3112a8}{ss\+\_\+assert} (const bool b, const char $\ast$const s)
 \begin{DoxyCompactList}\small\item\em assert b, if false call program\+\_\+err(s) \end{DoxyCompactList}\item 
+void \hyperlink{utilities_8hpp_abb962634b198704ae9e2a73e29d8e26d}{ss\+\_\+log\+\_\+no\+\_\+newline} (const char $\ast$const format,...)
+\begin{DoxyCompactList}\small\item\em Logs the arguments as printf would to the log file. \end{DoxyCompactList}\item 
 void \hyperlink{utilities_8hpp_a912f9bab120313bda1582daa1aaf07df}{ss\+\_\+log} (const char $\ast$const format,...)
 \begin{DoxyCompactList}\small\item\em Logs the arguments as printf would to the log file. \end{DoxyCompactList}\item 
 void \hyperlink{utilities_8hpp_a0aa54ceccad0614831b832077dedfaf5}{ss\+\_\+log\+\_\+error} (const char $\ast$const format,...)
@@ -62,4 +64,16 @@ Ends the printed line with a newline then flushes the buffer This function promi
 
 Logs the arguments as printf would to the error and log files. 
 
-Ends the printed line with a newline then flushes the buffer This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure 
+Ends the printed line with a newline then flushes the buffer This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure \index{utilities.\+hpp@{utilities.\+hpp}!ss\+\_\+log\+\_\+no\+\_\+newline@{ss\+\_\+log\+\_\+no\+\_\+newline}}
+\index{ss\+\_\+log\+\_\+no\+\_\+newline@{ss\+\_\+log\+\_\+no\+\_\+newline}!utilities.\+hpp@{utilities.\+hpp}}
+\subsubsection[{\texorpdfstring{ss\+\_\+log\+\_\+no\+\_\+newline(const char $\ast$const format,...)}{ss_log_no_newline(const char *const format,...)}}]{\setlength{\rightskip}{0pt plus 5cm}void ss\+\_\+log\+\_\+no\+\_\+newline (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$const}]{format, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}\hypertarget{utilities_8hpp_abb962634b198704ae9e2a73e29d8e26d}{}\label{utilities_8hpp_abb962634b198704ae9e2a73e29d8e26d}
+
+
+Logs the arguments as printf would to the log file. 
+
+This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure 
