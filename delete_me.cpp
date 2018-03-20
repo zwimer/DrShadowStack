@@ -36,7 +36,7 @@ void ret(std::string s) {
 
 void delete_me(const int sock) {
 
-	/* while(1) { sleep(1); } */
+	while(1) { sleep(1); }
 
 	snd("", sock);
 

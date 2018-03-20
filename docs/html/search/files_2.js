@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['quick_5fsocket_2ehpp',['quick_socket.hpp',['../quick__socket_8hpp.html',1,'']]]
+  ['get_5ftid_2ehpp',['get_tid.hpp',['../get__tid_8hpp.html',1,'']]],
+  ['group_2ehpp',['group.hpp',['../group_8hpp.html',1,'']]]
 ];

@@ -1,0 +1,70 @@
+\hypertarget{class_prog_r_c}{}\section{Prog\+RC Class Reference}
+\label{class_prog_r_c}\index{Prog\+RC@{Prog\+RC}}
+
+
+A class that wraps a process reference counter.  
+
+
+
+
+{\ttfamily \#include $<$proc\+\_\+rc.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_prog_r_c_a299eea3a12ad2db6979a8ed3ce3d5515}{Prog\+RC} ()
+\begin{DoxyCompactList}\small\item\em A singleton constructor. \end{DoxyCompactList}\item 
+void \hyperlink{class_prog_r_c_a60944b2ad72413fc2374c0681d273284}{inc} ()
+\begin{DoxyCompactList}\small\item\em This function increments the process reference count Note\+: This function merely wraps the decrement rc function from proc\+\_\+rc with a tod. \end{DoxyCompactList}\item 
+void \hyperlink{class_prog_r_c_a7d7ae8b170f94e145f62937072dd07f6}{dec} ()
+\begin{DoxyCompactList}\small\item\em This function decreases the process reference count. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class that wraps a process reference counter. 
+
+This class is initalized at startup, so no \textquotesingle{}setup\textquotesingle{} function has to be called 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Prog\+RC@{Prog\+RC}!Prog\+RC@{Prog\+RC}}
+\index{Prog\+RC@{Prog\+RC}!Prog\+RC@{Prog\+RC}}
+\subsubsection[{\texorpdfstring{Prog\+R\+C()}{ProgRC()}}]{\setlength{\rightskip}{0pt plus 5cm}Prog\+R\+C\+::\+Prog\+RC (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_prog_r_c_a299eea3a12ad2db6979a8ed3ce3d5515}{}\label{class_prog_r_c_a299eea3a12ad2db6979a8ed3ce3d5515}
+
+
+A singleton constructor. 
+
+Initalizes process reference counter to 0 
+
+\subsection{Member Function Documentation}
+\index{Prog\+RC@{Prog\+RC}!dec@{dec}}
+\index{dec@{dec}!Prog\+RC@{Prog\+RC}}
+\subsubsection[{\texorpdfstring{dec()}{dec()}}]{\setlength{\rightskip}{0pt plus 5cm}void Prog\+R\+C\+::dec (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_prog_r_c_a7d7ae8b170f94e145f62937072dd07f6}{}\label{class_prog_r_c_a7d7ae8b170f94e145f62937072dd07f6}
+
+
+This function decreases the process reference count. 
+
+If the count hits 0, the group is terminated Note\+: This function merely wraps the decrement rc function from proc\+\_\+rc with a tod \index{Prog\+RC@{Prog\+RC}!inc@{inc}}
+\index{inc@{inc}!Prog\+RC@{Prog\+RC}}
+\subsubsection[{\texorpdfstring{inc()}{inc()}}]{\setlength{\rightskip}{0pt plus 5cm}void Prog\+R\+C\+::inc (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_prog_r_c_a60944b2ad72413fc2374c0681d273284}{}\label{class_prog_r_c_a60944b2ad72413fc2374c0681d273284}
+
+
+This function increments the process reference count Note\+: This function merely wraps the decrement rc function from proc\+\_\+rc with a tod. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{proc__rc_8hpp}{proc\+\_\+rc.\+hpp}\item 
+proc\+\_\+rc.\+cpp\end{DoxyCompactItemize}
