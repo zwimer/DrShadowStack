@@ -47,7 +47,10 @@ public:
 
 
 /// Setup the group
-/** Then change the default signal handlers of all non-excluded
+/** This function should NOT be called by the dynamorio client.
+ *  By then the group will already be set up!
+ *  This function first sets up the process group
+ *  Then change the default signal handlers of all non-excluded
  *  signals to terminate the group when called. Also sets up 
  *  the group refrence counter. This function is **NOT** thread 
  *  safe, and should never be run after threading / forking has occured! */
@@ -55,13 +58,6 @@ void setup_group();
 
 /** Terminates the process group via SIGKILL */
 void terminate_group();
-
-/** This function increases the reference count */
-void valid_inc_proc_count();
-
-/// This function decreases the reference count
-/** If the count hits 0, the group is terminated */
-void valid_dec_proc_count();
 
 
 #endif

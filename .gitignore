@@ -31,7 +31,11 @@
 *.out
 *.app
 
+# For YouCompleteMe
+**/.ycm_extra_conf.py
+
 # Directories
 scratch_work/*
+ex_buf_oflow/*
 **/build/*
 old/*

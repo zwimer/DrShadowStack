@@ -35,6 +35,7 @@ add_executable(ShadowStack.out
 	quick_socket.cpp
 	utilities.cpp
 	get_tid.cpp
+	proc_rc.cpp
 	group.cpp
 	delete_me.cpp # TODO
 	)
