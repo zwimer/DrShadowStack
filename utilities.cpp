@@ -48,6 +48,18 @@ void ss_write_log(FILE * f, const char * const format, va_list args) {
 	fflush(f);
 }
 
+
+/// Logs the arguments as printf would to the log file
+/** This function promises **NOTHING** on failure */
+void ss_log_no_newline(const char * const format, ...) {
+	if ( LOG_FILE != nullptr ) {
+		va_list args;
+		va_start(args, format);
+		vfprintf(LOG_FILE, format, args);
+		va_end(args);
+	}
+}
+
 // Logs the arguments as printf would to the log file
 // Ends the printed line with a newline then flushes the buffer
 // If LOG_FILE is nullptr, this function is a no op

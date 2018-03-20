@@ -9,7 +9,7 @@
 #include <signal.h>
 #include <vector>
 #include <string>
-
+													#include <iostream>
 
 // Start's the program passed in via drrun
 void start_program( char * drrun, char * a_out,
@@ -18,14 +18,15 @@ void start_program( char * drrun, char * a_out,
 	// Construct args to give to exec
 	std::vector<const char *> args;
 
-	// Add DynamoRIO args
+	// Drrun a client
 	args.push_back(drrun);
 	args.push_back("-c");
-// TODO:
-#define DYNAMORIO_CLIENT_SO "/home/vagrant/ShadowStack/scratch_work/" \
-							"build/libshadow_stack_dr_client.so"
+
+	// ShadowStack dynamorio client + args
 	args.push_back(DYNAMORIO_CLIENT_SO);
-// TODO: pass in socket
+	args.push_back(socket_path);
+
+	// Specify target a.out
 	args.push_back("--");
 	args.push_back(a_out);
 
@@ -37,8 +38,16 @@ void start_program( char * drrun, char * a_out,
 	// Null terminate the array
 	args.push_back(nullptr);
 
-	// Flush IO buffers then exec
+	// Log the action then flush the buffers
+	ss_log("%d: Starting dr_run", get_tid());
+	ss_log_no_newline("Calling execvp on: ");
+	for ( int i = 0; i < args.size() - 1; ++i ) {
+		ss_log_no_newline( "%s ", args[i] );
+	}
+	ss_log("");
 	fflush(NULL);
+
+	// Start drrun
 	execvp(drrun, (char **) args.data());
 	program_err("execvp() failed.");
 }
@@ -61,7 +70,8 @@ int main(int argc, char * argv[]) {
 
 	// TODO: use actual arg parser
 	if ( argc < 3 ) {
-		ss_log("Error: usage: ./a.out <drrun> <a.out> ...");
+		ss_log_error("Incorrect usage");
+		ss_log("Usage: ./" PROGRAM_NAME ".out <drrun> <a.out> ...");
 		exit(EXIT_FAILURE);
 	}
 
@@ -92,7 +102,7 @@ int main(int argc, char * argv[]) {
 	// If this is the child process,
 	// start the program to be protected
 	if (pid == 0) {
-		ss_log("%llu: starting drrun", get_tid());
+		ss_log("%llu: Forming drrun args...", get_tid());
 		start_program( argv[1], argv[2], & argv[3], (char *) server_name.c_str());
 	}
 

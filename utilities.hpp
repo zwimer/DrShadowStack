@@ -28,6 +28,10 @@ void ss_assert(const bool b, const char * const s);
 
 
 /// Logs the arguments as printf would to the log file
+/** This function promises **NOTHING** on failure */
+void ss_log_no_newline(const char * const format, ...);
+
+/// Logs the arguments as printf would to the log file
 /** Ends the printed line with a newline then flushes the buffer
  *  This function promises **NOTHING** on failure */
 void ss_log(const char * const format, ...);
