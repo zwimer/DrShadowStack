@@ -33,5 +33,5 @@
 
 # Directories
 scratch_work/*
-build/*
+**/build/*
 old/*
