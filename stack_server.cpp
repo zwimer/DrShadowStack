@@ -78,6 +78,9 @@ const char * thread_handler(pointer_stack & stk, std::string & ptr, const int so
 void start_shadow_stack( const int sock ) {
 	TerminateOnDestruction tod;
 
+	// Declare this as a valid process
+	prc.inc();
+
 	// Create the message handling function map and populate it
 	std::map<std::string, message_handler> call_correct_function {
 		{ THREAD, thread_handler },

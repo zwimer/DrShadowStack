@@ -38,13 +38,14 @@ void start_program( char * drrun, char * a_out,
 	// Null terminate the array
 	args.push_back(nullptr);
 
-	// Exec DynamoRIO
-	std::cout << drrun << " ";
-	for ( unsigned int i = 0; i < args.size(); ++i) 
+// TODO: remove
+	std::cout << "\nI am going to run:\n" << drrun << " ";
+	for ( unsigned int i = 0; args[i]; ++i) 
 		std::cout << args[i] << " ";
-	std::cout << std::endl;
+	std::cout << "\n" << std::endl;
 
-	fflush(NULL); // TODO?
+	// Flush IO buffers then exec
+	fflush(NULL);
 	execvp(drrun, (char **) args.data());
 	program_err("execvp() failed.");
 }
@@ -66,13 +67,19 @@ std::string temp_name() {
 // Main function
 int main(int argc, char * argv[]) {
 
+	// TODO: use actual arg parser
+	if ( argc < 3 ) {
+		ss_log("Error: usage: ./a.out <drrun> <a.out> ...");
+		exit(EXIT_FAILURE);
+	}
+
 	// Create a new process group by starting a new session
 	// Many terminals will automatically do this, but just in case...
 	// Also changes many default signal handlers to kill the process group
-//TODO	setup_group();
+	setup_group();
 
 	// We check for the return statuses of functions, so ignore sigpipe
-// TODO ss_assert( signal(SIGPIPE, SIG_IGN) != SIG_ERR, "signal() failed." );
+	ss_assert( signal(SIGPIPE, SIG_IGN) != SIG_ERR, "signal() failed." );
 
 	// Setup a unix server
 	const std::string server_name = temp_name();
