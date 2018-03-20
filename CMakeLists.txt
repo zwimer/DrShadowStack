@@ -16,7 +16,7 @@ if(DEFINED DEBUG_MODE)
 	set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 	# For code coverage tools
-	set (CMAKE_CXX_FLAGS "-g -O0 -std=c++11 -Wno-unused-parameter -Wall -Wextra")
+	set (CMAKE_CXX_FLAGS "-g -O0 -std=c++11 -Wall -Wextra -Wno-unused-parameter" )
 
 # Not debug mode
 else()
@@ -24,7 +24,7 @@ else()
 
 	# Optimizations
 	# TODO: add more
-	set (CMAKE_CXX_FLAGS "-O2 -std=c++11 -Wno-unused-parameter -Wall -Wextra")
+	set (CMAKE_CXX_FLAGS "-O2 -std=c++11 -Wall -Wextra -Wno-unused-parameter")
 
 endif()
 
