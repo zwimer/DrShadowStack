@@ -95,13 +95,17 @@ void TerminateOnDestruction::disable() {
 void setup_group() {
 	TerminateOnDestruction tod;
 
-	// No issues, setup the group
+	// No issues, continue
 	if ( ! setup_complete ) {
 		setup_complete = true;
+
+		// Set up the group
 		setsid();
+		ss_log("Setup groupd with group id: %d", getpgrp());
 
 		// Remap signal handlers
 		set_default_signal_handler(default_signal_handler);
+		ss_log("Remapped signal handlers");
 	}
 
 	// setup_group() was already called

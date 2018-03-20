@@ -2,16 +2,13 @@
 #include "stack_server.hpp"
 #include "quick_socket.hpp"
 #include "utilities.hpp"
+#include "get_tid.hpp"
 #include "group.hpp"
 
 #include <unistd.h>
 #include <signal.h>
-#include <string>
-
-// TODO: delete
-#include "delete_me.hpp"
-#include <iostream>
 #include <vector>
+#include <string>
 
 
 // Start's the program passed in via drrun
@@ -22,7 +19,9 @@ void start_program( char * drrun, char * a_out,
 	std::vector<const char *> args;
 
 	// Add DynamoRIO args
+	args.push_back(drrun);
 	args.push_back("-c");
+// TODO:
 #define DYNAMORIO_CLIENT_SO "/home/vagrant/ShadowStack/scratch_work/" \
 							"build/libshadow_stack_dr_client.so"
 	args.push_back(DYNAMORIO_CLIENT_SO);
@@ -38,12 +37,6 @@ void start_program( char * drrun, char * a_out,
 	// Null terminate the array
 	args.push_back(nullptr);
 
-// TODO: remove
-	std::cout << "\nI am going to run:\n" << drrun << " ";
-	for ( unsigned int i = 0; args[i]; ++i) 
-		std::cout << args[i] << " ";
-	std::cout << "\n" << std::endl;
-
 	// Flush IO buffers then exec
 	fflush(NULL);
 	execvp(drrun, (char **) args.data());
@@ -58,7 +51,6 @@ void start_program( char * drrun, char * a_out,
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 std::string temp_name() {
 	const char * const str = std::tmpnam(nullptr);
-	ss_log("Socket %s", str);
 	ss_assert( str != nullptr, "std::tmpnam() failed." );
 	return str;
 }
@@ -79,12 +71,13 @@ int main(int argc, char * argv[]) {
 	setup_group();
 
 	// We check for the return statuses of functions, so ignore sigpipe
+	ss_assert( signal(SIGCHLD, SIG_IGN) != SIG_ERR, "signal() failed." );
 	ss_assert( signal(SIGPIPE, SIG_IGN) != SIG_ERR, "signal() failed." );
+	ss_log("Sigpipe and Sigchild ignored");
 
 	// Setup a unix server
 	const std::string server_name = temp_name();
 	const int sock = create_server(server_name.c_str());
-start_program( argv[1], argv[2], & argv[3], (char *) server_name.c_str());
 
 	// Just in case an exception occurs, setup a class
 	// whose desctructor will terminate the group
@@ -92,23 +85,22 @@ start_program( argv[1], argv[2], & argv[3], (char *) server_name.c_str());
 
 	// Fork
 	// Note that the server belongs to the parent, the client is the child
+	ss_log("Starting initial fork...");
 	const pid_t pid = fork();
 	ss_assert( pid != -1, "fork() failed" );
-
+	
 	// If this is the child process,
 	// start the program to be protected
 	if (pid == 0) {
+		ss_log("%llu: starting drrun", get_tid());
 		start_program( argv[1], argv[2], & argv[3], (char *) server_name.c_str());
 	}
 
-	// Otherwise, this is the parent process,
-	// wait for the client then start the shadow stack
+	// Otherwise, this is the parent process
 	else {
-		// TODO: delete
-		std::cout << "Waiting for client..." << std::endl;
-		const int sk = accept_client(sock);
-		std::cout << "GOT CLIENT " << sock << std::endl;
-		start_shadow_stack(sk);
+
+		// Wait for the client then start the shadow stack
+		ss_log("%llu: waiting for client", get_tid());
 		start_shadow_stack(accept_client(sock));
 
 		// If the program made it to this point, nothing

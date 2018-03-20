@@ -33,14 +33,14 @@ typedef const char * (*message_handler)
 
 // Called when a 'call' was detected
 const char * call_handler(pointer_stack & stk, std::string & ptr, const int sock) {
-	ss_log("TID %d: Push %.*s", gettid(), POINTER_SIZE, ptr.c_str());
+	ss_log("TID %d: Push %.*s", get_tid(), POINTER_SIZE, ptr.c_str());
 	stk.push(ptr);
 	return nullptr;
 }
 
 // Called when a 'ret' was detected
 const char * ret_handler(pointer_stack & stk, std::string & ptr, const int sock) {
-	ss_log("TID %d: Pop %.*s", gettid(), POINTER_SIZE, ptr.c_str());
+	ss_log("TID %d: Pop %.*s", get_tid(), POINTER_SIZE, ptr.c_str());
 
 	// If the stack is empty or the top of the stack doesn't match ptr, kill all
 	if ( stk.empty() || ( stk.top() != ptr ) ) {
@@ -50,12 +50,10 @@ const char * ret_handler(pointer_stack & stk, std::string & ptr, const int sock)
 	// Otherwise, just pop the stack
 	stk.pop();
 
-ss_log("Sending Cont");
 	// Tell the child proccess it may continue
 	ss_assert( write(sock, CONTINUE, sizeof(CONTINUE)) == sizeof(CONTINUE),
 		"write() failed." );
 
-ss_log("Sent!");
 	// Do not exit the program
 	return nullptr;
 }
@@ -132,8 +130,6 @@ void start_shadow_stack( const int sock ) {
 	prc.dec();
 
 	// If the program reached this point, another
-	// thread / process must be active, gracefully
-	// exit the current process without terminating the group
+	// thread / process must be active, gracefully return
 	tod.disable();
-	exit(EXIT_SUCCESS);
 }

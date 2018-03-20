@@ -47,7 +47,8 @@ int create_server(const char * const fname) {
 	ss_assert( rv != -1, "bind() failed" );
 
 	// Begin listening for exactly one client
-	listen(server_sock, 1);
+	ss_assert( listen(server_sock, 1) != -1, "listen() failed." );
+	ss_log("Created server %s\n\t- Listening for one client...", fname);
 
 	// Return the server and client sockets
 	return server_sock;
@@ -64,9 +65,9 @@ int create_client(const char * sock_name) {
 
 	// Connect the client. This is NOT blocking IF listen() was called
 	struct sockaddr_un server = make_unix_server(sock_name);
-	const int rv = connect(client, (struct sockaddr *) &server, 
-		sizeof(struct sockaddr_un));
-	ss_assert( rv != -1, "connect() failed" );
+	ss_assert( connect(client, (struct sockaddr *) &server, 
+				sizeof(struct sockaddr_un)), "connect() failed" );
+	ss_log("New client connected to %s", sock_name);
 
 	// Return the client
 	return client;
@@ -77,5 +78,6 @@ int create_client(const char * sock_name) {
 int accept_client(const int sock) {
 	const int accepted_sock = accept(sock, 0, 0);
 	ss_assert( accepted_sock != -1, "accept() failed" );
+	ss_log("Server on fd %d accepted one client", sock);
 	return accepted_sock;
 }
