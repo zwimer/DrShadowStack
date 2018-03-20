@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string.h>
 #include <unistd.h>
+#include <unistd.h>
 #include <stdio.h>
 
 void snd(std::string s, int set_s = -1) {
@@ -34,6 +35,9 @@ void ret(std::string s) {
 }
 
 void delete_me(const int sock) {
+
+	/* while(1) { sleep(1); } */
+
 	snd("", sock);
 
 	for(int i = 0; i < 5; ++i) {

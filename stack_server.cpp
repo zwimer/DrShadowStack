@@ -2,6 +2,7 @@
 #include "utilities.hpp"
 #include "constants.hpp"
 #include "get_tid.hpp"
+#include "proc_rc.cpp"
 #include "group.hpp"
 
 #include <sys/socket.h>
@@ -127,7 +128,7 @@ void start_shadow_stack( const int sock ) {
 
 	// The process died, decrement the 
 	// reference count of processes
-	valid_dec_proc_count();
+	prc.dec();
 
 	// If the program reached this point, another
 	// thread / process must be active, gracefully

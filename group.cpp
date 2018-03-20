@@ -2,25 +2,16 @@
 #include "utilities.hpp"
 #include "constants.hpp"
 
-#include <sys/mman.h>
+#include <stdlib.h>
 #include <signal.h>
+#include <unistd.h>
+#include <stdio.h>
 #include <errno.h>
 #include <set>
-
-#include <boost/interprocess/sync/interprocess_mutex.hpp>
-
-
-// The type used as a rc for the number of processes
-typedef long proc_rc;
 
 
 // Used to tell if the process group has started
 static bool setup_complete = false;
-
-// A reference counter for the number of processes
-// And a mutex to protect the reference counter
-static proc_rc * num_proc_rc = nullptr;
-static boost::interprocess::interprocess_mutex rc_lock;
 
 // Signals whose handlers should not be changed
 const static std::set<int> no_change {
@@ -68,25 +59,6 @@ void set_default_signal_handler(void (*handler) (int sig)) {
 	}
 }
 
-// Create a chunk of chared memory of size size
-// This memory will be readable, writeable, and anonymous
-// On failure, this function terminates the group
-void * create_shared_memory(const size_t size) {
-
-	// Our memory buffer will be readable and writable:
-	const int protection = PROT_READ | PROT_WRITE;
-
-	// The buffer will be shared (meaning other processes can access it), but
-	// anonymous (meaning third-party processes cannot obtain an address for it),
-	// so only this process and its children will be able to use it:
-	const int visibility = MAP_ANONYMOUS | MAP_SHARED;
-
-	// Allocate the memory and return it
-	void * const ret = mmap(nullptr, size, protection, visibility, 0, 0);
-	ss_assert( (ret != MAP_FAILED), "mmap() failed." );
-	return ret;
-}
-
 
 /*********************************************************/
 /*                                                       */
@@ -119,11 +91,7 @@ void TerminateOnDestruction::disable() {
 /*********************************************************/
 
 
-// Start the group, then change the default signal handlers
-// of common program killing signals to terminate the group
-// Also sets up the group refrence counter
-// This function is NOT thread safe, and should never be 
-// run after threading / forking has occured!
+// Setup the group
 void setup_group() {
 	TerminateOnDestruction tod;
 
@@ -134,10 +102,6 @@ void setup_group() {
 
 		// Remap signal handlers
 		set_default_signal_handler(default_signal_handler);
-
-		// Setup the reference counter
-		num_proc_rc = (proc_rc *) create_shared_memory(sizeof(proc_rc));	
-		valid_inc_proc_count();
 	}
 
 	// setup_group() was already called
@@ -180,34 +144,4 @@ void terminate_group() {
 		ss_log_error("This program is too cowardly to kill the group... exiting program.\n");
 		exit(EXIT_FAILURE);
 	}
-}
-
-// This function increases the reference count
-void valid_inc_proc_count() {
-	TerminateOnDestruction tod;
-	rc_lock.lock();
-	*num_proc_rc += 1;
-	rc_lock.unlock();
-	tod.disable();
-}
-
-// This function decreases the reference count
-// If the count hits 0, the group is terminated
-void valid_dec_proc_count() {
-	TerminateOnDestruction tod;
-
-	// Decrement the rc
-	rc_lock.lock();
-	*num_proc_rc -= 1;
-
-	// If the rc is 0, kill everything
-	if ( *num_proc_rc == 0 ) {
-		ss_log("Valid process reference counter "
-				"hit 0, terminating process group");
-		terminate_group();
-	}
-
-	// Otherwise, release the lock
-	rc_lock.unlock();
-	tod.disable();
 }

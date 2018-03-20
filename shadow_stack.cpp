@@ -10,6 +10,7 @@
 
 // TODO: delete
 #include "delete_me.hpp"
+#include <iostream>
 
 
 // Start's the program passed in via drrun
@@ -28,6 +29,7 @@ void start_program(char ** argv, const char * const socket_path) {
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 std::string temp_name() {
 	const char * const str = std::tmpnam(nullptr);
+	std::cout << "Socket = \n" << str << std::endl;
 	ss_assert( str != nullptr, "std::tmpnam() failed." );
 	return str;
 }
