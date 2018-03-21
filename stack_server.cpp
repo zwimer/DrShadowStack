@@ -53,8 +53,6 @@ const char * ret_handler(pointer_stack & stk, std::string & ptr, const int sock)
 	// Tell the child proccess it may continue
 	ss_assert( write(sock, CONTINUE, sizeof(MESSAGE_HEADER_LENGTH))
 		 == sizeof(MESSAGE_HEADER_LENGTH), "write() failed." );
-	ss_assert( write(1, CONTINUE, sizeof(MESSAGE_HEADER_LENGTH)) 
-		== sizeof(MESSAGE_HEADER_LENGTH), "write() failed." );
 
 	// Do not exit the program
 	return nullptr;
@@ -109,7 +107,7 @@ void start_shadow_stack( const int sock ) {
 
 		// If the client disconnected, break
 		if (bytes_recv == 0) {
-			msg = "Client Disconnected";
+			msg = "Client Disconnected.";
 			break;
 		}
 
@@ -125,7 +123,8 @@ void start_shadow_stack( const int sock ) {
 	}
 
 	// Print the reason the shadow stack is ending
-	ss_log("%s", msg);
+	// This prints to the error stream, but is not for sure an error
+	ss_log_error("TID %d: %s", get_tid(), msg);
 
 	// The process died, decrement the 
 	// reference count of processes
