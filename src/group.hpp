@@ -49,7 +49,6 @@ public:
 /** A namespace for the group functions */
 namespace Group {
 
-
 	/// Setup the group
 	/** This function should NOT be called by the dynamorio client.
 	 *  By then the group will already be set up!
@@ -64,7 +63,6 @@ namespace Group {
 	/** If is_error is set to true, msg is logged to the
 	 *  ERROR file, otherwise it is logged via Utilities::message */
 	void terminate(const char * const msg, bool is_error = false);
-
 
 };
 

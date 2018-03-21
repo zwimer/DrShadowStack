@@ -15,7 +15,7 @@
 
 
 // Create a unix server with name fname
-struct sockaddr_un make_unix_server(const char * const fname) {
+static struct sockaddr_un make_unix_server(const char * const fname) {
 	struct sockaddr_un server;
 	server.sun_family = AF_UNIX;
  	strcpy(server.sun_path, fname);
@@ -32,7 +32,7 @@ struct sockaddr_un make_unix_server(const char * const fname) {
 
 // Create a unix socket, and a server for it
 // Returns the server file descriptor
-int create_server(const char * const fname) {
+int QS::create_server(const char * const fname) {
 
 	// Create the server
 	const int server_sock = socket(AF_UNIX, SOCK_STREAM, 0);
@@ -57,7 +57,7 @@ int create_server(const char * const fname) {
 // Create a client for a unix socket
 // Joins the socket located at sock_name
 // Returns the file descriptor for the client
-int create_client(const char * sock_name) {
+int QS::create_client(const char * sock_name) {
 
 	// Create the client
 	const int client = socket(AF_UNIX, SOCK_STREAM, 0);
@@ -75,7 +75,7 @@ int create_client(const char * sock_name) {
 
 // Wait for a client to connect to sock
 // Once the client connects, accept then return the file descriptor
-int accept_client(const int sock) {
+int QS::accept_client(const int sock) {
 	const int accepted_sock = accept(sock, 0, 0);
 	Utilities::assert( accepted_sock != -1, "accept() failed" );
 	Utilities::log("Server on fd %d accepted one client", sock);
