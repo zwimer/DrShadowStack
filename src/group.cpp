@@ -1,6 +1,7 @@
 #include "group.hpp"
 #include "utilities.hpp"
 #include "constants.hpp"
+#include "get_tid.hpp"
 
 #include <stdlib.h>
 #include <unistd.h>
@@ -37,7 +38,8 @@ const static std::set<int> no_change {
 // A default signal handler
 // This handler will terminate the process group 
 void default_signal_handler(int sig) {
-	Utilities::log_error("\nSignal %d caught. Terminating process group...", sig);
+	Utilities::log_error("\nTID %d: Signal %d caught. Terminating "
+							"process group...", get_tid(), sig);
 	Group::terminate(nullptr);
 }
 

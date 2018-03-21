@@ -1,6 +1,7 @@
 #include "dr_shadow_stack_client.hpp"
 #include "quick_socket.hpp"
 #include "utilities.hpp"
+#include "get_tid.hpp"
 #include "message.hpp"
 
 #include <sys/socket.h>
@@ -15,13 +16,13 @@ static int sock = -1;
 // The call handler. 
 // This function is called whenever a call instruction is about 
 // to execute. This function is static for optimization reasons
-static void on_call(const void * const ret_to_addr) {
+static void on_call(const app_pc ret_to_addr) {
 
 	// Log the call
-	Utilities::log("Call(%.*s)", POINTER_SIZE, ret_to_addr);
+	Utilities::log("\nTID %d: (client) Call(%p)", get_tid(), ret_to_addr);
 
 	// Create and send the message
-	Message::Call to_send( (char *) ret_to_addr );
+	Message::Call to_send( (char *) & ret_to_addr );
 	const int bytes_sent = write(sock, to_send.message, to_send.size);
 	Utilities::assert( bytes_sent == to_send.size, "write() failed!");
 }
@@ -29,13 +30,13 @@ static void on_call(const void * const ret_to_addr) {
 // The ret handler. 
 // This function is called whenever a ret instruction is about 
 // to execute. This function is static for optimization reasons
-static void on_ret(app_pc instr_addr, app_pc target_addr) {
+static void on_ret(const app_pc instr_addr, const app_pc target_addr) {
 
 	// Log the ret
-	Utilities::log("Ret(%.*s)", POINTER_SIZE, target_addr);
+	Utilities::log("TID %d: (client) Ret(%p)", get_tid(), target_addr);
 
 	// Create and send the message
-	Message::Ret to_send( (char *) target_addr );
+	Message::Ret to_send( (char *) & target_addr );
 	const int bytes_sent = write(sock, to_send.message, to_send.size);
 	Utilities::assert( bytes_sent == to_send.size, "write() failed!");
 
@@ -69,8 +70,7 @@ static dr_emit_flags_t event_app_instruction(void *drcontext, void *tag,
 	//return address), then insert the on_call function 
 	// with the return address as a parameter
 	if ( instr_is_call(instr) ) {
-		const void * const xip = (char *) instr_get_app_pc(instr) 
-								 + instr_length(drcontext, instr);
+		const app_pc xip = instr_get_app_pc(instr) + instr_length(drcontext, instr);
 		dr_insert_clean_call(drcontext, bb, instr, (void *) on_call,
 							false /* save floating point state */, 
 							1, OPND_CREATE_INTPTR(xip));

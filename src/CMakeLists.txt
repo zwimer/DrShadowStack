@@ -79,6 +79,7 @@ add_library(${SS_DR_CLIENT_SO} SHARED
 	quick_socket.cpp
 	utilities.cpp
 	message.cpp
+	get_tid.cpp
 	group.cpp
 	)
 

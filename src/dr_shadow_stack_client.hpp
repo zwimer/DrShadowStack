@@ -8,12 +8,12 @@
 /// The call handler. 
 /** This function is called whenever a call instruction is about 
  *  to execute. This function is static for optimization reasons */
-static void on_call(const void * const ret_to_addr);
+static void on_call(const app_pc ret_to_addr);
 
 /// The ret handler. 
 /** This function is called whenever a ret instruction is about 
  *  to execute. This function is static for optimization reasons */
-static void on_ret(app_pc instr_addr, app_pc target_addr);
+static void on_ret(const app_pc instr_addr, const app_pc target_addr);
 
 /// The function that inserts the call and ret handlers
 /** Whenever a new basic block is seen, this function will be
