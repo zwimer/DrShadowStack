@@ -182,7 +182,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Logs the arguments as printf would to the log file. </p>
-<p>Ends the printed line with a newline then flushes the buffer This function promises <b>NOTHING</b> on failure </p>
+<p>Ends the printed line with a newline then flushes the buffer If LOG_FILE is nullptr, this function does nothing This function promises <b>NOTHING</b> on failure </p>
 
 </div>
 </div>
@@ -211,7 +211,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Logs the arguments as printf would to the error and log files. </p>
-<p>Ends the printed line with a newline then flushes the buffer This function promises <b>NOTHING</b> on failure </p>
+<p>Ends the printed line with a newline then flushes the buffer If LOG_FILE and ERROR_FILE are the same, only prints once If either file is nullptr, that file is skipped This function promises <b>NOTHING</b> on failure </p>
 
 </div>
 </div>

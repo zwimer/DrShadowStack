@@ -1,5 +1,6 @@
 var searchData=
 [
   ['dec',['dec',['../class_prog_r_c.html#a7d7ae8b170f94e145f62937072dd07f6',1,'ProgRC']]],
-  ['disable',['disable',['../class_terminate_on_destruction.html#a3ee7e31e435328d6ff97edd5627f7c27',1,'TerminateOnDestruction']]]
+  ['disable',['disable',['../class_terminate_on_destruction.html#a3ee7e31e435328d6ff97edd5627f7c27',1,'TerminateOnDestruction']]],
+  ['dr_5fclient_5fmain',['dr_client_main',['../shadow__stack__dr__client_8cpp.html#a2b938c98dd186cc94eef6880f9e3c3e9',1,'shadow_stack_dr_client.cpp']]]
 ];

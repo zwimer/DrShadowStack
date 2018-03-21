@@ -52,7 +52,7 @@ assert b, if false call program\+\_\+err(s)
 
 Logs the arguments as printf would to the log file. 
 
-Ends the printed line with a newline then flushes the buffer This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure \index{utilities.\+hpp@{utilities.\+hpp}!ss\+\_\+log\+\_\+error@{ss\+\_\+log\+\_\+error}}
+Ends the printed line with a newline then flushes the buffer If L\+O\+G\+\_\+\+F\+I\+LE is nullptr, this function does nothing This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure \index{utilities.\+hpp@{utilities.\+hpp}!ss\+\_\+log\+\_\+error@{ss\+\_\+log\+\_\+error}}
 \index{ss\+\_\+log\+\_\+error@{ss\+\_\+log\+\_\+error}!utilities.\+hpp@{utilities.\+hpp}}
 \subsubsection[{\texorpdfstring{ss\+\_\+log\+\_\+error(const char $\ast$const format,...)}{ss_log_error(const char *const format,...)}}]{\setlength{\rightskip}{0pt plus 5cm}void ss\+\_\+log\+\_\+error (
 \begin{DoxyParamCaption}
@@ -64,7 +64,7 @@ Ends the printed line with a newline then flushes the buffer This function promi
 
 Logs the arguments as printf would to the error and log files. 
 
-Ends the printed line with a newline then flushes the buffer This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure \index{utilities.\+hpp@{utilities.\+hpp}!ss\+\_\+log\+\_\+no\+\_\+newline@{ss\+\_\+log\+\_\+no\+\_\+newline}}
+Ends the printed line with a newline then flushes the buffer If L\+O\+G\+\_\+\+F\+I\+LE and E\+R\+R\+O\+R\+\_\+\+F\+I\+LE are the same, only prints once If either file is nullptr, that file is skipped This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure \index{utilities.\+hpp@{utilities.\+hpp}!ss\+\_\+log\+\_\+no\+\_\+newline@{ss\+\_\+log\+\_\+no\+\_\+newline}}
 \index{ss\+\_\+log\+\_\+no\+\_\+newline@{ss\+\_\+log\+\_\+no\+\_\+newline}!utilities.\+hpp@{utilities.\+hpp}}
 \subsubsection[{\texorpdfstring{ss\+\_\+log\+\_\+no\+\_\+newline(const char $\ast$const format,...)}{ss_log_no_newline(const char *const format,...)}}]{\setlength{\rightskip}{0pt plus 5cm}void ss\+\_\+log\+\_\+no\+\_\+newline (
 \begin{DoxyParamCaption}
