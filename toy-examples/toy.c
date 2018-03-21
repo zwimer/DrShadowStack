@@ -1,8 +1,12 @@
-#include "toy.h"
+// gcc toy.c -O0 -o toy.out
 #include <stdio.h>
 #include <unistd.h>
 
+typedef unsigned long long uint_z;
 
+// A macro used to print out a number
+// This is a macro to avoid calling and functions
+// except for the system call write
 #define PNT(n) {													\
 		int len = 16;												\
 		char arr[len];												\
@@ -24,29 +28,15 @@
 	}
 
 
-
-uint_z fib(uint_z n) {
-	PNT(n)
-	if ( n <= 1 ) return n;
-	return fib(n-1) + fib(n-2);
-}
-
+// Just a functio nthat calls itself -1
+// Also prints out n
 uint_z itr(uint_z n)  {
 	PNT(n)
 	if ( n == 0 ) return 0;
 	return itr(n - 1);
 }
 
-
+// Just calls itr(99)
 int main() {
-
-	printf("Starting main\n");
-
-	/* const uint_z c = fib(500); */
-	const uint_z c = itr(99);
-
-	printf("Result = %llu\n", c);
-	printf("Ending main\n");
-	
-
+	itr(99);
 }
