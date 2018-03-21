@@ -9,7 +9,7 @@
 #include <signal.h>
 #include <vector>
 #include <string>
-													#include <iostream>
+
 
 // Start's the program passed in via drrun
 void start_program( char * drrun, char * a_out,

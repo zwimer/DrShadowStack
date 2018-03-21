@@ -20,7 +20,7 @@
 void program_err(const char * const s) {
 	TerminateOnDestruction tod;
     ss_log_error("\nERROR: %s", s);
-	perror("");
+	perror("Message from perror");
 	terminate_group();
 }
 
@@ -62,7 +62,7 @@ void ss_log_no_newline(const char * const format, ...) {
 
 // Logs the arguments as printf would to the log file
 // Ends the printed line with a newline then flushes the buffer
-// If LOG_FILE is nullptr, this function is a no op
+// If LOG_FILE is nullptr, this function does nothing
 // This function promises NOTHING on failure
 void ss_log(const char * const format, ...) {
 	if ( LOG_FILE != nullptr ) {
@@ -75,6 +75,7 @@ void ss_log(const char * const format, ...) {
 
 // Logs the arguments as printf would to the error and log files
 // Ends the printed line with a newline then flushes the buffer
+// If LOG_FILE and ERROR_FILE are the same, only prints once
 // If either LOG_FILE is nullptr, that file is skipped
 // This function promises NOTHING on failure
 void ss_log_error(const char * const format, ...) {
@@ -85,6 +86,11 @@ void ss_log_error(const char * const format, ...) {
 		ERROR_FILE, 
 		LOG_FILE, 
 	};	
+
+	// If LOG_FILE and ERROR_FILE are the same, only print once
+	if ( LOG_FILE == ERROR_FILE ) {
+		fs.pop_back();
+	}
 
 	// Write to the files
 	for ( unsigned int i = 0; i < fs.size(); ++i ) {

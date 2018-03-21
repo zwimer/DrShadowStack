@@ -33,11 +33,14 @@ void ss_log_no_newline(const char * const format, ...);
 
 /// Logs the arguments as printf would to the log file
 /** Ends the printed line with a newline then flushes the buffer
+ *  If LOG_FILE is nullptr, this function does nothing
  *  This function promises **NOTHING** on failure */
 void ss_log(const char * const format, ...);
 
 /// Logs the arguments as printf would to the error and log files
 /** Ends the printed line with a newline then flushes the buffer
+ *  If LOG_FILE and ERROR_FILE are the same, only prints once
+ *  If either file is nullptr, that file is skipped
  *  This function promises **NOTHING** on failure */
 void ss_log_error(const char * const format, ...);
 

@@ -55,7 +55,7 @@ int create_server(const char * const fname) {
 }
 
 // Create a client for a unix socket
-// Joins the socket descriped by the file descriptor fd
+// Joins the socket located at sock_name
 // Returns the file descriptor for the client
 int create_client(const char * sock_name) {
 
@@ -66,7 +66,7 @@ int create_client(const char * sock_name) {
 	// Connect the client. This is NOT blocking IF listen() was called
 	struct sockaddr_un server = make_unix_server(sock_name);
 	ss_assert( connect(client, (struct sockaddr *) &server, 
-				sizeof(struct sockaddr_un)), "connect() failed" );
+				sizeof(struct sockaddr_un)) == 0, "connect() failed" );
 	ss_log("New client connected to %s", sock_name);
 
 	// Return the client
