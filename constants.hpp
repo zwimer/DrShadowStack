@@ -31,7 +31,7 @@
 // This should be defined by the cmake on compilation
 /* #define LOG_FILE stdout */
 
-/** The default error log file
+/** The default error log file (important events are also noted here)
  *  This fill may be nullptr, but may not be NULL */
 #define ERROR_FILE stderr
 

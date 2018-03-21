@@ -66,8 +66,8 @@ void ProgRC::dec() {
 
 	// If the rc is 0, kill everything
 	if ( *proc_rc <= 0 ) {
-		ss_log("Valid process reference counter "
-				"hit 0, terminating process group");
+		ss_log_error("Valid process reference counter "
+					 "hit 0\nProgram has ended.");
 		terminate_group();
 	}
 
