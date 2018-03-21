@@ -87,7 +87,7 @@ int main(int argc, char * argv[]) {
 
 	// Setup a unix server
 	const std::string server_name = temp_name();
-	const int sock = create_server(server_name.c_str());
+	const int sock = QS::create_server(server_name.c_str());
 
 	// Just in case an exception occurs, setup a class
 	// whose desctructor will terminate the group
@@ -111,7 +111,7 @@ int main(int argc, char * argv[]) {
 
 		// Wait for the client then start the shadow stack
 		Utilities::log("%llu: waiting for client", get_tid());
-		start_shadow_stack(accept_client(sock));
+		start_shadow_stack(QS::accept_client(sock));
 
 		// If the program made it to this point, nothing
 		// went wrong, gracefully exit

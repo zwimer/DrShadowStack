@@ -1,8 +1,11 @@
-#include "dr_shadow_stack_client.hpp"
+/** @file */
 #include "quick_socket.hpp"
 #include "utilities.hpp"
 #include "get_tid.hpp"
 #include "message.hpp"
+
+#include "dr_api.h"
+#include "drmgr.h"
 
 #include <sys/socket.h>
 #include <unistd.h>
@@ -13,9 +16,9 @@
 static int sock = -1;
 
 
-// The call handler. 
-// This function is called whenever a call instruction is about 
-// to execute. This function is static for optimization reasons
+/// The call handler. 
+/** This function is called whenever a call instruction is about 
+ *  to execute. This function is static for optimization reasons */
 static void on_call(const app_pc ret_to_addr) {
 
 	// Log the call
@@ -27,9 +30,9 @@ static void on_call(const app_pc ret_to_addr) {
 	Utilities::assert( bytes_sent == to_send.size, "write() failed!");
 }
 
-// The ret handler. 
-// This function is called whenever a ret instruction is about 
-// to execute. This function is static for optimization reasons
+/// The ret handler. 
+/** This function is called whenever a ret instruction is about 
+ *  to execute. This function is static for optimization reasons */
 static void on_ret(const app_pc instr_addr, const app_pc target_addr) {
 
 	// Log the ret
@@ -51,11 +54,11 @@ static void on_ret(const app_pc instr_addr, const app_pc target_addr) {
 	Utilities::assert( is_continue(buffer), "Received incorrect message!");
 }
 
-// The function that inserts the call and ret handlers
-// Whenever a new basic block is seen, this function will be
-// called once for each instruction in it. If either a call
-// or a ret is seen, the call and ret handlers are inserted 
-// before said instruction. Note: an app_pc is defined in comments
+/// The function that inserts the call and ret handlers
+/** Whenever a new basic block is seen, this function will be
+ *  called once for each instruction in it. If either a call
+ *  or a ret is seen, the call and ret handlers are inserted 
+ *  before said instruction. Note: an app_pc is defined in comments */
 static dr_emit_flags_t event_app_instruction(void *drcontext, void *tag, 
 			instrlist_t *bb, instr_t *instr, bool for_trace, 
 			bool translating, void *user_data) {
@@ -88,8 +91,8 @@ static dr_emit_flags_t event_app_instruction(void *drcontext, void *tag,
 }
 
 
-// The main client function
-// This function dynamically 'injects' the shadow stack
+/// The main client function
+/** This function dynamically 'injects' the shadow stack */
 DR_EXPORT void dr_client_main(client_id_t id, int argc, const char *argv[]) {	
 
 	// TODO: use arg parser
@@ -110,5 +113,5 @@ DR_EXPORT void dr_client_main(client_id_t id, int argc, const char *argv[]) {
 
 	// Create the socket to be used
 	Utilities::log("Client connecting to %s", argv[1]);
-	sock = create_client(argv[1]);
+	sock = QS::create_client(argv[1]);
 }

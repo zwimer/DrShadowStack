@@ -22,18 +22,16 @@ namespace Utilities {
 
 	// Error checking
 
-
 	/// To be called in case of an error
 	/** Prints log s to the error file, perrors,
 	 *  then kills the process group */
 	void err(const char * const s);
 
 	/** assert b, if false call program_err(s) */
-	void assert(const bool b, const char * const s); // TODO
+	void assert(const bool b, const char * const s);
 
 
 	// For logging
-
 
 	/// Logs the arguments as printf would to the log file
 	/** This function promises **NOTHING** on failure */
