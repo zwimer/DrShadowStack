@@ -36,7 +36,7 @@ int create_server(const char * const fname) {
 
 	// Create the server
 	const int server_sock = socket(AF_UNIX, SOCK_STREAM, 0);
-	ss_assert( server_sock != -1, "socket() failed" );
+	Utilities::assert( server_sock != -1, "socket() failed" );
 
 	// Define the server
 	struct sockaddr_un server = make_unix_server(fname);
@@ -44,11 +44,11 @@ int create_server(const char * const fname) {
 	// Bind the server to the socket
 	const int rv = bind(server_sock, (struct sockaddr *) &server, 
 		sizeof(struct sockaddr_un));
-	ss_assert( rv != -1, "bind() failed" );
+	Utilities::assert( rv != -1, "bind() failed" );
 
 	// Begin listening for exactly one client
-	ss_assert( listen(server_sock, 1) != -1, "listen() failed." );
-	ss_log("Created server %s\n\t- Listening for one client...", fname);
+	Utilities::assert( listen(server_sock, 1) != -1, "listen() failed." );
+	Utilities::log("Created server %s\n\t- Listening for one client...", fname);
 
 	// Return the server and client sockets
 	return server_sock;
@@ -61,13 +61,13 @@ int create_client(const char * sock_name) {
 
 	// Create the client
 	const int client = socket(AF_UNIX, SOCK_STREAM, 0);
-	ss_assert( client != -1, "socket() failed" );
+	Utilities::assert( client != -1, "socket() failed" );
 
 	// Connect the client. This is NOT blocking IF listen() was called
 	struct sockaddr_un server = make_unix_server(sock_name);
-	ss_assert( connect(client, (struct sockaddr *) &server, 
+	Utilities::assert( connect(client, (struct sockaddr *) &server, 
 				sizeof(struct sockaddr_un)) == 0, "connect() failed" );
-	ss_log("New client connected to %s", sock_name);
+	Utilities::log("New client connected to %s", sock_name);
 
 	// Return the client
 	return client;
@@ -77,7 +77,7 @@ int create_client(const char * sock_name) {
 // Once the client connects, accept then return the file descriptor
 int accept_client(const int sock) {
 	const int accepted_sock = accept(sock, 0, 0);
-	ss_assert( accepted_sock != -1, "accept() failed" );
-	ss_log("Server on fd %d accepted one client", sock);
+	Utilities::assert( accepted_sock != -1, "accept() failed" );
+	Utilities::log("Server on fd %d accepted one client", sock);
 	return accepted_sock;
 }

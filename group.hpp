@@ -46,18 +46,27 @@ public:
 /*********************************************************/
 
 
-/// Setup the group
-/** This function should NOT be called by the dynamorio client.
- *  By then the group will already be set up!
- *  This function first sets up the process group
- *  Then change the default signal handlers of all non-excluded
- *  signals to terminate the group when called. Also sets up 
- *  the group refrence counter. This function is **NOT** thread 
- *  safe, and should never be run after threading / forking has occured! */
-void setup_group();
+/** A namespace for the group functions */
+namespace Group {
 
-/** Terminates the process group via SIGKILL */
-void terminate_group();
+
+	/// Setup the group
+	/** This function should NOT be called by the dynamorio client.
+	 *  By then the group will already be set up!
+	 *  This function first sets up the process group
+	 *  Then change the default signal handlers of all non-excluded
+	 *  signals to terminate the group when called. Also sets up 
+	 *  the group refrence counter. This function is **NOT** thread 
+	 *  safe, and should never be run after threading / forking has occured! */
+	void setup();
+
+	/// Terminates the process group via SIGKILL
+	/** If is_error is set to true, msg is logged to the
+	 *  ERROR file, otherwise it is logged via Utilities::message */
+	void terminate(const char * const msg, bool is_error = false);
+
+
+};
 
 
 #endif

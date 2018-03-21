@@ -1,68 +1,60 @@
-/** @file */
-#include "constants.hpp"
-#include "utilities.hpp"
+#include "dr_shadow_stack_client.hpp"
 #include "quick_socket.hpp"
-
-#include "dr_api.h"
-#include "drmgr.h"
+#include "utilities.hpp"
+#include "message.hpp"
 
 #include <sys/socket.h>
 #include <unistd.h>
 #include <string.h>
 #include <string>
 
-
 // The socket to be used by this client
-int sock = -1;
+static int sock = -1;
 
 
-/// The call handler. 
-/** This function is called whenever a call instruction is about 
- *  to execute. This function is static for optimization reasons */
+// The call handler. 
+// This function is called whenever a call instruction is about 
+// to execute. This function is static for optimization reasons
 static void on_call(const void * const ret_to_addr) {
 
 	// Log the call
-	ss_log("Call(%.*s)", POINTER_SIZE, ret_to_addr);
+	Utilities::log("Call(%.*s)", POINTER_SIZE, ret_to_addr);
 
-	// Create the message to send
-	const int num_bytes = MESSAGE_HEADER_LENGTH + POINTER_SIZE;
-	char buffer[num_bytes];
-	memcpy(buffer, CALL, MESSAGE_HEADER_LENGTH);
-	memcpy( & buffer[MESSAGE_HEADER_LENGTH], ret_to_addr, POINTER_SIZE);
-
-	// Send the message
-	ss_assert( write(sock, buffer, num_bytes) == num_bytes, "write() failed!");
+	// Create and send the message
+	Message::Call to_send( (char *) ret_to_addr );
+	const int bytes_sent = write(sock, to_send.message, to_send.size);
+	Utilities::assert( bytes_sent == to_send.size, "write() failed!");
 }
 
-/// The ret handler. 
-/** This function is called whenever a ret instruction is about 
- *  to execute. This function is static for optimization reasons */
+// The ret handler. 
+// This function is called whenever a ret instruction is about 
+// to execute. This function is static for optimization reasons
 static void on_ret(app_pc instr_addr, app_pc target_addr) {
 
 	// Log the ret
-	ss_log("Ret(%.*s)", POINTER_SIZE, target_addr);
+	Utilities::log("Ret(%.*s)", POINTER_SIZE, target_addr);
 
-	// Create the message to send
-	const int num_bytes = MESSAGE_HEADER_LENGTH + POINTER_SIZE;
-	char buffer[num_bytes];
-	memcpy(buffer, RET, MESSAGE_HEADER_LENGTH);
-	memcpy( & buffer[MESSAGE_HEADER_LENGTH], (void *) target_addr, POINTER_SIZE);
+	// Create and send the message
+	Message::Ret to_send( (char *) target_addr );
+	const int bytes_sent = write(sock, to_send.message, to_send.size);
+	Utilities::assert( bytes_sent == to_send.size, "write() failed!");
 
-	// Send the ret message
-	ss_assert( write(sock, buffer, num_bytes) == num_bytes, "write() failed!");
+	// For clarity
+	constexpr int size = Message::Continue::size;
+	constexpr auto is_continue = Message::is_a_valid<Message::Continue>;
 
 	// Wait until a we get a 'continue'
-	const int bytes_recv = recv( sock, buffer, MESSAGE_HEADER_LENGTH, MSG_WAITALL );
-	ss_assert( bytes_recv == MESSAGE_HEADER_LENGTH, "Did not get full size message!");
-	ss_assert( memcmp(buffer, CONTINUE, MESSAGE_HEADER_LENGTH) == 0, 
-		"Received incorrect message!");
+	char buffer[size];
+	const int bytes_recv = recv( sock, buffer, size, MSG_WAITALL );
+	Utilities::assert( bytes_recv == size, "Did not get full size message!");
+	Utilities::assert( is_continue(buffer), "Received incorrect message!");
 }
 
-/// The function that inserts the call and ret handlers
-/** Whenever a new basic block is seen, this function will be
- *  called once for each instruction in it. If either a call
- *  or a ret is seen, the call and ret handlers are inserted 
- * before said instruction. Note: an app_pc is defined in comments */
+// The function that inserts the call and ret handlers
+// Whenever a new basic block is seen, this function will be
+// called once for each instruction in it. If either a call
+// or a ret is seen, the call and ret handlers are inserted 
+// before said instruction. Note: an app_pc is defined in comments
 static dr_emit_flags_t event_app_instruction(void *drcontext, void *tag, 
 			instrlist_t *bb, instr_t *instr, bool for_trace, 
 			bool translating, void *user_data) {
@@ -96,13 +88,13 @@ static dr_emit_flags_t event_app_instruction(void *drcontext, void *tag,
 }
 
 
-/// The main client function
-/** This function dynamically 'injects' the shadow stack */
+// The main client function
+// This function dynamically 'injects' the shadow stack
 DR_EXPORT void dr_client_main(client_id_t id, int argc, const char *argv[]) {	
 
 	// TODO: use arg parser
-	ss_log("DynamoRIO client started");
-	ss_assert(argc == 2, "Incorrect usage. Dr_client_main expects 1 argument"
+	Utilities::log("DynamoRIO client started");
+	Utilities::assert(argc == 2, "Incorrect usage. Dr_client_main expects 1 argument"
 							" which gives the unix domain socket to connect to.");
 
 	// Setup the client
@@ -117,6 +109,6 @@ DR_EXPORT void dr_client_main(client_id_t id, int argc, const char *argv[]) {
     dr_log(NULL, DR_LOG_ALL, 1, "Client 'ShadowStack' initializing\n");
 
 	// Create the socket to be used
-	ss_log("Client connecting to %s", argv[1]);
+	Utilities::log("Client connecting to %s", argv[1]);
 	sock = create_client(argv[1]);
 }

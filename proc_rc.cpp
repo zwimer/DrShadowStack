@@ -3,6 +3,7 @@
 
 #include <sys/mman.h>
 
+
 // A global process rc
 ProgRC prc;
 
@@ -32,14 +33,14 @@ void * create_shared_memory(const size_t size) {
 
 	// Allocate the memory and return it
 	void * const ret = mmap(nullptr, size, protection, visibility, 0, 0);
-	ss_assert( (ret != MAP_FAILED), "mmap() failed." );
+	Utilities::assert( ret != MAP_FAILED, "mmap() failed." );
 	return ret;
 }
 
 
 // Constructor
 ProgRC::ProgRC() : proc_rc((prc_t*) create_shared_memory(sizeof(prc_t))) {
-	ss_assert ( ! setup, "ProgRC constructor called twice." );
+	Utilities::assert( ! setup, "ProgRC constructor called twice." );
 	setup = true;
 	*proc_rc = 0;
 }
@@ -66,9 +67,8 @@ void ProgRC::dec() {
 
 	// If the rc is 0, kill everything
 	if ( *proc_rc <= 0 ) {
-		ss_log_error("Valid process reference counter "
-					 "hit 0\nProgram has ended.");
-		terminate_group();
+		Group::terminate( "Valid process reference counter"
+							" hit 0\nProgram has ended.");
 	}
 
 	// Otherwise, release the lock

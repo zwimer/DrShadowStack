@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <signal.h>
+#include <string.h>
 #include <errno.h>
 #include <stdio.h>
 #include <set>
@@ -36,8 +37,8 @@ const static std::set<int> no_change {
 // A default signal handler
 // This handler will terminate the process group 
 void default_signal_handler(int sig) {
-	ss_log_error("\nSignal %d caught. Terminating process group...", sig);
-	terminate_group();
+	Utilities::log_error("\nSignal %d caught. Terminating process group...", sig);
+	Group::terminate(nullptr);
 }
 
 // Change the default signal handler of most signals
@@ -51,9 +52,9 @@ void set_default_signal_handler(void (*handler) (int sig)) {
 			// Try to change the handler. If signal fails 
 			// for any reason other than EINVAL, terminate the group
 			if ( (signal(i, handler) == SIG_ERR) && (errno != EINVAL) ) {
-				ss_log_error("Error on signal: %d\n", i);
-				perror("signal() failed.\n");
-				terminate_group();
+				Utilities::log_error("Error changing signal handler of signal : %d\n", i);
+				Utilities::log_error("strerror returns: %s", strerror(errno));
+				Group::terminate(nullptr);
 			}
 		}
 	}
@@ -73,8 +74,7 @@ TerminateOnDestruction::TerminateOnDestruction() : enabled(true) {}
 // On destruction, terminate the group if enabled
 TerminateOnDestruction::~TerminateOnDestruction() { 
 	if (enabled) {
-		ss_log_error("TerminateOnDestruction destructor called");
-		terminate_group(); 
+		Group::terminate("TerminateOnDestruction destructor called");
 	}
 }
 
@@ -92,7 +92,7 @@ void TerminateOnDestruction::disable() {
 
 
 // Setup the group
-void setup_group() {
+void Group::setup() {
 	TerminateOnDestruction tod;
 
 	// No issues, continue
@@ -101,27 +101,28 @@ void setup_group() {
 
 		// Set up the group
 		setsid();
-		ss_log("Setup groupd with group id: %d", getpgrp());
+		Utilities::log("Setup groupd with group id: %d", getpgrp());
 
 		// Remap signal handlers
 		set_default_signal_handler(default_signal_handler);
-		ss_log("Remapped signal handlers");
+		Utilities::log("Remapped signal handlers");
 	}
 
 	// setup_group() was already called
 	else {
-		ss_log_error("ERROR: setup is complete already. "
+		terminate("ERROR: setup is complete already. "
 			"Terminating program...\n");
-		terminate_group();
 	}
 
 	// Nothing went wrong
 	tod.disable();
 }
 
-
 // Terminates the process group via SIGKILL
-void terminate_group() {
+// If is_error is set to true, msg is logged to the
+// ERROR file, otherwise it is logged via Utilities::message
+// If msg is nullptr, no message is passed.
+void Group::terminate(const char * const msg, bool is_error) {
 
 	// If this is ever true coming in, temrinate_group()
 	// caused an error. Take no chances, kill everything instantly.
@@ -132,19 +133,19 @@ void terminate_group() {
 	terminate_already_called = true;
 	TerminateOnDestruction tod;
 
-	// Flush buffers
+	// Print the message via the correct function then flush the buffers
+	if (msg != nullptr) {
+		(is_error ? Utilities::log_error : Utilities::message)("%s", msg);
+	}
 	fflush(nullptr);
 
 	// If setup was complete, this is a server process, kill the group
 	if ( setup_complete ) {
-		ss_log_error("Terminating process group\n");
 		killpg(0, SIGKILL);
 	}
 
-	// If setup was incomplete, this was a DynamoRIO 
-	// client process, just exit the process
+	// Otherwise, this was a DynamoRIO client process, just kill this process
 	else {
-		ss_log_error("Client called terminate. Terminating current process only.");
-		kill(0, SIGKILL);
+		_Exit(EXIT_SUCCESS);
 	}
 }
