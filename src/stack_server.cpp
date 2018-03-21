@@ -22,12 +22,13 @@ using namespace Message;
 
 
 // The type of a stack used to hold all the pointers
-typedef std::stack<std::string> pointer_stack;
+typedef std::stack<const char *> pointer_stack;
 
 // The type of a message handling function
 // It will take in the message send and the socket of the client
 // It will return a message to end the program with or nullptr if it should continue
-typedef void (*message_handler) (pointer_stack & stk, std::string & str, const int sock);
+typedef void (*message_handler) (pointer_stack & stk, 
+	const char * const buffer, const int sock);
 
 
 /*********************************************************/
@@ -38,37 +39,34 @@ typedef void (*message_handler) (pointer_stack & stk, std::string & str, const i
 
 
 // Should never be called, will crash the program
-void continue_handler(pointer_stack &, std::string &, const int) {
+void continue_handler(pointer_stack &, const char * const, const int) {
 	Utilities::err("Continue should not be recieved by the server");
 }
 
 // Called when a 'call' was detected
-void call_handler(pointer_stack & stk, std::string & ptr, const int) {
-	Utilities::log("TID %d: Push %.*s", get_tid(), POINTER_SIZE, ptr.c_str());
-	stk.push(ptr);
+void call_handler(pointer_stack & stk, const char * const buffer, const int) {
+	const char * const addr = * ((char **) buffer);
+	Utilities::log("TID %d: (server) Push(%p)", get_tid(), addr);
+	stk.push(addr);
 }
 
 // Called when a 'ret' was detected
-void ret_handler(pointer_stack & stk, std::string & ptr, const int sock) {
-	Utilities::log("TID %d: Pop %.*s", get_tid(), POINTER_SIZE, ptr.c_str());
+void ret_handler(pointer_stack & stk, const char * const buffer, const int sock) {
+
+	const char * const addr = * ((char **) buffer);
+	Utilities::log("TID %d: (server) Pop(%p)\n", get_tid(), addr);
 
 	// If the stack is empty or the top of the stack doesn't match ptr, kill all
-Utilities::log("Server %d", __LINE__);
-	Utilities::assert( ( ! stk.empty() ) && ( stk.top() == ptr ), 
+	Utilities::assert( ( ! stk.empty() ) && ( stk.top() == addr ), 
 						"Shadow stack mistmach detected!");
 
-Utilities::log("Server %d", __LINE__);
 	// Otherwise, just pop the stack
 	stk.pop();
-Utilities::log("Server %d", __LINE__);
 
 	// Tell the child proccess it may continue
 	static const Continue cont;
-Utilities::log("Server %d", __LINE__);
 	const int bytes_sent = write(sock, cont.message, cont.size);
-Utilities::log("Server %d", __LINE__);
 	Utilities::assert( bytes_sent == cont.size, "write() failed." );
-Utilities::log("Server %d", __LINE__);
 }
 
 #if 0
@@ -120,6 +118,8 @@ void start_shadow_stack( const int sock ) {
 		// Read num_bytes bytes, wait until all bytes have been read.
 		const int bytes_recv = recv( sock, buffer, num_bytes, MSG_WAITALL );
 		Utilities::assert( (bytes_recv == num_bytes) || (bytes_recv == 0), "recv() failed" );
+/* Utilities::log("%p",(buffer+4)); */
+/* Utilities::log("%p\n\n", *(char**)(buffer+4)); */
 
 		// If the client disconnected, break
 		if (bytes_recv == 0) {
@@ -129,12 +129,11 @@ void start_shadow_stack( const int sock ) {
 
 		// Read the message
 		const std::string message_type(buffer, MESSAGE_HEADER_LENGTH);
-		std::string pointer(buffer + MESSAGE_HEADER_LENGTH, POINTER_SIZE);
 		Utilities::assert( call_correct_function.find(message_type) != call_correct_function.end(),
 			"Sever recieved wrong type of data!" );
 
 		// Call the appropriate function
-		call_correct_function[message_type](stk, pointer, sock);
+		call_correct_function[message_type](stk, & buffer[MESSAGE_HEADER_LENGTH], sock);
 	}
 
 	// Print the reason the shadow stack is ending
