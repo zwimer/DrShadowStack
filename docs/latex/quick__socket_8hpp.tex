@@ -3,44 +3,44 @@
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{quick__socket_8hpp_a95fb30affea1cb45f1a3e2b57c6d7cb8}{create\+\_\+server} (const char $\ast$fname)
+int \hyperlink{quick__socket_8hpp_a2076a50ca1402320c07d752e8b26caec}{Q\+S\+::create\+\_\+server} (const char $\ast$fname)
 \begin{DoxyCompactList}\small\item\em Create a unix socket at fname, and a server for it. \end{DoxyCompactList}\item 
-int \hyperlink{quick__socket_8hpp_ad5118817269e5c5a2395dcce243e1efc}{create\+\_\+client} (const char $\ast$const sock\+\_\+name)
+int \hyperlink{quick__socket_8hpp_a506085f54f85632d5cef32833b717245}{Q\+S\+::create\+\_\+client} (const char $\ast$const sock\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Create a client for a unix socket. \end{DoxyCompactList}\item 
-int \hyperlink{quick__socket_8hpp_af00c843171f0ff736475dc81a900522f}{accept\+\_\+client} (const int sock)
+int \hyperlink{quick__socket_8hpp_a5e19c1f3d38617f70f20030770ae46a8}{Q\+S\+::accept\+\_\+client} (const int sock)
 \begin{DoxyCompactList}\small\item\em Wait for a client to connect to sock. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
 \index{quick\+\_\+socket.\+hpp@{quick\+\_\+socket.\+hpp}!accept\+\_\+client@{accept\+\_\+client}}
 \index{accept\+\_\+client@{accept\+\_\+client}!quick\+\_\+socket.\+hpp@{quick\+\_\+socket.\+hpp}}
-\subsubsection[{\texorpdfstring{accept\+\_\+client(const int sock)}{accept_client(const int sock)}}]{\setlength{\rightskip}{0pt plus 5cm}int accept\+\_\+client (
+\subsubsection[{\texorpdfstring{accept\+\_\+client(const int sock)}{accept_client(const int sock)}}]{\setlength{\rightskip}{0pt plus 5cm}int Q\+S\+::accept\+\_\+client (
 \begin{DoxyParamCaption}
 \item[{const int}]{sock}
 \end{DoxyParamCaption}
-)}\hypertarget{quick__socket_8hpp_af00c843171f0ff736475dc81a900522f}{}\label{quick__socket_8hpp_af00c843171f0ff736475dc81a900522f}
+)}\hypertarget{quick__socket_8hpp_file_a5e19c1f3d38617f70f20030770ae46a8}{}\label{quick__socket_8hpp_file_a5e19c1f3d38617f70f20030770ae46a8}
 
 
 Wait for a client to connect to sock. 
 
 Once the client connects, accept then return the file descriptor \index{quick\+\_\+socket.\+hpp@{quick\+\_\+socket.\+hpp}!create\+\_\+client@{create\+\_\+client}}
 \index{create\+\_\+client@{create\+\_\+client}!quick\+\_\+socket.\+hpp@{quick\+\_\+socket.\+hpp}}
-\subsubsection[{\texorpdfstring{create\+\_\+client(const char $\ast$const sock\+\_\+name)}{create_client(const char *const sock_name)}}]{\setlength{\rightskip}{0pt plus 5cm}int create\+\_\+client (
+\subsubsection[{\texorpdfstring{create\+\_\+client(const char $\ast$const sock\+\_\+name)}{create_client(const char *const sock_name)}}]{\setlength{\rightskip}{0pt plus 5cm}int Q\+S\+::create\+\_\+client (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$const}]{sock\+\_\+name}
 \end{DoxyParamCaption}
-)}\hypertarget{quick__socket_8hpp_ad5118817269e5c5a2395dcce243e1efc}{}\label{quick__socket_8hpp_ad5118817269e5c5a2395dcce243e1efc}
+)}\hypertarget{quick__socket_8hpp_file_a506085f54f85632d5cef32833b717245}{}\label{quick__socket_8hpp_file_a506085f54f85632d5cef32833b717245}
 
 
 Create a client for a unix socket. 
 
 Joins the unix socked located at sock\+\_\+name Returns the file descriptor for the client \index{quick\+\_\+socket.\+hpp@{quick\+\_\+socket.\+hpp}!create\+\_\+server@{create\+\_\+server}}
 \index{create\+\_\+server@{create\+\_\+server}!quick\+\_\+socket.\+hpp@{quick\+\_\+socket.\+hpp}}
-\subsubsection[{\texorpdfstring{create\+\_\+server(const char $\ast$fname)}{create_server(const char *fname)}}]{\setlength{\rightskip}{0pt plus 5cm}int create\+\_\+server (
+\subsubsection[{\texorpdfstring{create\+\_\+server(const char $\ast$fname)}{create_server(const char *fname)}}]{\setlength{\rightskip}{0pt plus 5cm}int Q\+S\+::create\+\_\+server (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{fname}
 \end{DoxyParamCaption}
-)}\hypertarget{quick__socket_8hpp_a95fb30affea1cb45f1a3e2b57c6d7cb8}{}\label{quick__socket_8hpp_a95fb30affea1cb45f1a3e2b57c6d7cb8}
+)}\hypertarget{quick__socket_8hpp_file_a2076a50ca1402320c07d752e8b26caec}{}\label{quick__socket_8hpp_file_a2076a50ca1402320c07d752e8b26caec}
 
 
 Create a unix socket at fname, and a server for it. 
