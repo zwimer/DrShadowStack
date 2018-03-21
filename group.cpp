@@ -135,17 +135,16 @@ void terminate_group() {
 	// Flush buffers
 	fflush(nullptr);
 
-	// If setup was complete, kill the group
+	// If setup was complete, this is a server process, kill the group
 	if ( setup_complete ) {
 		ss_log_error("Terminating process group\n");
 		killpg(0, SIGKILL);
 	}
 
-	// Otherwise, something major went wrong
-	// Setup was never called...
+	// If setup was incomplete, this was a DynamoRIO 
+	// client process, just exit the process
 	else {
-		ss_log_error("ERROR: Program called terminate_group before setup_group\n");
-		ss_log_error("This program is too cowardly to kill the group... exiting program.\n");
-		exit(EXIT_FAILURE);
+		ss_log_error("Client called terminate. Terminating current process only.");
+		kill(0, SIGKILL);
 	}
 }

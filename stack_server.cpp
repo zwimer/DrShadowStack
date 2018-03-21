@@ -51,8 +51,10 @@ const char * ret_handler(pointer_stack & stk, std::string & ptr, const int sock)
 	stk.pop();
 
 	// Tell the child proccess it may continue
-	ss_assert( write(sock, CONTINUE, sizeof(CONTINUE)) == sizeof(CONTINUE),
-		"write() failed." );
+	ss_assert( write(sock, CONTINUE, sizeof(MESSAGE_HEADER_LENGTH))
+		 == sizeof(MESSAGE_HEADER_LENGTH), "write() failed." );
+	ss_assert( write(1, CONTINUE, sizeof(MESSAGE_HEADER_LENGTH)) 
+		== sizeof(MESSAGE_HEADER_LENGTH), "write() failed." );
 
 	// Do not exit the program
 	return nullptr;
