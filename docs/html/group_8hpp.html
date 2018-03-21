@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -83,6 +84,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">group.hpp File Reference</div>  </div>
@@ -97,51 +99,21 @@ Data Structures</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class that terminates the group when its destructor is called.  <a href="class_terminate_on_destruction.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespace_group"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_group.html">Group</a></td></tr>
+<tr class="memdesc:namespace_group"><td class="mdescLeft">&#160;</td><td class="mdescRight">A namespace for the group functions. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa063e92af56a00869642eeb78e9d20ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group_8hpp.html#aa063e92af56a00869642eeb78e9d20ed">setup_group</a> ()</td></tr>
-<tr class="memdesc:aa063e92af56a00869642eeb78e9d20ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup the group.  <a href="#aa063e92af56a00869642eeb78e9d20ed">More...</a><br /></td></tr>
-<tr class="separator:aa063e92af56a00869642eeb78e9d20ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f14c23366226bbee4c8a7536ee48160"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group_8hpp.html#a6f14c23366226bbee4c8a7536ee48160">terminate_group</a> ()</td></tr>
-<tr class="memdesc:a6f14c23366226bbee4c8a7536ee48160"><td class="mdescLeft">&#160;</td><td class="mdescRight">Terminates the process group via SIGKILL.  <a href="#a6f14c23366226bbee4c8a7536ee48160">More...</a><br /></td></tr>
-<tr class="separator:a6f14c23366226bbee4c8a7536ee48160"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e2d7e0c56696de4592f1b166188c10a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_group.html#a9e2d7e0c56696de4592f1b166188c10a">Group::setup</a> ()</td></tr>
+<tr class="memdesc:a9e2d7e0c56696de4592f1b166188c10a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup the group.  <a href="namespace_group.html#a9e2d7e0c56696de4592f1b166188c10a">More...</a><br /></td></tr>
+<tr class="separator:a9e2d7e0c56696de4592f1b166188c10a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8867a6d9f7987d3db83bf193bf42f858"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_group.html#a8867a6d9f7987d3db83bf193bf42f858">Group::terminate</a> (const char *const msg, bool is_error=false)</td></tr>
+<tr class="memdesc:a8867a6d9f7987d3db83bf193bf42f858"><td class="mdescLeft">&#160;</td><td class="mdescRight">Terminates the process group via SIGKILL.  <a href="namespace_group.html#a8867a6d9f7987d3db83bf193bf42f858">More...</a><br /></td></tr>
+<tr class="separator:a8867a6d9f7987d3db83bf193bf42f858"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="aa063e92af56a00869642eeb78e9d20ed"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void setup_group </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Setup the group. </p>
-<p>This function should NOT be called by the dynamorio client. By then the group will already be set up! This function first sets up the process group Then change the default signal handlers of all non-excluded signals to terminate the group when called. Also sets up the group refrence counter. This function is <b>NOT</b> thread safe, and should never be run after threading / forking has occured! </p>
-
-</div>
-</div>
-<a class="anchor" id="a6f14c23366226bbee4c8a7536ee48160"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void terminate_group </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Terminates the process group via SIGKILL. </p>
-
-</div>
-</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

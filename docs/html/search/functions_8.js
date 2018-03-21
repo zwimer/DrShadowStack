@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7eterminateondestruction',['~TerminateOnDestruction',['../class_terminate_on_destruction.html#a1e2e372004731b788bb9df84d618181f',1,'TerminateOnDestruction']]]
+  ['progrc',['ProgRC',['../class_prog_r_c.html#a299eea3a12ad2db6979a8ed3ce3d5515',1,'ProgRC']]]
 ];

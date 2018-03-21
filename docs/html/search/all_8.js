@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['pointer_5fsize',['POINTER_SIZE',['../constants_8hpp.html#a70eafdf190b8f3be16349543fe1b39ae',1,'constants.hpp']]],
-  ['proc_5frc_2ehpp',['proc_rc.hpp',['../proc__rc_8hpp.html',1,'']]],
-  ['program_5ferr',['program_err',['../utilities_8hpp.html#a76ddbcaa2a2c9d3396144da8208bfe65',1,'utilities.cpp']]],
-  ['progrc',['ProgRC',['../class_prog_r_c.html',1,'ProgRC'],['../class_prog_r_c.html#a299eea3a12ad2db6979a8ed3ce3d5515',1,'ProgRC::ProgRC()']]]
+  ['message',['Message',['../namespace_message.html',1,'Message'],['../struct_message_1_1_continue.html#a42a1bf71c1b2dbb2022979472a036367',1,'Message::Continue::message()'],['../struct_message_1_1_call.html#ab2d9545785f8d916a0a19d798bce5517',1,'Message::Call::message()'],['../struct_message_1_1_ret.html#ad2ec4cd89746f6199effe93fffa1d5fc',1,'Message::Ret::message()'],['../utilities_8hpp.html#a0e46f2da74b1069eb9df671efed9180d',1,'Utilities::message()']]],
+  ['message_2ehpp',['message.hpp',['../message_8hpp.html',1,'']]],
+  ['message_5fheader_5flength',['MESSAGE_HEADER_LENGTH',['../message_8hpp.html#ac119f42bacd57152815371e9527d1059',1,'message.hpp']]]
 ];

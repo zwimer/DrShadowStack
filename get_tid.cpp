@@ -10,8 +10,8 @@
 // Define a mac-equivalent gettid function
 pid_t get_tid() {
 	uint64_t tid64;
-	ss_assert( pthread_threadid_np(NULL, &tid64) == 0, 
-		"pthread_threadid_np() failed.");
+	Utilities::assert( pthread_threadid_np(NULL, &tid64) == 0, 
+						"pthread_threadid_np() failed.");
 	return (pid_t) tid64;
 }
 
@@ -25,7 +25,7 @@ pid_t get_tid() {
 // Define a gettid function
 pid_t get_tid() {
 	pid_t ret = syscall(SYS_gettid);
-	ss_assert(ret != -1, "syscall(SYS_gettid) failed.");
+	Utilities::assert(ret != -1, "syscall(SYS_gettid) failed.");
 	return ret;
 }
 

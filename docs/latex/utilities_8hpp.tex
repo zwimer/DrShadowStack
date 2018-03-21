@@ -4,76 +4,90 @@
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{utilities_8hpp_a76ddbcaa2a2c9d3396144da8208bfe65}{program\+\_\+err} (const char $\ast$const s)
+void \hyperlink{utilities_8hpp_a5308da50597c93aad2b1ca2ecfbcb723}{Utilities\+::err} (const char $\ast$const s)
 \begin{DoxyCompactList}\small\item\em To be called in case of an error. \end{DoxyCompactList}\item 
-void \hyperlink{utilities_8hpp_ad5def302e8991c95286c90e13e3112a8}{ss\+\_\+assert} (const bool b, const char $\ast$const s)
+void \hyperlink{utilities_8hpp_a22c85a2970e168ca0b9ad6fd86752792}{Utilities\+::assert} (const bool b, const char $\ast$const s)
 \begin{DoxyCompactList}\small\item\em assert b, if false call program\+\_\+err(s) \end{DoxyCompactList}\item 
-void \hyperlink{utilities_8hpp_abb962634b198704ae9e2a73e29d8e26d}{ss\+\_\+log\+\_\+no\+\_\+newline} (const char $\ast$const format,...)
+void \hyperlink{utilities_8hpp_af31967f218e82230e887a5551e5c2d1e}{Utilities\+::log\+\_\+no\+\_\+newline} (const char $\ast$const format,...)
 \begin{DoxyCompactList}\small\item\em Logs the arguments as printf would to the log file. \end{DoxyCompactList}\item 
-void \hyperlink{utilities_8hpp_a912f9bab120313bda1582daa1aaf07df}{ss\+\_\+log} (const char $\ast$const format,...)
+void \hyperlink{utilities_8hpp_a0e46f2da74b1069eb9df671efed9180d}{Utilities\+::message} (const char $\ast$const format,...)
+\begin{DoxyCompactList}\small\item\em Prints the arguments as printf would to the S\+T\+D\+O\+U\+T\+\_\+\+F\+I\+LE file. \end{DoxyCompactList}\item 
+void \hyperlink{utilities_8hpp_a7e53321a2a9460f126a476a89b08107b}{Utilities\+::log} (const char $\ast$const format,...)
 \begin{DoxyCompactList}\small\item\em Logs the arguments as printf would to the log file. \end{DoxyCompactList}\item 
-void \hyperlink{utilities_8hpp_a0aa54ceccad0614831b832077dedfaf5}{ss\+\_\+log\+\_\+error} (const char $\ast$const format,...)
-\begin{DoxyCompactList}\small\item\em Logs the arguments as printf would to the error and log files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \hyperlink{utilities_8hpp_a48952d33b9dc4fba9846dbc7a12df2f1}{Utilities\+::log\+\_\+error} (const char $\ast$const format,...)
+\begin{DoxyCompactList}\small\item\em Logs the arguments as printf would to the error, log, and stdout files. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
-\index{utilities.\+hpp@{utilities.\+hpp}!program\+\_\+err@{program\+\_\+err}}
-\index{program\+\_\+err@{program\+\_\+err}!utilities.\+hpp@{utilities.\+hpp}}
-\subsubsection[{\texorpdfstring{program\+\_\+err(const char $\ast$const s)}{program_err(const char *const s)}}]{\setlength{\rightskip}{0pt plus 5cm}void program\+\_\+err (
-\begin{DoxyParamCaption}
-\item[{const char $\ast$const}]{s}
-\end{DoxyParamCaption}
-)}\hypertarget{utilities_8hpp_a76ddbcaa2a2c9d3396144da8208bfe65}{}\label{utilities_8hpp_a76ddbcaa2a2c9d3396144da8208bfe65}
-
-
-To be called in case of an error. 
-
-Prints log s to the error file, perrors, then kills the process group \index{utilities.\+hpp@{utilities.\+hpp}!ss\+\_\+assert@{ss\+\_\+assert}}
-\index{ss\+\_\+assert@{ss\+\_\+assert}!utilities.\+hpp@{utilities.\+hpp}}
-\subsubsection[{\texorpdfstring{ss\+\_\+assert(const bool b, const char $\ast$const s)}{ss_assert(const bool b, const char *const s)}}]{\setlength{\rightskip}{0pt plus 5cm}void ss\+\_\+assert (
+\index{utilities.\+hpp@{utilities.\+hpp}!assert@{assert}}
+\index{assert@{assert}!utilities.\+hpp@{utilities.\+hpp}}
+\subsubsection[{\texorpdfstring{assert(const bool b, const char $\ast$const s)}{assert(const bool b, const char *const s)}}]{\setlength{\rightskip}{0pt plus 5cm}void Utilities\+::assert (
 \begin{DoxyParamCaption}
 \item[{const bool}]{b, }
 \item[{const char $\ast$const}]{s}
 \end{DoxyParamCaption}
-)}\hypertarget{utilities_8hpp_ad5def302e8991c95286c90e13e3112a8}{}\label{utilities_8hpp_ad5def302e8991c95286c90e13e3112a8}
+)}\hypertarget{utilities_8hpp_file_a22c85a2970e168ca0b9ad6fd86752792}{}\label{utilities_8hpp_file_a22c85a2970e168ca0b9ad6fd86752792}
 
 
 assert b, if false call program\+\_\+err(s) 
 
-\index{utilities.\+hpp@{utilities.\+hpp}!ss\+\_\+log@{ss\+\_\+log}}
-\index{ss\+\_\+log@{ss\+\_\+log}!utilities.\+hpp@{utilities.\+hpp}}
-\subsubsection[{\texorpdfstring{ss\+\_\+log(const char $\ast$const format,...)}{ss_log(const char *const format,...)}}]{\setlength{\rightskip}{0pt plus 5cm}void ss\+\_\+log (
+\index{utilities.\+hpp@{utilities.\+hpp}!err@{err}}
+\index{err@{err}!utilities.\+hpp@{utilities.\+hpp}}
+\subsubsection[{\texorpdfstring{err(const char $\ast$const s)}{err(const char *const s)}}]{\setlength{\rightskip}{0pt plus 5cm}void Utilities\+::err (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$const}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{utilities_8hpp_file_a5308da50597c93aad2b1ca2ecfbcb723}{}\label{utilities_8hpp_file_a5308da50597c93aad2b1ca2ecfbcb723}
+
+
+To be called in case of an error. 
+
+Prints log s to the error file, perrors, then kills the process group \index{utilities.\+hpp@{utilities.\+hpp}!log@{log}}
+\index{log@{log}!utilities.\+hpp@{utilities.\+hpp}}
+\subsubsection[{\texorpdfstring{log(const char $\ast$const format,...)}{log(const char *const format,...)}}]{\setlength{\rightskip}{0pt plus 5cm}void Utilities\+::log (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$const}]{format, }
 \item[{}]{...}
 \end{DoxyParamCaption}
-)}\hypertarget{utilities_8hpp_a912f9bab120313bda1582daa1aaf07df}{}\label{utilities_8hpp_a912f9bab120313bda1582daa1aaf07df}
+)}\hypertarget{utilities_8hpp_file_a7e53321a2a9460f126a476a89b08107b}{}\label{utilities_8hpp_file_a7e53321a2a9460f126a476a89b08107b}
 
 
 Logs the arguments as printf would to the log file. 
 
-Ends the printed line with a newline then flushes the buffer If L\+O\+G\+\_\+\+F\+I\+LE is nullptr, this function does nothing This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure \index{utilities.\+hpp@{utilities.\+hpp}!ss\+\_\+log\+\_\+error@{ss\+\_\+log\+\_\+error}}
-\index{ss\+\_\+log\+\_\+error@{ss\+\_\+log\+\_\+error}!utilities.\+hpp@{utilities.\+hpp}}
-\subsubsection[{\texorpdfstring{ss\+\_\+log\+\_\+error(const char $\ast$const format,...)}{ss_log_error(const char *const format,...)}}]{\setlength{\rightskip}{0pt plus 5cm}void ss\+\_\+log\+\_\+error (
+Ends the printed line with a newline then flushes the buffer If L\+O\+G\+\_\+\+F\+I\+LE is nullptr, this function does nothing This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure \index{utilities.\+hpp@{utilities.\+hpp}!log\+\_\+error@{log\+\_\+error}}
+\index{log\+\_\+error@{log\+\_\+error}!utilities.\+hpp@{utilities.\+hpp}}
+\subsubsection[{\texorpdfstring{log\+\_\+error(const char $\ast$const format,...)}{log_error(const char *const format,...)}}]{\setlength{\rightskip}{0pt plus 5cm}void Utilities\+::log\+\_\+error (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$const}]{format, }
 \item[{}]{...}
 \end{DoxyParamCaption}
-)}\hypertarget{utilities_8hpp_a0aa54ceccad0614831b832077dedfaf5}{}\label{utilities_8hpp_a0aa54ceccad0614831b832077dedfaf5}
+)}\hypertarget{utilities_8hpp_file_a48952d33b9dc4fba9846dbc7a12df2f1}{}\label{utilities_8hpp_file_a48952d33b9dc4fba9846dbc7a12df2f1}
 
 
-Logs the arguments as printf would to the error and log files. 
+Logs the arguments as printf would to the error, log, and stdout files. 
 
-Ends the printed line with a newline then flushes the buffer If L\+O\+G\+\_\+\+F\+I\+LE and E\+R\+R\+O\+R\+\_\+\+F\+I\+LE are the same, only prints once If either file is nullptr, that file is skipped This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure \index{utilities.\+hpp@{utilities.\+hpp}!ss\+\_\+log\+\_\+no\+\_\+newline@{ss\+\_\+log\+\_\+no\+\_\+newline}}
-\index{ss\+\_\+log\+\_\+no\+\_\+newline@{ss\+\_\+log\+\_\+no\+\_\+newline}!utilities.\+hpp@{utilities.\+hpp}}
-\subsubsection[{\texorpdfstring{ss\+\_\+log\+\_\+no\+\_\+newline(const char $\ast$const format,...)}{ss_log_no_newline(const char *const format,...)}}]{\setlength{\rightskip}{0pt plus 5cm}void ss\+\_\+log\+\_\+no\+\_\+newline (
+Ends the printed line with a newline then flushes the buffer If any of S\+T\+D\+O\+UT, L\+O\+G\+\_\+\+F\+I\+LE, E\+R\+R\+O\+R\+\_\+\+F\+I\+LE are the same, only prints once If either file is nullptr, that file is skipped This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure \index{utilities.\+hpp@{utilities.\+hpp}!log\+\_\+no\+\_\+newline@{log\+\_\+no\+\_\+newline}}
+\index{log\+\_\+no\+\_\+newline@{log\+\_\+no\+\_\+newline}!utilities.\+hpp@{utilities.\+hpp}}
+\subsubsection[{\texorpdfstring{log\+\_\+no\+\_\+newline(const char $\ast$const format,...)}{log_no_newline(const char *const format,...)}}]{\setlength{\rightskip}{0pt plus 5cm}void Utilities\+::log\+\_\+no\+\_\+newline (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$const}]{format, }
 \item[{}]{...}
 \end{DoxyParamCaption}
-)}\hypertarget{utilities_8hpp_abb962634b198704ae9e2a73e29d8e26d}{}\label{utilities_8hpp_abb962634b198704ae9e2a73e29d8e26d}
+)}\hypertarget{utilities_8hpp_file_af31967f218e82230e887a5551e5c2d1e}{}\label{utilities_8hpp_file_af31967f218e82230e887a5551e5c2d1e}
 
 
 Logs the arguments as printf would to the log file. 
 
-This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure 
+This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure \index{utilities.\+hpp@{utilities.\+hpp}!message@{message}}
+\index{message@{message}!utilities.\+hpp@{utilities.\+hpp}}
+\subsubsection[{\texorpdfstring{message(const char $\ast$const format,...)}{message(const char *const format,...)}}]{\setlength{\rightskip}{0pt plus 5cm}void Utilities\+::message (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$const}]{format, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}\hypertarget{utilities_8hpp_file_a0e46f2da74b1069eb9df671efed9180d}{}\label{utilities_8hpp_file_a0e46f2da74b1069eb9df671efed9180d}
+
+
+Prints the arguments as printf would to the S\+T\+D\+O\+U\+T\+\_\+\+F\+I\+LE file. 
+
+Ends the printed line with a newline then flushes the buffer If S\+T\+D\+O\+U\+T\+\_\+\+F\+I\+LE is nullptr, this function does nothing This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure 

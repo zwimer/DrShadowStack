@@ -1,0 +1,44 @@
+\hypertarget{namespace_group}{}\section{Group Namespace Reference}
+\label{namespace_group}\index{Group@{Group}}
+
+
+A namespace for the group functions.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{namespace_group_a9e2d7e0c56696de4592f1b166188c10a}{setup} ()
+\begin{DoxyCompactList}\small\item\em Setup the group. \end{DoxyCompactList}\item 
+void \hyperlink{namespace_group_a8867a6d9f7987d3db83bf193bf42f858}{terminate} (const char $\ast$const msg, bool is\+\_\+error=false)
+\begin{DoxyCompactList}\small\item\em Terminates the process group via S\+I\+G\+K\+I\+LL. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A namespace for the group functions. 
+
+\subsection{Function Documentation}
+\index{Group@{Group}!setup@{setup}}
+\index{setup@{setup}!Group@{Group}}
+\subsubsection[{\texorpdfstring{setup()}{setup()}}]{\setlength{\rightskip}{0pt plus 5cm}void Group\+::setup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespace_group_a9e2d7e0c56696de4592f1b166188c10a}{}\label{namespace_group_a9e2d7e0c56696de4592f1b166188c10a}
+
+
+Setup the group. 
+
+This function should N\+OT be called by the dynamorio client. By then the group will already be set up! This function first sets up the process group Then change the default signal handlers of all non-\/excluded signals to terminate the group when called. Also sets up the group refrence counter. This function is {\bfseries N\+OT} thread safe, and should never be run after threading / forking has occured! \index{Group@{Group}!terminate@{terminate}}
+\index{terminate@{terminate}!Group@{Group}}
+\subsubsection[{\texorpdfstring{terminate(const char $\ast$const msg, bool is\+\_\+error=false)}{terminate(const char *const msg, bool is_error=false)}}]{\setlength{\rightskip}{0pt plus 5cm}void Group\+::terminate (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$const}]{msg, }
+\item[{bool}]{is\+\_\+error = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\hypertarget{namespace_group_a8867a6d9f7987d3db83bf193bf42f858}{}\label{namespace_group_a8867a6d9f7987d3db83bf193bf42f858}
+
+
+Terminates the process group via S\+I\+G\+K\+I\+LL. 
+
+If is\+\_\+error is set to true, msg is logged to the E\+R\+R\+OR file, otherwise it is logged via Utilities\+::message 

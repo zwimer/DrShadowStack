@@ -1,0 +1,47 @@
+\hypertarget{message_8hpp}{}\section{message.\+hpp File Reference}
+\label{message_8hpp}\index{message.\+hpp@{message.\+hpp}}
+{\ttfamily \#include $<$string.\+h$>$}\\*
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_message_1_1_continue}{Message\+::\+Continue}
+\begin{DoxyCompactList}\small\item\em The \textquotesingle{}continue\textquotesingle{} message. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_message_1_1_call}{Message\+::\+Call}
+\begin{DoxyCompactList}\small\item\em The \textquotesingle{}call instruction about to run\textquotesingle{} message. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_message_1_1_ret}{Message\+::\+Ret}
+\begin{DoxyCompactList}\small\item\em The \textquotesingle{}ret instruction about to run\textquotesingle{} message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespace_message}{Message}
+\begin{DoxyCompactList}\small\item\em A namespace for messages. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{message_8hpp_a70eafdf190b8f3be16349543fe1b39ae}{P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE}~8
+\begin{DoxyCompactList}\small\item\em The size of a pointer in the target program. \end{DoxyCompactList}\item 
+\#define \hyperlink{message_8hpp_ac119f42bacd57152815371e9527d1059}{M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+L\+E\+N\+G\+TH}~4
+\begin{DoxyCompactList}\small\item\em The number of characters a message header can be. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class T $>$ }\\bool \hyperlink{namespace_message_a08d82d21aa4077ca6657a140fe8ff693}{Message\+::is\+\_\+a\+\_\+valid} (const char $\ast$const buffer)
+\begin{DoxyCompactList}\small\item\em A function used to check if a char $\ast$ may represent a message of type T. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{message.\+hpp@{message.\+hpp}!M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+L\+E\+N\+G\+TH@{M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+L\+E\+N\+G\+TH}}
+\index{M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+L\+E\+N\+G\+TH@{M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+L\+E\+N\+G\+TH}!message.\+hpp@{message.\+hpp}}
+\subsubsection[{\texorpdfstring{M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+L\+E\+N\+G\+TH}{MESSAGE_HEADER_LENGTH}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+L\+E\+N\+G\+TH~4}\hypertarget{message_8hpp_ac119f42bacd57152815371e9527d1059}{}\label{message_8hpp_ac119f42bacd57152815371e9527d1059}
+
+
+The number of characters a message header can be. 
+
+\index{message.\+hpp@{message.\+hpp}!P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE@{P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE}}
+\index{P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE@{P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE}!message.\+hpp@{message.\+hpp}}
+\subsubsection[{\texorpdfstring{P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE}{POINTER_SIZE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE~8}\hypertarget{message_8hpp_a70eafdf190b8f3be16349543fe1b39ae}{}\label{message_8hpp_a70eafdf190b8f3be16349543fe1b39ae}
+
+
+The size of a pointer in the target program. 
+
+To run on 32 bit programs, change this value! 

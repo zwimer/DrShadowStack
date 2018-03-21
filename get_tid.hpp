@@ -2,7 +2,7 @@
 #ifndef __GET_TID_HPP__
 #define __GET_TID_HPP__
 
-#include <unistd.h>
+#include <sys/types.h>
 
 
 /// Define a mac-equivalent gettid function

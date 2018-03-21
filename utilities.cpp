@@ -1,11 +1,14 @@
 #include "utilities.hpp"
-#include "constants.hpp"
-#include "group.hpp"
 
 #include <stdarg.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
+#include <errno.h>
 #include <vector>
+
+#include "constants.hpp"
+#include "group.hpp"
 
 
 /*********************************************************/
@@ -17,17 +20,16 @@
 
 // To be called in case of an error
 // Error logs s, perrors, then kills the process group
-void program_err(const char * const s) {
+void Utilities::err(const char * const s) {
 	TerminateOnDestruction tod;
-    ss_log_error("\nERROR: %s", s);
-	perror("Message from perror");
-	terminate_group();
+    log_error("\nERROR: %s\nMessage from strerror: %s", s, strerror(errno));
+	Group::terminate(nullptr);
 }
 
 // assert b, if false call err(s)
-void ss_assert(const bool b, const char * const s) {
+void Utilities::assert(const bool b, const char * const s) {
     if ( ! b ) {
-		program_err(s);
+		err(s);
 	}
 }
 
@@ -42,7 +44,7 @@ void ss_assert(const bool b, const char * const s) {
 // The helper that writes args in the format of format to f
 // Ends the printed line with a newline then flushes the buffer
 // This function promises NOTHING on failure
-void ss_write_log(FILE * f, const char * const format, va_list args) {
+inline static void write_log(FILE * f, const char * const format, va_list args) {
 	vfprintf(f, format, args);
 	fprintf(f, "\n");
 	fflush(f);
@@ -51,7 +53,7 @@ void ss_write_log(FILE * f, const char * const format, va_list args) {
 
 /// Logs the arguments as printf would to the log file
 /** This function promises **NOTHING** on failure */
-void ss_log_no_newline(const char * const format, ...) {
+void Utilities::log_no_newline(const char * const format, ...) {
 	if ( LOG_FILE != nullptr ) {
 		va_list args;
 		va_start(args, format);
@@ -60,15 +62,28 @@ void ss_log_no_newline(const char * const format, ...) {
 	}
 }
 
+// Prints the arguments as printf would to the STDOUT_FILE file
+// Ends the printed line with a newline then flushes the buffer
+// If STDOUT_FILE is nullptr, this function does nothing
+// This function promises **NOTHING** on failure */
+void Utilities::message(const char * const format, ...) {
+	if ( STDOUT_FILE != nullptr ) {
+		va_list args;
+		va_start(args, format);
+		write_log(STDOUT_FILE, format, args);
+		va_end(args);
+	}
+}
+
 // Logs the arguments as printf would to the log file
 // Ends the printed line with a newline then flushes the buffer
 // If LOG_FILE is nullptr, this function does nothing
 // This function promises NOTHING on failure
-void ss_log(const char * const format, ...) {
+void Utilities::log(const char * const format, ...) {
 	if ( LOG_FILE != nullptr ) {
 		va_list args;
 		va_start(args, format);
-		ss_write_log(LOG_FILE, format, args);
+		write_log(LOG_FILE, format, args);
 		va_end(args);
 	}
 }
@@ -78,8 +93,7 @@ void ss_log(const char * const format, ...) {
 // If LOG_FILE and ERROR_FILE are the same, only prints once
 // If either LOG_FILE is nullptr, that file is skipped
 // This function promises NOTHING on failure
-void ss_log_error(const char * const format, ...) {
-	
+void Utilities::log_error(const char * const format, ...) {
 
 	// What files to write to
 	std::vector<FILE *> fs = { 
@@ -97,7 +111,7 @@ void ss_log_error(const char * const format, ...) {
 		if ( fs[i] != nullptr ) {
 			va_list args;
 			va_start(args, format);
-			ss_write_log(fs[i], format, args);
+			write_log(fs[i], format, args);
 			va_end(args);
 		}
 	}
