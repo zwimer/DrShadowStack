@@ -5,10 +5,10 @@
 
 
 // A global process rc
-ProgRC prc;
+ProcRC * const prc = new ProcRC();
 
-// Initalize the setup variable of ProgRC
-bool ProgRC::setup = false;
+// Initalize the setup variable of ProcRC
+bool ProcRC::setup = false;
 
 
 /*********************************************************/
@@ -37,18 +37,34 @@ void * create_shared_memory(const size_t size) {
 	return ret;
 }
 
+// Delete's prc
+static void del_prc() {
+	delete prc;
+}
+
+/*********************************************************/
+/*                                                       */
+/*                     From header file					 */
+/*                                                       */
+/*********************************************************/
+
 
 // Constructor
-ProgRC::ProgRC() : proc_rc((prc_t*) create_shared_memory(sizeof(prc_t))) {
-	Utilities::assert( ! setup, "ProgRC constructor called twice." );
+ProcRC::ProcRC() : proc_rc((prc_t*) create_shared_memory(sizeof(prc_t))) {
+	Utilities::assert( ! setup, "ProcRC constructor called twice." );
+	Group::register_delete_proc_rc( del_prc );
 	setup = true;
 	*proc_rc = 0;
 }
 
-// TODO: destroy shmem if it is a thing, on termination
+// Destructor
+ProcRC::~ProcRC() {	
+	Utilities::assert( munmap( prc->proc_rc, sizeof(prc_t)) == 0, 
+		"munmap() failed." );
+}
 
 // This function increases the reference count
-void ProgRC::inc() {
+void ProcRC::inc() {
 	TerminateOnDestruction tod;
 	rc_lock.lock();
 	*proc_rc += 1;
@@ -58,17 +74,19 @@ void ProgRC::inc() {
 
 // This function decreases the reference count
 // If the count hits 0, the group is terminated
-void ProgRC::dec() {
+void ProcRC::dec() {
 	TerminateOnDestruction tod;
 
 	// Decrement the rc
 	rc_lock.lock();
 	*proc_rc -= 1;
 
-	// If the rc is 0, kill everything
+	// If the rc is 0, release the lock then kill everything
 	if ( *proc_rc <= 0 ) {
+		rc_lock.unlock();
 		Group::terminate( "Valid process reference counter"
-							" hit 0\nProgram has ended.");
+							" hit 0\nProcram has ended.",
+							false );
 	}
 
 	// Otherwise, release the lock

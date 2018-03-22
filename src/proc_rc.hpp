@@ -18,15 +18,15 @@ typedef long prc_t;
 /// A class that wraps a process reference counter
 /** This class is initalized at startup, so no 
  *  'setup' function has to be called */
-class ProgRC {
+class ProcRC {
 private:
 
 	// Delete non-default constructors
-	ProgRC( ProgRC && ) = delete;
-	ProgRC( const ProgRC & ) = delete;
-	ProgRC & operator=( const ProgRC & ) = delete;
+	ProcRC( ProcRC && ) = delete;
+	ProcRC( const ProcRC & ) = delete;
+	ProcRC & operator=( const ProcRC & ) = delete;
 
-	// A bool used to determine of a ProgRC exists
+	// A bool used to determine of a ProcRC exists
 	static bool setup;
 
 	// The process rc pointer and the lock that protects it
@@ -36,8 +36,13 @@ private:
 public:
 
 	/// A singleton constructor
-	/** Initalizes process reference counter to 0 */
-	ProgRC();
+	/** Initalizes process reference counter to 0
+	 *  Also registers a method to call delete prc with Group */
+	ProcRC();
+
+	/// A destructor
+	/** Frees shared memory */
+	~ProcRC();
 
 	/** This function increments the process reference count
 	 *  Note: This function merely wraps the decrement
@@ -52,7 +57,7 @@ public:
 };
 
 // A global process rc
-extern ProgRC prc;
+extern ProcRC * const prc;
 
 
 #endif
