@@ -71,7 +71,7 @@ int main(int argc, char * argv[]) {
 	// TODO: use actual arg parser
 	if ( argc < 3 ) {
 		Utilities::log_error("Incorrect usage");
-		Utilities::log("Usage: ./" PROGRAM_NAME ".out <drrun> <a.out> ...");
+		Utilities::message("Usage: ./" PROGRAM_NAME ".out <drrun> <a.out> ...");
 		exit(EXIT_FAILURE);
 	}
 

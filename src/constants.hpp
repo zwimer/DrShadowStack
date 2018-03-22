@@ -29,7 +29,7 @@
 // The default log file. 
 // This fill may be nullptr, but may not be NULL 
 // This should be defined by the cmake on compilation
-// #define LOG_FILE stdout
+// #define LOG_FILE nullptr
 
 /** The default stdout
  *  This fill may be nullptr, but may not be NULL */

@@ -96,12 +96,13 @@ static dr_emit_flags_t event_app_instruction(void *drcontext, void *tag,
 DR_EXPORT void dr_client_main(client_id_t id, int argc, const char *argv[]) {	
 
 	// TODO: use arg parser
-	Utilities::log("DynamoRIO client started");
+	Utilities::message("DynamoRIO client started");
 	Utilities::assert(argc == 2, "Incorrect usage. Dr_client_main expects 1 argument"
-							" which gives the unix domain socket to connect to.");
+								 " which gives the unix domain socket to connect to.");
 
 	// Setup the client
-    dr_set_client_name("ShadowStack DynamoRIO Client 'ShadowStack'", "http://github.com/zwimer/ShadowStack");
+    dr_set_client_name( "ShadowStack DynamoRIO Client 'ShadowStack'", 
+						"http://github.com/zwimer/ShadowStack");
     drmgr_init();
 
     // Register events

@@ -53,17 +53,31 @@ void call_handler(pointer_stack & stk, const char * const buffer, const int) {
 // Called when a 'ret' was detected
 void ret_handler(pointer_stack & stk, const char * const buffer, const int sock) {
 
+	// Log the address
 	const char * const addr = * ((char **) buffer);
 	Utilities::log("TID %d: (server) Pop(%p)\n", get_tid(), addr);
 
-	// If the stack is empty or the top of the stack doesn't match ptr, kill all
-	Utilities::assert( ( ! stk.empty() ) && ( stk.top() == addr ), 
-						"Shadow stack mistmach detected!");
+	// If the stack is empty, error
+	if ( stk.empty() ) {
+		Utilities::log_error( 	"*** Shadow stack mistmach detected! ***\n"
+								"Attempting to return to %p\n"
+								"\tShadow Stack is empty.\n", addr );
+		Group::terminate(nullptr);
+	}
+	
+	// If the return address is incorrect, error
+	if ( addr != stk.top() ) {
+		Utilities::log_error(	"*** Shadow stack mistmach detected! ***\n"
+								"Attempting to return to %p\n"
+								"\tTop of shadow stack is %p\n",
+								addr, stk.top() );
+		Group::terminate(nullptr);
+	}
 
-	// Otherwise, just pop the stack
+	// If everything is valid, pop the stack
 	stk.pop();
 
-	// Tell the child proccess it may continue
+	// Tell the client proccess it may continue
 	static const Continue cont;
 	const int bytes_sent = write(sock, cont.message, cont.size);
 	Utilities::assert( bytes_sent == cont.size, "write() failed." );
@@ -90,7 +104,7 @@ void start_shadow_stack( const int sock ) {
 	TerminateOnDestruction tod;
 
 	// Declare this as a valid process
-	prc.inc();
+	prc->inc();
 
 	// Create the message handling function map and populate it
 	std::map<std::string, message_handler> call_correct_function {
@@ -118,31 +132,23 @@ void start_shadow_stack( const int sock ) {
 		// Read num_bytes bytes, wait until all bytes have been read.
 		const int bytes_recv = recv( sock, buffer, num_bytes, MSG_WAITALL );
 		Utilities::assert( (bytes_recv == num_bytes) || (bytes_recv == 0), "recv() failed" );
-/* Utilities::log("%p",(buffer+4)); */
-/* Utilities::log("%p\n\n", *(char**)(buffer+4)); */
 
 		// If the client disconnected, break
 		if (bytes_recv == 0) {
-			msg = "Client Disconnected.";
+			Utilities::message("Client Disconnected.");
 			break;
 		}
 
-		// Read the message
+		// Verify the message is valid then call the appropriate function
 		const std::string message_type(buffer, MESSAGE_HEADER_LENGTH);
-		Utilities::assert( call_correct_function.find(message_type) != call_correct_function.end(),
-			"Sever recieved wrong type of data!" );
-
-		// Call the appropriate function
-		call_correct_function[message_type](stk, & buffer[MESSAGE_HEADER_LENGTH], sock);
+		const auto function_ptr = call_correct_function[message_type];
+		Utilities::assert( function_ptr != nullptr, "Sever recieved wrong type of data!" );
+		function_ptr(stk, & buffer[MESSAGE_HEADER_LENGTH], sock);
 	}
 
-	// Print the reason the shadow stack is ending
-	// This prints to the error stream, but is not for sure an error
-	Utilities::log_error("TID %d: %s", get_tid(), msg);
-
-	// The process died, decrement the 
-	// reference count of processes
-	prc.dec();
+	// The process died (we think, but if not this is safe still)
+	// decrement the reference count of processes
+	prc->dec();
 
 	// If the program reached this point, another
 	// thread / process must be active, gracefully return

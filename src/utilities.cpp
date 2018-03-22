@@ -5,7 +5,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <errno.h>
-#include <vector>
+#include <set>
 
 #include "constants.hpp"
 #include "group.hpp"
@@ -32,7 +32,6 @@ void Utilities::assert(const bool b, const char * const s) {
 		err(s);
 	}
 }
-
 
 /*********************************************************/
 /*                                                       */
@@ -95,23 +94,15 @@ void Utilities::log(const char * const format, ...) {
 // This function promises NOTHING on failure
 void Utilities::log_error(const char * const format, ...) {
 
-	// What files to write to
-	std::vector<FILE *> fs = { 
-		ERROR_FILE, 
-		LOG_FILE, 
-	};	
-
-	// If LOG_FILE and ERROR_FILE are the same, only print once
-	if ( LOG_FILE == ERROR_FILE ) {
-		fs.pop_back();
-	}
+	// What files to write to (the set eliminates duplicates)
+	static const std::set<FILE *> fs = { STDOUT_FILE, ERROR_FILE, LOG_FILE };
 
 	// Write to the files
-	for ( unsigned int i = 0; i < fs.size(); ++i ) {
-		if ( fs[i] != nullptr ) {
+	for ( auto i = fs.begin(); i != fs.end(); ++i ) {
+		if ( *i != nullptr ) {
 			va_list args;
 			va_start(args, format);
-			write_log(fs[i], format, args);
+			write_log(*i, format, args);
 			va_end(args);
 		}
 	}
