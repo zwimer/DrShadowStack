@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['group',['Group',['../namespace_group.html',1,'']]]
+  ['message',['Message',['../namespace_message.html',1,'']]]
 ];
