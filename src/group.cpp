@@ -66,6 +66,14 @@ void set_default_signal_handler(void (*handler) (int sig)) {
 	}
 }
 
+// Kill -SIGKILL the process group
+// Since we may return before kernel kills everything
+// we enter an infinite loop to wait for death
+[[ noreturn ]] void kill_9_group() {
+	killpg(0, SIGKILL);
+	while(true) {}
+}
+
 
 /*********************************************************/
 /*                                                       */
@@ -130,13 +138,13 @@ void Group::setup() {
 // If msg is nullptr, no message is passed.
 // If this function ends up calling itself, 
 // immediate process group termination will occur
-void Group::terminate(const char * const msg, bool is_error) {
+[[ noreturn ]] void Group::terminate(const char * const msg, bool is_error) {
 
 	// If this is ever true coming in, temrinate_group()
 	// caused an error. Take no chances, kill everything instantly.
 	static bool terminate_already_called = false;
 	if ( terminate_already_called ) {
-		killpg(0, SIGKILL);
+		kill_9_group();
 	}
 	terminate_already_called = true;
 	TerminateOnDestruction tod;
@@ -153,14 +161,13 @@ void Group::terminate(const char * const msg, bool is_error) {
 	fflush(nullptr);
 
 	// If setup was complete, this is a server process, kill the group
+	// Since we may return before kernel kills everything after that
 	if ( Group::setup_complete ) {
-		killpg(0, SIGKILL);
+		kill_9_group();
 	}
 
 	// Otherwise, this was a DynamoRIO client process, just kill this process
-	else {
-		_Exit(EXIT_SUCCESS);
-	}
+	_Exit(EXIT_SUCCESS);
 }
 
 // Registers the proc_rc destructor

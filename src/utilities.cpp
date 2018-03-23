@@ -20,7 +20,7 @@
 
 // To be called in case of an error
 // Error logs s, perrors, then kills the process group
-void Utilities::err(const char * const s) {
+[[ noreturn ]] void Utilities::err(const char * const s) {
 	TerminateOnDestruction tod;
     log_error("\nERROR: %s\nMessage from strerror: %s", s, strerror(errno));
 	Group::terminate(nullptr);

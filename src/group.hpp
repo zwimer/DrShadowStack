@@ -65,7 +65,7 @@ struct Group {
 	 *  If msg is nullptr, no message is passed.
 	 *  If this function ends up calling itself, 
 	 *  immediate process group termination will occur */
-	static void terminate(const char * const msg, bool is_error = false);
+	[[ noreturn ]] static void terminate(const char * const msg, bool is_error = false);
  
 	/// Registers the proc_rc destructor
 	/** This function exists as group.cpp may NOT include

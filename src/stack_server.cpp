@@ -18,7 +18,9 @@
 #undef assert
 
 // For brevity
-using namespace Message;
+using Continue = Message::Continue;
+using Call = Message::Call;
+using Ret = Message::Ret;
 
 
 // The type of a stack used to hold all the pointers
@@ -78,25 +80,9 @@ void ret_handler(pointer_stack & stk, const char * const buffer, const int sock)
 	stk.pop();
 
 	// Tell the client proccess it may continue
-	static const Continue cont;
-	const int bytes_sent = write(sock, cont.message, cont.size);
-	Utilities::assert( bytes_sent == cont.size, "write() failed." );
+	const int bytes_sent = write(sock, Continue::message, Continue::size);
+	Utilities::assert( bytes_sent == Continue::size, "write() failed." );
 }
-
-#if 0
-// Called when a fork event occurs
-const char * fork_handler(pointer_stack & stk, std::string & ptr, const int sock) {
-	return nullptr;
-	// TODO: write
-}
-
-
-// Called when a thread event occurs
-const char * thread_handler(pointer_stack & stk, std::string & ptr, const int sock) {
-	return nullptr;
-	// TODO: write
-}
-#endif
 
 // The shadow stack function
 // Communicates with the unix socket server file descriptor sock
@@ -108,11 +94,9 @@ void start_shadow_stack( const int sock ) {
 
 	// Create the message handling function map and populate it
 	std::map<std::string, message_handler> call_correct_function {
-		{ Continue::header, continue_handler },
-		{ Call::header, call_handler },
-		{ Ret::header, ret_handler }
-		/* { THREAD, thread_handler }, */
-		/* { FORK, fork_handler }, */
+		{ std::string( Continue::header ), continue_handler },
+		{ std::string( Call::header ), call_handler },
+		{ std::string( Ret::header ), ret_handler }
 	};
 
 	// Create the 2 dimensional map of stacks
