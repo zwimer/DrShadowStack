@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['message_5fheader_5flength',['MESSAGE_HEADER_LENGTH',['../message_8hpp.html#ac119f42bacd57152815371e9527d1059',1,'message.hpp']]]
+  ['error_5ffile',['ERROR_FILE',['../constants_8hpp.html#a9fdff3d78b754d4b831816d0560dbb57',1,'constants.hpp']]],
+  ['external_5fmode_5fflag',['EXTERNAL_MODE_FLAG',['../constants_8hpp.html#aa6133cd9d000001b3955f86cb54a6c95',1,'constants.hpp']]]
 ];

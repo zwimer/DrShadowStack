@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>Shadow Stack: src/shadow_stack.cpp File Reference</title>
+<title>Shadow Stack: src/dr_external_ss_events.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -87,51 +87,76 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">shadow_stack.cpp File Reference</div>  </div>
+<div class="title">dr_external_ss_events.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="shadow__stack_8hpp_source.html">shadow_stack.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="stack__server_8hpp_source.html">stack_server.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="dr__external__ss__events_8hpp_source.html">dr_external_ss_events.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="quick__socket_8hpp_source.html">quick_socket.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="constants_8hpp_source.html">constants.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="utilities_8hpp_source.html">utilities.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="get__tid_8hpp_source.html">get_tid.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="group_8hpp_source.html">group.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="message_8hpp_source.html">message.hpp</a>&quot;</code><br />
+<code>#include &quot;drmgr.h&quot;</code><br />
+<code>#include &lt;sys/socket.h&gt;</code><br />
 <code>#include &lt;unistd.h&gt;</code><br />
-<code>#include &lt;signal.h&gt;</code><br />
-<code>#include &lt;string.h&gt;</code><br />
-<code>#include &lt;sstream&gt;</code><br />
-<code>#include &lt;random&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;string&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a028ed2270cda87568348ef46089282d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shadow__stack_8cpp.html#a028ed2270cda87568348ef46089282d2">start_program</a> (char *drrun, char *a_out, char **client_argv, const char *const mode, char *socket_path)</td></tr>
-<tr class="separator:a028ed2270cda87568348ef46089282d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5cb8160669276231f62ad2bddf8b04ae"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shadow__stack_8cpp.html#a5cb8160669276231f62ad2bddf8b04ae">temp_name</a> ()</td></tr>
-<tr class="separator:a5cb8160669276231f62ad2bddf8b04ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shadow__stack_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
-<tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8161a26ec065b8c83d2f42637896162c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__external__ss__events_8cpp.html#a8161a26ec065b8c83d2f42637896162c">on_call</a> (const app_pc ret_to_addr)</td></tr>
+<tr class="separator:a8161a26ec065b8c83d2f42637896162c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42c8b67f8f85fd6bad5bd11892c0d5bc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__external__ss__events_8cpp.html#a42c8b67f8f85fd6bad5bd11892c0d5bc">on_ret</a> (const app_pc instr_addr, const app_pc target_addr)</td></tr>
+<tr class="separator:a42c8b67f8f85fd6bad5bd11892c0d5bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a5903d0b282fc5eae503de618f896b5e1"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__external__ss__events_8cpp.html#a5903d0b282fc5eae503de618f896b5e1">sock</a> = -1</td></tr>
+<tr class="separator:a5903d0b282fc5eae503de618f896b5e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a0ddf1224851353fc92bfbff6f499fa97"></a>
+<a class="anchor" id="a8161a26ec065b8c83d2f42637896162c"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int main </td>
+          <td class="memname">static void on_call </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>argc</em>, </td>
+          <td class="paramtype">const app_pc&#160;</td>
+          <td class="paramname"><em>ret_to_addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a42c8b67f8f85fd6bad5bd11892c0d5bc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void on_ret </td>
+          <td>(</td>
+          <td class="paramtype">const app_pc&#160;</td>
+          <td class="paramname"><em>instr_addr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>argv</em>[]&#160;</td>
+          <td class="paramtype">const app_pc&#160;</td>
+          <td class="paramname"><em>target_addr</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -139,65 +164,32 @@ Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="a028ed2270cda87568348ef46089282d2"></a>
+<h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="a5903d0b282fc5eae503de618f896b5e1"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void start_program </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>drrun</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>a_out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>client_argv</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *const&#160;</td>
-          <td class="paramname"><em>mode</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>socket_path</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">int sock = -1</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a5cb8160669276231f62ad2bddf8b04ae"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string temp_name </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

@@ -1,0 +1,48 @@
+\hypertarget{namespace_external_s_s}{}\section{External\+SS Namespace Reference}
+\label{namespace_external_s_s}\index{External\+SS@{External\+SS}}
+
+
+Make a distinction between the internal and external SS functions.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+dr\+\_\+emit\+\_\+flags\+\_\+t \hyperlink{namespace_external_s_s_a20e2ed7203e7e62d060cd8e020016c69}{event\+\_\+app\+\_\+instruction} (void $\ast$drcontext, void $\ast$tag, instrlist\+\_\+t $\ast$bb, instr\+\_\+t $\ast$instr, bool for\+\_\+trace, bool translating, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em The function that inserts the call and ret handlers. \end{DoxyCompactList}\item 
+void \hyperlink{namespace_external_s_s_a1ab997e2712a2124a7056765313589a1}{setup} (const char $\ast$const socket\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Setup the external stack server for the Dynamo\+R\+IO client. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Make a distinction between the internal and external SS functions. 
+
+\subsection{Function Documentation}
+\index{External\+SS@{External\+SS}!event\+\_\+app\+\_\+instruction@{event\+\_\+app\+\_\+instruction}}
+\index{event\+\_\+app\+\_\+instruction@{event\+\_\+app\+\_\+instruction}!External\+SS@{External\+SS}}
+\subsubsection[{\texorpdfstring{event\+\_\+app\+\_\+instruction(void $\ast$drcontext, void $\ast$tag, instrlist\+\_\+t $\ast$bb, instr\+\_\+t $\ast$instr, bool for\+\_\+trace, bool translating, void $\ast$user\+\_\+data)}{event_app_instruction(void *drcontext, void *tag, instrlist_t *bb, instr_t *instr, bool for_trace, bool translating, void *user_data)}}]{\setlength{\rightskip}{0pt plus 5cm}dr\+\_\+emit\+\_\+flags\+\_\+t External\+S\+S\+::event\+\_\+app\+\_\+instruction (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{drcontext, }
+\item[{void $\ast$}]{tag, }
+\item[{instrlist\+\_\+t $\ast$}]{bb, }
+\item[{instr\+\_\+t $\ast$}]{instr, }
+\item[{bool}]{for\+\_\+trace, }
+\item[{bool}]{translating, }
+\item[{void $\ast$}]{user\+\_\+data}
+\end{DoxyParamCaption}
+)}\hypertarget{namespace_external_s_s_a20e2ed7203e7e62d060cd8e020016c69}{}\label{namespace_external_s_s_a20e2ed7203e7e62d060cd8e020016c69}
+
+
+The function that inserts the call and ret handlers. 
+
+Whenever a new basic block is seen, this function will be called once for each instruction in it. If either a call or a ret is seen, the call and ret handlers are inserted before said instruction. Note\+: an app\+\_\+pc is defined in comments \index{External\+SS@{External\+SS}!setup@{setup}}
+\index{setup@{setup}!External\+SS@{External\+SS}}
+\subsubsection[{\texorpdfstring{setup(const char $\ast$const socket\+\_\+path)}{setup(const char *const socket_path)}}]{\setlength{\rightskip}{0pt plus 5cm}void External\+S\+S\+::setup (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$const}]{socket\+\_\+path}
+\end{DoxyParamCaption}
+)}\hypertarget{namespace_external_s_s_a1ab997e2712a2124a7056765313589a1}{}\label{namespace_external_s_s_a1ab997e2712a2124a7056765313589a1}
+
+
+Setup the external stack server for the Dynamo\+R\+IO client. 
+

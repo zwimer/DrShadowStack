@@ -117,7 +117,7 @@ Typedefs</h2></td></tr>
 <tr class="separator:af7c770b1088609ccee1dbc5fa67fe3d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ad69d2104372457e0bfbbb85270bbf5"><td class="memItemLeft" align="right" valign="top">typedef std::stack&lt; const char * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack__server_8cpp.html#a7ad69d2104372457e0bfbbb85270bbf5">pointer_stack</a></td></tr>
 <tr class="separator:a7ad69d2104372457e0bfbbb85270bbf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace913347ce4667e1807900fe0a8d7c54"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack__server_8cpp.html#ace913347ce4667e1807900fe0a8d7c54">message_handler</a>) (<a class="el" href="stack__server_8cpp.html#a7ad69d2104372457e0bfbbb85270bbf5">pointer_stack</a> &amp;stk, const char *const buffer, const int <a class="el" href="dr__shadow__stack__client_8cpp.html#a5903d0b282fc5eae503de618f896b5e1">sock</a>)</td></tr>
+<tr class="memitem:ace913347ce4667e1807900fe0a8d7c54"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack__server_8cpp.html#ace913347ce4667e1807900fe0a8d7c54">message_handler</a>) (<a class="el" href="stack__server_8cpp.html#a7ad69d2104372457e0bfbbb85270bbf5">pointer_stack</a> &amp;stk, const char *const buffer, const int <a class="el" href="dr__external__ss__events_8cpp.html#a5903d0b282fc5eae503de618f896b5e1">sock</a>)</td></tr>
 <tr class="separator:ace913347ce4667e1807900fe0a8d7c54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -126,9 +126,9 @@ Functions</h2></td></tr>
 <tr class="separator:a57a5433768cfcacd084f865cfe4c5fc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a546b54317e4b7a17ae735149f4b56612"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack__server_8cpp.html#a546b54317e4b7a17ae735149f4b56612">call_handler</a> (<a class="el" href="stack__server_8cpp.html#a7ad69d2104372457e0bfbbb85270bbf5">pointer_stack</a> &amp;stk, const char *const buffer, const int)</td></tr>
 <tr class="separator:a546b54317e4b7a17ae735149f4b56612"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a3a7fc816db1ee68fc8559eff029356"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack__server_8cpp.html#a0a3a7fc816db1ee68fc8559eff029356">ret_handler</a> (<a class="el" href="stack__server_8cpp.html#a7ad69d2104372457e0bfbbb85270bbf5">pointer_stack</a> &amp;stk, const char *const buffer, const int <a class="el" href="dr__shadow__stack__client_8cpp.html#a5903d0b282fc5eae503de618f896b5e1">sock</a>)</td></tr>
+<tr class="memitem:a0a3a7fc816db1ee68fc8559eff029356"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack__server_8cpp.html#a0a3a7fc816db1ee68fc8559eff029356">ret_handler</a> (<a class="el" href="stack__server_8cpp.html#a7ad69d2104372457e0bfbbb85270bbf5">pointer_stack</a> &amp;stk, const char *const buffer, const int <a class="el" href="dr__external__ss__events_8cpp.html#a5903d0b282fc5eae503de618f896b5e1">sock</a>)</td></tr>
 <tr class="separator:a0a3a7fc816db1ee68fc8559eff029356"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09d35234cdf151db87104e253725cda0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack__server_8cpp.html#a09d35234cdf151db87104e253725cda0">start_shadow_stack</a> (const int <a class="el" href="dr__shadow__stack__client_8cpp.html#a5903d0b282fc5eae503de618f896b5e1">sock</a>)</td></tr>
+<tr class="memitem:a09d35234cdf151db87104e253725cda0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack__server_8cpp.html#a09d35234cdf151db87104e253725cda0">start_shadow_stack</a> (const int <a class="el" href="dr__external__ss__events_8cpp.html#a5903d0b282fc5eae503de618f896b5e1">sock</a>)</td></tr>
 <tr class="memdesc:a09d35234cdf151db87104e253725cda0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function for running the shadow stack.  <a href="#a09d35234cdf151db87104e253725cda0">More...</a><br /></td></tr>
 <tr class="separator:a09d35234cdf151db87104e253725cda0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -162,7 +162,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef void(* message_handler) (<a class="el" href="stack__server_8cpp.html#a7ad69d2104372457e0bfbbb85270bbf5">pointer_stack</a> &amp;stk, const char *const buffer, const int <a class="el" href="dr__shadow__stack__client_8cpp.html#a5903d0b282fc5eae503de618f896b5e1">sock</a>)</td>
+          <td class="memname">typedef void(* message_handler) (<a class="el" href="stack__server_8cpp.html#a7ad69d2104372457e0bfbbb85270bbf5">pointer_stack</a> &amp;stk, const char *const buffer, const int <a class="el" href="dr__external__ss__events_8cpp.html#a5903d0b282fc5eae503de618f896b5e1">sock</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
