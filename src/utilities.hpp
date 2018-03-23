@@ -25,7 +25,7 @@ namespace Utilities {
 	/// To be called in case of an error
 	/** Prints log s to the error file, perrors,
 	 *  then kills the process group */
-	void err(const char * const s);
+	[[noreturn]] void err(const char * const s);
 
 	/** assert b, if false call program_err(s) */
 	void assert(const bool b, const char * const s);
@@ -55,7 +55,6 @@ namespace Utilities {
 	 *  If either file is nullptr, that file is skipped
 	 *  This function promises **NOTHING** on failure */
 	void log_error(const char * const format, ...);
-
 };
 
 

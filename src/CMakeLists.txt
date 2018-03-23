@@ -14,7 +14,7 @@ set(DynamoRIO_DIR /home/vagrant/dynamorio/build/cmake)
 ### Developer options below ###
 
 # Debug mode option, comment out to disable
-#set(DEBUG_MODE "ON")
+set(DEBUG_MODE "ON")
 
 # For YouCompleteMe vim plugin
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -33,7 +33,6 @@ project(${PROGRAM_NAME})
 
 # The name of the .so to be created
 set(SS_DR_CLIENT_SO ss_dr_client_so)
-
 
 # Find packages
 find_package (Threads REQUIRED)
@@ -78,7 +77,6 @@ add_library(${SS_DR_CLIENT_SO} SHARED
 	dr_shadow_stack_client.cpp
 	quick_socket.cpp
 	utilities.cpp
-	message.cpp
 	get_tid.cpp
 	group.cpp
 	)
@@ -103,7 +101,6 @@ add_executable(${PROGRAM_NAME}.out
 	utilities.cpp
 	get_tid.cpp
 	proc_rc.cpp
-	message.cpp
 	group.cpp
 	)
 

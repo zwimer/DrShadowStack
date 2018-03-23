@@ -7,6 +7,8 @@
 
 #include <unistd.h>
 #include <signal.h>
+#include <string.h>
+#include <random>
 #include <vector>
 #include <string>
 
@@ -52,18 +54,50 @@ void start_program( char * drrun, char * a_out,
 	Utilities::err("execvp() failed.");
 }
 
-// TODO: maybe boost_uniquepath, and getsockopt(SO_REUSEADDR) ?
-// Wraps std::tmpnam(0)
-// std::tmpnam is warned against due to security reasons
-// these reasons, however, are of no concern for it's use
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+// Return a non-existent filename
 std::string temp_name() {
-	const char * const str = std::tmpnam(nullptr);
-	Utilities::assert( str != nullptr, "std::tmpnam() failed." );
-	return str;
+
+	// The desired size file name
+	static const int size = 23;
+
+	// Check lenth of string. Note, bind will not accept 
+	// file names logner than something like 108 characters
+	static_assert( size < 100, "file name too long!" );
+
+	// The desired location
+	static char where[] = "/tmp/";
+	static const int len_where = strlen(where);
+
+	// Characters which may be used in the file name
+	static char lib[] =	"abcdefghijklmnopqrstuvwxyz"
+						"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+						"1234567890";
+	static const int lib_size = strlen(lib);
+
+	// Until an un-seen filename is generated, loop
+	char fname[size + 1];
+	std::random_device rd;
+	while (true) {
+
+		// Generate a randome filename
+		strncpy(fname, where, len_where);
+		for ( int i = len_where; i < size; ++i ) {
+			fname[i] = lib[rd() % lib_size];
+		}
+		fname[size] = '\0';
+
+		// We temprarily borrow errno below		
+		int old_errno = errno;
+		errno = 0;
+
+		// If the file does not exists, restore errno and return it
+		if ( access( fname, F_OK ) == -1 ) {
+			Utilities::assert( errno == ENOENT, "access failed()." );
+			errno = old_errno;
+			return fname;
+		}
+	}
 }
-#pragma GCC diagnostic pop
 
 // Main function
 int main(int argc, char * argv[]) {
@@ -86,7 +120,11 @@ int main(int argc, char * argv[]) {
 	Utilities::log("Sigpipe and Sigchild ignored");
 
 	// Setup a unix server
+	// Technically, between generating the name name and the
+	// server starting, the file could have been created.
+	// However, this is safe as the program will crash if so
 	const std::string server_name = temp_name();
+Utilities::log_error("TE");
 	const int sock = QS::create_server(server_name.c_str());
 
 	// Just in case an exception occurs, setup a class

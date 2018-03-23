@@ -44,8 +44,8 @@ static void on_ret(const app_pc instr_addr, const app_pc target_addr) {
 	Utilities::assert( bytes_sent == to_send.size, "write() failed!");
 
 	// For clarity
-	constexpr int size = Message::Continue::size;
-	constexpr auto is_continue = Message::is_a_valid<Message::Continue>;
+	const constexpr int size = Message::Continue::size;
+	const constexpr auto is_continue = Message::is_a_valid<Message::Continue>;
 
 	// Wait until a we get a 'continue'
 	char buffer[size];
