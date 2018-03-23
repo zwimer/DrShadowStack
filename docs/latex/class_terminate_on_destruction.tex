@@ -18,6 +18,20 @@ A class that terminates the group when its destructor is called.
 \begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
 void \hyperlink{class_terminate_on_destruction_a3ee7e31e435328d6ff97edd5627f7c27}{disable} ()
 \begin{DoxyCompactList}\small\item\em Disable termination of the group on destruction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_terminate_on_destruction_afbcf618507814357fc16fcf49ac27316}{Terminate\+On\+Destruction} (\hyperlink{class_terminate_on_destruction}{Terminate\+On\+Destruction} \&\&)=delete
+\item 
+\hyperlink{class_terminate_on_destruction_aaf44815fef9e402548f3fe950bc23a82}{Terminate\+On\+Destruction} (const \hyperlink{class_terminate_on_destruction}{Terminate\+On\+Destruction} \&)=delete
+\item 
+\hyperlink{class_terminate_on_destruction}{Terminate\+On\+Destruction} \& \hyperlink{class_terminate_on_destruction_aef7320686e582846fd4e30c142feec18}{operator=} (const \hyperlink{class_terminate_on_destruction}{Terminate\+On\+Destruction} \&)=delete
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_terminate_on_destruction_a17854fe56e131d017df98b77f9c4cbfc}{enabled}
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -26,6 +40,20 @@ A class that terminates the group when its destructor is called.
 This is called even if a C++ exception is thrown Note\+: this should be used as a backup, terminate\+\_\+group should still be called if termination is desired! 
 
 \subsection{Constructor \& Destructor Documentation}
+\index{Terminate\+On\+Destruction@{Terminate\+On\+Destruction}!Terminate\+On\+Destruction@{Terminate\+On\+Destruction}}
+\index{Terminate\+On\+Destruction@{Terminate\+On\+Destruction}!Terminate\+On\+Destruction@{Terminate\+On\+Destruction}}
+\subsubsection[{\texorpdfstring{Terminate\+On\+Destruction(\+Terminate\+On\+Destruction \&\&)=delete}{TerminateOnDestruction(TerminateOnDestruction &&)=delete}}]{\setlength{\rightskip}{0pt plus 5cm}Terminate\+On\+Destruction\+::\+Terminate\+On\+Destruction (
+\begin{DoxyParamCaption}
+\item[{{\bf Terminate\+On\+Destruction} \&\&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}\hypertarget{class_terminate_on_destruction_afbcf618507814357fc16fcf49ac27316}{}\label{class_terminate_on_destruction_afbcf618507814357fc16fcf49ac27316}
+\index{Terminate\+On\+Destruction@{Terminate\+On\+Destruction}!Terminate\+On\+Destruction@{Terminate\+On\+Destruction}}
+\index{Terminate\+On\+Destruction@{Terminate\+On\+Destruction}!Terminate\+On\+Destruction@{Terminate\+On\+Destruction}}
+\subsubsection[{\texorpdfstring{Terminate\+On\+Destruction(const Terminate\+On\+Destruction \&)=delete}{TerminateOnDestruction(const TerminateOnDestruction &)=delete}}]{\setlength{\rightskip}{0pt plus 5cm}Terminate\+On\+Destruction\+::\+Terminate\+On\+Destruction (
+\begin{DoxyParamCaption}
+\item[{const {\bf Terminate\+On\+Destruction} \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}\hypertarget{class_terminate_on_destruction_aaf44815fef9e402548f3fe950bc23a82}{}\label{class_terminate_on_destruction_aaf44815fef9e402548f3fe950bc23a82}
 \index{Terminate\+On\+Destruction@{Terminate\+On\+Destruction}!Terminate\+On\+Destruction@{Terminate\+On\+Destruction}}
 \index{Terminate\+On\+Destruction@{Terminate\+On\+Destruction}!Terminate\+On\+Destruction@{Terminate\+On\+Destruction}}
 \subsubsection[{\texorpdfstring{Terminate\+On\+Destruction()}{TerminateOnDestruction()}}]{\setlength{\rightskip}{0pt plus 5cm}Terminate\+On\+Destruction\+::\+Terminate\+On\+Destruction (
@@ -62,9 +90,22 @@ On destruction, terminate the group if enabled
 
 Disable termination of the group on destruction. 
 
+\index{Terminate\+On\+Destruction@{Terminate\+On\+Destruction}!operator=@{operator=}}
+\index{operator=@{operator=}!Terminate\+On\+Destruction@{Terminate\+On\+Destruction}}
+\subsubsection[{\texorpdfstring{operator=(const Terminate\+On\+Destruction \&)=delete}{operator=(const TerminateOnDestruction &)=delete}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Terminate\+On\+Destruction}\& Terminate\+On\+Destruction\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Terminate\+On\+Destruction} \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}\hypertarget{class_terminate_on_destruction_aef7320686e582846fd4e30c142feec18}{}\label{class_terminate_on_destruction_aef7320686e582846fd4e30c142feec18}
+
+
+\subsection{Field Documentation}
+\index{Terminate\+On\+Destruction@{Terminate\+On\+Destruction}!enabled@{enabled}}
+\index{enabled@{enabled}!Terminate\+On\+Destruction@{Terminate\+On\+Destruction}}
+\subsubsection[{\texorpdfstring{enabled}{enabled}}]{\setlength{\rightskip}{0pt plus 5cm}bool Terminate\+On\+Destruction\+::enabled\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_terminate_on_destruction_a17854fe56e131d017df98b77f9c4cbfc}{}\label{class_terminate_on_destruction_a17854fe56e131d017df98b77f9c4cbfc}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 src/\hyperlink{group_8hpp}{group.\+hpp}\item 
-src/group.\+cpp\end{DoxyCompactItemize}
+src/\hyperlink{group_8cpp}{group.\+cpp}\end{DoxyCompactItemize}

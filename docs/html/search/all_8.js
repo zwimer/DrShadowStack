@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['pointer_5fsize',['POINTER_SIZE',['../message_8hpp.html#a70eafdf190b8f3be16349543fe1b39ae',1,'message.hpp']]],
-  ['proc_5frc_2ehpp',['proc_rc.hpp',['../proc__rc_8hpp.html',1,'']]],
-  ['procrc',['ProcRC',['../class_proc_r_c.html',1,'ProcRC'],['../class_proc_r_c.html#aaf90e0e0b95504fda9089c6658fab53f',1,'ProcRC::ProcRC()']]]
+  ['kill_5f9_5fgroup',['kill_9_group',['../group_8cpp.html#a310c24b73ce703ca7dd39586178caa86',1,'group.cpp']]]
 ];

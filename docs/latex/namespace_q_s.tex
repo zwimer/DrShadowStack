@@ -1,0 +1,48 @@
+\hypertarget{namespace_q_s}{}\section{QS Namespace Reference}
+\label{namespace_q_s}\index{QS@{QS}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{namespace_q_s_a2076a50ca1402320c07d752e8b26caec}{create\+\_\+server} (const char $\ast$fname)
+\begin{DoxyCompactList}\small\item\em Create a unix socket at fname, and a server for it. \end{DoxyCompactList}\item 
+int \hyperlink{namespace_q_s_a506085f54f85632d5cef32833b717245}{create\+\_\+client} (const char $\ast$const sock\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Create a client for a unix socket. \end{DoxyCompactList}\item 
+int \hyperlink{namespace_q_s_a5e19c1f3d38617f70f20030770ae46a8}{accept\+\_\+client} (const int \hyperlink{dr__shadow__stack__client_8cpp_a5903d0b282fc5eae503de618f896b5e1}{sock})
+\begin{DoxyCompactList}\small\item\em Wait for a client to connect to sock. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{QS@{QS}!accept\+\_\+client@{accept\+\_\+client}}
+\index{accept\+\_\+client@{accept\+\_\+client}!QS@{QS}}
+\subsubsection[{\texorpdfstring{accept\+\_\+client(const int sock)}{accept_client(const int sock)}}]{\setlength{\rightskip}{0pt plus 5cm}int Q\+S\+::accept\+\_\+client (
+\begin{DoxyParamCaption}
+\item[{const int}]{sock}
+\end{DoxyParamCaption}
+)}\hypertarget{namespace_q_s_a5e19c1f3d38617f70f20030770ae46a8}{}\label{namespace_q_s_a5e19c1f3d38617f70f20030770ae46a8}
+
+
+Wait for a client to connect to sock. 
+
+Once the client connects, accept then return the file descriptor \index{QS@{QS}!create\+\_\+client@{create\+\_\+client}}
+\index{create\+\_\+client@{create\+\_\+client}!QS@{QS}}
+\subsubsection[{\texorpdfstring{create\+\_\+client(const char $\ast$const sock\+\_\+name)}{create_client(const char *const sock_name)}}]{\setlength{\rightskip}{0pt plus 5cm}int Q\+S\+::create\+\_\+client (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$const}]{sock\+\_\+name}
+\end{DoxyParamCaption}
+)}\hypertarget{namespace_q_s_a506085f54f85632d5cef32833b717245}{}\label{namespace_q_s_a506085f54f85632d5cef32833b717245}
+
+
+Create a client for a unix socket. 
+
+Joins the unix socked located at sock\+\_\+name Returns the file descriptor for the client \index{QS@{QS}!create\+\_\+server@{create\+\_\+server}}
+\index{create\+\_\+server@{create\+\_\+server}!QS@{QS}}
+\subsubsection[{\texorpdfstring{create\+\_\+server(const char $\ast$fname)}{create_server(const char *fname)}}]{\setlength{\rightskip}{0pt plus 5cm}int Q\+S\+::create\+\_\+server (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{fname}
+\end{DoxyParamCaption}
+)}\hypertarget{namespace_q_s_a2076a50ca1402320c07d752e8b26caec}{}\label{namespace_q_s_a2076a50ca1402320c07d752e8b26caec}
+
+
+Create a unix socket at fname, and a server for it. 
+
+Returns the server file descriptor 

@@ -13,8 +13,19 @@
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+static void \hyperlink{dr__shadow__stack__client_8cpp_a8161a26ec065b8c83d2f42637896162c}{on\+\_\+call} (const app\+\_\+pc ret\+\_\+to\+\_\+addr)
+\begin{DoxyCompactList}\small\item\em The call handler. \end{DoxyCompactList}\item 
+static void \hyperlink{dr__shadow__stack__client_8cpp_a42c8b67f8f85fd6bad5bd11892c0d5bc}{on\+\_\+ret} (const app\+\_\+pc instr\+\_\+addr, const app\+\_\+pc target\+\_\+addr)
+\begin{DoxyCompactList}\small\item\em The ret handler. \end{DoxyCompactList}\item 
+static dr\+\_\+emit\+\_\+flags\+\_\+t \hyperlink{dr__shadow__stack__client_8cpp_a0aaea6e47ff2dc8fb1587381292ba5b5}{event\+\_\+app\+\_\+instruction} (void $\ast$drcontext, void $\ast$tag, instrlist\+\_\+t $\ast$bb, instr\+\_\+t $\ast$instr, bool for\+\_\+trace, bool translating, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em The function that inserts the call and ret handlers. \end{DoxyCompactList}\item 
 D\+R\+\_\+\+E\+X\+P\+O\+RT void \hyperlink{dr__shadow__stack__client_8cpp_a2b938c98dd186cc94eef6880f9e3c3e9}{dr\+\_\+client\+\_\+main} (client\+\_\+id\+\_\+t id, int argc, const char $\ast$argv\mbox{[}$\,$\mbox{]})
 \begin{DoxyCompactList}\small\item\em The main client function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{dr__shadow__stack__client_8cpp_a5903d0b282fc5eae503de618f896b5e1}{sock} = -\/1
+\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
@@ -31,4 +42,49 @@ D\+R\+\_\+\+E\+X\+P\+O\+RT void \hyperlink{dr__shadow__stack__client_8cpp_a2b938
 
 The main client function. 
 
-This function dynamically \textquotesingle{}injects\textquotesingle{} the shadow stack 
+This function dynamically \textquotesingle{}injects\textquotesingle{} the shadow stack \index{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp@{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp}!event\+\_\+app\+\_\+instruction@{event\+\_\+app\+\_\+instruction}}
+\index{event\+\_\+app\+\_\+instruction@{event\+\_\+app\+\_\+instruction}!dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp@{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp}}
+\subsubsection[{\texorpdfstring{event\+\_\+app\+\_\+instruction(void $\ast$drcontext, void $\ast$tag, instrlist\+\_\+t $\ast$bb, instr\+\_\+t $\ast$instr, bool for\+\_\+trace, bool translating, void $\ast$user\+\_\+data)}{event_app_instruction(void *drcontext, void *tag, instrlist_t *bb, instr_t *instr, bool for_trace, bool translating, void *user_data)}}]{\setlength{\rightskip}{0pt plus 5cm}static dr\+\_\+emit\+\_\+flags\+\_\+t event\+\_\+app\+\_\+instruction (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{drcontext, }
+\item[{void $\ast$}]{tag, }
+\item[{instrlist\+\_\+t $\ast$}]{bb, }
+\item[{instr\+\_\+t $\ast$}]{instr, }
+\item[{bool}]{for\+\_\+trace, }
+\item[{bool}]{translating, }
+\item[{void $\ast$}]{user\+\_\+data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__shadow__stack__client_8cpp_a0aaea6e47ff2dc8fb1587381292ba5b5}{}\label{dr__shadow__stack__client_8cpp_a0aaea6e47ff2dc8fb1587381292ba5b5}
+
+
+The function that inserts the call and ret handlers. 
+
+Whenever a new basic block is seen, this function will be called once for each instruction in it. If either a call or a ret is seen, the call and ret handlers are inserted before said instruction. Note\+: an app\+\_\+pc is defined in comments \index{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp@{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp}!on\+\_\+call@{on\+\_\+call}}
+\index{on\+\_\+call@{on\+\_\+call}!dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp@{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp}}
+\subsubsection[{\texorpdfstring{on\+\_\+call(const app\+\_\+pc ret\+\_\+to\+\_\+addr)}{on_call(const app_pc ret_to_addr)}}]{\setlength{\rightskip}{0pt plus 5cm}static void on\+\_\+call (
+\begin{DoxyParamCaption}
+\item[{const app\+\_\+pc}]{ret\+\_\+to\+\_\+addr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__shadow__stack__client_8cpp_a8161a26ec065b8c83d2f42637896162c}{}\label{dr__shadow__stack__client_8cpp_a8161a26ec065b8c83d2f42637896162c}
+
+
+The call handler. 
+
+This function is called whenever a call instruction is about to execute. This function is static for optimization reasons \index{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp@{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp}!on\+\_\+ret@{on\+\_\+ret}}
+\index{on\+\_\+ret@{on\+\_\+ret}!dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp@{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp}}
+\subsubsection[{\texorpdfstring{on\+\_\+ret(const app\+\_\+pc instr\+\_\+addr, const app\+\_\+pc target\+\_\+addr)}{on_ret(const app_pc instr_addr, const app_pc target_addr)}}]{\setlength{\rightskip}{0pt plus 5cm}static void on\+\_\+ret (
+\begin{DoxyParamCaption}
+\item[{const app\+\_\+pc}]{instr\+\_\+addr, }
+\item[{const app\+\_\+pc}]{target\+\_\+addr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__shadow__stack__client_8cpp_a42c8b67f8f85fd6bad5bd11892c0d5bc}{}\label{dr__shadow__stack__client_8cpp_a42c8b67f8f85fd6bad5bd11892c0d5bc}
+
+
+The ret handler. 
+
+This function is called whenever a ret instruction is about to execute. This function is static for optimization reasons 
+
+\subsection{Variable Documentation}
+\index{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp@{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp}!sock@{sock}}
+\index{sock@{sock}!dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp@{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp}}
+\subsubsection[{\texorpdfstring{sock}{sock}}]{\setlength{\rightskip}{0pt plus 5cm}int sock = -\/1\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__shadow__stack__client_8cpp_a5903d0b282fc5eae503de618f896b5e1}{}\label{dr__shadow__stack__client_8cpp_a5903d0b282fc5eae503de618f896b5e1}

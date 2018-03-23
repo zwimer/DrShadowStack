@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -96,15 +97,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p><code>#include &lt;<a class="el" href="message_8hpp_source.html">message.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_message_1_1_call_info.html">CallInfo</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class containing the header of Call message.  <a href="struct_message_1_1_call_info.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_message_1_1_continue_info.html">ContinueInfo</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class containing the header of Continue message.  <a href="struct_message_1_1_continue_info.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_message_1_1_message_type.html">MessageType</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A templated message class A valid message is defined by constructing a <a class="el" href="struct_message_1_1_message_type.html" title="A templated message class A valid message is defined by constructing a MessageType around it...">MessageType</a> around it.  <a href="struct_message_1_1_message_type.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_message_1_1_message_type_3_01false_00_01_info_01_4.html">MessageType&lt; false, Info &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A specification for non-header only messages.  <a href="struct_message_1_1_message_type_3_01false_00_01_info_01_4.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_message_1_1_message_type_3_01true_00_01_info_01_4.html">MessageType&lt; true, Info &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A specification for header only messages.  <a href="struct_message_1_1_message_type_3_01true_00_01_info_01_4.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_message_1_1_ret_info.html">RetInfo</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class containing the header of Call message.  <a href="struct_message_1_1_ret_info.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a04de61b84a209cdf372b6f53f3adf7c4"><td class="memItemLeft" align="right" valign="top">typedef MessageType&lt; true, ContinueInfo &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message.html#a04de61b84a209cdf372b6f53f3adf7c4">Continue</a></td></tr>
+<tr class="memitem:a04de61b84a209cdf372b6f53f3adf7c4"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="struct_message_1_1_message_type.html">MessageType</a>&lt; true, <a class="el" href="struct_message_1_1_continue_info.html">ContinueInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message.html#a04de61b84a209cdf372b6f53f3adf7c4">Continue</a></td></tr>
 <tr class="memdesc:a04de61b84a209cdf372b6f53f3adf7c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">A typedef for the continue message.  <a href="#a04de61b84a209cdf372b6f53f3adf7c4">More...</a><br /></td></tr>
 <tr class="separator:a04de61b84a209cdf372b6f53f3adf7c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fd0ed431cb0d672045d09368a5d2126"><td class="memItemLeft" align="right" valign="top">typedef MessageType&lt; false, CallInfo &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message.html#a0fd0ed431cb0d672045d09368a5d2126">Call</a></td></tr>
+<tr class="memitem:a0fd0ed431cb0d672045d09368a5d2126"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="struct_message_1_1_message_type.html">MessageType</a>&lt; false, <a class="el" href="struct_message_1_1_call_info.html">CallInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message.html#a0fd0ed431cb0d672045d09368a5d2126">Call</a></td></tr>
 <tr class="memdesc:a0fd0ed431cb0d672045d09368a5d2126"><td class="mdescLeft">&#160;</td><td class="mdescRight">A typedef for the call message.  <a href="#a0fd0ed431cb0d672045d09368a5d2126">More...</a><br /></td></tr>
 <tr class="separator:a0fd0ed431cb0d672045d09368a5d2126"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a146628035f5a0723cb04f7a328858e34"><td class="memItemLeft" align="right" valign="top">typedef MessageType&lt; false, RetInfo &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message.html#a146628035f5a0723cb04f7a328858e34">Ret</a></td></tr>
+<tr class="memitem:a146628035f5a0723cb04f7a328858e34"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="struct_message_1_1_message_type.html">MessageType</a>&lt; false, <a class="el" href="struct_message_1_1_ret_info.html">RetInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message.html#a146628035f5a0723cb04f7a328858e34">Ret</a></td></tr>
 <tr class="memdesc:a146628035f5a0723cb04f7a328858e34"><td class="mdescLeft">&#160;</td><td class="mdescRight">A typedef for the ret message.  <a href="#a146628035f5a0723cb04f7a328858e34">More...</a><br /></td></tr>
 <tr class="separator:a146628035f5a0723cb04f7a328858e34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -124,7 +146,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef MessageType&lt;false, CallInfo&gt; <a class="el" href="class_message.html#a0fd0ed431cb0d672045d09368a5d2126">Message::Call</a></td>
+          <td class="memname">typedef <a class="el" href="struct_message_1_1_message_type.html">MessageType</a>&lt;false, <a class="el" href="struct_message_1_1_call_info.html">CallInfo</a>&gt; <a class="el" href="class_message.html#a0fd0ed431cb0d672045d09368a5d2126">Message::Call</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -138,7 +160,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef MessageType&lt;true, ContinueInfo&gt; <a class="el" href="class_message.html#a04de61b84a209cdf372b6f53f3adf7c4">Message::Continue</a></td>
+          <td class="memname">typedef <a class="el" href="struct_message_1_1_message_type.html">MessageType</a>&lt;true, <a class="el" href="struct_message_1_1_continue_info.html">ContinueInfo</a>&gt; <a class="el" href="class_message.html#a04de61b84a209cdf372b6f53f3adf7c4">Message::Continue</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -152,7 +174,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef MessageType&lt;false, RetInfo&gt; <a class="el" href="class_message.html#a146628035f5a0723cb04f7a328858e34">Message::Ret</a></td>
+          <td class="memname">typedef <a class="el" href="struct_message_1_1_message_type.html">MessageType</a>&lt;false, <a class="el" href="struct_message_1_1_ret_info.html">RetInfo</a>&gt; <a class="el" href="class_message.html#a146628035f5a0723cb04f7a328858e34">Message::Ret</a></td>
         </tr>
       </table>
 </div><div class="memdoc">

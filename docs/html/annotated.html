@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -87,9 +88,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <div class="textblock">Here are the data structures with brief descriptions:</div><div class="directory">
-<table class="directory">
+<div class="levels">[detail level <span onclick="javascript:toggleLevel(1);">1</span><span onclick="javascript:toggleLevel(2);">2</span>]</div><table class="directory">
 <tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="struct_group.html" target="_self">Group</a></td><td class="desc">A static class holding the group functions </td></tr>
-<tr id="row_1_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_message.html" target="_self">Message</a></td><td class="desc">A class used for defining all message types </td></tr>
+<tr id="row_1_"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_1_" class="arrow" onclick="toggleFolder('1_')">&#9660;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_message.html" target="_self">Message</a></td><td class="desc">A class used for defining all message types </td></tr>
+<tr id="row_1_0_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="struct_message_1_1_call_info.html" target="_self">CallInfo</a></td><td class="desc">A class containing the header of Call message </td></tr>
+<tr id="row_1_1_"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="struct_message_1_1_continue_info.html" target="_self">ContinueInfo</a></td><td class="desc">A class containing the header of Continue message </td></tr>
+<tr id="row_1_2_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="struct_message_1_1_message_type.html" target="_self">MessageType</a></td><td class="desc">A templated message class A valid message is defined by constructing a <a class="el" href="struct_message_1_1_message_type.html" title="A templated message class A valid message is defined by constructing a MessageType around it...">MessageType</a> around it </td></tr>
+<tr id="row_1_3_"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="struct_message_1_1_message_type_3_01false_00_01_info_01_4.html" target="_self">MessageType&lt; false, Info &gt;</a></td><td class="desc">A specification for non-header only messages </td></tr>
+<tr id="row_1_4_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="struct_message_1_1_message_type_3_01true_00_01_info_01_4.html" target="_self">MessageType&lt; true, Info &gt;</a></td><td class="desc">A specification for header only messages </td></tr>
+<tr id="row_1_5_"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="struct_message_1_1_ret_info.html" target="_self">RetInfo</a></td><td class="desc">A class containing the header of Call message </td></tr>
 <tr id="row_2_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_proc_r_c.html" target="_self">ProcRC</a></td><td class="desc">A class that wraps a process reference counter </td></tr>
 <tr id="row_3_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_terminate_on_destruction.html" target="_self">TerminateOnDestruction</a></td><td class="desc">A class that terminates the group when its destructor is called </td></tr>
 </table>

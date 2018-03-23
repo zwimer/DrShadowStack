@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -86,7 +87,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">dr_shadow_stack_client.cpp File Reference</div>  </div>
 </div><!--header-->
@@ -104,9 +106,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a8161a26ec065b8c83d2f42637896162c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__shadow__stack__client_8cpp.html#a8161a26ec065b8c83d2f42637896162c">on_call</a> (const app_pc ret_to_addr)</td></tr>
+<tr class="memdesc:a8161a26ec065b8c83d2f42637896162c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The call handler.  <a href="#a8161a26ec065b8c83d2f42637896162c">More...</a><br /></td></tr>
+<tr class="separator:a8161a26ec065b8c83d2f42637896162c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42c8b67f8f85fd6bad5bd11892c0d5bc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__shadow__stack__client_8cpp.html#a42c8b67f8f85fd6bad5bd11892c0d5bc">on_ret</a> (const app_pc instr_addr, const app_pc target_addr)</td></tr>
+<tr class="memdesc:a42c8b67f8f85fd6bad5bd11892c0d5bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The ret handler.  <a href="#a42c8b67f8f85fd6bad5bd11892c0d5bc">More...</a><br /></td></tr>
+<tr class="separator:a42c8b67f8f85fd6bad5bd11892c0d5bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0aaea6e47ff2dc8fb1587381292ba5b5"><td class="memItemLeft" align="right" valign="top">static dr_emit_flags_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__shadow__stack__client_8cpp.html#a0aaea6e47ff2dc8fb1587381292ba5b5">event_app_instruction</a> (void *drcontext, void *tag, instrlist_t *bb, instr_t *instr, bool for_trace, bool translating, void *user_data)</td></tr>
+<tr class="memdesc:a0aaea6e47ff2dc8fb1587381292ba5b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function that inserts the call and ret handlers.  <a href="#a0aaea6e47ff2dc8fb1587381292ba5b5">More...</a><br /></td></tr>
+<tr class="separator:a0aaea6e47ff2dc8fb1587381292ba5b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b938c98dd186cc94eef6880f9e3c3e9"><td class="memItemLeft" align="right" valign="top">DR_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__shadow__stack__client_8cpp.html#a2b938c98dd186cc94eef6880f9e3c3e9">dr_client_main</a> (client_id_t id, int argc, const char *argv[])</td></tr>
 <tr class="memdesc:a2b938c98dd186cc94eef6880f9e3c3e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The main client function.  <a href="#a2b938c98dd186cc94eef6880f9e3c3e9">More...</a><br /></td></tr>
 <tr class="separator:a2b938c98dd186cc94eef6880f9e3c3e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a5903d0b282fc5eae503de618f896b5e1"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__shadow__stack__client_8cpp.html#a5903d0b282fc5eae503de618f896b5e1">sock</a> = -1</td></tr>
+<tr class="separator:a5903d0b282fc5eae503de618f896b5e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a2b938c98dd186cc94eef6880f9e3c3e9"></a>
@@ -141,6 +157,158 @@ Functions</h2></td></tr>
 
 <p>The main client function. </p>
 <p>This function dynamically 'injects' the shadow stack </p>
+
+</div>
+</div>
+<a class="anchor" id="a0aaea6e47ff2dc8fb1587381292ba5b5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static dr_emit_flags_t event_app_instruction </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>drcontext</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>tag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">instrlist_t *&#160;</td>
+          <td class="paramname"><em>bb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">instr_t *&#160;</td>
+          <td class="paramname"><em>instr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>for_trace</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>translating</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>user_data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The function that inserts the call and ret handlers. </p>
+<p>Whenever a new basic block is seen, this function will be called once for each instruction in it. If either a call or a ret is seen, the call and ret handlers are inserted before said instruction. Note: an app_pc is defined in comments </p>
+
+</div>
+</div>
+<a class="anchor" id="a8161a26ec065b8c83d2f42637896162c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void on_call </td>
+          <td>(</td>
+          <td class="paramtype">const app_pc&#160;</td>
+          <td class="paramname"><em>ret_to_addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The call handler. </p>
+<p>This function is called whenever a call instruction is about to execute. This function is static for optimization reasons </p>
+
+</div>
+</div>
+<a class="anchor" id="a42c8b67f8f85fd6bad5bd11892c0d5bc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void on_ret </td>
+          <td>(</td>
+          <td class="paramtype">const app_pc&#160;</td>
+          <td class="paramname"><em>instr_addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const app_pc&#160;</td>
+          <td class="paramname"><em>target_addr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The ret handler. </p>
+<p>This function is called whenever a ret instruction is about to execute. This function is static for optimization reasons </p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="a5903d0b282fc5eae503de618f896b5e1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sock = -1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

@@ -20,6 +20,27 @@ void \hyperlink{class_proc_r_c_aa7512c99348dd22dd45e15b575bdd316}{inc} ()
 \begin{DoxyCompactList}\small\item\em This function increments the process reference count Note\+: This function merely wraps the decrement rc function from proc\+\_\+rc with a tod. \end{DoxyCompactList}\item 
 void \hyperlink{class_proc_r_c_adf71fc8726ffb2e26ed424331c12a99b}{dec} ()
 \begin{DoxyCompactList}\small\item\em This function decreases the process reference count. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_proc_r_c_a59f158e2dc9b70a8ef59753db84b81b5}{Proc\+RC} (\hyperlink{class_proc_r_c}{Proc\+RC} \&\&)=delete
+\item 
+\hyperlink{class_proc_r_c_a3b1ea79bd4591511fb1808d36c7493ac}{Proc\+RC} (const \hyperlink{class_proc_r_c}{Proc\+RC} \&)=delete
+\item 
+\hyperlink{class_proc_r_c}{Proc\+RC} \& \hyperlink{class_proc_r_c_a58ddcf9743582319b41fe2bd88e1dbc5}{operator=} (const \hyperlink{class_proc_r_c}{Proc\+RC} \&)=delete
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+boost\+::interprocess\+::interprocess\+\_\+mutex \hyperlink{class_proc_r_c_a546b769a0beb94b946e6d298a50568f5}{rc\+\_\+lock}
+\item 
+\hyperlink{proc__rc_8hpp_a4e61911b35a8dfa15356d5296f46d87a}{prc\+\_\+t} $\ast$const \hyperlink{class_proc_r_c_acf0eb4d339c6f39d5574a9bfa0048e07}{proc\+\_\+rc}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{class_proc_r_c_acccb74d8597ab4b0041ba32ea64ea06d}{setup} = false
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -28,6 +49,20 @@ A class that wraps a process reference counter.
 This class is initalized at startup, so no \textquotesingle{}setup\textquotesingle{} function has to be called 
 
 \subsection{Constructor \& Destructor Documentation}
+\index{Proc\+RC@{Proc\+RC}!Proc\+RC@{Proc\+RC}}
+\index{Proc\+RC@{Proc\+RC}!Proc\+RC@{Proc\+RC}}
+\subsubsection[{\texorpdfstring{Proc\+R\+C(\+Proc\+R\+C \&\&)=delete}{ProcRC(ProcRC &&)=delete}}]{\setlength{\rightskip}{0pt plus 5cm}Proc\+R\+C\+::\+Proc\+RC (
+\begin{DoxyParamCaption}
+\item[{{\bf Proc\+RC} \&\&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}\hypertarget{class_proc_r_c_a59f158e2dc9b70a8ef59753db84b81b5}{}\label{class_proc_r_c_a59f158e2dc9b70a8ef59753db84b81b5}
+\index{Proc\+RC@{Proc\+RC}!Proc\+RC@{Proc\+RC}}
+\index{Proc\+RC@{Proc\+RC}!Proc\+RC@{Proc\+RC}}
+\subsubsection[{\texorpdfstring{Proc\+R\+C(const Proc\+R\+C \&)=delete}{ProcRC(const ProcRC &)=delete}}]{\setlength{\rightskip}{0pt plus 5cm}Proc\+R\+C\+::\+Proc\+RC (
+\begin{DoxyParamCaption}
+\item[{const {\bf Proc\+RC} \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}\hypertarget{class_proc_r_c_a3b1ea79bd4591511fb1808d36c7493ac}{}\label{class_proc_r_c_a3b1ea79bd4591511fb1808d36c7493ac}
 \index{Proc\+RC@{Proc\+RC}!Proc\+RC@{Proc\+RC}}
 \index{Proc\+RC@{Proc\+RC}!Proc\+RC@{Proc\+RC}}
 \subsubsection[{\texorpdfstring{Proc\+R\+C()}{ProcRC()}}]{\setlength{\rightskip}{0pt plus 5cm}Proc\+R\+C\+::\+Proc\+RC (
@@ -75,9 +110,28 @@ If the count hits 0, the group is terminated Note\+: This function merely wraps 
 
 This function increments the process reference count Note\+: This function merely wraps the decrement rc function from proc\+\_\+rc with a tod. 
 
+\index{Proc\+RC@{Proc\+RC}!operator=@{operator=}}
+\index{operator=@{operator=}!Proc\+RC@{Proc\+RC}}
+\subsubsection[{\texorpdfstring{operator=(const Proc\+R\+C \&)=delete}{operator=(const ProcRC &)=delete}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Proc\+RC}\& Proc\+R\+C\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Proc\+RC} \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}\hypertarget{class_proc_r_c_a58ddcf9743582319b41fe2bd88e1dbc5}{}\label{class_proc_r_c_a58ddcf9743582319b41fe2bd88e1dbc5}
+
+
+\subsection{Field Documentation}
+\index{Proc\+RC@{Proc\+RC}!proc\+\_\+rc@{proc\+\_\+rc}}
+\index{proc\+\_\+rc@{proc\+\_\+rc}!Proc\+RC@{Proc\+RC}}
+\subsubsection[{\texorpdfstring{proc\+\_\+rc}{proc_rc}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf prc\+\_\+t}$\ast$ const Proc\+R\+C\+::proc\+\_\+rc\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_proc_r_c_acf0eb4d339c6f39d5574a9bfa0048e07}{}\label{class_proc_r_c_acf0eb4d339c6f39d5574a9bfa0048e07}
+\index{Proc\+RC@{Proc\+RC}!rc\+\_\+lock@{rc\+\_\+lock}}
+\index{rc\+\_\+lock@{rc\+\_\+lock}!Proc\+RC@{Proc\+RC}}
+\subsubsection[{\texorpdfstring{rc\+\_\+lock}{rc_lock}}]{\setlength{\rightskip}{0pt plus 5cm}boost\+::interprocess\+::interprocess\+\_\+mutex Proc\+R\+C\+::rc\+\_\+lock\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_proc_r_c_a546b769a0beb94b946e6d298a50568f5}{}\label{class_proc_r_c_a546b769a0beb94b946e6d298a50568f5}
+\index{Proc\+RC@{Proc\+RC}!setup@{setup}}
+\index{setup@{setup}!Proc\+RC@{Proc\+RC}}
+\subsubsection[{\texorpdfstring{setup}{setup}}]{\setlength{\rightskip}{0pt plus 5cm}bool Proc\+R\+C\+::setup = false\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{class_proc_r_c_acccb74d8597ab4b0041ba32ea64ea06d}{}\label{class_proc_r_c_acccb74d8597ab4b0041ba32ea64ea06d}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 src/\hyperlink{proc__rc_8hpp}{proc\+\_\+rc.\+hpp}\item 
-src/proc\+\_\+rc.\+cpp\end{DoxyCompactItemize}
+src/\hyperlink{proc__rc_8cpp}{proc\+\_\+rc.\+cpp}\end{DoxyCompactItemize}

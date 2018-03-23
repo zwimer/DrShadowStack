@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['log',['log',['../utilities_8hpp.html#a7e53321a2a9460f126a476a89b08107b',1,'Utilities']]],
-  ['log_5ferror',['log_error',['../utilities_8hpp.html#a48952d33b9dc4fba9846dbc7a12df2f1',1,'Utilities']]],
-  ['log_5fno_5fnewline',['log_no_newline',['../utilities_8hpp.html#af31967f218e82230e887a5551e5c2d1e',1,'Utilities']]]
+  ['inc',['inc',['../class_proc_r_c.html#aa7512c99348dd22dd45e15b575bdd316',1,'ProcRC']]],
+  ['is_5fa_5fvalid',['is_a_valid',['../class_message.html#ada73859c8d199a7925b0ba3999cc3eef',1,'Message']]],
+  ['isheaderfile',['IsHeaderFile',['../_8ycm__extra__conf_8py.html#a6bb59f541be0dcbde53eba606d48ddf8',1,'.ycm_extra_conf.py']]]
 ];

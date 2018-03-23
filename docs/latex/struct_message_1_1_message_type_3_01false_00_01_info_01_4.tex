@@ -1,0 +1,86 @@
+\hypertarget{struct_message_1_1_message_type_3_01false_00_01_info_01_4}{}\section{Message\+:\+:Message\+Type$<$ false, Info $>$ Struct Template Reference}
+\label{struct_message_1_1_message_type_3_01false_00_01_info_01_4}\index{Message\+::\+Message\+Type$<$ false, Info $>$@{Message\+::\+Message\+Type$<$ false, Info $>$}}
+
+
+A specification for non-\/header only messages.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_message_1_1_message_type_3_01false_00_01_info_01_4_a04fccf2c4ae16dded9efa697c7f2885f}{Message\+Type} ()=delete
+\begin{DoxyCompactList}\small\item\em Verify the size of the header. \end{DoxyCompactList}\item 
+\hyperlink{struct_message_1_1_message_type_3_01false_00_01_info_01_4_af6312418240388ee671582bb3eb8ba64}{Message\+Type} (const char $\ast$const ptr)
+\begin{DoxyCompactList}\small\item\em The constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{struct_message_1_1_message_type_3_01false_00_01_info_01_4_af9557cb65a7883b01c7cbe30e6211f98}{message} \mbox{[}\hyperlink{struct_message_1_1_message_type_3_01false_00_01_info_01_4_ab1478611666e0b38703dbb0512262d32}{size}\mbox{]}
+\begin{DoxyCompactList}\small\item\em The message an instanation of the class holds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const constexpr int \hyperlink{struct_message_1_1_message_type_3_01false_00_01_info_01_4_ab1478611666e0b38703dbb0512262d32}{size} = \hyperlink{message_8hpp_ac119f42bacd57152815371e9527d1059}{M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+L\+E\+N\+G\+TH} + \hyperlink{message_8hpp_a70eafdf190b8f3be16349543fe1b39ae}{P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE}
+\begin{DoxyCompactList}\small\item\em The size of header only messages. \end{DoxyCompactList}\item 
+static const constexpr char $\ast$const \hyperlink{struct_message_1_1_message_type_3_01false_00_01_info_01_4_a730a261035d54a483f51917c3d4d6e8b}{header} = Info\+::header
+\begin{DoxyCompactList}\small\item\em The header of the message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Info$>$\\*
+struct Message\+::\+Message\+Type$<$ false, Info $>$}
+
+A specification for non-\/header only messages. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Message\+::\+Message\+Type$<$ false, Info $>$@{Message\+::\+Message\+Type$<$ false, Info $>$}!Message\+Type@{Message\+Type}}
+\index{Message\+Type@{Message\+Type}!Message\+::\+Message\+Type$<$ false, Info $>$@{Message\+::\+Message\+Type$<$ false, Info $>$}}
+\subsubsection[{\texorpdfstring{Message\+Type()=delete}{MessageType()=delete}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Info $>$ {\bf Message\+::\+Message\+Type}$<$ false, Info $>$\+::{\bf Message\+Type} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [delete]}}\hypertarget{struct_message_1_1_message_type_3_01false_00_01_info_01_4_a04fccf2c4ae16dded9efa697c7f2885f}{}\label{struct_message_1_1_message_type_3_01false_00_01_info_01_4_a04fccf2c4ae16dded9efa697c7f2885f}
+
+
+Verify the size of the header. 
+
+Delete the default constructor \index{Message\+::\+Message\+Type$<$ false, Info $>$@{Message\+::\+Message\+Type$<$ false, Info $>$}!Message\+Type@{Message\+Type}}
+\index{Message\+Type@{Message\+Type}!Message\+::\+Message\+Type$<$ false, Info $>$@{Message\+::\+Message\+Type$<$ false, Info $>$}}
+\subsubsection[{\texorpdfstring{Message\+Type(const char $\ast$const ptr)}{MessageType(const char *const ptr)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Info $>$ {\bf Message\+::\+Message\+Type}$<$ false, Info $>$\+::{\bf Message\+Type} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$const}]{ptr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}\hypertarget{struct_message_1_1_message_type_3_01false_00_01_info_01_4_af6312418240388ee671582bb3eb8ba64}{}\label{struct_message_1_1_message_type_3_01false_00_01_info_01_4_af6312418240388ee671582bb3eb8ba64}
+
+
+The constructor. 
+
+
+
+\subsection{Field Documentation}
+\index{Message\+::\+Message\+Type$<$ false, Info $>$@{Message\+::\+Message\+Type$<$ false, Info $>$}!header@{header}}
+\index{header@{header}!Message\+::\+Message\+Type$<$ false, Info $>$@{Message\+::\+Message\+Type$<$ false, Info $>$}}
+\subsubsection[{\texorpdfstring{header}{header}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Info $>$ const constexpr char$\ast$ const {\bf Message\+::\+Message\+Type}$<$ false, Info $>$\+::header = Info\+::header\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{struct_message_1_1_message_type_3_01false_00_01_info_01_4_a730a261035d54a483f51917c3d4d6e8b}{}\label{struct_message_1_1_message_type_3_01false_00_01_info_01_4_a730a261035d54a483f51917c3d4d6e8b}
+
+
+The header of the message. 
+
+\index{Message\+::\+Message\+Type$<$ false, Info $>$@{Message\+::\+Message\+Type$<$ false, Info $>$}!message@{message}}
+\index{message@{message}!Message\+::\+Message\+Type$<$ false, Info $>$@{Message\+::\+Message\+Type$<$ false, Info $>$}}
+\subsubsection[{\texorpdfstring{message}{message}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Info $>$ char {\bf Message\+::\+Message\+Type}$<$ false, Info $>$\+::message\mbox{[}{\bf size}\mbox{]}}\hypertarget{struct_message_1_1_message_type_3_01false_00_01_info_01_4_af9557cb65a7883b01c7cbe30e6211f98}{}\label{struct_message_1_1_message_type_3_01false_00_01_info_01_4_af9557cb65a7883b01c7cbe30e6211f98}
+
+
+The message an instanation of the class holds. 
+
+\index{Message\+::\+Message\+Type$<$ false, Info $>$@{Message\+::\+Message\+Type$<$ false, Info $>$}!size@{size}}
+\index{size@{size}!Message\+::\+Message\+Type$<$ false, Info $>$@{Message\+::\+Message\+Type$<$ false, Info $>$}}
+\subsubsection[{\texorpdfstring{size}{size}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Info $>$ const constexpr int {\bf Message\+::\+Message\+Type}$<$ false, Info $>$\+::size = {\bf M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+L\+E\+N\+G\+TH} + {\bf P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{struct_message_1_1_message_type_3_01false_00_01_info_01_4_ab1478611666e0b38703dbb0512262d32}{}\label{struct_message_1_1_message_type_3_01false_00_01_info_01_4_ab1478611666e0b38703dbb0512262d32}
+
+
+The size of header only messages. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{message_8hpp}{message.\+hpp}\end{DoxyCompactItemize}

@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -84,7 +85,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pub-static-attribs">Static Public Attributes</a>  </div>
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">Group Struct Reference</div>  </div>
 </div><!--header-->
@@ -112,6 +114,12 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:a737564dd9819ea8050f6f3019c550da2"><td class="memItemLeft" align="right" valign="top">static void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_group.html#a737564dd9819ea8050f6f3019c550da2">delete_proc_rc</a> )() = nullptr</td></tr>
 <tr class="memdesc:a737564dd9819ea8050f6f3019c550da2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The recorded callback to the proc_rc destructor.  <a href="#a737564dd9819ea8050f6f3019c550da2">More...</a><br /></td></tr>
 <tr class="separator:a737564dd9819ea8050f6f3019c550da2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a35632ca452cfe09fbf723539cd264f58"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_group.html#a35632ca452cfe09fbf723539cd264f58">setup_complete</a> = false</td></tr>
+<tr class="memdesc:a35632ca452cfe09fbf723539cd264f58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to tell if the process group has started.  <a href="#a35632ca452cfe09fbf723539cd264f58">More...</a><br /></td></tr>
+<tr class="separator:a35632ca452cfe09fbf723539cd264f58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A static class holding the group functions. </p>
@@ -139,7 +147,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Registers the proc_rc destructor. </p>
-<p>This function exists as group.cpp may NOT include <a class="el" href="proc__rc_8hpp.html">proc_rc.hpp</a>, as <a class="el" href="proc__rc_8hpp.html">proc_rc.hpp</a> generally uses pthreads internally. DynamoRIO does not play nice with pthreads. Thus to free allocated memory, a callback registration is required </p>
+<p>This function exists as <a class="el" href="group_8cpp.html">group.cpp</a> may NOT include <a class="el" href="proc__rc_8hpp.html">proc_rc.hpp</a>, as <a class="el" href="proc__rc_8hpp.html">proc_rc.hpp</a> generally uses pthreads internally. DynamoRIO does not play nice with pthreads. Thus to free allocated memory, a callback registration is required </p>
 
 </div>
 </div>
@@ -202,7 +210,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Terminates the process group via SIGKILL. </p>
-<p>Frees shared memeory via delete_proc_rc If is_error is set to true, msg is logged to the ERROR file, otherwise it is logged via Utilities::message If msg is nullptr, no message is passed. If this function ends up calling itself, immediate process group termination will occur </p>
+<p>Frees shared memeory via delete_proc_rc If is_error is set to true, msg is logged to the ERROR file, otherwise it is logged via <a class="el" href="namespace_utilities.html#a0e46f2da74b1069eb9df671efed9180d" title="Prints the arguments as printf would to the STDOUT_FILE file. ">Utilities::message</a> If msg is nullptr, no message is passed. If this function ends up calling itself, immediate process group termination will occur </p>
 
 </div>
 </div>
@@ -229,9 +237,31 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a35632ca452cfe09fbf723539cd264f58"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Group::setup_complete = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Used to tell if the process group has started. </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following files:<ul>
 <li>src/<a class="el" href="group_8hpp_source.html">group.hpp</a></li>
-<li>src/group.cpp</li>
+<li>src/<a class="el" href="group_8cpp.html">group.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -83,7 +84,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">ProcRC Class Reference</div>  </div>
 </div><!--header-->
@@ -108,11 +112,80 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adf71fc8726ffb2e26ed424331c12a99b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_proc_r_c.html#adf71fc8726ffb2e26ed424331c12a99b">dec</a> ()</td></tr>
 <tr class="memdesc:adf71fc8726ffb2e26ed424331c12a99b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function decreases the process reference count.  <a href="#adf71fc8726ffb2e26ed424331c12a99b">More...</a><br /></td></tr>
 <tr class="separator:adf71fc8726ffb2e26ed424331c12a99b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a59f158e2dc9b70a8ef59753db84b81b5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_proc_r_c.html#a59f158e2dc9b70a8ef59753db84b81b5">ProcRC</a> (<a class="el" href="class_proc_r_c.html">ProcRC</a> &amp;&amp;)=delete</td></tr>
+<tr class="separator:a59f158e2dc9b70a8ef59753db84b81b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b1ea79bd4591511fb1808d36c7493ac"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_proc_r_c.html#a3b1ea79bd4591511fb1808d36c7493ac">ProcRC</a> (const <a class="el" href="class_proc_r_c.html">ProcRC</a> &amp;)=delete</td></tr>
+<tr class="separator:a3b1ea79bd4591511fb1808d36c7493ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58ddcf9743582319b41fe2bd88e1dbc5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_proc_r_c.html">ProcRC</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_proc_r_c.html#a58ddcf9743582319b41fe2bd88e1dbc5">operator=</a> (const <a class="el" href="class_proc_r_c.html">ProcRC</a> &amp;)=delete</td></tr>
+<tr class="separator:a58ddcf9743582319b41fe2bd88e1dbc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a546b769a0beb94b946e6d298a50568f5"><td class="memItemLeft" align="right" valign="top">boost::interprocess::interprocess_mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_proc_r_c.html#a546b769a0beb94b946e6d298a50568f5">rc_lock</a></td></tr>
+<tr class="separator:a546b769a0beb94b946e6d298a50568f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf0eb4d339c6f39d5574a9bfa0048e07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="proc__rc_8hpp.html#a4e61911b35a8dfa15356d5296f46d87a">prc_t</a> *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_proc_r_c.html#acf0eb4d339c6f39d5574a9bfa0048e07">proc_rc</a></td></tr>
+<tr class="separator:acf0eb4d339c6f39d5574a9bfa0048e07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:acccb74d8597ab4b0041ba32ea64ea06d"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_proc_r_c.html#acccb74d8597ab4b0041ba32ea64ea06d">setup</a> = false</td></tr>
+<tr class="separator:acccb74d8597ab4b0041ba32ea64ea06d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A class that wraps a process reference counter. </p>
 <p>This class is initalized at startup, so no 'setup' function has to be called </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a59f158e2dc9b70a8ef59753db84b81b5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ProcRC::ProcRC </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_proc_r_c.html">ProcRC</a> &amp;&amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a3b1ea79bd4591511fb1808d36c7493ac"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ProcRC::ProcRC </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_proc_r_c.html">ProcRC</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="aaf90e0e0b95504fda9089c6658fab53f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -185,9 +258,94 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a58ddcf9743582319b41fe2bd88e1dbc5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_proc_r_c.html">ProcRC</a>&amp; ProcRC::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_proc_r_c.html">ProcRC</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Field Documentation</h2>
+<a class="anchor" id="acf0eb4d339c6f39d5574a9bfa0048e07"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="proc__rc_8hpp.html#a4e61911b35a8dfa15356d5296f46d87a">prc_t</a>* const ProcRC::proc_rc</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a546b769a0beb94b946e6d298a50568f5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boost::interprocess::interprocess_mutex ProcRC::rc_lock</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="acccb74d8597ab4b0041ba32ea64ea06d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ProcRC::setup = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="proc__rc_8hpp_source.html">proc_rc.hpp</a></li>
-<li>src/proc_rc.cpp</li>
+<li>src/<a class="el" href="proc__rc_8cpp.html">proc_rc.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

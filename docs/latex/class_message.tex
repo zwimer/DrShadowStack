@@ -9,14 +9,29 @@ A class used for defining all message types.
 
 {\ttfamily \#include $<$message.\+hpp$>$}
 
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_message_1_1_call_info}{Call\+Info}
+\begin{DoxyCompactList}\small\item\em A class containing the header of Call message. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_message_1_1_continue_info}{Continue\+Info}
+\begin{DoxyCompactList}\small\item\em A class containing the header of Continue message. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_message_1_1_message_type}{Message\+Type}
+\begin{DoxyCompactList}\small\item\em A templated message class A valid message is defined by constructing a \hyperlink{struct_message_1_1_message_type}{Message\+Type} around it. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_message_1_1_message_type_3_01false_00_01_info_01_4}{Message\+Type$<$ false, Info $>$}
+\begin{DoxyCompactList}\small\item\em A specification for non-\/header only messages. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_message_1_1_message_type_3_01true_00_01_info_01_4}{Message\+Type$<$ true, Info $>$}
+\begin{DoxyCompactList}\small\item\em A specification for header only messages. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_message_1_1_ret_info}{Ret\+Info}
+\begin{DoxyCompactList}\small\item\em A class containing the header of Call message. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-typedef Message\+Type$<$ true, Continue\+Info $>$ \hyperlink{class_message_a04de61b84a209cdf372b6f53f3adf7c4}{Continue}
+typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ true, \hyperlink{struct_message_1_1_continue_info}{Continue\+Info} $>$ \hyperlink{class_message_a04de61b84a209cdf372b6f53f3adf7c4}{Continue}
 \begin{DoxyCompactList}\small\item\em A typedef for the continue message. \end{DoxyCompactList}\item 
-typedef Message\+Type$<$ false, Call\+Info $>$ \hyperlink{class_message_a0fd0ed431cb0d672045d09368a5d2126}{Call}
+typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ false, \hyperlink{struct_message_1_1_call_info}{Call\+Info} $>$ \hyperlink{class_message_a0fd0ed431cb0d672045d09368a5d2126}{Call}
 \begin{DoxyCompactList}\small\item\em A typedef for the call message. \end{DoxyCompactList}\item 
-typedef Message\+Type$<$ false, Ret\+Info $>$ \hyperlink{class_message_a146628035f5a0723cb04f7a328858e34}{Ret}
+typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ false, \hyperlink{struct_message_1_1_ret_info}{Ret\+Info} $>$ \hyperlink{class_message_a146628035f5a0723cb04f7a328858e34}{Ret}
 \begin{DoxyCompactList}\small\item\em A typedef for the ret message. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -33,21 +48,21 @@ Messages come in two forms. Ones that are only headers, and ones that pass a poi
 \subsection{Member Typedef Documentation}
 \index{Message@{Message}!Call@{Call}}
 \index{Call@{Call}!Message@{Message}}
-\subsubsection[{\texorpdfstring{Call}{Call}}]{\setlength{\rightskip}{0pt plus 5cm}typedef Message\+Type$<$false, Call\+Info$>$ {\bf Message\+::\+Call}}\hypertarget{class_message_a0fd0ed431cb0d672045d09368a5d2126}{}\label{class_message_a0fd0ed431cb0d672045d09368a5d2126}
+\subsubsection[{\texorpdfstring{Call}{Call}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Message\+Type}$<$false, {\bf Call\+Info}$>$ {\bf Message\+::\+Call}}\hypertarget{class_message_a0fd0ed431cb0d672045d09368a5d2126}{}\label{class_message_a0fd0ed431cb0d672045d09368a5d2126}
 
 
 A typedef for the call message. 
 
 \index{Message@{Message}!Continue@{Continue}}
 \index{Continue@{Continue}!Message@{Message}}
-\subsubsection[{\texorpdfstring{Continue}{Continue}}]{\setlength{\rightskip}{0pt plus 5cm}typedef Message\+Type$<$true, Continue\+Info$>$ {\bf Message\+::\+Continue}}\hypertarget{class_message_a04de61b84a209cdf372b6f53f3adf7c4}{}\label{class_message_a04de61b84a209cdf372b6f53f3adf7c4}
+\subsubsection[{\texorpdfstring{Continue}{Continue}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Message\+Type}$<$true, {\bf Continue\+Info}$>$ {\bf Message\+::\+Continue}}\hypertarget{class_message_a04de61b84a209cdf372b6f53f3adf7c4}{}\label{class_message_a04de61b84a209cdf372b6f53f3adf7c4}
 
 
 A typedef for the continue message. 
 
 \index{Message@{Message}!Ret@{Ret}}
 \index{Ret@{Ret}!Message@{Message}}
-\subsubsection[{\texorpdfstring{Ret}{Ret}}]{\setlength{\rightskip}{0pt plus 5cm}typedef Message\+Type$<$false, Ret\+Info$>$ {\bf Message\+::\+Ret}}\hypertarget{class_message_a146628035f5a0723cb04f7a328858e34}{}\label{class_message_a146628035f5a0723cb04f7a328858e34}
+\subsubsection[{\texorpdfstring{Ret}{Ret}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Message\+Type}$<$false, {\bf Ret\+Info}$>$ {\bf Message\+::\+Ret}}\hypertarget{class_message_a146628035f5a0723cb04f7a328858e34}{}\label{class_message_a146628035f5a0723cb04f7a328858e34}
 
 
 A typedef for the ret message. 
