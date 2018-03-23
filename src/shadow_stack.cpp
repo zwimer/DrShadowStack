@@ -1,6 +1,7 @@
 #include "shadow_stack.hpp"
 #include "stack_server.hpp"
 #include "quick_socket.hpp"
+#include "constants.hpp"
 #include "utilities.hpp"
 #include "get_tid.hpp"
 #include "group.hpp"
@@ -8,24 +9,26 @@
 #include <unistd.h>
 #include <signal.h>
 #include <string.h>
+#include <sstream>
 #include <random>
 #include <vector>
 #include <string>
 
 
 // Start's the program passed in via drrun
-void start_program( char * drrun, char * a_out,
-					char ** client_argv, char * socket_path ) {
+void start_program( char * drrun, char * a_out, char ** client_argv,
+					const char * const mode, char * socket_path ) {
 
 	// Construct args to give to exec
 	std::vector<const char *> args;
-
+	
 	// Drrun a client
 	args.push_back(drrun);
 	args.push_back("-c");
 
 	// ShadowStack dynamorio client + args
 	args.push_back(DYNAMORIO_CLIENT_SO);
+	args.push_back(mode);
 	args.push_back(socket_path);
 
 	// Specify target a.out
@@ -103,9 +106,14 @@ std::string temp_name() {
 int main(int argc, char * argv[]) {
 
 	// TODO: use actual arg parser
-	if ( argc < 3 ) {
+	if ( argc < 4 || (
+		( strcmp(argv[1], INTERNAL_MODE_FLAG) != 0 ) &&
+		( strcmp(argv[1], EXTERNAL_MODE_FLAG) != 0 ) ) ) {
 		Utilities::log_error("Incorrect usage");
-		Utilities::message("Usage: ./" PROGRAM_NAME ".out <drrun> <a.out> ...");
+		Utilities::message("Usage: ./" PROGRAM_NAME ".out <Mode> <drrun> <a.out> ...");
+		Utilities::message("Mode options:");
+		Utilities::message("\t" INTERNAL_MODE_FLAG " -- internal shadow stack mode");
+		Utilities::message("\t" EXTERNAL_MODE_FLAG " -- external shadow stack mode");
 		exit(EXIT_FAILURE);
 	}
 
@@ -140,7 +148,8 @@ int main(int argc, char * argv[]) {
 	// start the program to be protected
 	if (pid == 0) {
 		Utilities::log("%llu: Forming drrun args...", get_tid());
-		start_program( argv[1], argv[2], & argv[3], (char *) server_name.c_str());
+		start_program( argv[2], argv[3], & argv[4], argv[1],
+						(char *) server_name.c_str() );
 	}
 
 	// Otherwise, this is the parent process
