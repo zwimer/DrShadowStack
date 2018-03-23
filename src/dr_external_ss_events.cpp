@@ -1,24 +1,22 @@
-/** @file */
+#include"dr_external_ss_events.hpp"
 #include "quick_socket.hpp"
 #include "utilities.hpp"
 #include "get_tid.hpp"
 #include "message.hpp"
 
-#include "dr_api.h"
 #include "drmgr.h"
 
 #include <sys/socket.h>
 #include <unistd.h>
-#include <string.h>
-#include <string>
+
 
 // The socket to be used by this client
 static int sock = -1;
 
 
-/// The call handler. 
-/** This function is called whenever a call instruction is about 
- *  to execute. This function is static for optimization reasons */
+// The call handler. 
+// This function is called whenever a call instruction is about 
+// to execute. This function is static for optimization reasons */
 static void on_call(const app_pc ret_to_addr) {
 
 	// Log the call
@@ -30,9 +28,9 @@ static void on_call(const app_pc ret_to_addr) {
 	Utilities::assert( bytes_sent == to_send.size, "write() failed!");
 }
 
-/// The ret handler. 
-/** This function is called whenever a ret instruction is about 
- *  to execute. This function is static for optimization reasons */
+// The ret handler. 
+// This function is called whenever a ret instruction is about 
+// to execute. This function is static for optimization reasons */
 static void on_ret(const app_pc instr_addr, const app_pc target_addr) {
 
 	// Log the ret
@@ -54,14 +52,15 @@ static void on_ret(const app_pc instr_addr, const app_pc target_addr) {
 	Utilities::assert( is_continue(buffer), "Received incorrect message!");
 }
 
-/// The function that inserts the call and ret handlers
-/** Whenever a new basic block is seen, this function will be
- *  called once for each instruction in it. If either a call
- *  or a ret is seen, the call and ret handlers are inserted 
- *  before said instruction. Note: an app_pc is defined in comments */
-static dr_emit_flags_t event_app_instruction(void *drcontext, void *tag, 
-			instrlist_t *bb, instr_t *instr, bool for_trace, 
-			bool translating, void *user_data) {
+// The function that inserts the call and ret handlers
+// Whenever a new basic block is seen, this function will be
+// called once for each instruction in it. If either a call
+// or a ret is seen, the call and ret handlers are inserted 
+// before said instruction. Note: an app_pc is defined in comments
+dr_emit_flags_t ExternalSS::event_app_instruction(	void *drcontext, void *tag, 
+													instrlist_t *bb, instr_t *instr, 
+													bool for_trace, bool translating, 
+													void *user_data ) {
 
 	// Concerning DynamoRIO's app_pc type. From their source"
 	// include/dr_defines.h:typedef byte * app_pc;
@@ -90,29 +89,10 @@ static dr_emit_flags_t event_app_instruction(void *drcontext, void *tag,
     return DR_EMIT_DEFAULT;
 }
 
-
-/// The main client function
-/** This function dynamically 'injects' the shadow stack */
-DR_EXPORT void dr_client_main(client_id_t id, int argc, const char *argv[]) {	
-
-	// TODO: use arg parser
-	Utilities::message("DynamoRIO client started");
-	Utilities::assert(argc == 2, "Incorrect usage. Dr_client_main expects 1 argument"
-								 " which gives the unix domain socket to connect to.");
-
-	// Setup the client
-    dr_set_client_name( "ShadowStack DynamoRIO Client 'ShadowStack'", 
-						"http://github.com/zwimer/ShadowStack");
-    drmgr_init();
-
-    // Register events
-    dr_register_exit_event(drmgr_exit);
-    drmgr_register_bb_instrumentation_event(NULL, event_app_instruction, NULL);
-
-    // Make it easy to tell, by looking at log file, which client executed
-    dr_log(NULL, DR_LOG_ALL, 1, "Client 'ShadowStack' initializing\n");
+// Setup the external stack server for the DynamoRIO client
+void ExternalSS::setup(const char * const socket_path) {
 
 	// Create the socket to be used
-	Utilities::log("Client connecting to %s", argv[1]);
-	sock = QS::create_client(argv[1]);
+	Utilities::log("Client connecting to %s", socket_path);
+	sock = QS::create_client(socket_path);
 }
