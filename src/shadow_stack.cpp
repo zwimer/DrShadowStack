@@ -124,7 +124,6 @@ int main(int argc, char * argv[]) {
 	// server starting, the file could have been created.
 	// However, this is safe as the program will crash if so
 	const std::string server_name = temp_name();
-Utilities::log_error("TE");
 	const int sock = QS::create_server(server_name.c_str());
 
 	// Just in case an exception occurs, setup a class
