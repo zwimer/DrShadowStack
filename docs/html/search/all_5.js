@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['header',['header',['../struct_message_1_1_continue.html#a8eed2969a7f8e9948895fd5e94fbb0cb',1,'Message::Continue::header()'],['../struct_message_1_1_call.html#a427081a597bd456028e49ab2101d6252',1,'Message::Call::header()'],['../struct_message_1_1_ret.html#a6908dbbd65bf63cfacca0d8d6e269216',1,'Message::Ret::header()']]]
+  ['inc',['inc',['../class_proc_r_c.html#aa7512c99348dd22dd45e15b575bdd316',1,'ProcRC']]],
+  ['is_5fa_5fvalid',['is_a_valid',['../class_message.html#ada73859c8d199a7925b0ba3999cc3eef',1,'Message']]]
 ];

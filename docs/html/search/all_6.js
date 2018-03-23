@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['inc',['inc',['../class_proc_r_c.html#aa7512c99348dd22dd45e15b575bdd316',1,'ProcRC']]],
-  ['is_5fa_5fvalid',['is_a_valid',['../namespace_message.html#a08d82d21aa4077ca6657a140fe8ff693',1,'Message']]]
+  ['log',['log',['../utilities_8hpp.html#a7e53321a2a9460f126a476a89b08107b',1,'Utilities']]],
+  ['log_5ferror',['log_error',['../utilities_8hpp.html#a48952d33b9dc4fba9846dbc7a12df2f1',1,'Utilities']]],
+  ['log_5fno_5fnewline',['log_no_newline',['../utilities_8hpp.html#af31967f218e82230e887a5551e5c2d1e',1,'Utilities']]]
 ];

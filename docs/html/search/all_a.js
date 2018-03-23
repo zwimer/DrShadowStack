@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['quick_5fsocket_2ehpp',['quick_socket.hpp',['../quick__socket_8hpp.html',1,'']]]
+  ['register_5fdelete_5fproc_5frc',['register_delete_proc_rc',['../struct_group.html#a2db75d95407105dceb19a644750d001d',1,'Group']]],
+  ['ret',['Ret',['../class_message.html#a146628035f5a0723cb04f7a328858e34',1,'Message']]]
 ];
