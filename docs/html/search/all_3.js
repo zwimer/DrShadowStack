@@ -4,6 +4,9 @@ var searchData=
   ['err',['err',['../namespace_utilities.html#a5308da50597c93aad2b1ca2ecfbcb723',1,'Utilities']]],
   ['error_5ffile',['ERROR_FILE',['../constants_8hpp.html#a9fdff3d78b754d4b831816d0560dbb57',1,'constants.hpp']]],
   ['event_5fapp_5finstruction',['event_app_instruction',['../namespace_external_s_s.html#a20e2ed7203e7e62d060cd8e020016c69',1,'ExternalSS::event_app_instruction()'],['../namespace_internal_s_s.html#af5fff02fcf86ee0fd0134fc412c128bc',1,'InternalSS::event_app_instruction()']]],
+  ['exit_5fevent',['exit_event',['../namespace_external_s_s.html#ad7eae72b68a78913eb9e92f19cd53868',1,'ExternalSS::exit_event()'],['../namespace_internal_s_s.html#a20eb78818d452ee5e8d96e2b39a8f323',1,'InternalSS::exit_event()']]],
   ['external_5fmode_5fflag',['EXTERNAL_MODE_FLAG',['../constants_8hpp.html#aa6133cd9d000001b3955f86cb54a6c95',1,'constants.hpp']]],
+  ['external_5fstack_5fserver_2ecpp',['external_stack_server.cpp',['../external__stack__server_8cpp.html',1,'']]],
+  ['external_5fstack_5fserver_2ehpp',['external_stack_server.hpp',['../external__stack__server_8hpp.html',1,'']]],
   ['externalss',['ExternalSS',['../namespace_external_s_s.html',1,'']]]
 ];

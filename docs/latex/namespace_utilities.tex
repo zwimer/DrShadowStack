@@ -9,12 +9,12 @@ void \hyperlink{namespace_utilities_a22c85a2970e168ca0b9ad6fd86752792}{assert} (
 \begin{DoxyCompactList}\small\item\em assert b, if false call program\+\_\+err(s) \end{DoxyCompactList}\item 
 void \hyperlink{namespace_utilities_af31967f218e82230e887a5551e5c2d1e}{log\+\_\+no\+\_\+newline} (const char $\ast$const format,...)
 \begin{DoxyCompactList}\small\item\em Logs the arguments as printf would to the log file. \end{DoxyCompactList}\item 
-void \hyperlink{namespace_utilities_a0e46f2da74b1069eb9df671efed9180d}{message} (const char $\ast$const format,...)
-\begin{DoxyCompactList}\small\item\em Prints the arguments as printf would to the S\+T\+D\+O\+U\+T\+\_\+\+F\+I\+LE file. \end{DoxyCompactList}\item 
 void \hyperlink{namespace_utilities_a7e53321a2a9460f126a476a89b08107b}{log} (const char $\ast$const format,...)
 \begin{DoxyCompactList}\small\item\em Logs the arguments as printf would to the log file. \end{DoxyCompactList}\item 
+void \hyperlink{namespace_utilities_a0e46f2da74b1069eb9df671efed9180d}{message} (const char $\ast$const format,...)
+\begin{DoxyCompactList}\small\item\em Prints the arguments as printf would to the stdout and log files. \end{DoxyCompactList}\item 
 void \hyperlink{namespace_utilities_a48952d33b9dc4fba9846dbc7a12df2f1}{log\+\_\+error} (const char $\ast$const format,...)
-\begin{DoxyCompactList}\small\item\em Logs the arguments as printf would to the error, log, and stdout files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Logs the arguments as printf would to the error, and log files. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
@@ -63,9 +63,9 @@ Ends the printed line with a newline then flushes the buffer If L\+O\+G\+\_\+\+F
 )}\hypertarget{namespace_utilities_a48952d33b9dc4fba9846dbc7a12df2f1}{}\label{namespace_utilities_a48952d33b9dc4fba9846dbc7a12df2f1}
 
 
-Logs the arguments as printf would to the error, log, and stdout files. 
+Logs the arguments as printf would to the error, and log files. 
 
-Ends the printed line with a newline then flushes the buffer If any of S\+T\+D\+O\+UT, L\+O\+G\+\_\+\+F\+I\+LE, E\+R\+R\+O\+R\+\_\+\+F\+I\+LE are the same, only prints once If either file is nullptr, that file is skipped This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure \index{Utilities@{Utilities}!log\+\_\+no\+\_\+newline@{log\+\_\+no\+\_\+newline}}
+Ends the printed line with a newline then flushes the buffer If either file is nullptr, that file is skipped This function does N\+OT print to S\+T\+D\+O\+U\+T\+\_\+\+F\+I\+LE This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure \index{Utilities@{Utilities}!log\+\_\+no\+\_\+newline@{log\+\_\+no\+\_\+newline}}
 \index{log\+\_\+no\+\_\+newline@{log\+\_\+no\+\_\+newline}!Utilities@{Utilities}}
 \subsubsection[{\texorpdfstring{log\+\_\+no\+\_\+newline(const char $\ast$const format,...)}{log_no_newline(const char *const format,...)}}]{\setlength{\rightskip}{0pt plus 5cm}void Utilities\+::log\+\_\+no\+\_\+newline (
 \begin{DoxyParamCaption}
@@ -87,6 +87,6 @@ This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure \index{Utilities
 )}\hypertarget{namespace_utilities_a0e46f2da74b1069eb9df671efed9180d}{}\label{namespace_utilities_a0e46f2da74b1069eb9df671efed9180d}
 
 
-Prints the arguments as printf would to the S\+T\+D\+O\+U\+T\+\_\+\+F\+I\+LE file. 
+Prints the arguments as printf would to the stdout and log files. 
 
 Ends the printed line with a newline then flushes the buffer If S\+T\+D\+O\+U\+T\+\_\+\+F\+I\+LE is nullptr, this function does nothing This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure 

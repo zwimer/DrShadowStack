@@ -100,21 +100,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a55bbcf5179640df5d0c10b9677a19370"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="constants_8hpp.html#a55bbcf5179640df5d0c10b9677a19370">DYNAMORIO_CLIENT_SO</a>&#160;&#160;&#160;&quot;/path/to/.so/&quot;</td></tr>
+<tr class="memdesc:a55bbcf5179640df5d0c10b9677a19370"><td class="mdescLeft">&#160;</td><td class="mdescRight">The .so of the shadow stack DynamoRIO client.  <a href="#a55bbcf5179640df5d0c10b9677a19370">More...</a><br /></td></tr>
 <tr class="separator:a55bbcf5179640df5d0c10b9677a19370"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b6a35b8be8405a9db72cc5dea97954b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="constants_8hpp.html#a3b6a35b8be8405a9db72cc5dea97954b">PROGRAM_NAME</a>&#160;&#160;&#160;&quot;SatisfyTheIDECompiler&quot;</td></tr>
+<tr class="memdesc:a3b6a35b8be8405a9db72cc5dea97954b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The name of the program.  <a href="#a3b6a35b8be8405a9db72cc5dea97954b">More...</a><br /></td></tr>
 <tr class="separator:a3b6a35b8be8405a9db72cc5dea97954b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69d4676733f5e850f451942b6d901382"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="constants_8hpp.html#a69d4676733f5e850f451942b6d901382">LOG_FILE</a>&#160;&#160;&#160;nullptr</td></tr>
+<tr class="memdesc:a69d4676733f5e850f451942b6d901382"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default log file.  <a href="#a69d4676733f5e850f451942b6d901382">More...</a><br /></td></tr>
+<tr class="separator:a69d4676733f5e850f451942b6d901382"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a195ca3987a60992c5abfc663cd37151d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="constants_8hpp.html#a195ca3987a60992c5abfc663cd37151d">STDOUT_FILE</a>&#160;&#160;&#160;stdout</td></tr>
-<tr class="memdesc:a195ca3987a60992c5abfc663cd37151d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default stdout This fill may be nullptr, but may not be NULL.  <a href="#a195ca3987a60992c5abfc663cd37151d">More...</a><br /></td></tr>
+<tr class="memdesc:a195ca3987a60992c5abfc663cd37151d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default stdout.  <a href="#a195ca3987a60992c5abfc663cd37151d">More...</a><br /></td></tr>
 <tr class="separator:a195ca3987a60992c5abfc663cd37151d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9fdff3d78b754d4b831816d0560dbb57"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="constants_8hpp.html#a9fdff3d78b754d4b831816d0560dbb57">ERROR_FILE</a>&#160;&#160;&#160;stderr</td></tr>
-<tr class="memdesc:a9fdff3d78b754d4b831816d0560dbb57"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default error log file (important events are also noted here) This fill may be nullptr, but may not be NULL.  <a href="#a9fdff3d78b754d4b831816d0560dbb57">More...</a><br /></td></tr>
+<tr class="memdesc:a9fdff3d78b754d4b831816d0560dbb57"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default error log file (important events are also noted here)  <a href="#a9fdff3d78b754d4b831816d0560dbb57">More...</a><br /></td></tr>
 <tr class="separator:a9fdff3d78b754d4b831816d0560dbb57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acba5ef390db17aaf1fb8f323e10a264e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="constants_8hpp.html#acba5ef390db17aaf1fb8f323e10a264e">INTERNAL_MODE_FLAG</a>&#160;&#160;&#160;&quot;int&quot;</td></tr>
+<tr class="memitem:a4cbe5f7a62c763a0b09c112f98d43623"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="constants_8hpp.html#a4cbe5f7a62c763a0b09c112f98d43623">MAX_CALL_DEPTH</a>&#160;&#160;&#160;(1000 * sizeof(void *) * 4096)</td></tr>
+<tr class="memdesc:a4cbe5f7a62c763a0b09c112f98d43623"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max internal shadow stack size.  <a href="#a4cbe5f7a62c763a0b09c112f98d43623">More...</a><br /></td></tr>
+<tr class="separator:a4cbe5f7a62c763a0b09c112f98d43623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acba5ef390db17aaf1fb8f323e10a264e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="constants_8hpp.html#acba5ef390db17aaf1fb8f323e10a264e">INTERNAL_MODE_FLAG</a>&#160;&#160;&#160;&quot;-int&quot;</td></tr>
 <tr class="memdesc:acba5ef390db17aaf1fb8f323e10a264e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The flag that must be passed to invoke internal mode.  <a href="#acba5ef390db17aaf1fb8f323e10a264e">More...</a><br /></td></tr>
 <tr class="separator:acba5ef390db17aaf1fb8f323e10a264e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6133cd9d000001b3955f86cb54a6c95"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="constants_8hpp.html#aa6133cd9d000001b3955f86cb54a6c95">EXTERNAL_MODE_FLAG</a>&#160;&#160;&#160;&quot;ext&quot;</td></tr>
+<tr class="memitem:aa6133cd9d000001b3955f86cb54a6c95"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="constants_8hpp.html#aa6133cd9d000001b3955f86cb54a6c95">EXTERNAL_MODE_FLAG</a>&#160;&#160;&#160;&quot;-ext&quot;</td></tr>
 <tr class="memdesc:aa6133cd9d000001b3955f86cb54a6c95"><td class="mdescLeft">&#160;</td><td class="mdescRight">The flag that must be passed to invoke external mode.  <a href="#aa6133cd9d000001b3955f86cb54a6c95">More...</a><br /></td></tr>
 <tr class="separator:aa6133cd9d000001b3955f86cb54a6c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a81f4649f430c0018713540b8b8678b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="constants_8hpp.html#a9a81f4649f430c0018713540b8b8678b">WILDCARD</a>&#160;&#160;&#160;( -1 )</td></tr>
+<tr class="memdesc:a9a81f4649f430c0018713540b8b8678b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verify the modes are not equal.  <a href="#a9a81f4649f430c0018713540b8b8678b">More...</a><br /></td></tr>
+<tr class="separator:a9a81f4649f430c0018713540b8b8678b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -133,6 +144,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>The .so of the shadow stack DynamoRIO client. </p>
+<p>This should be defined by the cmake on compilation </p>
+
 </div>
 </div>
 <a class="anchor" id="a9fdff3d78b754d4b831816d0560dbb57"></a>
@@ -145,7 +159,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The default error log file (important events are also noted here) This fill may be nullptr, but may not be NULL. </p>
+<p>The default error log file (important events are also noted here) </p>
+<p>This fill may be nullptr, but may not be NULL </p>
 
 </div>
 </div>
@@ -154,7 +169,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define EXTERNAL_MODE_FLAG&#160;&#160;&#160;&quot;ext&quot;</td>
+          <td class="memname">#define EXTERNAL_MODE_FLAG&#160;&#160;&#160;&quot;-ext&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -168,12 +183,41 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define INTERNAL_MODE_FLAG&#160;&#160;&#160;&quot;int&quot;</td>
+          <td class="memname">#define INTERNAL_MODE_FLAG&#160;&#160;&#160;&quot;-int&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>The flag that must be passed to invoke internal mode. </p>
+
+</div>
+</div>
+<a class="anchor" id="a69d4676733f5e850f451942b6d901382"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_FILE&#160;&#160;&#160;nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The default log file. </p>
+<p>This fill may be nullptr, but may not be NULL This should be defined by the cmake on compilation </p>
+
+</div>
+</div>
+<a class="anchor" id="a4cbe5f7a62c763a0b09c112f98d43623"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_CALL_DEPTH&#160;&#160;&#160;(1000 * sizeof(void *) * 4096)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Max internal shadow stack size. </p>
 
 </div>
 </div>
@@ -187,6 +231,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>The name of the program. </p>
+<p>This should be defined by the cmake on compilation </p>
+
 </div>
 </div>
 <a class="anchor" id="a195ca3987a60992c5abfc663cd37151d"></a>
@@ -199,7 +246,23 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The default stdout This fill may be nullptr, but may not be NULL. </p>
+<p>The default stdout. </p>
+<p>This fill may be nullptr, but may not be NULL </p>
+
+</div>
+</div>
+<a class="anchor" id="a9a81f4649f430c0018713540b8b8678b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WILDCARD&#160;&#160;&#160;( -1 )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verify the modes are not equal. </p>
+<p>Wildcard address matching value This address matches any address on the stack Since no call or ret will ever happen here, during normal use, it is fine </p>
 
 </div>
 </div>

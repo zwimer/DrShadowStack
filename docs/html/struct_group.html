@@ -105,6 +105,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a8867a6d9f7987d3db83bf193bf42f858"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_group.html#a8867a6d9f7987d3db83bf193bf42f858">terminate</a> (const char *const msg, bool is_error=false)</td></tr>
 <tr class="memdesc:a8867a6d9f7987d3db83bf193bf42f858"><td class="mdescLeft">&#160;</td><td class="mdescRight">Terminates the process group via SIGKILL.  <a href="#a8867a6d9f7987d3db83bf193bf42f858">More...</a><br /></td></tr>
 <tr class="separator:a8867a6d9f7987d3db83bf193bf42f858"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeeff4b9cd1c3479d7f4b0ecff08f9bb6"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_group.html#aeeff4b9cd1c3479d7f4b0ecff08f9bb6">is_setup</a> ()</td></tr>
+<tr class="memdesc:aeeff4b9cd1c3479d7f4b0ecff08f9bb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns setup_complete.  <a href="#aeeff4b9cd1c3479d7f4b0ecff08f9bb6">More...</a><br /></td></tr>
+<tr class="separator:aeeff4b9cd1c3479d7f4b0ecff08f9bb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2db75d95407105dceb19a644750d001d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_group.html#a2db75d95407105dceb19a644750d001d">register_delete_proc_rc</a> (void(*call)())</td></tr>
 <tr class="memdesc:a2db75d95407105dceb19a644750d001d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers the proc_rc destructor.  <a href="#a2db75d95407105dceb19a644750d001d">More...</a><br /></td></tr>
 <tr class="separator:a2db75d95407105dceb19a644750d001d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -124,6 +127,31 @@ Static Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A static class holding the group functions. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="aeeff4b9cd1c3479d7f4b0ecff08f9bb6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Group::is_setup </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns setup_complete. </p>
+
+</div>
+</div>
 <a class="anchor" id="a2db75d95407105dceb19a644750d001d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -210,7 +238,7 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Terminates the process group via SIGKILL. </p>
-<p>Frees shared memeory via delete_proc_rc If is_error is set to true, msg is logged to the ERROR file, otherwise it is logged via <a class="el" href="namespace_utilities.html#a0e46f2da74b1069eb9df671efed9180d" title="Prints the arguments as printf would to the STDOUT_FILE file. ">Utilities::message</a> If msg is nullptr, no message is passed. If this function ends up calling itself, immediate process group termination will occur </p>
+<p>Frees shared memeory via delete_proc_rc If is_error is set to true, msg is logged to the ERROR file, otherwise it is logged via <a class="el" href="namespace_utilities.html#a0e46f2da74b1069eb9df671efed9180d" title="Prints the arguments as printf would to the stdout and log files. ">Utilities::message</a> If msg is nullptr, no message is passed. If this function ends up calling itself, immediate process group termination will occur </p>
 
 </div>
 </div>

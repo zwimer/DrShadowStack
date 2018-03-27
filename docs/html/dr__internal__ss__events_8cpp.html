@@ -86,12 +86,142 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">dr_internal_ss_events.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="dr__internal__ss__events_8hpp_source.html">dr_internal_ss_events.hpp</a>&quot;</code><br />
-</div></div><!-- contents -->
+<code>#include &quot;<a class="el" href="constants_8hpp_source.html">constants.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="utilities_8hpp_source.html">utilities.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="message_8hpp_source.html">message.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="get__tid_8hpp_source.html">get_tid.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="group_8hpp_source.html">group.hpp</a>&quot;</code><br />
+<code>#include &lt;stack&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a8161a26ec065b8c83d2f42637896162c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__internal__ss__events_8cpp.html#a8161a26ec065b8c83d2f42637896162c">on_call</a> (const app_pc ret_to_addr)</td></tr>
+<tr class="separator:a8161a26ec065b8c83d2f42637896162c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3b510b4eb4f19ab3f68d8183f9d802b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__internal__ss__events_8cpp.html#ac3b510b4eb4f19ab3f68d8183f9d802b">on_ret</a> (app_pc, const app_pc target_addr)</td></tr>
+<tr class="separator:ac3b510b4eb4f19ab3f68d8183f9d802b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad657672c35176858cd3bd4fac5bd089b"><td class="memItemLeft" align="right" valign="top">static dr_signal_action_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__internal__ss__events_8cpp.html#ad657672c35176858cd3bd4fac5bd089b">signal_event</a> (void *drcontext, dr_siginfo_t *info)</td></tr>
+<tr class="separator:ad657672c35176858cd3bd4fac5bd089b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a4d533d2157d896693f65cc71f4b3bf5e"><td class="memItemLeft" align="right" valign="top">std::stack&lt; app_pc &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__internal__ss__events_8cpp.html#a4d533d2157d896693f65cc71f4b3bf5e">shadow_stack</a></td></tr>
+<tr class="separator:a4d533d2157d896693f65cc71f4b3bf5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a8161a26ec065b8c83d2f42637896162c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void on_call </td>
+          <td>(</td>
+          <td class="paramtype">const app_pc&#160;</td>
+          <td class="paramname"><em>ret_to_addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac3b510b4eb4f19ab3f68d8183f9d802b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void on_ret </td>
+          <td>(</td>
+          <td class="paramtype">app_pc&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const app_pc&#160;</td>
+          <td class="paramname"><em>target_addr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad657672c35176858cd3bd4fac5bd089b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static dr_signal_action_t signal_event </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>drcontext</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dr_siginfo_t *&#160;</td>
+          <td class="paramname"><em>info</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="a4d533d2157d896693f65cc71f4b3bf5e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::stack&lt;app_pc&gt; shadow_stack</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

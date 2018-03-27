@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['pointer_5fsize',['POINTER_SIZE',['../message_8hpp.html#a70eafdf190b8f3be16349543fe1b39ae',1,'message.hpp']]],
-  ['program_5fname',['PROGRAM_NAME',['../constants_8hpp.html#a3b6a35b8be8405a9db72cc5dea97954b',1,'constants.hpp']]]
+  ['max_5fcall_5fdepth',['MAX_CALL_DEPTH',['../constants_8hpp.html#a4cbe5f7a62c763a0b09c112f98d43623',1,'constants.hpp']]],
+  ['message_5fheader_5flength',['MESSAGE_HEADER_LENGTH',['../message_8hpp.html#ac119f42bacd57152815371e9527d1059',1,'message.hpp']]]
 ];

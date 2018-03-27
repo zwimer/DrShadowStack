@@ -11,7 +11,9 @@ Make a distinction between the internal and external SS functions.
 dr\+\_\+emit\+\_\+flags\+\_\+t \hyperlink{namespace_internal_s_s_af5fff02fcf86ee0fd0134fc412c128bc}{event\+\_\+app\+\_\+instruction} (void $\ast$drcontext, void $\ast$tag, instrlist\+\_\+t $\ast$bb, instr\+\_\+t $\ast$instr, bool for\+\_\+trace, bool translating, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em The function that inserts the call and ret handlers. \end{DoxyCompactList}\item 
 void \hyperlink{namespace_internal_s_s_a91c77a886d93d8526bf619cb3eeeec6c}{setup} (const char $\ast$const)
-\begin{DoxyCompactList}\small\item\em Setup the internal stack server for the Dynamo\+R\+IO client. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Setup the internal stack server for the Dynamo\+R\+IO client. \end{DoxyCompactList}\item 
+void \hyperlink{namespace_internal_s_s_a20eb78818d452ee5e8d96e2b39a8f323}{exit\+\_\+event} ()
+\begin{DoxyCompactList}\small\item\em Called on exit of client program. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -35,11 +37,22 @@ Make a distinction between the internal and external SS functions.
 
 The function that inserts the call and ret handlers. 
 
-Whenever a new basic block is seen, this function will be called once for each instruction in it. If either a call or a ret is seen, the call and ret handlers are inserted before said instruction. Note\+: an app\+\_\+pc is defined in comments \index{Internal\+SS@{Internal\+SS}!setup@{setup}}
+Whenever a new basic block is seen, this function will be called once for each instruction in it. If either a call or a ret is seen, the call and ret handlers are inserted before said instruction. Note\+: an app\+\_\+pc is defined in comments \index{Internal\+SS@{Internal\+SS}!exit\+\_\+event@{exit\+\_\+event}}
+\index{exit\+\_\+event@{exit\+\_\+event}!Internal\+SS@{Internal\+SS}}
+\subsubsection[{\texorpdfstring{exit\+\_\+event()}{exit_event()}}]{\setlength{\rightskip}{0pt plus 5cm}void Internal\+S\+S\+::exit\+\_\+event (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespace_internal_s_s_a20eb78818d452ee5e8d96e2b39a8f323}{}\label{namespace_internal_s_s_a20eb78818d452ee5e8d96e2b39a8f323}
+
+
+Called on exit of client program. 
+
+Checks how the client returned then exits \index{Internal\+SS@{Internal\+SS}!setup@{setup}}
 \index{setup@{setup}!Internal\+SS@{Internal\+SS}}
 \subsubsection[{\texorpdfstring{setup(const char $\ast$const)}{setup(const char *const)}}]{\setlength{\rightskip}{0pt plus 5cm}void Internal\+S\+S\+::setup (
 \begin{DoxyParamCaption}
-\item[{const char $\ast$ const}]{}
+\item[{const char $\ast$ const}]{socket\+\_\+path}
 \end{DoxyParamCaption}
 )}\hypertarget{namespace_internal_s_s_a91c77a886d93d8526bf619cb3eeeec6c}{}\label{namespace_internal_s_s_a91c77a886d93d8526bf619cb3eeeec6c}
 

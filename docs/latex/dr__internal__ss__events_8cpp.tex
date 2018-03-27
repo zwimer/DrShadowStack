@@ -1,3 +1,55 @@
 \hypertarget{dr__internal__ss__events_8cpp}{}\section{src/dr\+\_\+internal\+\_\+ss\+\_\+events.cpp File Reference}
 \label{dr__internal__ss__events_8cpp}\index{src/dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp@{src/dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp}}
 {\ttfamily \#include \char`\"{}dr\+\_\+internal\+\_\+ss\+\_\+events.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}constants.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}utilities.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}message.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}get\+\_\+tid.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}group.\+hpp\char`\"{}}\\*
+{\ttfamily \#include $<$stack$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{dr__internal__ss__events_8cpp_a8161a26ec065b8c83d2f42637896162c}{on\+\_\+call} (const app\+\_\+pc ret\+\_\+to\+\_\+addr)
+\item 
+static void \hyperlink{dr__internal__ss__events_8cpp_ac3b510b4eb4f19ab3f68d8183f9d802b}{on\+\_\+ret} (app\+\_\+pc, const app\+\_\+pc target\+\_\+addr)
+\item 
+static dr\+\_\+signal\+\_\+action\+\_\+t \hyperlink{dr__internal__ss__events_8cpp_ad657672c35176858cd3bd4fac5bd089b}{signal\+\_\+event} (void $\ast$drcontext, dr\+\_\+siginfo\+\_\+t $\ast$info)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::stack$<$ app\+\_\+pc $>$ \hyperlink{dr__internal__ss__events_8cpp_a4d533d2157d896693f65cc71f4b3bf5e}{shadow\+\_\+stack}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp}!on\+\_\+call@{on\+\_\+call}}
+\index{on\+\_\+call@{on\+\_\+call}!dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp}}
+\subsubsection[{\texorpdfstring{on\+\_\+call(const app\+\_\+pc ret\+\_\+to\+\_\+addr)}{on_call(const app_pc ret_to_addr)}}]{\setlength{\rightskip}{0pt plus 5cm}static void on\+\_\+call (
+\begin{DoxyParamCaption}
+\item[{const app\+\_\+pc}]{ret\+\_\+to\+\_\+addr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__internal__ss__events_8cpp_a8161a26ec065b8c83d2f42637896162c}{}\label{dr__internal__ss__events_8cpp_a8161a26ec065b8c83d2f42637896162c}
+\index{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp}!on\+\_\+ret@{on\+\_\+ret}}
+\index{on\+\_\+ret@{on\+\_\+ret}!dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp}}
+\subsubsection[{\texorpdfstring{on\+\_\+ret(app\+\_\+pc, const app\+\_\+pc target\+\_\+addr)}{on_ret(app_pc, const app_pc target_addr)}}]{\setlength{\rightskip}{0pt plus 5cm}static void on\+\_\+ret (
+\begin{DoxyParamCaption}
+\item[{app\+\_\+pc}]{, }
+\item[{const app\+\_\+pc}]{target\+\_\+addr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__internal__ss__events_8cpp_ac3b510b4eb4f19ab3f68d8183f9d802b}{}\label{dr__internal__ss__events_8cpp_ac3b510b4eb4f19ab3f68d8183f9d802b}
+\index{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp}!signal\+\_\+event@{signal\+\_\+event}}
+\index{signal\+\_\+event@{signal\+\_\+event}!dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp}}
+\subsubsection[{\texorpdfstring{signal\+\_\+event(void $\ast$drcontext, dr\+\_\+siginfo\+\_\+t $\ast$info)}{signal_event(void *drcontext, dr_siginfo_t *info)}}]{\setlength{\rightskip}{0pt plus 5cm}static dr\+\_\+signal\+\_\+action\+\_\+t signal\+\_\+event (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{drcontext, }
+\item[{dr\+\_\+siginfo\+\_\+t $\ast$}]{info}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__internal__ss__events_8cpp_ad657672c35176858cd3bd4fac5bd089b}{}\label{dr__internal__ss__events_8cpp_ad657672c35176858cd3bd4fac5bd089b}
+
+
+\subsection{Variable Documentation}
+\index{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp}!shadow\+\_\+stack@{shadow\+\_\+stack}}
+\index{shadow\+\_\+stack@{shadow\+\_\+stack}!dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp}}
+\subsubsection[{\texorpdfstring{shadow\+\_\+stack}{shadow_stack}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::stack$<$app\+\_\+pc$>$ shadow\+\_\+stack}\hypertarget{dr__internal__ss__events_8cpp_a4d533d2157d896693f65cc71f4b3bf5e}{}\label{dr__internal__ss__events_8cpp_a4d533d2157d896693f65cc71f4b3bf5e}

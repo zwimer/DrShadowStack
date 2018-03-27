@@ -5,11 +5,13 @@
 {\ttfamily \#include \char`\"{}utilities.\+hpp\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}get\+\_\+tid.\+hpp\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}message.\+hpp\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}drmgr.\+h\char`\"{}}\\*
 {\ttfamily \#include $<$sys/socket.\+h$>$}\\*
 {\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}drmgr.\+h\char`\"{}}\\*
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
+\item 
+static dr\+\_\+signal\+\_\+action\+\_\+t \hyperlink{dr__external__ss__events_8cpp_ad657672c35176858cd3bd4fac5bd089b}{signal\+\_\+event} (void $\ast$drcontext, dr\+\_\+siginfo\+\_\+t $\ast$info)
 \item 
 static void \hyperlink{dr__external__ss__events_8cpp_a8161a26ec065b8c83d2f42637896162c}{on\+\_\+call} (const app\+\_\+pc ret\+\_\+to\+\_\+addr)
 \item 
@@ -38,6 +40,14 @@ static int \hyperlink{dr__external__ss__events_8cpp_a5903d0b282fc5eae503de618f89
 \item[{const app\+\_\+pc}]{target\+\_\+addr}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__external__ss__events_8cpp_a42c8b67f8f85fd6bad5bd11892c0d5bc}{}\label{dr__external__ss__events_8cpp_a42c8b67f8f85fd6bad5bd11892c0d5bc}
+\index{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}!signal\+\_\+event@{signal\+\_\+event}}
+\index{signal\+\_\+event@{signal\+\_\+event}!dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}}
+\subsubsection[{\texorpdfstring{signal\+\_\+event(void $\ast$drcontext, dr\+\_\+siginfo\+\_\+t $\ast$info)}{signal_event(void *drcontext, dr_siginfo_t *info)}}]{\setlength{\rightskip}{0pt plus 5cm}static dr\+\_\+signal\+\_\+action\+\_\+t signal\+\_\+event (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{drcontext, }
+\item[{dr\+\_\+siginfo\+\_\+t $\ast$}]{info}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__external__ss__events_8cpp_ad657672c35176858cd3bd4fac5bd089b}{}\label{dr__external__ss__events_8cpp_ad657672c35176858cd3bd4fac5bd089b}
 
 
 \subsection{Variable Documentation}

@@ -1,6 +1,7 @@
 \hypertarget{dr__internal__ss__events_8hpp}{}\section{src/dr\+\_\+internal\+\_\+ss\+\_\+events.hpp File Reference}
 \label{dr__internal__ss__events_8hpp}\index{src/dr\+\_\+internal\+\_\+ss\+\_\+events.\+hpp@{src/dr\+\_\+internal\+\_\+ss\+\_\+events.\+hpp}}
 {\ttfamily \#include \char`\"{}dr\+\_\+api.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}drmgr.\+h\char`\"{}}\\*
 \subsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -12,4 +13,6 @@
 dr\+\_\+emit\+\_\+flags\+\_\+t \hyperlink{namespace_internal_s_s_af5fff02fcf86ee0fd0134fc412c128bc}{Internal\+S\+S\+::event\+\_\+app\+\_\+instruction} (void $\ast$drcontext, void $\ast$tag, instrlist\+\_\+t $\ast$bb, instr\+\_\+t $\ast$instr, bool for\+\_\+trace, bool translating, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em The function that inserts the call and ret handlers. \end{DoxyCompactList}\item 
 void \hyperlink{namespace_internal_s_s_a91c77a886d93d8526bf619cb3eeeec6c}{Internal\+S\+S\+::setup} (const char $\ast$const)
-\begin{DoxyCompactList}\small\item\em Setup the internal stack server for the Dynamo\+R\+IO client. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Setup the internal stack server for the Dynamo\+R\+IO client. \end{DoxyCompactList}\item 
+void \hyperlink{namespace_internal_s_s_a20eb78818d452ee5e8d96e2b39a8f323}{Internal\+S\+S\+::exit\+\_\+event} ()
+\begin{DoxyCompactList}\small\item\em Called on exit of client program. \end{DoxyCompactList}\end{DoxyCompactItemize}

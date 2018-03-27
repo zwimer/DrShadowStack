@@ -22,11 +22,15 @@ struct \hyperlink{struct_message_1_1_message_type_3_01false_00_01_info_01_4}{Mes
 \begin{DoxyCompactList}\small\item\em A specification for non-\/header only messages. \end{DoxyCompactList}\item 
 struct \hyperlink{struct_message_1_1_message_type_3_01true_00_01_info_01_4}{Message\+Type$<$ true, Info $>$}
 \begin{DoxyCompactList}\small\item\em A specification for header only messages. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_message_1_1_new_signal_info}{New\+Signal\+Info}
+\begin{DoxyCompactList}\small\item\em A class containing the header of New\+Signal message. \end{DoxyCompactList}\item 
 struct \hyperlink{struct_message_1_1_ret_info}{Ret\+Info}
 \begin{DoxyCompactList}\small\item\em A class containing the header of Call message. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
+typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ false, \hyperlink{struct_message_1_1_new_signal_info}{New\+Signal\+Info} $>$ \hyperlink{class_message_a9f57a1ee0e722668e9101b737d7c9844}{New\+Signal}
+\begin{DoxyCompactList}\small\item\em A typedef for the new signal message. \end{DoxyCompactList}\item 
 typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ true, \hyperlink{struct_message_1_1_continue_info}{Continue\+Info} $>$ \hyperlink{class_message_a04de61b84a209cdf372b6f53f3adf7c4}{Continue}
 \begin{DoxyCompactList}\small\item\em A typedef for the continue message. \end{DoxyCompactList}\item 
 typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ false, \hyperlink{struct_message_1_1_call_info}{Call\+Info} $>$ \hyperlink{class_message_a0fd0ed431cb0d672045d09368a5d2126}{Call}
@@ -59,6 +63,13 @@ A typedef for the call message.
 
 
 A typedef for the continue message. 
+
+\index{Message@{Message}!New\+Signal@{New\+Signal}}
+\index{New\+Signal@{New\+Signal}!Message@{Message}}
+\subsubsection[{\texorpdfstring{New\+Signal}{NewSignal}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Message\+Type}$<$false, {\bf New\+Signal\+Info}$>$ {\bf Message\+::\+New\+Signal}}\hypertarget{class_message_a9f57a1ee0e722668e9101b737d7c9844}{}\label{class_message_a9f57a1ee0e722668e9101b737d7c9844}
+
+
+A typedef for the new signal message. 
 
 \index{Message@{Message}!Ret@{Ret}}
 \index{Ret@{Ret}!Message@{Message}}

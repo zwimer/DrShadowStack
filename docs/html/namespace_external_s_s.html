@@ -100,6 +100,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a1ab997e2712a2124a7056765313589a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_external_s_s.html#a1ab997e2712a2124a7056765313589a1">setup</a> (const char *const socket_path)</td></tr>
 <tr class="memdesc:a1ab997e2712a2124a7056765313589a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup the external stack server for the DynamoRIO client.  <a href="#a1ab997e2712a2124a7056765313589a1">More...</a><br /></td></tr>
 <tr class="separator:a1ab997e2712a2124a7056765313589a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7eae72b68a78913eb9e92f19cd53868"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_external_s_s.html#ad7eae72b68a78913eb9e92f19cd53868">exit_event</a> ()</td></tr>
+<tr class="memdesc:ad7eae72b68a78913eb9e92f19cd53868"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called on exit of client program.  <a href="#ad7eae72b68a78913eb9e92f19cd53868">More...</a><br /></td></tr>
+<tr class="separator:ad7eae72b68a78913eb9e92f19cd53868"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Make a distinction between the internal and external SS functions. </p>
@@ -160,6 +163,24 @@ Functions</h2></td></tr>
 
 <p>The function that inserts the call and ret handlers. </p>
 <p>Whenever a new basic block is seen, this function will be called once for each instruction in it. If either a call or a ret is seen, the call and ret handlers are inserted before said instruction. Note: an app_pc is defined in comments </p>
+
+</div>
+</div>
+<a class="anchor" id="ad7eae72b68a78913eb9e92f19cd53868"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ExternalSS::exit_event </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Called on exit of client program. </p>
+<p>Checks how the client returned then exits </p>
 
 </div>
 </div>

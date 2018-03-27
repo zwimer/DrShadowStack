@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['thread',['THREAD',['../constants_8hpp.html#a2b2e4a3c09db701069f4e529ebde6402',1,'constants.hpp']]]
+  ['wildcard',['WILDCARD',['../constants_8hpp.html#a9a81f4649f430c0018713540b8b8678b',1,'constants.hpp']]]
 ];

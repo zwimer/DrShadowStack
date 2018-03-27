@@ -100,14 +100,14 @@ Functions</h2></td></tr>
 <tr class="memitem:af31967f218e82230e887a5551e5c2d1e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_utilities.html#af31967f218e82230e887a5551e5c2d1e">log_no_newline</a> (const char *const format,...)</td></tr>
 <tr class="memdesc:af31967f218e82230e887a5551e5c2d1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs the arguments as printf would to the log file.  <a href="#af31967f218e82230e887a5551e5c2d1e">More...</a><br /></td></tr>
 <tr class="separator:af31967f218e82230e887a5551e5c2d1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e46f2da74b1069eb9df671efed9180d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_utilities.html#a0e46f2da74b1069eb9df671efed9180d">message</a> (const char *const format,...)</td></tr>
-<tr class="memdesc:a0e46f2da74b1069eb9df671efed9180d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the arguments as printf would to the STDOUT_FILE file.  <a href="#a0e46f2da74b1069eb9df671efed9180d">More...</a><br /></td></tr>
-<tr class="separator:a0e46f2da74b1069eb9df671efed9180d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e53321a2a9460f126a476a89b08107b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_utilities.html#a7e53321a2a9460f126a476a89b08107b">log</a> (const char *const format,...)</td></tr>
 <tr class="memdesc:a7e53321a2a9460f126a476a89b08107b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs the arguments as printf would to the log file.  <a href="#a7e53321a2a9460f126a476a89b08107b">More...</a><br /></td></tr>
 <tr class="separator:a7e53321a2a9460f126a476a89b08107b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e46f2da74b1069eb9df671efed9180d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_utilities.html#a0e46f2da74b1069eb9df671efed9180d">message</a> (const char *const format,...)</td></tr>
+<tr class="memdesc:a0e46f2da74b1069eb9df671efed9180d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the arguments as printf would to the stdout and log files.  <a href="#a0e46f2da74b1069eb9df671efed9180d">More...</a><br /></td></tr>
+<tr class="separator:a0e46f2da74b1069eb9df671efed9180d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48952d33b9dc4fba9846dbc7a12df2f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_utilities.html#a48952d33b9dc4fba9846dbc7a12df2f1">log_error</a> (const char *const format,...)</td></tr>
-<tr class="memdesc:a48952d33b9dc4fba9846dbc7a12df2f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs the arguments as printf would to the error, log, and stdout files.  <a href="#a48952d33b9dc4fba9846dbc7a12df2f1">More...</a><br /></td></tr>
+<tr class="memdesc:a48952d33b9dc4fba9846dbc7a12df2f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs the arguments as printf would to the error, and log files.  <a href="#a48952d33b9dc4fba9846dbc7a12df2f1">More...</a><br /></td></tr>
 <tr class="separator:a48952d33b9dc4fba9846dbc7a12df2f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -211,8 +211,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Logs the arguments as printf would to the error, log, and stdout files. </p>
-<p>Ends the printed line with a newline then flushes the buffer If any of STDOUT, LOG_FILE, ERROR_FILE are the same, only prints once If either file is nullptr, that file is skipped This function promises <b>NOTHING</b> on failure </p>
+<p>Logs the arguments as printf would to the error, and log files. </p>
+<p>Ends the printed line with a newline then flushes the buffer If either file is nullptr, that file is skipped This function does NOT print to STDOUT_FILE This function promises <b>NOTHING</b> on failure </p>
 
 </div>
 </div>
@@ -269,7 +269,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Prints the arguments as printf would to the STDOUT_FILE file. </p>
+<p>Prints the arguments as printf would to the stdout and log files. </p>
 <p>Ends the printed line with a newline then flushes the buffer If STDOUT_FILE is nullptr, this function does nothing This function promises <b>NOTHING</b> on failure </p>
 
 </div>

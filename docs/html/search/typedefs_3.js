@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['ret',['Ret',['../class_message.html#a146628035f5a0723cb04f7a328858e34',1,'Message::Ret()'],['../stack__server_8cpp.html#af7c770b1088609ccee1dbc5fa67fe3d3',1,'Ret():&#160;stack_server.cpp']]]
+  ['pointer_5fstack',['pointer_stack',['../external__stack__server_8cpp.html#a7ad69d2104372457e0bfbbb85270bbf5',1,'external_stack_server.cpp']]],
+  ['prc_5ft',['prc_t',['../proc__rc_8hpp.html#a4e61911b35a8dfa15356d5296f46d87a',1,'proc_rc.hpp']]]
 ];
