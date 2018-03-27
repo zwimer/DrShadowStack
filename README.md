@@ -17,7 +17,21 @@ Requires boost: sudo apt-get install libboost-all-dev
 
 
 
+#include<unistd.h>
+#include<stdio.h>
+#include <sys/syscall.h>
+int main() {
 
+    printf("%d\n", syscall(SYS_gettid));
+    vfork();
+    printf("%d\n", syscall(SYS_gettid));
+    execve("/bin/true", NULL, NULL);
+    printf("%d\n", syscall(SYS_gettid));
+
+}
+... vfork -> execve
+
+Special fix : analysis, if mis-match use drsym
 
 
 

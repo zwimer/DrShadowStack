@@ -1,5 +1,5 @@
 #include "shadow_stack.hpp"
-#include "stack_server.hpp"
+#include "external_stack_server.hpp"
 #include "quick_socket.hpp"
 #include "constants.hpp"
 #include "utilities.hpp"
@@ -14,48 +14,6 @@
 #include <vector>
 #include <string>
 
-
-// Start's the program passed in via drrun
-void start_program( char * drrun, char * a_out, char ** client_argv,
-					const char * const mode, char * socket_path ) {
-
-	// Construct args to give to exec
-	std::vector<const char *> args;
-	
-	// Drrun a client
-	args.push_back(drrun);
-	args.push_back("-c");
-
-	// ShadowStack dynamorio client + args
-	args.push_back(DYNAMORIO_CLIENT_SO);
-	args.push_back(mode);
-	args.push_back(socket_path);
-
-	// Specify target a.out
-	args.push_back("--");
-	args.push_back(a_out);
-
-	// Add a.out's args
-	for(int i = 0; client_argv[i] != NULL; ++i ) {
-		args.push_back(client_argv[i]);
-	}
-
-	// Null terminate the array
-	args.push_back(nullptr);
-
-	// Log the action then flush the buffers
-	Utilities::log("%d: Starting dr_run", get_tid());
-	Utilities::log_no_newline("Calling execvp on: ");
-	for ( unsigned long i = 0; i < args.size() - 1; ++i ) {
-		Utilities::log_no_newline( "%s ", args[i] );
-	}
-	Utilities::log("");
-	fflush(NULL);
-
-	// Start drrun
-	execvp(drrun, (char **) args.data());
-	Utilities::err("execvp() failed.");
-}
 
 // Return a non-existent filename
 std::string temp_name() {
@@ -102,25 +60,89 @@ std::string temp_name() {
 	}
 }
 
+// Start's the program passed in via drrun
+void start_program( char * drrun, char * a_out, char ** client_argv,
+					const char * const mode, char * socket_path ) {
+
+	// Construct args to give to exec
+	std::vector<const char *> args;
+	
+	// Drrun a client
+	args.push_back(drrun);
+	args.push_back("-c");
+
+	// ShadowStack dynamorio client + args
+	args.push_back(DYNAMORIO_CLIENT_SO);
+	args.push_back(mode);
+	args.push_back(socket_path);
+
+	// Specify target a.out
+	args.push_back("--");
+	args.push_back(a_out);
+
+	// Add a.out's args
+	for(int i = 0; client_argv[i] != NULL; ++i ) {
+		args.push_back(client_argv[i]);
+	}
+
+	// Null terminate the array
+	args.push_back(nullptr);
+
+	// Log the action then flush the buffers
+	Utilities::log("%d: Starting dr_run", get_tid());
+	Utilities::log_no_newline("Calling execvp on: ");
+	for ( unsigned long i = 0; i < args.size() - 1; ++i ) {
+		Utilities::log_no_newline( "%s ", args[i] );
+	}
+	Utilities::log("");
+	fflush(NULL);
+
+	// Start drrun
+	execvp(drrun, (char **) args.data());
+	Utilities::err("execvp() failed.");
+}
+
+// Called if incorrect usage occured
+[[ noreturn ]] static void incorrect_usage() {
+	using namespace Utilities;
+	message( 	"Usage: ./" PROGRAM_NAME ".out <Mode> <drrun> <a.out> ...\n"
+				"Mode options:\n"
+				"\t" INTERNAL_MODE_FLAG " -- internal shadow stack mode\n"
+				"\t" EXTERNAL_MODE_FLAG " -- external shadow stack mode\n" );
+	assert( ! Group::is_setup(), "incorrect_usage() called after group setup");
+	log_error("Incorrect Usage");
+	exit(EXIT_FAILURE);
+}
+
 // Main function
 int main(int argc, char * argv[]) {
 
+#if 1
+	for(int i = 0; argv[i]; ++i)	
+		Utilities::message("%s", argv[i]);
+#endif
 	// TODO: use actual arg parser
-	if ( argc < 4 || (
-		( strcmp(argv[1], INTERNAL_MODE_FLAG) != 0 ) &&
-		( strcmp(argv[1], EXTERNAL_MODE_FLAG) != 0 ) ) ) {
-		Utilities::log_error("Incorrect usage");
-		Utilities::message("Usage: ./" PROGRAM_NAME ".out <Mode> <drrun> <a.out> ...");
-		Utilities::message("Mode options:");
-		Utilities::message("\t" INTERNAL_MODE_FLAG " -- internal shadow stack mode");
-		Utilities::message("\t" EXTERNAL_MODE_FLAG " -- external shadow stack mode");
-		exit(EXIT_FAILURE);
+	// Check usage
+	if ( argc < 4 ) {
+		incorrect_usage();
+	}
+	const bool is_internal = (strcmp(argv[1], INTERNAL_MODE_FLAG) == 0 );
+	const bool is_external = (strcmp(argv[1], EXTERNAL_MODE_FLAG) == 0 );
+	if ( ! (is_internal || is_external) ) {
+		incorrect_usage();
 	}
 
 	// Create a new process group by starting a new session
 	// Many terminals will automatically do this, but just in case...
 	// Also changes many default signal handlers to kill the process group
 	Group::setup();
+
+#if 1 // TODO
+	if (is_internal) {
+		char buf[10];
+		start_program( argv[2], argv[3], & argv[4], argv[1], buf);
+	}
+#endif 
 
 	// We check for the return statuses of functions, so ignore sigpipe
 	Utilities::assert( signal(SIGCHLD, SIG_IGN) != SIG_ERR, "signal() failed." );
@@ -157,7 +179,16 @@ int main(int argc, char * argv[]) {
 
 		// Wait for the client then start the shadow stack
 		Utilities::log("%llu: waiting for client", get_tid());
-		start_shadow_stack(QS::accept_client(sock));
+		const int client_sock = QS::accept_client(sock);
+
+		// Start the desired stack server
+#if 0 // TODO
+		const auto stack_server = is_internal ? start_internal_shadow_stack :
+												start_external_shadow_stack ;
+#else 
+		const auto stack_server = start_external_shadow_stack ;
+#endif 
+		stack_server(client_sock);
 
 		// If the program made it to this point, nothing
 		// went wrong, gracefully exit

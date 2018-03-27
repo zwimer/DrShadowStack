@@ -58,8 +58,8 @@ void set_default_signal_handler(void (*handler) (int sig)) {
 			// Try to change the handler. If signal fails 
 			// for any reason other than EINVAL, terminate the group
 			if ( (signal(i, handler) == SIG_ERR) && (errno != EINVAL) ) {
-				Utilities::log_error("Error changing signal handler of signal : %d\n", i);
-				Utilities::log_error("strerror returns: %s", strerror(errno));
+				Utilities::log_error("failed to change signal handler of signal: %d\n"
+									 "strerror returns: %s", i, strerror(errno));
 				Group::terminate(nullptr);
 			}
 		}
@@ -114,7 +114,7 @@ void Group::setup() {
 
 		// Set up the group
 		setsid();
-		Utilities::log("Setup groupd with group id: %d", getpgrp());
+		Utilities::log("Setup group with group id: %d", getpgrp());
 
 		// Remap signal handlers
 		set_default_signal_handler(default_signal_handler);
@@ -168,6 +168,11 @@ void Group::setup() {
 
 	// Otherwise, this was a DynamoRIO client process, just kill this process
 	_Exit(EXIT_SUCCESS);
+}
+
+// Return setup_complete
+bool Group::is_setup() {
+	return setup_complete;
 }
 
 // Registers the proc_rc destructor

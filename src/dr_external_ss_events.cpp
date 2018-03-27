@@ -4,15 +4,32 @@
 #include "get_tid.hpp"
 #include "message.hpp"
 
-#include "drmgr.h"
-
 #include <sys/socket.h>
 #include <unistd.h>
+
+#include "drmgr.h"
 
 
 // The socket to be used by this client
 static int sock = -1;
 
+
+// The event that occurs before a signal is given to the program
+static dr_signal_action_t signal_event(void *drcontext, dr_siginfo_t *info) {
+
+	// Log the signal
+	Utilities::log("\nTID %d: (client) Caught signal %d", get_tid(), info->sig);
+
+	// Create and send the message
+	char buffer[8];
+	sprintf(buffer, "%d", info->sig);
+	Message::NewSignal msg( buffer );
+	const int bytes_sent = write(sock, msg.message, msg.size);
+	Utilities::assert( bytes_sent == msg.size, "write() failed!");
+
+	// Deliver the signal
+    return DR_SIGNAL_DELIVER;
+}
 
 // The call handler. 
 // This function is called whenever a call instruction is about 
@@ -52,6 +69,14 @@ static void on_ret(const app_pc instr_addr, const app_pc target_addr) {
 	Utilities::assert( is_continue(buffer), "Received incorrect message!");
 }
 
+
+/*********************************************************/
+/*                                                       */
+/*                  	  From Header					 */
+/*                                                       */
+/*********************************************************/
+
+
 // The function that inserts the call and ret handlers
 // Whenever a new basic block is seen, this function will be
 // called once for each instruction in it. If either a call
@@ -89,10 +114,21 @@ dr_emit_flags_t ExternalSS::event_app_instruction(	void *drcontext, void *tag,
     return DR_EMIT_DEFAULT;
 }
 
+// Called on exit of client program
+// Checks how the client returned then exits
+void ExternalSS::exit_event() {
+	Utilities::assert(	drmgr_unregister_bb_insertion_event(event_app_instruction),
+						"client process returned improperly." );
+	drmgr_exit();
+}
+
 // Setup the external stack server for the DynamoRIO client
 void ExternalSS::setup(const char * const socket_path) {
 
 	// Create the socket to be used
 	Utilities::log("Client connecting to %s", socket_path);
 	sock = QS::create_client(socket_path);
+
+	// Whenever a singal is caught, we add a wildcard to the stack
+	drmgr_register_signal_event(signal_event);
 }

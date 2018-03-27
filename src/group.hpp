@@ -67,6 +67,9 @@ struct Group {
 	 *  immediate process group termination will occur */
 	[[ noreturn ]] static void terminate(const char * const msg, bool is_error = false);
  
+	/** Returns setup_complete */
+	static bool is_setup();
+
 	/// Registers the proc_rc destructor
 	/** This function exists as group.cpp may NOT include
 	 *  proc_rc.hpp, as proc_rc.hpp generally uses pthreads

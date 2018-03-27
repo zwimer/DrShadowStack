@@ -6,7 +6,6 @@
 
 #include "drmgr.h"
 
-
 /// The main client function
 /** This function dynamically 'injects' the shadow stack */
 DR_EXPORT void dr_client_main(client_id_t id, int argc, const char *argv[]) {	
@@ -21,9 +20,6 @@ DR_EXPORT void dr_client_main(client_id_t id, int argc, const char *argv[]) {
 						"http://github.com/zwimer/ShadowStack");
     drmgr_init();
 
-    // Register events
-    dr_register_exit_event(drmgr_exit);
-
     // Make it easy to tell, by looking at log file, which client executed
     dr_log(NULL, DR_LOG_ALL, 1, "Client 'ShadowStack' initializing\n");
 
@@ -31,10 +27,13 @@ DR_EXPORT void dr_client_main(client_id_t id, int argc, const char *argv[]) {
 	const bool is_internal = ( strcmp(argv[1], INTERNAL_MODE_FLAG) == 0 );
 	const auto event_fn = is_internal ? 
 		InternalSS::event_app_instruction : ExternalSS::event_app_instruction;
+	const auto exit_event = is_internal ? 
+		InternalSS::exit_event : ExternalSS::exit_event;
 	const auto setup = is_internal ? InternalSS::setup : ExternalSS::setup;
 
-    /* drmgr_register_bb_instrumentation_event(NULL, event_app_instruction_ext, NULL); // TODO */
-    drmgr_register_bb_instrumentation_event(NULL, event_fn, NULL); // TODO
+	// Register events
+    drmgr_register_bb_instrumentation_event(NULL, event_fn, NULL);
+	dr_register_exit_event(exit_event);
 
 	// Setup the SS's client side part
 	setup( argv[2] );

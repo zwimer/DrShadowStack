@@ -20,6 +20,10 @@ namespace ExternalSS {
 
 	/** Setup the external stack server for the DynamoRIO client */
 	void setup(const char * const socket_path);
+
+	/// Called on exit of client program
+	/** Checks how the client returned then exits */
+	void exit_event();
 };
 
 #endif

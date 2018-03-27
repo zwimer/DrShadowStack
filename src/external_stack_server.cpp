@@ -1,4 +1,4 @@
-#include "stack_server.hpp"
+#include "external_stack_server.hpp"
 
 #include <sys/socket.h>
 #include <sys/types.h>
@@ -8,6 +8,7 @@
 #include <stack>
 #include <map>
 
+#include "constants.hpp"
 #include "utilities.hpp"
 #include "message.hpp"
 #include "get_tid.hpp"
@@ -18,6 +19,7 @@
 #undef assert
 
 // For brevity
+using NewSignal = Message::NewSignal;
 using Continue = Message::Continue;
 using Call = Message::Call;
 using Ret = Message::Ret;
@@ -40,9 +42,10 @@ typedef void (*message_handler) (pointer_stack & stk,
 /*********************************************************/
 
 
-// Should never be called, will crash the program
-void continue_handler(pointer_stack &, const char * const, const int) {
-	Utilities::err("Continue should not be recieved by the server");
+// Called whenever a signal is sent to the client
+// Signal handlers have no 'call', so we add a wildcard
+void add_wildcard(pointer_stack & stk, const char * const, const int) {
+	stk.push( (char *) WILDCARD );	
 }
 
 // Called when a 'call' was detected
@@ -67,12 +70,19 @@ void ret_handler(pointer_stack & stk, const char * const buffer, const int sock)
 		Group::terminate(nullptr);
 	}
 	
+	// If the top of the stack is a wildcard, 
+	// we are returning from a signal handler
+	const char * const top = stk.top();
+	if ( top == (char *) WILDCARD ) {
+		Utilities::log("Wildcard detected, returning from signal handler allowed.");
+	}
+
 	// If the return address is incorrect, error
-	if ( addr != stk.top() ) {
+	else if ( addr != top ) {
 		Utilities::log_error(	"*** Shadow stack mistmach detected! ***\n"
 								"Attempting to return to %p\n"
 								"\tTop of shadow stack is %p\n",
-								addr, stk.top() );
+								addr, top );
 		Group::terminate(nullptr);
 	}
 
@@ -84,9 +94,9 @@ void ret_handler(pointer_stack & stk, const char * const buffer, const int sock)
 	Utilities::assert( bytes_sent == Continue::size, "write() failed." );
 }
 
-// The shadow stack function
+// The external shadow stack function
 // Communicates with the unix socket server file descriptor sock
-void start_shadow_stack( const int sock ) {
+void start_external_shadow_stack( const int sock ) {
 	TerminateOnDestruction tod;
 
 	// Declare this as a valid process
@@ -94,13 +104,12 @@ void start_shadow_stack( const int sock ) {
 
 	// Create the message handling function map and populate it
 	std::map<std::string, message_handler> call_correct_function {
-		{ std::string( Continue::header ), continue_handler },
+		{ std::string( NewSignal::header ), add_wildcard },
 		{ std::string( Call::header ), call_handler },
 		{ std::string( Ret::header ), ret_handler }
 	};
 
-	// Create the 2 dimensional map of stacks
-	// This map exists so different threads / processes don't use the same stack
+	// Create the shadow stack
 	pointer_stack stk;
 	
 	// The buffer used to receive messages
@@ -126,7 +135,8 @@ void start_shadow_stack( const int sock ) {
 		// Verify the message is valid then call the appropriate function
 		const std::string message_type(buffer, MESSAGE_HEADER_LENGTH);
 		const auto function_ptr = call_correct_function[message_type];
-		Utilities::assert( function_ptr != nullptr, "Sever recieved wrong type of data!" );
+		Utilities::log("Got message header: %*.s", MESSAGE_HEADER_LENGTH, buffer);
+		Utilities::assert( function_ptr != nullptr, "Sever recieved wrong type of message!" );
 		function_ptr(stk, & buffer[MESSAGE_HEADER_LENGTH], sock);
 	}
 
