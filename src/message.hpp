@@ -85,13 +85,18 @@ class Message final {
 		char message[size];
 	};
 
+	// TODO: change to use just a strong enum probably...
+
+	// General Headers
+
+	/** A class containing the header of NewSignal message */
+	struct NewSignalInfo final {
+		/** The header of the NewSignal message */
+		static constexpr const char * const header = "NEWS";
+	};
 
 	/** A class containing the header of Continue message */
 	struct ContinueInfo final {
-
-		/** Disable construction */
-		ContinueInfo() = delete;
-
 		/** The header of the Continue message */
 		static constexpr const char * const header = "CONT";
 	};
@@ -99,8 +104,6 @@ class Message final {
 
 	/** A class containing the header of Call message */
 	struct CallInfo final {
-		/** Disable construction */
-		CallInfo() = delete;
 		/** The header of the Call message */
 		static const constexpr char * const header = "CALL";
 	};
@@ -108,11 +111,25 @@ class Message final {
 
 	/** A class containing the header of Call message */
 	struct RetInfo final {
-		/** Disable construction */
-		RetInfo() = delete;
-		/** The header of the Call message */
+		/** The header of the Ret message */
 		static const constexpr char * const header = "RET-";
 	};
+
+#if 0
+	// Internal SS messages
+
+	/** A class containing the header of Call message */
+	struct NewIntProcInfo final {
+		/** The header of the NewIntProc message */
+		static const constexpr char * const header = "NIPR";
+	};
+
+	/** A class containing the header of Call message */
+	struct IntProcDeathInfo final {
+		/** The header of the IntProcDeath message */
+		static const constexpr char * const header = "IPRD";
+	};
+#endif
 
 public:
 
@@ -121,14 +138,21 @@ public:
 		return ! memcmp(buffer, T::header, MESSAGE_HEADER_LENGTH);
 	}
 
+	/** A typedef for the new signal message */
+	typedef MessageType<false, NewSignalInfo> NewSignal;
 	/** A typedef for the continue message */
 	typedef MessageType<true, ContinueInfo> Continue;
-
 	/** A typedef for the call message */
 	typedef MessageType<false, CallInfo> Call;
-
 	/** A typedef for the ret message */
 	typedef MessageType<false, RetInfo> Ret;
+
+#if 0
+	/** A typedef for the new int proc message */
+	typedef MessageType<true, NewIntProcInfo> NewIntProc;
+	/** A typedef for the new int proc message */
+	typedef MessageType<true, IntProcDeathInfo> IntProcDeath;
+#endif
 };
 
 

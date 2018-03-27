@@ -37,22 +37,22 @@ namespace Utilities {
 	/** This function promises **NOTHING** on failure */
 	void log_no_newline(const char * const format, ...);
 
-	/// Prints the arguments as printf would to the STDOUT_FILE file
-	/** Ends the printed line with a newline then flushes the buffer
-	 *  If STDOUT_FILE is nullptr, this function does nothing
-	 *  This function promises **NOTHING** on failure */
-	void message(const char * const format, ...);
-
 	/// Logs the arguments as printf would to the log file
 	/** Ends the printed line with a newline then flushes the buffer
 	 *  If LOG_FILE is nullptr, this function does nothing
 	 *  This function promises **NOTHING** on failure */
 	void log(const char * const format, ...);
 
-	/// Logs the arguments as printf would to the error, log, and stdout files
+	/// Prints the arguments as printf would to the stdout and log files
 	/** Ends the printed line with a newline then flushes the buffer
-	 *  If any of STDOUT, LOG_FILE, ERROR_FILE are the same, only prints once
+	 *  If STDOUT_FILE is nullptr, this function does nothing
+	 *  This function promises **NOTHING** on failure */
+	void message(const char * const format, ...);
+
+	/// Logs the arguments as printf would to the error, and log files
+	/** Ends the printed line with a newline then flushes the buffer
 	 *  If either file is nullptr, that file is skipped
+	 *  This function does NOT print to STDOUT_FILE
 	 *  This function promises **NOTHING** on failure */
 	void log_error(const char * const format, ...);
 };

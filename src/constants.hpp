@@ -12,9 +12,9 @@
 /*********************************************************/
 
 
-// The .so of the shadow stack DynamoRIO client.
-// This should be defined by the cmake on compilation
 #ifndef DYNAMORIO_CLIENT_SO
+/// The .so of the shadow stack DynamoRIO client.
+/** This should be defined by the cmake on compilation */
 #define DYNAMORIO_CLIENT_SO "/path/to/.so/"
 #endif
 
@@ -42,35 +42,47 @@ static constexpr bool str_equal( const char * const s1,
 /*********************************************************/
 
 
-// The name of the program
-// This should be defined by the cmake on compilation
 #ifndef PROGRAM_NAME
+/// The name of the program
+/** This should be defined by the cmake on compilation */
 #define PROGRAM_NAME "SatisfyTheIDECompiler"
 #endif
 
-// The default log file. 
-// This fill may be nullptr, but may not be NULL 
-// This should be defined by the cmake on compilation
-// #define LOG_FILE nullptr
+#ifndef LOG_FILE
+/// The default log file. 
+/** This fill may be nullptr, but may not be NULL 
+ *  This should be defined by the cmake on compilation */
+#define LOG_FILE nullptr 
+#endif
 
-/** The default stdout
- *  This fill may be nullptr, but may not be NULL */
+/// The default stdout
+/**  This fill may be nullptr, but may not be NULL */
 #define STDOUT_FILE stdout
 
-/** The default error log file (important events are also noted here)
- *  This fill may be nullptr, but may not be NULL */
+/// The default error log file (important events are also noted here)
+/**  This fill may be nullptr, but may not be NULL */
 #define ERROR_FILE stderr
 
 
+/** Max internal shadow stack size */
+#define MAX_CALL_DEPTH (1000 * sizeof(void *) * 4096)
+
+
 /** The flag that must be passed to invoke internal mode */
-#define INTERNAL_MODE_FLAG "int"
+#define INTERNAL_MODE_FLAG "-int"
 
 /** The flag that must be passed to invoke external mode */
-#define EXTERNAL_MODE_FLAG "ext"
+#define EXTERNAL_MODE_FLAG "-ext"
 
 /** Verify the modes are not equal */
 static_assert( ! str_equal(INTERNAL_MODE_FLAG, EXTERNAL_MODE_FLAG),
 				"iternal mode flag cannot equal external mode flag");
+
+/// Wildcard address matching value
+/** This address matches any address on the stack
+ *  Since no call or ret will ever happen here, 
+ *  during normal use, it is fine */
+#define WILDCARD ( -1 )
 
 
 /*********************************************************/
@@ -80,9 +92,7 @@ static_assert( ! str_equal(INTERNAL_MODE_FLAG, EXTERNAL_MODE_FLAG),
 /*********************************************************/
 
 
-/** If this is on a mac */
 #ifdef __APPLE__
-
 /** The max number of signals on linux allowed */
 #define _NSIG 65
 #endif

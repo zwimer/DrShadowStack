@@ -7,14 +7,14 @@ cmake_minimum_required(VERSION 3.5)
 #################################################
 
 
-# Location DynamoRIO
+# Location of DynamoRIO
 set(DynamoRIO_DIR /home/vagrant/dynamorio/build/cmake)
 
 
 ### Developer options below ###
 
 # Debug mode option, comment out to disable
-#set(DEBUG_MODE "ON")
+# set(DEBUG_MODE "ON")
 
 # For YouCompleteMe vim plugin
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -31,9 +31,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(PROGRAM_NAME DrShadowStack)
 project(${PROGRAM_NAME})
 
-# The name of the internal internal client .so to be created
-set(SS_DR_CLIENT_SO ss_dr_client)
-
 # The names of the client shared library for DynamoRio
 set(SS_DR_CLIENT_SO ss_dr_client)
 
@@ -47,7 +44,8 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Required complication flags
-set (CMAKE_CXX_FLAGS "-std=c++11 -Wall -Wextra -Wno-unused-parameter -Werror" )
+# TODO:
+set (CMAKE_CXX_FLAGS "-std=c++11 -Wall -Wextra -Wno-unused-parameter") # -Werror" )
 
 # Add macro definitions
 add_definitions(-DPROGRAM_NAME="${PROGRAM_NAME}")
@@ -58,6 +56,7 @@ add_definitions(-DDYNAMORIO_CLIENT_SO="${CMAKE_BINARY_DIR}/lib${SS_DR_CLIENT_SO}
 if(DEFINED DEBUG_MODE)
 	message("Debug Mode ON!")
 	set(CMAKE_BUILD_TYPE debug)
+	add_definitions(-DDEBUG_MODE)
 	add_definitions(-DLOG_FILE=stdout)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -ggdb")
 
@@ -88,10 +87,12 @@ add_library(${SS_DR_CLIENT_SO} SHARED
 	group.cpp
 	)
 
-# Configure DynamoRIO for both
+# Configure DynamoRIO
 configure_DynamoRIO_client(${SS_DR_CLIENT_SO})
 use_DynamoRIO_extension(${SS_DR_CLIENT_SO} "drmgr")
-
+if (DEFINED DEBUG_MODE)
+	use_DynamoRIO_extension(${SS_DR_CLIENT_SO} "drsyms")
+endif()
 
 #################################################
 #												#
@@ -102,8 +103,8 @@ use_DynamoRIO_extension(${SS_DR_CLIENT_SO} "drmgr")
 
 # Build the shadow stack executable
 add_executable(${PROGRAM_NAME}.out
+	external_stack_server.cpp
 	shadow_stack.cpp
-	stack_server.cpp
 	quick_socket.cpp
 	utilities.cpp
 	get_tid.cpp
