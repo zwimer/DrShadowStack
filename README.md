@@ -5,6 +5,8 @@ TODO: put a description
 ## Requirements
 
 TODO: 
+dynamorio
+```gem install github_changelog_generator```
 
 ## Installation Instructions
 
@@ -17,6 +19,7 @@ Requires boost: sudo apt-get install libboost-all-dev
 
 
 
+```
 #include<unistd.h>
 #include<stdio.h>
 #include <sys/syscall.h>
@@ -30,6 +33,7 @@ int main() {
 
 }
 ... vfork -> execve
+```
 
 Special fix : analysis, if mis-match use drsym
 
