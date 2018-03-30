@@ -22,7 +22,7 @@ std::string temp_name() {
 	static const int size = 23;
 
 	// Check lenth of string. Note, bind will not accept 
-	// file names logner than something like 108 characters
+	// file names longer than something like 108 characters
 	static_assert( size < 100, "file name too long!" );
 
 	// The desired location
@@ -89,12 +89,12 @@ void start_program( char * drrun, char * a_out, char ** client_argv,
 	args.push_back(nullptr);
 
 	// Log the action then flush the buffers
-	Utilities::log("%d: Starting dr_run", get_tid());
-	Utilities::log_no_newline("Calling execvp on: ");
+	std::string pnt = get_tid() + ": Starting dr_run\nCalling execvp on: ";
 	for ( unsigned long i = 0; i < args.size() - 1; ++i ) {
-		Utilities::log_no_newline( "%s ", args[i] );
+		pnt += args[i];
+		pnt += ' ';
 	}
-	Utilities::log("");
+	Utilities::log(pnt.c_str());
 	fflush(NULL);
 
 	// Start drrun
@@ -104,24 +104,18 @@ void start_program( char * drrun, char * a_out, char ** client_argv,
 
 // Called if incorrect usage occured
 [[ noreturn ]] static void incorrect_usage() {
-	using namespace Utilities;
-	message( 	"Usage: ./" PROGRAM_NAME ".out <Mode> <drrun> <a.out> ...\n"
-				"Mode options:\n"
-				"\t" INTERNAL_MODE_FLAG " -- internal shadow stack mode\n"
-				"\t" EXTERNAL_MODE_FLAG " -- external shadow stack mode\n" );
-	assert( ! Group::is_setup(), "incorrect_usage() called after group setup");
-	log_error("Incorrect Usage");
+	Utilities::message( "Usage: ./" PROGRAM_NAME ".out <Mode> <drrun> <a.out> ...\n"
+						"Mode options:\n"
+						"\t" INTERNAL_MODE_FLAG " -- internal shadow stack mode\n"
+						"\t" EXTERNAL_MODE_FLAG " -- external shadow stack mode\n" );
+	Utilities::assert( ! Group::is_setup(), "incorrect_usage() called after group setup");
+	Utilities::log_error("Incorrect Usage");
 	exit(EXIT_FAILURE);
 }
 
 // Main function
 int main(int argc, char * argv[]) {
 
-#if 1
-	for(int i = 0; argv[i]; ++i)	
-		Utilities::message("%s", argv[i]);
-#endif
-	// TODO: use actual arg parser
 	// Check usage
 	if ( argc < 4 ) {
 		incorrect_usage();
@@ -137,17 +131,16 @@ int main(int argc, char * argv[]) {
 	// Also changes many default signal handlers to kill the process group
 	Group::setup();
 
-#if 1 // TODO
-	if (is_internal) {
-		char buf[10];
-		start_program( argv[2], argv[3], & argv[4], argv[1], buf);
-	}
-#endif 
-
 	// We check for the return statuses of functions, so ignore sigpipe
 	Utilities::assert( signal(SIGCHLD, SIG_IGN) != SIG_ERR, "signal() failed." );
 	Utilities::assert( signal(SIGPIPE, SIG_IGN) != SIG_ERR, "signal() failed." );
 	Utilities::log("Sigpipe and Sigchild ignored");
+
+	// If the shadow stack should be internal, start it
+	if (is_internal) {
+		char buf[10];
+		start_program( argv[2], argv[3], & argv[4], argv[1], buf);
+	}
 
 	// Setup a unix server
 	// Technically, between generating the name name and the
@@ -181,14 +174,8 @@ int main(int argc, char * argv[]) {
 		Utilities::log("%llu: waiting for client", get_tid());
 		const int client_sock = QS::accept_client(sock);
 
-		// Start the desired stack server
-#if 0 // TODO
-		const auto stack_server = is_internal ? start_internal_shadow_stack :
-												start_external_shadow_stack ;
-#else 
-		const auto stack_server = start_external_shadow_stack ;
-#endif 
-		stack_server(client_sock);
+		// Start the shadow stack server
+		start_external_shadow_stack(client_sock);
 
 		// If the program made it to this point, nothing
 		// went wrong, gracefully exit

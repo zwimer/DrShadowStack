@@ -45,7 +45,7 @@ static constexpr bool str_equal( const char * const s1,
 #ifndef PROGRAM_NAME
 /// The name of the program
 /** This should be defined by the cmake on compilation */
-#define PROGRAM_NAME "SatisfyTheIDECompiler"
+#define PROGRAM_NAME "PROGRAM_NAME_PLACEHOLDER"
 #endif
 
 #ifndef LOG_FILE

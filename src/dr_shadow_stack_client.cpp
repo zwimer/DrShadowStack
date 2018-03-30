@@ -21,7 +21,7 @@ DR_EXPORT void dr_client_main(client_id_t id, int argc, const char *argv[]) {
     drmgr_init();
 
     // Make it easy to tell, by looking at log file, which client executed
-    dr_log(NULL, DR_LOG_ALL, 1, "Client 'ShadowStack' initializing\n");
+    Utilities::log("Client 'DrShadowStack' initializing\n");
 
 	// If the decide what functions to use based on the mode
 	const bool is_internal = ( strcmp(argv[1], INTERNAL_MODE_FLAG) == 0 );
