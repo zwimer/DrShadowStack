@@ -4,7 +4,9 @@
 #include "constants.hpp"
 #include "utilities.hpp"
 
+#include "dr_api.h" // TODO ?
 #include "drmgr.h"
+
 
 /// The main client function
 /** This function dynamically 'injects' the shadow stack */

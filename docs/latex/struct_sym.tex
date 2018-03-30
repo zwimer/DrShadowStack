@@ -1,0 +1,117 @@
+\hypertarget{struct_sym}{}\section{Sym Struct Reference}
+\label{struct_sym}\index{Sym@{Sym}}
+
+
+Wrap symbols in a static class.  
+
+
+
+
+{\ttfamily \#include $<$dr\+\_\+print\+\_\+sym.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_sym_aa2c1e0336fc028030e91c380230a0ae3}{Sym} ()=delete
+\begin{DoxyCompactList}\small\item\em Disable construction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{struct_sym_aa14d1ce9dbef3383d591499714c4d164}{init} ()
+\begin{DoxyCompactList}\small\item\em The setup function for dr\+\_\+print\+\_\+sym Must be called {\itshape by the DR client} before print. \end{DoxyCompactList}\item 
+static void \hyperlink{struct_sym_a474eb27bfe01436357e0be478020611c}{finish} ()
+\begin{DoxyCompactList}\small\item\em This function should be called when the client terminates. \end{DoxyCompactList}\item 
+static void \hyperlink{struct_sym_acda3df3e55ac97cbf38459b1121b9673}{print} (\hyperlink{struct_sym_a7d4d0c72d65ffac9eb1d1eca78d58992}{Print\+Fn} pnt, \hyperlink{struct_sym_a7d4d0c72d65ffac9eb1d1eca78d58992}{Print\+Fn} perr, const char $\ast$const description, const app\+\_\+pc addr)
+\begin{DoxyCompactList}\small\item\em Print symbol information for the what is located at addr. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{struct_sym_a7d4d0c72d65ffac9eb1d1eca78d58992}{Print\+Fn} = void($\ast$)(const char $\ast$const format,...)
+\begin{DoxyCompactList}\small\item\em For clarity of the dependency injection below. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{struct_sym_a5b0d02c05e1a5450e6dc79903615ab46}{setup} = false
+\begin{DoxyCompactList}\small\item\em Record if syms is already setup. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Wrap symbols in a static class. 
+
+\subsection{Member Typedef Documentation}
+\index{Sym@{Sym}!Print\+Fn@{Print\+Fn}}
+\index{Print\+Fn@{Print\+Fn}!Sym@{Sym}}
+\subsubsection[{\texorpdfstring{Print\+Fn}{PrintFn}}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf Sym\+::\+Print\+Fn} =  void ($\ast$) (const char $\ast$ const format, ...)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{struct_sym_a7d4d0c72d65ffac9eb1d1eca78d58992}{}\label{struct_sym_a7d4d0c72d65ffac9eb1d1eca78d58992}
+
+
+For clarity of the dependency injection below. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Sym@{Sym}!Sym@{Sym}}
+\index{Sym@{Sym}!Sym@{Sym}}
+\subsubsection[{\texorpdfstring{Sym()=delete}{Sym()=delete}}]{\setlength{\rightskip}{0pt plus 5cm}Sym\+::\+Sym (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [delete]}}\hypertarget{struct_sym_aa2c1e0336fc028030e91c380230a0ae3}{}\label{struct_sym_aa2c1e0336fc028030e91c380230a0ae3}
+
+
+Disable construction. 
+
+
+
+\subsection{Member Function Documentation}
+\index{Sym@{Sym}!finish@{finish}}
+\index{finish@{finish}!Sym@{Sym}}
+\subsubsection[{\texorpdfstring{finish()}{finish()}}]{\setlength{\rightskip}{0pt plus 5cm}void Sym\+::finish (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{struct_sym_a474eb27bfe01436357e0be478020611c}{}\label{struct_sym_a474eb27bfe01436357e0be478020611c}
+
+
+This function should be called when the client terminates. 
+
+\index{Sym@{Sym}!init@{init}}
+\index{init@{init}!Sym@{Sym}}
+\subsubsection[{\texorpdfstring{init()}{init()}}]{\setlength{\rightskip}{0pt plus 5cm}void Sym\+::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{struct_sym_aa14d1ce9dbef3383d591499714c4d164}{}\label{struct_sym_aa14d1ce9dbef3383d591499714c4d164}
+
+
+The setup function for dr\+\_\+print\+\_\+sym Must be called {\itshape by the DR client} before print. 
+
+\index{Sym@{Sym}!print@{print}}
+\index{print@{print}!Sym@{Sym}}
+\subsubsection[{\texorpdfstring{print(\+Print\+Fn pnt, Print\+Fn perr, const char $\ast$const description, const app\+\_\+pc addr)}{print(PrintFn pnt, PrintFn perr, const char *const description, const app_pc addr)}}]{\setlength{\rightskip}{0pt plus 5cm}void Sym\+::print (
+\begin{DoxyParamCaption}
+\item[{{\bf Print\+Fn}}]{pnt, }
+\item[{{\bf Print\+Fn}}]{perr, }
+\item[{const char $\ast$const}]{description, }
+\item[{const app\+\_\+pc}]{addr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{struct_sym_acda3df3e55ac97cbf38459b1121b9673}{}\label{struct_sym_acda3df3e55ac97cbf38459b1121b9673}
+
+
+Print symbol information for the what is located at addr. 
+
+Prints out information via the pnt function which works like printf Prints out errors via the perr function which works like printf description is a description of what the address addr points to 
+
+\subsection{Field Documentation}
+\index{Sym@{Sym}!setup@{setup}}
+\index{setup@{setup}!Sym@{Sym}}
+\subsubsection[{\texorpdfstring{setup}{setup}}]{\setlength{\rightskip}{0pt plus 5cm}bool Sym\+::setup = false\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{struct_sym_a5b0d02c05e1a5450e6dc79903615ab46}{}\label{struct_sym_a5b0d02c05e1a5450e6dc79903615ab46}
+
+
+Record if syms is already setup. 
+
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{dr__print__sym_8hpp}{dr\+\_\+print\+\_\+sym.\+hpp}\item 
+src/\hyperlink{dr__print__sym_8cpp}{dr\+\_\+print\+\_\+sym.\+cpp}\end{DoxyCompactItemize}

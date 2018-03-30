@@ -5,6 +5,7 @@
 
 #include <sys/socket.h>
 #include <unistd.h>
+#include <stdint.h>
 
 #include "drmgr.h"
 
@@ -20,7 +21,7 @@ static dr_signal_action_t signal_event(void *drcontext, dr_siginfo_t *info) {
 	Utilities::verbose_log("(client) Caught signal %d", info->sig);
 
 	// Create and send the message
-	char buffer[8];
+	char buffer[sizeof(intmax_t) + 1];
 	sprintf(buffer, "%d", info->sig);
 	Message::NewSignal msg( buffer );
 	const int bytes_sent = write(sock, msg.message, msg.size);

@@ -1,37 +1,8 @@
 \hypertarget{dr__print__sym_8hpp}{}\section{src/dr\+\_\+print\+\_\+sym.hpp File Reference}
 \label{dr__print__sym_8hpp}\index{src/dr\+\_\+print\+\_\+sym.\+hpp@{src/dr\+\_\+print\+\_\+sym.\+hpp}}
 {\ttfamily \#include \char`\"{}dr\+\_\+api.\+h\char`\"{}}\\*
-\subsection*{Typedefs}
+\subsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
-using \hyperlink{dr__print__sym_8hpp_ac42c22b4ecc47db7a40c34d0aece347a}{Print\+Fn} = void($\ast$)(const char $\ast$const format,...)
-\end{DoxyCompactItemize}
-\subsection*{Functions}
-\begin{DoxyCompactItemize}
-\item 
-void \hyperlink{dr__print__sym_8hpp_adf106e5b7ce5c3f8701bfd3d6fd42b85}{print\+\_\+sym} (\hyperlink{dr__print__sym_8hpp_ac42c22b4ecc47db7a40c34d0aece347a}{Print\+Fn} pnt, \hyperlink{dr__print__sym_8hpp_ac42c22b4ecc47db7a40c34d0aece347a}{Print\+Fn} perr, const char $\ast$const description, const app\+\_\+pc addr)
-\begin{DoxyCompactList}\small\item\em Print symbol information for the what is located at addr. \end{DoxyCompactList}\end{DoxyCompactItemize}
-
-
-\subsection{Typedef Documentation}
-\index{dr\+\_\+print\+\_\+sym.\+hpp@{dr\+\_\+print\+\_\+sym.\+hpp}!Print\+Fn@{Print\+Fn}}
-\index{Print\+Fn@{Print\+Fn}!dr\+\_\+print\+\_\+sym.\+hpp@{dr\+\_\+print\+\_\+sym.\+hpp}}
-\subsubsection[{\texorpdfstring{Print\+Fn}{PrintFn}}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf Print\+Fn} =  void ($\ast$) (const char $\ast$ const format, ...)}\hypertarget{dr__print__sym_8hpp_ac42c22b4ecc47db7a40c34d0aece347a}{}\label{dr__print__sym_8hpp_ac42c22b4ecc47db7a40c34d0aece347a}
-
-
-\subsection{Function Documentation}
-\index{dr\+\_\+print\+\_\+sym.\+hpp@{dr\+\_\+print\+\_\+sym.\+hpp}!print\+\_\+sym@{print\+\_\+sym}}
-\index{print\+\_\+sym@{print\+\_\+sym}!dr\+\_\+print\+\_\+sym.\+hpp@{dr\+\_\+print\+\_\+sym.\+hpp}}
-\subsubsection[{\texorpdfstring{print\+\_\+sym(\+Print\+Fn pnt, Print\+Fn perr, const char $\ast$const description, const app\+\_\+pc addr)}{print_sym(PrintFn pnt, PrintFn perr, const char *const description, const app_pc addr)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+sym (
-\begin{DoxyParamCaption}
-\item[{{\bf Print\+Fn}}]{pnt, }
-\item[{{\bf Print\+Fn}}]{perr, }
-\item[{const char $\ast$const}]{description, }
-\item[{const app\+\_\+pc}]{addr}
-\end{DoxyParamCaption}
-)}\hypertarget{dr__print__sym_8hpp_adf106e5b7ce5c3f8701bfd3d6fd42b85}{}\label{dr__print__sym_8hpp_adf106e5b7ce5c3f8701bfd3d6fd42b85}
-
-
-Print symbol information for the what is located at addr. 
-
-Prints out information via the pnt function which works like printf Prints out errors via the perr function which works like printf description is a description of what the address addr points to 
+struct \hyperlink{struct_sym}{Sym}
+\begin{DoxyCompactList}\small\item\em Wrap symbols in a static class. \end{DoxyCompactList}\end{DoxyCompactItemize}
