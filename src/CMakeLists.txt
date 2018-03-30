@@ -13,8 +13,9 @@ set(DynamoRIO_DIR /home/vagrant/dynamorio/build/cmake)
 
 ### Developer options below ###
 
-# Debug mode option, comment out to disable
-# set(DEBUG_MODE "ON")
+# Debug mode options. Comment out to disable
+#set(DEBUG_MODE "VERBOSE")
+set(DEBUG_MODE "ON")
 
 # For YouCompleteMe vim plugin
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -52,9 +53,17 @@ add_definitions(-DPROGRAM_NAME="${PROGRAM_NAME}")
 add_definitions(-DDYNAMORIO_CLIENT_SO="${CMAKE_BINARY_DIR}/lib${SS_DR_CLIENT_SO}.so")
 
 
+
 # If debug mode
 if(DEFINED DEBUG_MODE)
 	message("Debug Mode ON!")
+
+	# If verbose
+	if(DEBUG_MODE STREQUAL "VERBOSE")
+		message("\t Verbose Debug Mode ON!")
+		add_definitions(-DVERBOSE)
+	endif()
+
 	set(CMAKE_BUILD_TYPE debug)
 	add_definitions(-DDEBUG_MODE)
 	add_definitions(-DLOG_FILE=stdout)
@@ -82,6 +91,7 @@ add_library(${SS_DR_CLIENT_SO} SHARED
 	dr_internal_ss_events.cpp
 	dr_external_ss_events.cpp
 	quick_socket.cpp
+	dr_print_sym.cpp
 	utilities.cpp
 	get_tid.cpp
 	group.cpp
@@ -90,9 +100,7 @@ add_library(${SS_DR_CLIENT_SO} SHARED
 # Configure DynamoRIO
 configure_DynamoRIO_client(${SS_DR_CLIENT_SO})
 use_DynamoRIO_extension(${SS_DR_CLIENT_SO} "drmgr")
-if (DEFINED DEBUG_MODE)
-	use_DynamoRIO_extension(${SS_DR_CLIENT_SO} "drsyms")
-endif()
+use_DynamoRIO_extension(${SS_DR_CLIENT_SO} "drsyms")
 
 #################################################
 #												#
