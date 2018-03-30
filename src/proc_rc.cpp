@@ -59,6 +59,7 @@ ProcRC::ProcRC() : proc_rc((prc_t*) create_shared_memory(sizeof(prc_t))) {
 
 // Destructor
 ProcRC::~ProcRC() {	
+	Utilities::log("ProcRC destructor called");
 	Utilities::assert( munmap( prc->proc_rc, sizeof(prc_t)) == 0, 
 		"munmap() failed." );
 }

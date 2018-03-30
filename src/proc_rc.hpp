@@ -2,12 +2,11 @@
 #ifndef __PROC_RC_HPP__
 #define __PROC_RC_HPP__
 
+#include "ipc_lock.hpp"
 #include "group.hpp"
 
-#include <boost/interprocess/sync/interprocess_mutex.hpp>
 
-
-// The type the process rc is
+/** The type the process rc is */
 typedef long prc_t;
 
 
@@ -16,45 +15,47 @@ typedef long prc_t;
 // of the mutex from group.cpp, doing so allows group.cpp
 
 /// A class that wraps a process reference counter
-/** This class is initalized at startup, so no 
- *  'setup' function has to be called */
+/** This class has a singleton constructor, is initalized at start up */
 class ProcRC {
 private:
 
-	// Delete non-default constructors
+	/** Delete non-default constructors */
 	ProcRC( ProcRC && ) = delete;
+
+	/** Delete non-default constructors */
 	ProcRC( const ProcRC & ) = delete;
+
+	/** Delete non-default constructors */
 	ProcRC & operator=( const ProcRC & ) = delete;
 
-	// A bool used to determine of a ProcRC exists
+	/** The process rc pointer */
+	prc_t * const proc_rc;
+
+	/** The mutex used to protect the reference coutner */
+	IPCLock rc_lock;
+
+	/** Set to true by the singleton constructor once created
+	 *  Default value: false */
 	static bool setup;
 
-	// The process rc pointer and the lock that protects it
-	boost::interprocess::interprocess_mutex rc_lock;
-	prc_t * const proc_rc;
-	
 public:
 
-	/// A singleton constructor
 	/** Initalizes process reference counter to 0
 	 *  Also registers a method to call delete prc with Group */
 	ProcRC();
 
 	/// A destructor
-	/** Frees shared memory */
+	/** Frees memory allocated */
 	~ProcRC();
 
-	/** This function increments the process reference count
-	 *  Note: This function merely wraps the decrement
-	 * rc function from proc_rc with a tod */
+	/** This function increments the process reference count */
 	void inc();
 
 	/// This function decreases the process reference count
-	/** If the count hits 0, the group is terminated
-	 *  Note: This function merely wraps the decrement
-	 * rc function from proc_rc with a tod */
+	/** If the count hits 0, the group is terminated */
 	void dec();
 };
+
 
 // A global process rc
 extern ProcRC * const prc;

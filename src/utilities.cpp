@@ -1,14 +1,29 @@
 #include "utilities.hpp"
+#include "constants.hpp"
+#include "get_tid.hpp"
+#include "group.hpp"
 
+
+#include <stdint.h>
 #include <stdarg.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 #include <errno.h>
+#include <stdio.h>
 #include <set>
 
-#include "constants.hpp"
-#include "group.hpp"
+
+/*********************************************************/
+/*                                                       */
+/*             			Defining files					 */
+/*                                                       */
+/*********************************************************/
+
+
+// Error checking
+FILE * const Utilities::log_file = LOG_FILE;
+FILE * const Utilities::error_file = ERROR_FILE;
+FILE * const Utilities::stdout_file= STDOUT_FILE;
 
 
 /*********************************************************/
@@ -40,56 +55,59 @@ void Utilities::assert(const bool b, const char * const s) {
 /*********************************************************/
 
 
+// This function does nothing but return
+inline static void no_op(const char * const, ...) {}
+
 // The helper that writes args in the format of format to f
 // Ends the printed line with a newline then flushes the buffer
 // This function promises NOTHING on failure
 inline static void write_log(FILE * f, const char * const format, va_list args) {
+	fprintf(f, "TID %jd: ", (intmax_t) get_tid());
 	vfprintf(f, format, args);
 	fprintf(f, "\n");
 	fflush(f);
 }
 
-
-/// Logs the arguments as printf would to the log file
-/** This function promises **NOTHING** on failure */
-void Utilities::log_no_newline(const char * const format, ...) {
-	if ( LOG_FILE != nullptr ) {
-		va_list args;
-		va_start(args, format);
-		vfprintf(LOG_FILE, format, args);
-		va_end(args);
-	}
-}
+// Logs the arguments as printf would to the log file
+// Ends the printed line with a newline then flushes the buffer
+// If log_file is nullptr, this function does nothing
+// This function promises **NOTHING** on failure
+// This function only runs if VERBOSE is defined
+void (* const Utilities::verbose_log) (const char * const format, ...)
+#ifdef VERBOSE
+	= Utilities::log;
+#else
+	= no_op;
+#endif
 
 // Logs the arguments as printf would to the log file
 // Ends the printed line with a newline then flushes the buffer
-// If LOG_FILE is nullptr, this function does nothing
+// If log_file is nullptr, this function does nothing
 // This function promises **NOTHING** on failure
 void Utilities::log(const char * const format, ...) {
-	if ( LOG_FILE != nullptr ) {
+	if ( log_file != nullptr ) {
 		va_list args;
 		va_start(args, format);
-		write_log(LOG_FILE, format, args);
+		write_log(log_file, format, args);
 		va_end(args);
 	}
 }
 
 // Prints the arguments as printf would to the stdout and log files
 // Ends the printed line with a newline then flushes the buffer
-// If STDOUT_FILE is nullptr, this function does nothing
+// If stdout_file is nullptr, this function does nothing
 // This function promises **NOTHING** on failure
 void Utilities::message(const char * const format, ...) {
 
 	// What files to write to (the set eliminates duplicates)
-	static FILE * const fs[] { STDOUT_FILE, LOG_FILE };
-	static const int len = 2;
+	const std::set<FILE *> fs { stdout_file, log_file };
 
 	// Write to the files
-	for ( int i = 0; i < len; ++i ) {
-		if ( fs[i] != nullptr ) {
+	for ( auto i = fs.begin(); i != fs.end(); ++i ) {
+		if ( *i != nullptr ) {
 			va_list args;
 			va_start(args, format);
-			write_log(fs[i], format, args);
+			write_log(*i, format, args);
 			va_end(args);
 		}
 	}
@@ -98,21 +116,20 @@ void Utilities::message(const char * const format, ...) {
 // Logs the arguments as printf would to the error, and log files
 // Ends the printed line with a newline then flushes the buffer
 // If either file is nullptr, that file is skipped
-// This function does NOT print to STDOUT_FILE
+// This function does NOT print to stdout_file
 // This function promises **NOTHING** on failure
 void Utilities::log_error(const char * const format, ...) {
 
 	// What files to write to (the set eliminates duplicates)
-	static FILE * const fs[] { ERROR_FILE, LOG_FILE };
-	static const int len = 2;
+	const std::set<FILE *> fs { error_file, log_file };
 
 	// Write to the files
-	for ( int i = 0; i < len; ++i ) {
-		if ( fs[i] != nullptr ) {
-			fprintf(fs[i], "ERROR: ");
+	for ( auto i = fs.begin(); i != fs.end(); ++i ) {
+		if ( *i != nullptr ) {
+			fprintf(*i, "ERROR: ");
 			va_list args;
 			va_start(args, format);
-			write_log(fs[i], format, args);
+			write_log(*i, format, args);
 			va_end(args);
 		}
 	}
