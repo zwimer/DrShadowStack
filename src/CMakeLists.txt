@@ -32,8 +32,11 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(PROGRAM_NAME DrShadowStack)
 project(${PROGRAM_NAME})
 
-# The names of the client shared library for DynamoRio
+# The name of the client shared library for DynamoRio
 set(SS_DR_CLIENT_SO ss_dr_client)
+
+# The name of the support library
+set(SS_SUPPORT_LIB ss_support)
 
 
 # Find packages
@@ -79,6 +82,24 @@ message(${CMAKE_CXX_FLAGS})
 
 #################################################
 #												#
+#			Creating the support lib			#
+#												#
+#################################################
+
+
+# Create the .so
+add_library(${SS_SUPPORT_LIB} SHARED 
+	quick_socket.cpp
+	utilities.cpp
+	ipc_lock.cpp
+	proc_rc.cpp
+	get_tid.cpp
+	group.cpp
+	)
+
+
+#################################################
+#												#
 #			Creating the client .so's			#
 #												#
 #################################################
@@ -89,19 +110,16 @@ add_library(${SS_DR_CLIENT_SO} SHARED
 	dr_shadow_stack_client.cpp
 	dr_internal_ss_events.cpp
 	dr_external_ss_events.cpp
-	quick_socket.cpp
 	dr_print_sym.cpp
-	utilities.cpp
-	ipc_lock.cpp
-	proc_rc.cpp
-	get_tid.cpp
-	group.cpp
 	)
 
 # Configure DynamoRIO
 configure_DynamoRIO_client(${SS_DR_CLIENT_SO})
 use_DynamoRIO_extension(${SS_DR_CLIENT_SO} "drmgr")
 use_DynamoRIO_extension(${SS_DR_CLIENT_SO} "drsyms")
+
+# Link to the support library
+target_link_libraries(${SS_DR_CLIENT_SO} ${SS_SUPPORT_LIB})
 
 #################################################
 #												#
@@ -114,10 +132,7 @@ use_DynamoRIO_extension(${SS_DR_CLIENT_SO} "drsyms")
 add_executable(${PROGRAM_NAME}.out
 	external_stack_server.cpp
 	shadow_stack.cpp
-	quick_socket.cpp
-	utilities.cpp
-	ipc_lock.cpp
-	get_tid.cpp
-	proc_rc.cpp
-	group.cpp
 	)
+
+# Link to the support library
+target_link_libraries(${PROGRAM_NAME}.out ${SS_SUPPORT_LIB})
