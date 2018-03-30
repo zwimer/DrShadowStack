@@ -2,7 +2,7 @@
 #ifndef __CONSTANTS_HPP__
 #define __CONSTANTS_HPP__
 
-#include "string.h"
+#include <string.h>
 
 
 /*********************************************************/
