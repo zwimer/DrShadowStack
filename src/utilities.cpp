@@ -3,13 +3,9 @@
 #include "get_tid.hpp"
 #include "group.hpp"
 
-
 #include <stdint.h>
 #include <stdarg.h>
-#include <stdlib.h>
-#include <string.h>
 #include <errno.h>
-#include <stdio.h>
 #include <set>
 
 

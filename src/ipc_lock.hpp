@@ -3,6 +3,8 @@
 
 #include <cstdio>
 
+/** A useful typedef for dependency injection */
+using AssertFn = void (* const) (bool b, const char * const msg);
 
 /** An interprocess lock 
  *  This lock is implemented via flockfile
@@ -11,8 +13,9 @@
 class IPCLock {
 public:
 
-	/** Constructor */
-	IPCLock();
+	/** Constructor 
+	 *  Dependency inject the assert function */
+	IPCLock( AssertFn assert );
 
 	/** Destructor */
 	~IPCLock();

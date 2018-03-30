@@ -1,10 +1,9 @@
 #include "ipc_lock.hpp"
-#include "utilities.hpp"
 
 
 // Constructor
-IPCLock::IPCLock() : lock_file(std::tmpfile()) {
-	Utilities::assert( lock_file != nullptr, "std::tmpfile() failed" );
+IPCLock::IPCLock( AssertFn assert ) : lock_file(std::tmpfile()) {
+	assert( lock_file != nullptr, "std::tmpfile() failed" );
 }
 
 // Destructor
