@@ -1,6 +1,8 @@
 #include "dr_print_sym.hpp"
+#include "utilities.hpp"
 
-#include "drsyms.h" // TODO call drsyms init
+#include "dr_api.h"
+#include "drsyms.h"
 #include "drmgr.h"
 
 #include <memory>
@@ -9,12 +11,29 @@
 #define MAX_SYM_RESULT 4096
 
 
+// Initalize statics
+bool Sym::setup = false;
+
+
+// Setup drsym
+void Sym::init() {
+	Utilities::assert( ! setup, "Sym::setup() called twice!" );
+    Utilities::assert( drsym_init(0) == DRSYM_SUCCESS, "drsym_init() failed." );
+	setup = true;
+}
+
+// Cleanup drsym
+void Sym::finish() {
+	Utilities::assert( setup, "Sym::cleanup() called before setup!" );
+    Utilities::assert( drsym_exit() == DRSYM_SUCCESS, "drsym_exit() failed." );
+}
+
 // Print symbol information for the what is located at addr
 // Prints out information via the pnt function which works like printf
 // Prints out errors via the perr function which works like printf
 // description is a description of what the address addr points to
-void print_sym( PrintFn pnt, PrintFn perr, const char * const description, 
-				const app_pc addr ) {
+void Sym::print( PrintFn pnt, PrintFn perr, const char * const description, 
+				 const app_pc addr ) {
  
 	// Print out the description
 	pnt("Printing symbol information for %s...", description);

@@ -2,12 +2,7 @@
 #ifndef __UTILITIES_HPP__
 #define __UTILITIES_HPP__
 
-#include <stddef.h>
 #include <stdio.h>
-
-
-// Ingore the macro assert if it is defined
-#undef assert
 
 
 /*********************************************************/

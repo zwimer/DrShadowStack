@@ -7,7 +7,6 @@
 
 #include <unistd.h>
 #include <signal.h>
-#include <string.h>
 #include <sstream>
 #include <random>
 #include <vector>

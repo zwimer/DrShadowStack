@@ -1,4 +1,9 @@
 #include "external_stack_server.hpp"
+#include "constants.hpp"
+#include "utilities.hpp"
+#include "message.hpp"
+#include "proc_rc.hpp"
+#include "group.hpp"
 
 #include <sys/socket.h>
 #include <sys/types.h>
@@ -7,12 +12,6 @@
 #include <string>
 #include <stack>
 #include <map>
-
-#include "constants.hpp"
-#include "utilities.hpp"
-#include "message.hpp"
-#include "proc_rc.hpp"
-#include "group.hpp"
 
 // Remove assert macro
 #undef assert

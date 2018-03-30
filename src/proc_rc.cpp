@@ -50,7 +50,8 @@ static void del_prc() {
 
 
 // Constructor
-ProcRC::ProcRC() : proc_rc((prc_t*) create_shared_memory(sizeof(prc_t))) {
+ProcRC::ProcRC() : proc_rc((prc_t*) create_shared_memory(sizeof(prc_t))), 
+					rc_lock(Utilities::assert)  {
 	Utilities::assert( ! setup, "ProcRC constructor called twice." );
 	Group::register_delete_proc_rc( del_prc );
 	setup = true;
