@@ -39,12 +39,12 @@ void Sym::print( PrintFn pnt, PrintFn perr, const char * const description,
 	pnt("Printing symbol information for %s...", description);
 
 	// Temporaries used for struct internals
-    char name[MAX_SYM_RESULT];
-    char file[MAXIMUM_PATH];
+    char name[MAX_SYM_RESULT + 1];
+    char file[MAXIMUM_PATH + 1];
 
 	// Check to see what module the symbol is in
 	// If it is not in any, note so then return
-    module_data_t *data = dr_lookup_module(addr);
+    module_data_t * data = dr_lookup_module(addr);
     if (data == nullptr) {
         perr("Unknown symbol for %p", addr);
         return;
@@ -66,10 +66,25 @@ void Sym::print( PrintFn pnt, PrintFn perr, const char * const description,
 	drsym_error_t symres = drsym_lookup_address( data->full_path, addr - data->start, 
 												 &sym, DRSYM_DEFAULT_FLAGS );
 
-	// If somethign went wrong other than line not available
-    if ((symres != DRSYM_SUCCESS) && (symres != DRSYM_ERROR_LINE_NOT_AVAILABLE)) {
-        perr("drsym_lookup_address() failed for %p", addr);
-		return;
+	// Switch on symres
+	switch(symres) {
+
+		// If an unknown error happened, note so
+		default :
+			perr(	"drsym_lookup_address() failed for %p"
+					"with error number: %d", addr, symres );
+			return;
+
+		// If the symbol was not found, note so
+		case DRSYM_ERROR_SYMBOL_NOT_FOUND : 
+			perr(	"drsym_lookup_address() failed for %p"
+					" - symbol not found", addr );
+			return;
+
+		// If the sym is known, continue on
+		case DRSYM_SUCCESS :
+		case DRSYM_ERROR_LINE_NOT_AVAILABLE : 
+		/* No fall through, so we need a semioclon */ ;
 	}
 
 	// Determine the name of the module
