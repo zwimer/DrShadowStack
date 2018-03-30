@@ -37,7 +37,6 @@ set(SS_DR_CLIENT_SO ss_dr_client)
 
 
 # Find packages
-find_package (Threads REQUIRED)
 find_package(DynamoRIO REQUIRED)
 
 # Require C++ 11
@@ -122,6 +121,3 @@ add_executable(${PROGRAM_NAME}.out
 	proc_rc.cpp
 	group.cpp
 	)
-
-# Link the executable to the thread package
-target_link_libraries (${PROGRAM_NAME}.out ${CMAKE_THREAD_LIBS_INIT})
