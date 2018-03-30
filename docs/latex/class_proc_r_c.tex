@@ -13,40 +13,40 @@ A class that wraps a process reference counter.
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{class_proc_r_c_aaf90e0e0b95504fda9089c6658fab53f}{Proc\+RC} ()
-\begin{DoxyCompactList}\small\item\em A singleton constructor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Initalizes process reference counter to 0 Also registers a method to call delete prc with \hyperlink{struct_group}{Group}. \end{DoxyCompactList}\item 
 \hyperlink{class_proc_r_c_a76d4c0e75b434d4a262cc34fc2bd7a1a}{$\sim$\+Proc\+RC} ()
 \begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
 void \hyperlink{class_proc_r_c_aa7512c99348dd22dd45e15b575bdd316}{inc} ()
-\begin{DoxyCompactList}\small\item\em This function increments the process reference count Note\+: This function merely wraps the decrement rc function from proc\+\_\+rc with a tod. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em This function increments the process reference count. \end{DoxyCompactList}\item 
 void \hyperlink{class_proc_r_c_adf71fc8726ffb2e26ed424331c12a99b}{dec} ()
 \begin{DoxyCompactList}\small\item\em This function decreases the process reference count. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{class_proc_r_c_a59f158e2dc9b70a8ef59753db84b81b5}{Proc\+RC} (\hyperlink{class_proc_r_c}{Proc\+RC} \&\&)=delete
-\item 
+\begin{DoxyCompactList}\small\item\em Delete non-\/default constructors. \end{DoxyCompactList}\item 
 \hyperlink{class_proc_r_c_a3b1ea79bd4591511fb1808d36c7493ac}{Proc\+RC} (const \hyperlink{class_proc_r_c}{Proc\+RC} \&)=delete
-\item 
+\begin{DoxyCompactList}\small\item\em Delete non-\/default constructors. \end{DoxyCompactList}\item 
 \hyperlink{class_proc_r_c}{Proc\+RC} \& \hyperlink{class_proc_r_c_a58ddcf9743582319b41fe2bd88e1dbc5}{operator=} (const \hyperlink{class_proc_r_c}{Proc\+RC} \&)=delete
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Delete non-\/default constructors. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-boost\+::interprocess\+::interprocess\+\_\+mutex \hyperlink{class_proc_r_c_a546b769a0beb94b946e6d298a50568f5}{rc\+\_\+lock}
-\item 
 \hyperlink{proc__rc_8hpp_a4e61911b35a8dfa15356d5296f46d87a}{prc\+\_\+t} $\ast$const \hyperlink{class_proc_r_c_acf0eb4d339c6f39d5574a9bfa0048e07}{proc\+\_\+rc}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The process rc pointer. \end{DoxyCompactList}\item 
+\hyperlink{class_i_p_c_lock}{I\+P\+C\+Lock} \hyperlink{class_proc_r_c_a37de2551af458d21bdb7291ba02fabb4}{rc\+\_\+lock}
+\begin{DoxyCompactList}\small\item\em The mutex used to protect the reference coutner. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 static bool \hyperlink{class_proc_r_c_acccb74d8597ab4b0041ba32ea64ea06d}{setup} = false
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Set to true by the singleton constructor once created Default value\+: false. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 A class that wraps a process reference counter. 
 
-This class is initalized at startup, so no \textquotesingle{}setup\textquotesingle{} function has to be called 
+This class has a singleton constructor, is initalized at start up 
 
 \subsection{Constructor \& Destructor Documentation}
 \index{Proc\+RC@{Proc\+RC}!Proc\+RC@{Proc\+RC}}
@@ -56,6 +56,10 @@ This class is initalized at startup, so no \textquotesingle{}setup\textquotesing
 \item[{{\bf Proc\+RC} \&\&}]{}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}\hypertarget{class_proc_r_c_a59f158e2dc9b70a8ef59753db84b81b5}{}\label{class_proc_r_c_a59f158e2dc9b70a8ef59753db84b81b5}
+
+
+Delete non-\/default constructors. 
+
 \index{Proc\+RC@{Proc\+RC}!Proc\+RC@{Proc\+RC}}
 \index{Proc\+RC@{Proc\+RC}!Proc\+RC@{Proc\+RC}}
 \subsubsection[{\texorpdfstring{Proc\+R\+C(const Proc\+R\+C \&)=delete}{ProcRC(const ProcRC &)=delete}}]{\setlength{\rightskip}{0pt plus 5cm}Proc\+R\+C\+::\+Proc\+RC (
@@ -63,6 +67,10 @@ This class is initalized at startup, so no \textquotesingle{}setup\textquotesing
 \item[{const {\bf Proc\+RC} \&}]{}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}\hypertarget{class_proc_r_c_a3b1ea79bd4591511fb1808d36c7493ac}{}\label{class_proc_r_c_a3b1ea79bd4591511fb1808d36c7493ac}
+
+
+Delete non-\/default constructors. 
+
 \index{Proc\+RC@{Proc\+RC}!Proc\+RC@{Proc\+RC}}
 \index{Proc\+RC@{Proc\+RC}!Proc\+RC@{Proc\+RC}}
 \subsubsection[{\texorpdfstring{Proc\+R\+C()}{ProcRC()}}]{\setlength{\rightskip}{0pt plus 5cm}Proc\+R\+C\+::\+Proc\+RC (
@@ -72,9 +80,9 @@ This class is initalized at startup, so no \textquotesingle{}setup\textquotesing
 )}\hypertarget{class_proc_r_c_aaf90e0e0b95504fda9089c6658fab53f}{}\label{class_proc_r_c_aaf90e0e0b95504fda9089c6658fab53f}
 
 
-A singleton constructor. 
+Initalizes process reference counter to 0 Also registers a method to call delete prc with \hyperlink{struct_group}{Group}. 
 
-Initalizes process reference counter to 0 Also registers a method to call delete prc with \hyperlink{struct_group}{Group} \index{Proc\+RC@{Proc\+RC}!````~Proc\+RC@{$\sim$\+Proc\+RC}}
+\index{Proc\+RC@{Proc\+RC}!````~Proc\+RC@{$\sim$\+Proc\+RC}}
 \index{````~Proc\+RC@{$\sim$\+Proc\+RC}!Proc\+RC@{Proc\+RC}}
 \subsubsection[{\texorpdfstring{$\sim$\+Proc\+R\+C()}{~ProcRC()}}]{\setlength{\rightskip}{0pt plus 5cm}Proc\+R\+C\+::$\sim$\+Proc\+RC (
 \begin{DoxyParamCaption}
@@ -85,7 +93,7 @@ Initalizes process reference counter to 0 Also registers a method to call delete
 
 A destructor. 
 
-Frees shared memory 
+Frees memory allocated 
 
 \subsection{Member Function Documentation}
 \index{Proc\+RC@{Proc\+RC}!dec@{dec}}
@@ -99,7 +107,7 @@ Frees shared memory
 
 This function decreases the process reference count. 
 
-If the count hits 0, the group is terminated Note\+: This function merely wraps the decrement rc function from proc\+\_\+rc with a tod \index{Proc\+RC@{Proc\+RC}!inc@{inc}}
+If the count hits 0, the group is terminated \index{Proc\+RC@{Proc\+RC}!inc@{inc}}
 \index{inc@{inc}!Proc\+RC@{Proc\+RC}}
 \subsubsection[{\texorpdfstring{inc()}{inc()}}]{\setlength{\rightskip}{0pt plus 5cm}void Proc\+R\+C\+::inc (
 \begin{DoxyParamCaption}
@@ -108,7 +116,7 @@ If the count hits 0, the group is terminated Note\+: This function merely wraps 
 )}\hypertarget{class_proc_r_c_aa7512c99348dd22dd45e15b575bdd316}{}\label{class_proc_r_c_aa7512c99348dd22dd45e15b575bdd316}
 
 
-This function increments the process reference count Note\+: This function merely wraps the decrement rc function from proc\+\_\+rc with a tod. 
+This function increments the process reference count. 
 
 \index{Proc\+RC@{Proc\+RC}!operator=@{operator=}}
 \index{operator=@{operator=}!Proc\+RC@{Proc\+RC}}
@@ -119,16 +127,32 @@ This function increments the process reference count Note\+: This function merel
 )\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}\hypertarget{class_proc_r_c_a58ddcf9743582319b41fe2bd88e1dbc5}{}\label{class_proc_r_c_a58ddcf9743582319b41fe2bd88e1dbc5}
 
 
+Delete non-\/default constructors. 
+
+
+
 \subsection{Field Documentation}
 \index{Proc\+RC@{Proc\+RC}!proc\+\_\+rc@{proc\+\_\+rc}}
 \index{proc\+\_\+rc@{proc\+\_\+rc}!Proc\+RC@{Proc\+RC}}
 \subsubsection[{\texorpdfstring{proc\+\_\+rc}{proc_rc}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf prc\+\_\+t}$\ast$ const Proc\+R\+C\+::proc\+\_\+rc\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_proc_r_c_acf0eb4d339c6f39d5574a9bfa0048e07}{}\label{class_proc_r_c_acf0eb4d339c6f39d5574a9bfa0048e07}
+
+
+The process rc pointer. 
+
 \index{Proc\+RC@{Proc\+RC}!rc\+\_\+lock@{rc\+\_\+lock}}
 \index{rc\+\_\+lock@{rc\+\_\+lock}!Proc\+RC@{Proc\+RC}}
-\subsubsection[{\texorpdfstring{rc\+\_\+lock}{rc_lock}}]{\setlength{\rightskip}{0pt plus 5cm}boost\+::interprocess\+::interprocess\+\_\+mutex Proc\+R\+C\+::rc\+\_\+lock\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_proc_r_c_a546b769a0beb94b946e6d298a50568f5}{}\label{class_proc_r_c_a546b769a0beb94b946e6d298a50568f5}
+\subsubsection[{\texorpdfstring{rc\+\_\+lock}{rc_lock}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+P\+C\+Lock} Proc\+R\+C\+::rc\+\_\+lock\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_proc_r_c_a37de2551af458d21bdb7291ba02fabb4}{}\label{class_proc_r_c_a37de2551af458d21bdb7291ba02fabb4}
+
+
+The mutex used to protect the reference coutner. 
+
 \index{Proc\+RC@{Proc\+RC}!setup@{setup}}
 \index{setup@{setup}!Proc\+RC@{Proc\+RC}}
 \subsubsection[{\texorpdfstring{setup}{setup}}]{\setlength{\rightskip}{0pt plus 5cm}bool Proc\+R\+C\+::setup = false\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{class_proc_r_c_acccb74d8597ab4b0041ba32ea64ea06d}{}\label{class_proc_r_c_acccb74d8597ab4b0041ba32ea64ea06d}
+
+
+Set to true by the singleton constructor once created Default value\+: false. 
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

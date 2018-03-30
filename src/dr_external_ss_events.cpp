@@ -1,7 +1,6 @@
-#include"dr_external_ss_events.hpp"
+#include "dr_external_ss_events.hpp"
 #include "quick_socket.hpp"
 #include "utilities.hpp"
-#include "get_tid.hpp"
 #include "message.hpp"
 
 #include <sys/socket.h>
@@ -18,7 +17,7 @@ static int sock = -1;
 static dr_signal_action_t signal_event(void *drcontext, dr_siginfo_t *info) {
 
 	// Log the signal
-	Utilities::log("\nTID %d: (client) Caught signal %d", get_tid(), info->sig);
+	Utilities::verbose_log("(client) Caught signal %d", info->sig);
 
 	// Create and send the message
 	char buffer[8];
@@ -37,7 +36,7 @@ static dr_signal_action_t signal_event(void *drcontext, dr_siginfo_t *info) {
 static void on_call(const app_pc ret_to_addr) {
 
 	// Log the call
-	Utilities::log("\nTID %d: (client) Call(%p)", get_tid(), ret_to_addr);
+	Utilities::verbose_log("(client) Call(%p)", ret_to_addr);
 
 	// Create and send the message
 	Message::Call to_send( (char *) & ret_to_addr );
@@ -51,7 +50,7 @@ static void on_call(const app_pc ret_to_addr) {
 static void on_ret(const app_pc instr_addr, const app_pc target_addr) {
 
 	// Log the ret
-	Utilities::log("TID %d: (client) Ret(%p)", get_tid(), target_addr);
+	Utilities::verbose_log("(client) Ret(%p)", target_addr);
 
 	// Create and send the message
 	Message::Ret to_send( (char *) & target_addr );

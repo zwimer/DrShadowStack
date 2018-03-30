@@ -11,7 +11,6 @@
 #include "constants.hpp"
 #include "utilities.hpp"
 #include "message.hpp"
-#include "get_tid.hpp"
 #include "proc_rc.hpp"
 #include "group.hpp"
 
@@ -51,7 +50,7 @@ void add_wildcard(pointer_stack & stk, const char * const, const int) {
 // Called when a 'call' was detected
 void call_handler(pointer_stack & stk, const char * const buffer, const int) {
 	const char * const addr = * ((char **) buffer);
-	Utilities::log("TID %d: (server) Push(%p)", get_tid(), addr);
+	Utilities::verbose_log("(server) Push(%p)", addr);
 	stk.push(addr);
 }
 
@@ -60,7 +59,7 @@ void ret_handler(pointer_stack & stk, const char * const buffer, const int sock)
 
 	// Log the address
 	const char * const addr = * ((char **) buffer);
-	Utilities::log("TID %d: (server) Pop(%p)\n", get_tid(), addr);
+	Utilities::verbose_log("(server) Pop(%p)\n", addr);
 
 	// If the stack is empty, error
 	if ( stk.empty() ) {
@@ -74,7 +73,7 @@ void ret_handler(pointer_stack & stk, const char * const buffer, const int sock)
 	// we are returning from a signal handler
 	const char * const top = stk.top();
 	if ( top == (char *) WILDCARD ) {
-		Utilities::log("Wildcard detected, returning from signal handler allowed.");
+		Utilities::verbose_log("Wildcard detected, returning from signal handler allowed.");
 	}
 
 	// If the return address is incorrect, error
@@ -135,7 +134,7 @@ void start_external_shadow_stack( const int sock ) {
 		// Verify the message is valid then call the appropriate function
 		const std::string message_type(buffer, MESSAGE_HEADER_LENGTH);
 		const auto function_ptr = call_correct_function[message_type];
-		Utilities::log("Got message header: %*.s", MESSAGE_HEADER_LENGTH, buffer);
+		Utilities::verbose_log("Got message header: %*.s", MESSAGE_HEADER_LENGTH, buffer);
 		Utilities::assert( function_ptr != nullptr, "Sever recieved wrong type of message!" );
 		function_ptr(stk, & buffer[MESSAGE_HEADER_LENGTH], sock);
 	}

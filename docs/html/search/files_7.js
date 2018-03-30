@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['shadow_5fstack_2ecpp',['shadow_stack.cpp',['../shadow__stack_8cpp.html',1,'']]],
-  ['shadow_5fstack_2ehpp',['shadow_stack.hpp',['../shadow__stack_8hpp.html',1,'']]]
+  ['quick_5fsocket_2ecpp',['quick_socket.cpp',['../quick__socket_8cpp.html',1,'']]],
+  ['quick_5fsocket_2ehpp',['quick_socket.hpp',['../quick__socket_8hpp.html',1,'']]]
 ];
