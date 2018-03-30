@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['temp_5fname',['temp_name',['../shadow__stack_8cpp.html#a5cb8160669276231f62ad2bddf8b04ae',1,'shadow_stack.cpp']]],
-  ['terminate',['terminate',['../struct_group.html#a8867a6d9f7987d3db83bf193bf42f858',1,'Group']]],
-  ['terminateondestruction',['TerminateOnDestruction',['../class_terminate_on_destruction.html#afbcf618507814357fc16fcf49ac27316',1,'TerminateOnDestruction::TerminateOnDestruction(TerminateOnDestruction &amp;&amp;)=delete'],['../class_terminate_on_destruction.html#aaf44815fef9e402548f3fe950bc23a82',1,'TerminateOnDestruction::TerminateOnDestruction(const TerminateOnDestruction &amp;)=delete'],['../class_terminate_on_destruction.html#ac1b230c0858db2e39b83188eae7c5a8e',1,'TerminateOnDestruction::TerminateOnDestruction()']]]
+  ['set_5fdefault_5fsignal_5fhandler',['set_default_signal_handler',['../group_8cpp.html#aba809f5ad91e68dea5a38257008ec829',1,'group.cpp']]],
+  ['setup',['setup',['../struct_group.html#a9e2d7e0c56696de4592f1b166188c10a',1,'Group::setup()'],['../namespace_external_s_s.html#a1ab997e2712a2124a7056765313589a1',1,'ExternalSS::setup()'],['../namespace_internal_s_s.html#a91c77a886d93d8526bf619cb3eeeec6c',1,'InternalSS::setup()']]],
+  ['signal_5fevent',['signal_event',['../dr__external__ss__events_8cpp.html#ad657672c35176858cd3bd4fac5bd089b',1,'signal_event(void *drcontext, dr_siginfo_t *info):&#160;dr_external_ss_events.cpp'],['../dr__internal__ss__events_8cpp.html#ad657672c35176858cd3bd4fac5bd089b',1,'signal_event(void *drcontext, dr_siginfo_t *info):&#160;dr_internal_ss_events.cpp']]],
+  ['start_5fexternal_5fshadow_5fstack',['start_external_shadow_stack',['../external__stack__server_8cpp.html#a252e11ac536869ac19a832791df111a7',1,'start_external_shadow_stack(const int sock):&#160;external_stack_server.cpp'],['../external__stack__server_8hpp.html#a252e11ac536869ac19a832791df111a7',1,'start_external_shadow_stack(const int sock):&#160;external_stack_server.cpp']]],
+  ['start_5fprogram',['start_program',['../shadow__stack_8cpp.html#a028ed2270cda87568348ef46089282d2',1,'shadow_stack.cpp']]],
+  ['str_5fequal',['str_equal',['../constants_8hpp.html#aeefadcfa43a02760a17171e91775a1c0',1,'constants.hpp']]]
 ];

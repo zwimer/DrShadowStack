@@ -101,13 +101,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aaf90e0e0b95504fda9089c6658fab53f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_proc_r_c.html#aaf90e0e0b95504fda9089c6658fab53f">ProcRC</a> ()</td></tr>
-<tr class="memdesc:aaf90e0e0b95504fda9089c6658fab53f"><td class="mdescLeft">&#160;</td><td class="mdescRight">A singleton constructor.  <a href="#aaf90e0e0b95504fda9089c6658fab53f">More...</a><br /></td></tr>
+<tr class="memdesc:aaf90e0e0b95504fda9089c6658fab53f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initalizes process reference counter to 0 Also registers a method to call delete prc with <a class="el" href="struct_group.html" title="A static class holding the group functions. ">Group</a>.  <a href="#aaf90e0e0b95504fda9089c6658fab53f">More...</a><br /></td></tr>
 <tr class="separator:aaf90e0e0b95504fda9089c6658fab53f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76d4c0e75b434d4a262cc34fc2bd7a1a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_proc_r_c.html#a76d4c0e75b434d4a262cc34fc2bd7a1a">~ProcRC</a> ()</td></tr>
 <tr class="memdesc:a76d4c0e75b434d4a262cc34fc2bd7a1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A destructor.  <a href="#a76d4c0e75b434d4a262cc34fc2bd7a1a">More...</a><br /></td></tr>
 <tr class="separator:a76d4c0e75b434d4a262cc34fc2bd7a1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7512c99348dd22dd45e15b575bdd316"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_proc_r_c.html#aa7512c99348dd22dd45e15b575bdd316">inc</a> ()</td></tr>
-<tr class="memdesc:aa7512c99348dd22dd45e15b575bdd316"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function increments the process reference count Note: This function merely wraps the decrement rc function from proc_rc with a tod.  <a href="#aa7512c99348dd22dd45e15b575bdd316">More...</a><br /></td></tr>
+<tr class="memdesc:aa7512c99348dd22dd45e15b575bdd316"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function increments the process reference count.  <a href="#aa7512c99348dd22dd45e15b575bdd316">More...</a><br /></td></tr>
 <tr class="separator:aa7512c99348dd22dd45e15b575bdd316"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf71fc8726ffb2e26ed424331c12a99b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_proc_r_c.html#adf71fc8726ffb2e26ed424331c12a99b">dec</a> ()</td></tr>
 <tr class="memdesc:adf71fc8726ffb2e26ed424331c12a99b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function decreases the process reference count.  <a href="#adf71fc8726ffb2e26ed424331c12a99b">More...</a><br /></td></tr>
@@ -116,27 +116,33 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a59f158e2dc9b70a8ef59753db84b81b5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_proc_r_c.html#a59f158e2dc9b70a8ef59753db84b81b5">ProcRC</a> (<a class="el" href="class_proc_r_c.html">ProcRC</a> &amp;&amp;)=delete</td></tr>
+<tr class="memdesc:a59f158e2dc9b70a8ef59753db84b81b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete non-default constructors.  <a href="#a59f158e2dc9b70a8ef59753db84b81b5">More...</a><br /></td></tr>
 <tr class="separator:a59f158e2dc9b70a8ef59753db84b81b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b1ea79bd4591511fb1808d36c7493ac"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_proc_r_c.html#a3b1ea79bd4591511fb1808d36c7493ac">ProcRC</a> (const <a class="el" href="class_proc_r_c.html">ProcRC</a> &amp;)=delete</td></tr>
+<tr class="memdesc:a3b1ea79bd4591511fb1808d36c7493ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete non-default constructors.  <a href="#a3b1ea79bd4591511fb1808d36c7493ac">More...</a><br /></td></tr>
 <tr class="separator:a3b1ea79bd4591511fb1808d36c7493ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58ddcf9743582319b41fe2bd88e1dbc5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_proc_r_c.html">ProcRC</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_proc_r_c.html#a58ddcf9743582319b41fe2bd88e1dbc5">operator=</a> (const <a class="el" href="class_proc_r_c.html">ProcRC</a> &amp;)=delete</td></tr>
+<tr class="memdesc:a58ddcf9743582319b41fe2bd88e1dbc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete non-default constructors.  <a href="#a58ddcf9743582319b41fe2bd88e1dbc5">More...</a><br /></td></tr>
 <tr class="separator:a58ddcf9743582319b41fe2bd88e1dbc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a546b769a0beb94b946e6d298a50568f5"><td class="memItemLeft" align="right" valign="top">boost::interprocess::interprocess_mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_proc_r_c.html#a546b769a0beb94b946e6d298a50568f5">rc_lock</a></td></tr>
-<tr class="separator:a546b769a0beb94b946e6d298a50568f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf0eb4d339c6f39d5574a9bfa0048e07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="proc__rc_8hpp.html#a4e61911b35a8dfa15356d5296f46d87a">prc_t</a> *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_proc_r_c.html#acf0eb4d339c6f39d5574a9bfa0048e07">proc_rc</a></td></tr>
+<tr class="memdesc:acf0eb4d339c6f39d5574a9bfa0048e07"><td class="mdescLeft">&#160;</td><td class="mdescRight">The process rc pointer.  <a href="#acf0eb4d339c6f39d5574a9bfa0048e07">More...</a><br /></td></tr>
 <tr class="separator:acf0eb4d339c6f39d5574a9bfa0048e07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37de2551af458d21bdb7291ba02fabb4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_i_p_c_lock.html">IPCLock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_proc_r_c.html#a37de2551af458d21bdb7291ba02fabb4">rc_lock</a></td></tr>
+<tr class="memdesc:a37de2551af458d21bdb7291ba02fabb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The mutex used to protect the reference coutner.  <a href="#a37de2551af458d21bdb7291ba02fabb4">More...</a><br /></td></tr>
+<tr class="separator:a37de2551af458d21bdb7291ba02fabb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:acccb74d8597ab4b0041ba32ea64ea06d"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_proc_r_c.html#acccb74d8597ab4b0041ba32ea64ea06d">setup</a> = false</td></tr>
+<tr class="memdesc:acccb74d8597ab4b0041ba32ea64ea06d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set to true by the singleton constructor once created Default value: false.  <a href="#acccb74d8597ab4b0041ba32ea64ea06d">More...</a><br /></td></tr>
 <tr class="separator:acccb74d8597ab4b0041ba32ea64ea06d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A class that wraps a process reference counter. </p>
-<p>This class is initalized at startup, so no 'setup' function has to be called </p>
+<p>This class has a singleton constructor, is initalized at start up </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a59f158e2dc9b70a8ef59753db84b81b5"></a>
 <div class="memitem">
@@ -159,6 +165,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Delete non-default constructors. </p>
 
 </div>
 </div>
@@ -184,6 +192,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Delete non-default constructors. </p>
+
 </div>
 </div>
 <a class="anchor" id="aaf90e0e0b95504fda9089c6658fab53f"></a>
@@ -199,8 +209,7 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>A singleton constructor. </p>
-<p>Initalizes process reference counter to 0 Also registers a method to call delete prc with <a class="el" href="struct_group.html" title="A static class holding the group functions. ">Group</a> </p>
+<p>Initalizes process reference counter to 0 Also registers a method to call delete prc with <a class="el" href="struct_group.html" title="A static class holding the group functions. ">Group</a>. </p>
 
 </div>
 </div>
@@ -218,7 +227,7 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>A destructor. </p>
-<p>Frees shared memory </p>
+<p>Frees memory allocated </p>
 
 </div>
 </div>
@@ -237,7 +246,7 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>This function decreases the process reference count. </p>
-<p>If the count hits 0, the group is terminated Note: This function merely wraps the decrement rc function from proc_rc with a tod </p>
+<p>If the count hits 0, the group is terminated </p>
 
 </div>
 </div>
@@ -254,7 +263,7 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>This function increments the process reference count Note: This function merely wraps the decrement rc function from proc_rc with a tod. </p>
+<p>This function increments the process reference count. </p>
 
 </div>
 </div>
@@ -280,6 +289,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Delete non-default constructors. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Field Documentation</h2>
@@ -301,9 +312,11 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>The process rc pointer. </p>
+
 </div>
 </div>
-<a class="anchor" id="a546b769a0beb94b946e6d298a50568f5"></a>
+<a class="anchor" id="a37de2551af458d21bdb7291ba02fabb4"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -311,7 +324,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">boost::interprocess::interprocess_mutex ProcRC::rc_lock</td>
+          <td class="memname"><a class="el" href="class_i_p_c_lock.html">IPCLock</a> ProcRC::rc_lock</td>
         </tr>
       </table>
   </td>
@@ -320,6 +333,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>The mutex used to protect the reference coutner. </p>
 
 </div>
 </div>
@@ -340,6 +355,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Set to true by the singleton constructor once created Default value: false. </p>
 
 </div>
 </div>

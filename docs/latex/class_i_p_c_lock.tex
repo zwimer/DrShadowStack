@@ -1,0 +1,96 @@
+\hypertarget{class_i_p_c_lock}{}\section{I\+P\+C\+Lock Class Reference}
+\label{class_i_p_c_lock}\index{I\+P\+C\+Lock@{I\+P\+C\+Lock}}
+
+
+An interprocess lock This lock is implemented via flockfile This mutex is re-\/entrent, however an equal number of lock and unlock calls must me made to unlock the mutex.  
+
+
+
+
+{\ttfamily \#include $<$ipc\+\_\+lock.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_i_p_c_lock_ace857ec617e61e390e6ada59d2546f23}{I\+P\+C\+Lock} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_i_p_c_lock_ab0cb32d1b958cd4c9754666888caf358}{$\sim$\+I\+P\+C\+Lock} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \hyperlink{class_i_p_c_lock_a9f6575d48f5754b13d9a1a59451ff2a3}{lock} ()
+\begin{DoxyCompactList}\small\item\em Lock the mutex. \end{DoxyCompactList}\item 
+void \hyperlink{class_i_p_c_lock_a28399a1d6ba139319c4addcaccb93a79}{unlock} ()
+\begin{DoxyCompactList}\small\item\em Unlock the mutex. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+F\+I\+LE $\ast$const \hyperlink{class_i_p_c_lock_a6b34119dda186eba6688250cd60cc347}{lock\+\_\+file}
+\begin{DoxyCompactList}\small\item\em The file the lock will act on. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An interprocess lock This lock is implemented via flockfile This mutex is re-\/entrent, however an equal number of lock and unlock calls must me made to unlock the mutex. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{I\+P\+C\+Lock@{I\+P\+C\+Lock}!I\+P\+C\+Lock@{I\+P\+C\+Lock}}
+\index{I\+P\+C\+Lock@{I\+P\+C\+Lock}!I\+P\+C\+Lock@{I\+P\+C\+Lock}}
+\subsubsection[{\texorpdfstring{I\+P\+C\+Lock()}{IPCLock()}}]{\setlength{\rightskip}{0pt plus 5cm}I\+P\+C\+Lock\+::\+I\+P\+C\+Lock (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_i_p_c_lock_ace857ec617e61e390e6ada59d2546f23}{}\label{class_i_p_c_lock_ace857ec617e61e390e6ada59d2546f23}
+
+
+Constructor. 
+
+\index{I\+P\+C\+Lock@{I\+P\+C\+Lock}!````~I\+P\+C\+Lock@{$\sim$\+I\+P\+C\+Lock}}
+\index{````~I\+P\+C\+Lock@{$\sim$\+I\+P\+C\+Lock}!I\+P\+C\+Lock@{I\+P\+C\+Lock}}
+\subsubsection[{\texorpdfstring{$\sim$\+I\+P\+C\+Lock()}{~IPCLock()}}]{\setlength{\rightskip}{0pt plus 5cm}I\+P\+C\+Lock\+::$\sim$\+I\+P\+C\+Lock (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_i_p_c_lock_ab0cb32d1b958cd4c9754666888caf358}{}\label{class_i_p_c_lock_ab0cb32d1b958cd4c9754666888caf358}
+
+
+Destructor. 
+
+
+
+\subsection{Member Function Documentation}
+\index{I\+P\+C\+Lock@{I\+P\+C\+Lock}!lock@{lock}}
+\index{lock@{lock}!I\+P\+C\+Lock@{I\+P\+C\+Lock}}
+\subsubsection[{\texorpdfstring{lock()}{lock()}}]{\setlength{\rightskip}{0pt plus 5cm}void I\+P\+C\+Lock\+::lock (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_i_p_c_lock_a9f6575d48f5754b13d9a1a59451ff2a3}{}\label{class_i_p_c_lock_a9f6575d48f5754b13d9a1a59451ff2a3}
+
+
+Lock the mutex. 
+
+\index{I\+P\+C\+Lock@{I\+P\+C\+Lock}!unlock@{unlock}}
+\index{unlock@{unlock}!I\+P\+C\+Lock@{I\+P\+C\+Lock}}
+\subsubsection[{\texorpdfstring{unlock()}{unlock()}}]{\setlength{\rightskip}{0pt plus 5cm}void I\+P\+C\+Lock\+::unlock (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_i_p_c_lock_a28399a1d6ba139319c4addcaccb93a79}{}\label{class_i_p_c_lock_a28399a1d6ba139319c4addcaccb93a79}
+
+
+Unlock the mutex. 
+
+
+
+\subsection{Field Documentation}
+\index{I\+P\+C\+Lock@{I\+P\+C\+Lock}!lock\+\_\+file@{lock\+\_\+file}}
+\index{lock\+\_\+file@{lock\+\_\+file}!I\+P\+C\+Lock@{I\+P\+C\+Lock}}
+\subsubsection[{\texorpdfstring{lock\+\_\+file}{lock_file}}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+LE$\ast$ const I\+P\+C\+Lock\+::lock\+\_\+file\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_i_p_c_lock_a6b34119dda186eba6688250cd60cc347}{}\label{class_i_p_c_lock_a6b34119dda186eba6688250cd60cc347}
+
+
+The file the lock will act on. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{ipc__lock_8hpp}{ipc\+\_\+lock.\+hpp}\item 
+src/\hyperlink{ipc__lock_8cpp}{ipc\+\_\+lock.\+cpp}\end{DoxyCompactItemize}

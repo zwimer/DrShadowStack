@@ -11,6 +11,6 @@ var searchData=
   ['sock',['sock',['../dr__external__ss__events_8cpp.html#a5903d0b282fc5eae503de618f896b5e1',1,'dr_external_ss_events.cpp']]],
   ['start_5fexternal_5fshadow_5fstack',['start_external_shadow_stack',['../external__stack__server_8cpp.html#a252e11ac536869ac19a832791df111a7',1,'start_external_shadow_stack(const int sock):&#160;external_stack_server.cpp'],['../external__stack__server_8hpp.html#a252e11ac536869ac19a832791df111a7',1,'start_external_shadow_stack(const int sock):&#160;external_stack_server.cpp']]],
   ['start_5fprogram',['start_program',['../shadow__stack_8cpp.html#a028ed2270cda87568348ef46089282d2',1,'shadow_stack.cpp']]],
-  ['stdout_5ffile',['STDOUT_FILE',['../constants_8hpp.html#a195ca3987a60992c5abfc663cd37151d',1,'constants.hpp']]],
+  ['stdout_5ffile',['stdout_file',['../class_utilities.html#a224eea0a234ac9877a8334f74fc89ef0',1,'Utilities::stdout_file()'],['../constants_8hpp.html#a195ca3987a60992c5abfc663cd37151d',1,'STDOUT_FILE():&#160;constants.hpp']]],
   ['str_5fequal',['str_equal',['../constants_8hpp.html#aeefadcfa43a02760a17171e91775a1c0',1,'constants.hpp']]]
 ];
