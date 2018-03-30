@@ -130,7 +130,7 @@ dr_emit_flags_t InternalSS::event_app_instruction(	void * drcontext, void * tag,
 void InternalSS::exit_event() {
 	Utilities::assert(	drmgr_unregister_bb_insertion_event(event_app_instruction),
 						"client process returned improperly." );
-	/* Sym::finish(); */
+	Sym::finish();
 	drmgr_exit();
 	Utilities::log("Program ended without issue");
 }
@@ -140,7 +140,7 @@ void InternalSS::setup(const char * const socket_path) {
 
 	// Setup
 	Utilities::assert( drmgr_init(), "drmgr_init() failed." );
-	/* Sym::setup(); */
+	Sym::init();
 
 	// Whenever a singal is caught, we add a wildcard to the stack
 	drmgr_register_signal_event(signal_event);
