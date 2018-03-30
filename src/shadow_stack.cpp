@@ -12,7 +12,6 @@
 #include <sstream>
 #include <random>
 #include <vector>
-#include <string>
 
 
 // Return a non-existent filename
@@ -89,12 +88,12 @@ void start_program( char * drrun, char * a_out, char ** client_argv,
 	args.push_back(nullptr);
 
 	// Log the action then flush the buffers
-	std::string pnt = get_tid() + ": Starting dr_run\nCalling execvp on: ";
+	std::stringstream pnt;
+	pnt << "TID " << get_tid() << ": Starting dr_run\nCalling execvp on: ";
 	for ( unsigned long i = 0; i < args.size() - 1; ++i ) {
-		pnt += args[i];
-		pnt += ' ';
+		pnt << args[i] << ' ';
 	}
-	Utilities::log(pnt.c_str());
+	Utilities::log(pnt.str().c_str());
 	fflush(NULL);
 
 	// Start drrun

@@ -93,6 +93,8 @@ add_library(${SS_DR_CLIENT_SO} SHARED
 	quick_socket.cpp
 	dr_print_sym.cpp
 	utilities.cpp
+	ipc_lock.cpp
+	proc_rc.cpp
 	get_tid.cpp
 	group.cpp
 	)
@@ -115,6 +117,7 @@ add_executable(${PROGRAM_NAME}.out
 	shadow_stack.cpp
 	quick_socket.cpp
 	utilities.cpp
+	ipc_lock.cpp
 	get_tid.cpp
 	proc_rc.cpp
 	group.cpp
