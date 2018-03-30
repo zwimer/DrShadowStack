@@ -12,8 +12,8 @@ An interprocess lock This lock is implemented via flockfile This mutex is re-\/e
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_i_p_c_lock_ace857ec617e61e390e6ada59d2546f23}{I\+P\+C\+Lock} ()
-\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_i_p_c_lock_a5d01d85f49379d3bc534d81ead76bd91}{I\+P\+C\+Lock} (\hyperlink{ipc__lock_8hpp_af7f6b37b504b188bb4eb248b13a6bdc1}{Assert\+Fn} assert)
+\begin{DoxyCompactList}\small\item\em Constructor Dependency inject the assert function. \end{DoxyCompactList}\item 
 \hyperlink{class_i_p_c_lock_ab0cb32d1b958cd4c9754666888caf358}{$\sim$\+I\+P\+C\+Lock} ()
 \begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
 void \hyperlink{class_i_p_c_lock_a9f6575d48f5754b13d9a1a59451ff2a3}{lock} ()
@@ -33,14 +33,14 @@ An interprocess lock This lock is implemented via flockfile This mutex is re-\/e
 \subsection{Constructor \& Destructor Documentation}
 \index{I\+P\+C\+Lock@{I\+P\+C\+Lock}!I\+P\+C\+Lock@{I\+P\+C\+Lock}}
 \index{I\+P\+C\+Lock@{I\+P\+C\+Lock}!I\+P\+C\+Lock@{I\+P\+C\+Lock}}
-\subsubsection[{\texorpdfstring{I\+P\+C\+Lock()}{IPCLock()}}]{\setlength{\rightskip}{0pt plus 5cm}I\+P\+C\+Lock\+::\+I\+P\+C\+Lock (
+\subsubsection[{\texorpdfstring{I\+P\+C\+Lock(\+Assert\+Fn assert)}{IPCLock(AssertFn assert)}}]{\setlength{\rightskip}{0pt plus 5cm}I\+P\+C\+Lock\+::\+I\+P\+C\+Lock (
 \begin{DoxyParamCaption}
-{}
+\item[{{\bf Assert\+Fn}}]{assert}
 \end{DoxyParamCaption}
-)}\hypertarget{class_i_p_c_lock_ace857ec617e61e390e6ada59d2546f23}{}\label{class_i_p_c_lock_ace857ec617e61e390e6ada59d2546f23}
+)}\hypertarget{class_i_p_c_lock_a5d01d85f49379d3bc534d81ead76bd91}{}\label{class_i_p_c_lock_a5d01d85f49379d3bc534d81ead76bd91}
 
 
-Constructor. 
+Constructor Dependency inject the assert function. 
 
 \index{I\+P\+C\+Lock@{I\+P\+C\+Lock}!````~I\+P\+C\+Lock@{$\sim$\+I\+P\+C\+Lock}}
 \index{````~I\+P\+C\+Lock@{$\sim$\+I\+P\+C\+Lock}!I\+P\+C\+Lock@{I\+P\+C\+Lock}}

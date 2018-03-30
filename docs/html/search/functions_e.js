@@ -5,5 +5,6 @@ var searchData=
   ['signal_5fevent',['signal_event',['../dr__external__ss__events_8cpp.html#ad657672c35176858cd3bd4fac5bd089b',1,'signal_event(void *drcontext, dr_siginfo_t *info):&#160;dr_external_ss_events.cpp'],['../dr__internal__ss__events_8cpp.html#ad657672c35176858cd3bd4fac5bd089b',1,'signal_event(void *drcontext, dr_siginfo_t *info):&#160;dr_internal_ss_events.cpp']]],
   ['start_5fexternal_5fshadow_5fstack',['start_external_shadow_stack',['../external__stack__server_8cpp.html#a252e11ac536869ac19a832791df111a7',1,'start_external_shadow_stack(const int sock):&#160;external_stack_server.cpp'],['../external__stack__server_8hpp.html#a252e11ac536869ac19a832791df111a7',1,'start_external_shadow_stack(const int sock):&#160;external_stack_server.cpp']]],
   ['start_5fprogram',['start_program',['../shadow__stack_8cpp.html#a028ed2270cda87568348ef46089282d2',1,'shadow_stack.cpp']]],
-  ['str_5fequal',['str_equal',['../constants_8hpp.html#aeefadcfa43a02760a17171e91775a1c0',1,'constants.hpp']]]
+  ['str_5fequal',['str_equal',['../constants_8hpp.html#aeefadcfa43a02760a17171e91775a1c0',1,'constants.hpp']]],
+  ['sym',['Sym',['../struct_sym.html#aa2c1e0336fc028030e91c380230a0ae3',1,'Sym']]]
 ];

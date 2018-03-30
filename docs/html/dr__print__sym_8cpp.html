@@ -87,13 +87,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
 <div class="title">dr_print_sym.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="dr__print__sym_8hpp_source.html">dr_print_sym.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="utilities_8hpp_source.html">utilities.hpp</a>&quot;</code><br />
+<code>#include &quot;dr_api.h&quot;</code><br />
 <code>#include &quot;drsyms.h&quot;</code><br />
 <code>#include &quot;drmgr.h&quot;</code><br />
 <code>#include &lt;memory&gt;</code><br />
@@ -102,12 +103,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Macros</h2></td></tr>
 <tr class="memitem:a43d5e372ae80e415709574e461dbcff6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__print__sym_8cpp.html#a43d5e372ae80e415709574e461dbcff6">MAX_SYM_RESULT</a>&#160;&#160;&#160;4096</td></tr>
 <tr class="separator:a43d5e372ae80e415709574e461dbcff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:adf106e5b7ce5c3f8701bfd3d6fd42b85"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__print__sym_8cpp.html#adf106e5b7ce5c3f8701bfd3d6fd42b85">print_sym</a> (<a class="el" href="dr__print__sym_8hpp.html#ac42c22b4ecc47db7a40c34d0aece347a">PrintFn</a> pnt, <a class="el" href="dr__print__sym_8hpp.html#ac42c22b4ecc47db7a40c34d0aece347a">PrintFn</a> perr, const char *const description, const app_pc addr)</td></tr>
-<tr class="memdesc:adf106e5b7ce5c3f8701bfd3d6fd42b85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print symbol information for the what is located at addr.  <a href="#adf106e5b7ce5c3f8701bfd3d6fd42b85">More...</a><br /></td></tr>
-<tr class="separator:adf106e5b7ce5c3f8701bfd3d6fd42b85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="a43d5e372ae80e415709574e461dbcff6"></a>
@@ -119,48 +114,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="adf106e5b7ce5c3f8701bfd3d6fd42b85"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void print_sym </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="dr__print__sym_8hpp.html#ac42c22b4ecc47db7a40c34d0aece347a">PrintFn</a>&#160;</td>
-          <td class="paramname"><em>pnt</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="dr__print__sym_8hpp.html#ac42c22b4ecc47db7a40c34d0aece347a">PrintFn</a>&#160;</td>
-          <td class="paramname"><em>perr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *const&#160;</td>
-          <td class="paramname"><em>description</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const app_pc&#160;</td>
-          <td class="paramname"><em>addr</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Print symbol information for the what is located at addr. </p>
-<p>Prints out information via the pnt function which works like printf Prints out errors via the perr function which works like printf description is a description of what the address addr points to </p>
 
 </div>
 </div>
