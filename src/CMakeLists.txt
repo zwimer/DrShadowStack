@@ -15,7 +15,7 @@ set(DynamoRIO_DIR /home/vagrant/dynamorio/build/cmake)
 
 # Debug mode options. Comment out to disable
 #set(DEBUG_MODE "VERBOSE")
-set(DEBUG_MODE "ON")
+#set(DEBUG_MODE "ON")
 
 # For YouCompleteMe vim plugin
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)

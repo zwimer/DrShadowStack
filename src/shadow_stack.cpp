@@ -3,7 +3,6 @@
 #include "quick_socket.hpp"
 #include "constants.hpp"
 #include "utilities.hpp"
-#include "get_tid.hpp"
 #include "group.hpp"
 
 #include <unistd.h>
@@ -89,7 +88,7 @@ void start_program( char * drrun, char * a_out, char ** client_argv,
 
 	// Log the action then flush the buffers
 	std::stringstream pnt;
-	pnt << "TID " << get_tid() << ": Starting dr_run\nCalling execvp on: ";
+	pnt << "Starting dr_run\nCalling execvp on: ";
 	for ( unsigned long i = 0; i < args.size() - 1; ++i ) {
 		pnt << args[i] << ' ';
 	}
@@ -161,7 +160,7 @@ int main(int argc, char * argv[]) {
 	// If this is the child process,
 	// start the program to be protected
 	if (pid == 0) {
-		Utilities::log("%llu: Forming drrun args...", get_tid());
+		Utilities::log("Forming drrun args...");
 		start_program( argv[2], argv[3], & argv[4], argv[1],
 						(char *) server_name.c_str() );
 	}
@@ -170,7 +169,7 @@ int main(int argc, char * argv[]) {
 	else {
 
 		// Wait for the client then start the shadow stack
-		Utilities::log("%llu: waiting for client", get_tid());
+		Utilities::log("Waiting for client");
 		const int client_sock = QS::accept_client(sock);
 
 		// Start the shadow stack server

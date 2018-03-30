@@ -11,7 +11,6 @@
 #include "constants.hpp"
 #include "utilities.hpp"
 #include "message.hpp"
-#include "get_tid.hpp"
 #include "proc_rc.hpp"
 #include "group.hpp"
 
@@ -51,7 +50,7 @@ void add_wildcard(pointer_stack & stk, const char * const, const int) {
 // Called when a 'call' was detected
 void call_handler(pointer_stack & stk, const char * const buffer, const int) {
 	const char * const addr = * ((char **) buffer);
-	Utilities::verbose_log("TID %d: (server) Push(%p)", get_tid(), addr);
+	Utilities::verbose_log("(server) Push(%p)", addr);
 	stk.push(addr);
 }
 
@@ -60,7 +59,7 @@ void ret_handler(pointer_stack & stk, const char * const buffer, const int sock)
 
 	// Log the address
 	const char * const addr = * ((char **) buffer);
-	Utilities::verbose_log("TID %d: (server) Pop(%p)\n", get_tid(), addr);
+	Utilities::verbose_log("(server) Pop(%p)\n", addr);
 
 	// If the stack is empty, error
 	if ( stk.empty() ) {

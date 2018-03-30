@@ -1,14 +1,16 @@
 #include "utilities.hpp"
+#include "constants.hpp"
+#include "get_tid.hpp"
+#include "group.hpp"
 
+
+#include <stdint.h>
 #include <stdarg.h>
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
 #include <stdio.h>
 #include <set>
-
-#include "constants.hpp"
-#include "group.hpp"
 
 
 /*********************************************************/
@@ -60,6 +62,7 @@ inline static void no_op(const char * const, ...) {}
 // Ends the printed line with a newline then flushes the buffer
 // This function promises NOTHING on failure
 inline static void write_log(FILE * f, const char * const format, va_list args) {
+	fprintf(f, "TID %jd: ", (intmax_t) get_tid());
 	vfprintf(f, format, args);
 	fprintf(f, "\n");
 	fflush(f);
