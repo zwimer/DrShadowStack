@@ -64,6 +64,7 @@ inline static void write_log(FILE * f, const char * const format, va_list args) 
 	fflush(f);
 }
 
+
 // Logs the arguments as printf would to the log file
 // Ends the printed line with a newline then flushes the buffer
 // If log_file is nullptr, this function does nothing

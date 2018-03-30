@@ -48,8 +48,15 @@ static constexpr bool str_equal( const char * const s1,
 #define PROGRAM_NAME "PROGRAM_NAME_PLACEHOLDER"
 #endif
 
-#ifndef LOG_FILE
-/// The default log file. 
+#ifdef DEBUG_MODE 
+
+/// The default log file for debug mode
+/** This fill may be nullptr, but may not be NULL 
+ *  This should be defined by the cmake on compilation */
+#define LOG_FILE fopen("./log", "w")
+#else 
+
+/// The default log file for non-debug mode
 /** This fill may be nullptr, but may not be NULL 
  *  This should be defined by the cmake on compilation */
 #define LOG_FILE nullptr 
