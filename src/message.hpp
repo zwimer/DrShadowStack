@@ -84,8 +84,6 @@ class Message final {
 		char message[size];
 	};
 
-	// TODO: change to use just a strong enum probably...
-
 	// General Headers
 
 	/** A class containing the header of NewSignal message */
