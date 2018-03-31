@@ -6,7 +6,7 @@ DrShadowStack is a software defined dynamic shadow stack implemented via DynamoR
 
 This project utilizes [DynamoRIO](https://github.com/DynamoRIO/dynamorio). Installation instructions may be found [here](https://github.com/DynamoRIO/dynamorio/wiki/How-To-Build).
 
-The project is built on Ubuntu 16.04 via [cmake](https://cmake.org/). It requires compiler that supports `c++11`.
+The project is built on [Ubuntu 16.04](http://releases.ubuntu.com/16.04.4/) via [cmake](https://cmake.org/). It requires compiler that supports `C++11`.
 
 ### Developers
 
