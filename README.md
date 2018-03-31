@@ -24,10 +24,7 @@ gem install github_changelog_generator
 ```bash
 git clone https://github.com/zwimer/DrShadowStack
 ```
-3. Configure the CMakeLists.txt file (optional)
-```bash
-vim DrShadowStack/src/CMakeLists.txt
-```
+3. Configure the `DrShadowStack/src/CMakeLists.txt` file. Specifically set the path to where DynamoRIO is built.
 4. Create a build directory
 ```bash
 cd DrShadowStack/src
