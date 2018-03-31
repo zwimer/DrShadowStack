@@ -2,8 +2,26 @@
 
 ## [Unreleased](https://github.com/zwimer/DrShadowStack/tree/HEAD)
 
+**Implemented enhancements:**
+
+- Handle signals [\#24](https://github.com/zwimer/DrShadowStack/issues/24)
+- Symbol Resolution on error [\#20](https://github.com/zwimer/DrShadowStack/issues/20)
+- Generate code dcumentation [\#18](https://github.com/zwimer/DrShadowStack/issues/18)
+
+**Fixed bugs:**
+
+- Main process receiving SigPipe [\#23](https://github.com/zwimer/DrShadowStack/issues/23)
+- boost::interprocess::mutex does not work on dynamorio [\#17](https://github.com/zwimer/DrShadowStack/issues/17)
+
+**Closed issues:**
+
+- Remap signals [\#22](https://github.com/zwimer/DrShadowStack/issues/22)
+- Setup a new process group [\#21](https://github.com/zwimer/DrShadowStack/issues/21)
+- Create Utilities [\#19](https://github.com/zwimer/DrShadowStack/issues/19)
+
 **Merged pull requests:**
 
+- Docs [\#28](https://github.com/zwimer/DrShadowStack/pull/28) ([zwimer](https://github.com/zwimer))
 - Separate log file [\#9](https://github.com/zwimer/DrShadowStack/pull/9) ([zwimer](https://github.com/zwimer))
 - Updated index.html [\#8](https://github.com/zwimer/DrShadowStack/pull/8) ([zwimer](https://github.com/zwimer))
 - Updated cmake [\#7](https://github.com/zwimer/DrShadowStack/pull/7) ([zwimer](https://github.com/zwimer))
