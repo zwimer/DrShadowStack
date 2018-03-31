@@ -90,7 +90,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <ol type="1">
 <li>Install dependencies</li>
 <li>Clone the repository <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;git clone https://github.com/zwimer/DrShadowStack</div></div><!-- fragment --></li>
-<li>Configure the CMakeLists.txt file (optional) <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;vim DrShadowStack/src/CMakeLists.txt</div></div><!-- fragment --></li>
+<li>Configure the <code>DrShadowStack/src/CMakeLists.txt</code> file. Specifically set the path to where DynamoRIO is built.</li>
 <li>Create a build directory <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;cd DrShadowStack/src</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;mkdir build &amp;&amp; cd build</div></div><!-- fragment --></li>
 <li>Build with CMake and make <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;cmake .. &amp;&amp; make -j 4</div></div><!-- fragment --></li>
 </ol>
