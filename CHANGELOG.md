@@ -1,13 +1,18 @@
 # Change Log
 
-## [Unreleased](https://github.com/zwimer/ShadowStack/tree/HEAD)
+## [Unreleased](https://github.com/zwimer/DrShadowStack/tree/HEAD)
 
 **Merged pull requests:**
 
-- Develop [\#4](https://github.com/zwimer/ShadowStack/pull/4) ([zwimer](https://github.com/zwimer))
-- Added changelog [\#3](https://github.com/zwimer/ShadowStack/pull/3) ([zwimer](https://github.com/zwimer))
-- Made signals into c from cpp [\#2](https://github.com/zwimer/ShadowStack/pull/2) ([zwimer](https://github.com/zwimer))
-- Added another toy example [\#1](https://github.com/zwimer/ShadowStack/pull/1) ([zwimer](https://github.com/zwimer))
+- Separate log file [\#9](https://github.com/zwimer/DrShadowStack/pull/9) ([zwimer](https://github.com/zwimer))
+- Updated index.html [\#8](https://github.com/zwimer/DrShadowStack/pull/8) ([zwimer](https://github.com/zwimer))
+- Updated cmake [\#7](https://github.com/zwimer/DrShadowStack/pull/7) ([zwimer](https://github.com/zwimer))
+- Develop [\#6](https://github.com/zwimer/DrShadowStack/pull/6) ([zwimer](https://github.com/zwimer))
+- Updated changelog [\#5](https://github.com/zwimer/DrShadowStack/pull/5) ([zwimer](https://github.com/zwimer))
+- Develop [\#4](https://github.com/zwimer/DrShadowStack/pull/4) ([zwimer](https://github.com/zwimer))
+- Added changelog [\#3](https://github.com/zwimer/DrShadowStack/pull/3) ([zwimer](https://github.com/zwimer))
+- Made signals into c from cpp [\#2](https://github.com/zwimer/DrShadowStack/pull/2) ([zwimer](https://github.com/zwimer))
+- Added another toy example [\#1](https://github.com/zwimer/DrShadowStack/pull/1) ([zwimer](https://github.com/zwimer))
 
 
 
