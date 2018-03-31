@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['shadowstack',['ShadowStack',['../index.html',1,'']]]
+  ['drshadowstack',['DrShadowStack',['../index.html',1,'']]]
 ];
