@@ -13,6 +13,7 @@ var searchData=
   ['dr_5fprint_5fsym_2ecpp',['dr_print_sym.cpp',['../dr__print__sym_8cpp.html',1,'']]],
   ['dr_5fprint_5fsym_2ehpp',['dr_print_sym.hpp',['../dr__print__sym_8hpp.html',1,'']]],
   ['dr_5fshadow_5fstack_5fclient_2ecpp',['dr_shadow_stack_client.cpp',['../dr__shadow__stack__client_8cpp.html',1,'']]],
+  ['drrun',['drrun',['../struct_args.html#afd47a15e870aaf33b2ad41f55aebaa4e',1,'Args::drrun()'],['../parse__args_8hpp.html#a5bfaa238e705095852a5ccfe54e5a78b',1,'DRRUN():&#160;parse_args.hpp']]],
   ['dynamorio_5fclient_5fso',['DYNAMORIO_CLIENT_SO',['../constants_8hpp.html#a55bbcf5179640df5d0c10b9677a19370',1,'constants.hpp']]],
   ['drshadowstack',['DrShadowStack',['../index.html',1,'']]]
 ];

@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['enable_5fmulti_5fthread_5for_5fprocess_5fmode',['enable_multi_thread_or_process_mode',['../class_utilities.html#a384728ae9b72982c1351d881ba7ff007',1,'Utilities']]],
   ['enabled',['enabled',['../class_terminate_on_destruction.html#a17854fe56e131d017df98b77f9c4cbfc',1,'TerminateOnDestruction']]],
   ['err',['err',['../class_utilities.html#a5308da50597c93aad2b1ca2ecfbcb723',1,'Utilities']]],
   ['error_5ffile',['error_file',['../class_utilities.html#afc3b1cf892b76cede8fa87bfdd17533c',1,'Utilities::error_file()'],['../constants_8hpp.html#a9fdff3d78b754d4b831816d0560dbb57',1,'ERROR_FILE():&#160;constants.hpp']]],

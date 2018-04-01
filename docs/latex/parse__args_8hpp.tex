@@ -1,0 +1,70 @@
+\hypertarget{parse__args_8hpp}{}\section{src/parse\+\_\+args.hpp File Reference}
+\label{parse__args_8hpp}\index{src/parse\+\_\+args.\+hpp@{src/parse\+\_\+args.\+hpp}}
+{\ttfamily \#include $<$boost/program\+\_\+options.\+hpp$>$}\\*
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_args}{Args}
+\begin{DoxyCompactList}\small\item\em A struct returned by the argument parser. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{parse__args_8hpp_a9cfe9398b36d43435709e5c3b7de2e85}{T\+A\+R\+G\+E\+T\+\_\+\+A\+R\+GS}~\char`\"{}target-\/args\char`\"{}
+\begin{DoxyCompactList}\small\item\em The key to the variables map that stores the target arguments. \end{DoxyCompactList}\item 
+\#define \hyperlink{parse__args_8hpp_a9fec70a17d0bcef23cf03c45a7b7caba}{T\+A\+R\+G\+ET}~\char`\"{}target\char`\"{}
+\begin{DoxyCompactList}\small\item\em The key to the variables map that stores the target. \end{DoxyCompactList}\item 
+\#define \hyperlink{parse__args_8hpp_a5bfaa238e705095852a5ccfe54e5a78b}{D\+R\+R\+UN}~\char`\"{}ss\+\_\+drrun\char`\"{}
+\begin{DoxyCompactList}\small\item\em The key to the variables map that stores the path to drrun. \end{DoxyCompactList}\item 
+\#define \hyperlink{parse__args_8hpp_ab8c52c1b4c021ed3e6b6b677bd2ac019}{M\+O\+DE}~\char`\"{}ss\+\_\+mode\char`\"{}
+\begin{DoxyCompactList}\small\item\em The key to the variables map that stores the mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_args}{Args} \hyperlink{parse__args_8hpp_a650551bcbe430a563b45949a16f94639}{parse\+\_\+args} (const int argc, const char $\ast$const argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Returns an args\+\_\+t containing the parsed arguments. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{parse\+\_\+args.\+hpp@{parse\+\_\+args.\+hpp}!D\+R\+R\+UN@{D\+R\+R\+UN}}
+\index{D\+R\+R\+UN@{D\+R\+R\+UN}!parse\+\_\+args.\+hpp@{parse\+\_\+args.\+hpp}}
+\subsubsection[{\texorpdfstring{D\+R\+R\+UN}{DRRUN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+R\+R\+UN~\char`\"{}ss\+\_\+drrun\char`\"{}}\hypertarget{parse__args_8hpp_a5bfaa238e705095852a5ccfe54e5a78b}{}\label{parse__args_8hpp_a5bfaa238e705095852a5ccfe54e5a78b}
+
+
+The key to the variables map that stores the path to drrun. 
+
+\index{parse\+\_\+args.\+hpp@{parse\+\_\+args.\+hpp}!M\+O\+DE@{M\+O\+DE}}
+\index{M\+O\+DE@{M\+O\+DE}!parse\+\_\+args.\+hpp@{parse\+\_\+args.\+hpp}}
+\subsubsection[{\texorpdfstring{M\+O\+DE}{MODE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+O\+DE~\char`\"{}ss\+\_\+mode\char`\"{}}\hypertarget{parse__args_8hpp_ab8c52c1b4c021ed3e6b6b677bd2ac019}{}\label{parse__args_8hpp_ab8c52c1b4c021ed3e6b6b677bd2ac019}
+
+
+The key to the variables map that stores the mode. 
+
+\index{parse\+\_\+args.\+hpp@{parse\+\_\+args.\+hpp}!T\+A\+R\+G\+ET@{T\+A\+R\+G\+ET}}
+\index{T\+A\+R\+G\+ET@{T\+A\+R\+G\+ET}!parse\+\_\+args.\+hpp@{parse\+\_\+args.\+hpp}}
+\subsubsection[{\texorpdfstring{T\+A\+R\+G\+ET}{TARGET}}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+A\+R\+G\+ET~\char`\"{}target\char`\"{}}\hypertarget{parse__args_8hpp_a9fec70a17d0bcef23cf03c45a7b7caba}{}\label{parse__args_8hpp_a9fec70a17d0bcef23cf03c45a7b7caba}
+
+
+The key to the variables map that stores the target. 
+
+\index{parse\+\_\+args.\+hpp@{parse\+\_\+args.\+hpp}!T\+A\+R\+G\+E\+T\+\_\+\+A\+R\+GS@{T\+A\+R\+G\+E\+T\+\_\+\+A\+R\+GS}}
+\index{T\+A\+R\+G\+E\+T\+\_\+\+A\+R\+GS@{T\+A\+R\+G\+E\+T\+\_\+\+A\+R\+GS}!parse\+\_\+args.\+hpp@{parse\+\_\+args.\+hpp}}
+\subsubsection[{\texorpdfstring{T\+A\+R\+G\+E\+T\+\_\+\+A\+R\+GS}{TARGET_ARGS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+A\+R\+G\+E\+T\+\_\+\+A\+R\+GS~\char`\"{}target-\/args\char`\"{}}\hypertarget{parse__args_8hpp_a9cfe9398b36d43435709e5c3b7de2e85}{}\label{parse__args_8hpp_a9cfe9398b36d43435709e5c3b7de2e85}
+
+
+The key to the variables map that stores the target arguments. 
+
+
+
+\subsection{Function Documentation}
+\index{parse\+\_\+args.\+hpp@{parse\+\_\+args.\+hpp}!parse\+\_\+args@{parse\+\_\+args}}
+\index{parse\+\_\+args@{parse\+\_\+args}!parse\+\_\+args.\+hpp@{parse\+\_\+args.\+hpp}}
+\subsubsection[{\texorpdfstring{parse\+\_\+args(const int argc, const char $\ast$const argv[])}{parse_args(const int argc, const char *const argv[])}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Args} parse\+\_\+args (
+\begin{DoxyParamCaption}
+\item[{const int}]{argc, }
+\item[{const char $\ast$const}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\hypertarget{parse__args_8hpp_a650551bcbe430a563b45949a16f94639}{}\label{parse__args_8hpp_a650551bcbe430a563b45949a16f94639}
+
+
+Returns an args\+\_\+t containing the parsed arguments. 
+

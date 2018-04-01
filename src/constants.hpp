@@ -53,7 +53,7 @@ static constexpr bool str_equal( const char * const s1,
 /// The default log file for debug mode
 /** This fill may be nullptr, but may not be NULL 
  *  This should be defined by the cmake on compilation */
-#define LOG_FILE fopen("./log", "w")
+#define LOG_FILE "./log"
 #else 
 
 /// The default log file for non-debug mode
@@ -71,15 +71,11 @@ static constexpr bool str_equal( const char * const s1,
 #define ERROR_FILE stderr
 
 
-/** Max internal shadow stack size */
-#define MAX_CALL_DEPTH (1000 * sizeof(void *) * 4096)
-
-
 /** The flag that must be passed to invoke internal mode */
-#define INTERNAL_MODE_FLAG "-int"
+#define INTERNAL_MODE_FLAG "int"
 
 /** The flag that must be passed to invoke external mode */
-#define EXTERNAL_MODE_FLAG "-ext"
+#define EXTERNAL_MODE_FLAG "ext"
 
 /** Verify the modes are not equal */
 static_assert( ! str_equal(INTERNAL_MODE_FLAG, EXTERNAL_MODE_FLAG),
@@ -90,19 +86,5 @@ static_assert( ! str_equal(INTERNAL_MODE_FLAG, EXTERNAL_MODE_FLAG),
  *  Since no call or ret will ever happen here, 
  *  during normal use, it is fine */
 #define WILDCARD ( -1 )
-
-
-/*********************************************************/
-/*                                                       */
-/*	  				   Due to the OS					 */
-/*                                                       */
-/*********************************************************/
-
-
-#ifdef __APPLE__
-/** The max number of signals on linux allowed */
-#define _NSIG 65
-#endif
-
 
 #endif

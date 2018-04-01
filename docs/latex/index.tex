@@ -2,19 +2,28 @@ Dr\+Shadow\+Stack is a software defined dynamic shadow stack implemented via Dyn
 
 \subsection*{Requirements}
 
-This project utilizes \href{https://github.com/DynamoRIO/dynamorio}{\tt Dynamo\+R\+IO}. Installation instructions may be found \href{https://github.com/DynamoRIO/dynamorio/wiki/How-To-Build}{\tt here}.
 
-The project is built on \href{http://releases.ubuntu.com/16.04.4/}{\tt Ubuntu 16.\+04} via \href{https://cmake.org/}{\tt cmake}. It requires compiler that supports {\ttfamily C++11}.
+\begin{DoxyEnumerate}
+\item This project utilizes \href{https://github.com/DynamoRIO/dynamorio}{\tt Dynamo\+R\+IO}. Installation instructions may be found \href{https://github.com/DynamoRIO/dynamorio/wiki/How-To-Build}{\tt here}.
+\item This project utilizes the C++ library \href{https://boost.org}{\tt Boost}. This library can be built from source, as explained \href{https://www.boost.org/doc/libs/1_66_0/more/getting_started/unix-variants.html}{\tt here}. On \href{http://releases.ubuntu.com/16.04.4/}{\tt Ubuntu 16.\+04}, this library can be installed as follows\+: 
+\begin{DoxyCode}
+1 sudo apt-get update && sudo apt-get install libboost-all-dev
+\end{DoxyCode}
+
+\item The project is built on \href{http://releases.ubuntu.com/16.04.4/}{\tt Ubuntu 16.\+04} via \href{https://cmake.org/}{\tt cmake}. It requires compiler that supports {\ttfamily C++11}.
+\end{DoxyEnumerate}
 
 \subsubsection*{Developers}
 
-The documentation is build via \href{http://www.stack.nl/~dimitri/doxygen/}{\tt Doxygen}.
 
-The changelog is generated via \href{https://github.com/skywinder/github-changelog-generator}{\tt github\+\_\+changelog\+\_\+generator}, which is installed via the command 
+\begin{DoxyEnumerate}
+\item The documentation is build via \href{http://www.stack.nl/~dimitri/doxygen/}{\tt Doxygen}.
+\item The changelog is generated via \href{https://github.com/skywinder/github-changelog-generator}{\tt github\+\_\+changelog\+\_\+generator}, which is installed via the command 
 \begin{DoxyCode}
 1 gem install github\_changelog\_generator
 \end{DoxyCode}
 
+\end{DoxyEnumerate}
 
 \subsection*{Installation Instructions}
 
@@ -26,11 +35,7 @@ The changelog is generated via \href{https://github.com/skywinder/github-changel
 1 git clone https://github.com/zwimer/DrShadowStack
 \end{DoxyCode}
 
-\item Configure the C\+Make\+Lists.\+txt file (optional) 
-\begin{DoxyCode}
-1 vim DrShadowStack/src/CMakeLists.txt
-\end{DoxyCode}
-
+\item Configure the {\ttfamily Dr\+Shadow\+Stack/src/\+C\+Make\+Lists.\+txt} file. Specifically set the path to where Dynamo\+R\+IO is built.
 \item Create a build directory 
 \begin{DoxyCode}
 1 cd DrShadowStack/src

@@ -95,9 +95,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock"><code>#include &quot;<a class="el" href="shadow__stack_8hpp_source.html">shadow_stack.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="external__stack__server_8hpp_source.html">external_stack_server.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="quick__socket_8hpp_source.html">quick_socket.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="parse__args_8hpp_source.html">parse_args.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="constants_8hpp_source.html">constants.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="utilities_8hpp_source.html">utilities.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="group_8hpp_source.html">group.hpp</a>&quot;</code><br />
+<code>#include &lt;boost/filesystem.hpp&gt;</code><br />
 <code>#include &lt;unistd.h&gt;</code><br />
 <code>#include &lt;signal.h&gt;</code><br />
 <code>#include &lt;sstream&gt;</code><br />
@@ -108,37 +110,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Functions</h2></td></tr>
 <tr class="memitem:a5cb8160669276231f62ad2bddf8b04ae"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shadow__stack_8cpp.html#a5cb8160669276231f62ad2bddf8b04ae">temp_name</a> ()</td></tr>
 <tr class="separator:a5cb8160669276231f62ad2bddf8b04ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a028ed2270cda87568348ef46089282d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shadow__stack_8cpp.html#a028ed2270cda87568348ef46089282d2">start_program</a> (char *drrun, char *a_out, char **client_argv, const char *const mode, char *socket_path)</td></tr>
-<tr class="separator:a028ed2270cda87568348ef46089282d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e0fd98b241f3d91fa0572b95bfa8022"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shadow__stack_8cpp.html#a0e0fd98b241f3d91fa0572b95bfa8022">incorrect_usage</a> ()</td></tr>
-<tr class="separator:a0e0fd98b241f3d91fa0572b95bfa8022"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad203fd9b387f4d1de99b47d7b3135dc9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shadow__stack_8cpp.html#ad203fd9b387f4d1de99b47d7b3135dc9">start_program</a> (const <a class="el" href="struct_args.html">Args</a> input_args, char *socket_path)</td></tr>
+<tr class="separator:ad203fd9b387f4d1de99b47d7b3135dc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shadow__stack_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
 <tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a0e0fd98b241f3d91fa0572b95bfa8022"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void incorrect_usage </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a class="anchor" id="a0ddf1224851353fc92bfbff6f499fa97"></a>
 <div class="memitem">
 <div class="memproto">
@@ -165,33 +142,15 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a028ed2270cda87568348ef46089282d2"></a>
+<a class="anchor" id="ad203fd9b387f4d1de99b47d7b3135dc9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void start_program </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>drrun</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>a_out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>client_argv</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *const&#160;</td>
-          <td class="paramname"><em>mode</em>, </td>
+          <td class="paramtype">const <a class="el" href="struct_args.html">Args</a>&#160;</td>
+          <td class="paramname"><em>input_args</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
