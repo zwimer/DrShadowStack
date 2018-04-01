@@ -36,7 +36,6 @@ variables_map parse_args_helper(	const int argc, const char * const argv[],
 					"The mode in which the shadow stack is used"
 					"\n\t" INTERNAL_MODE_FLAG " -- internal shadow stack mode"
 					"\n\t" EXTERNAL_MODE_FLAG " -- external shadow stack mode" )
-		(DRRUN, value<std::string>()->required(), "The drrun executable")
 		(TARGET, value<std::string>()->required(), "The target executable")
 		(TARGET_ARGS, value<std::vector<std::string> >(),
 					"The target executable's arguments" );
@@ -71,16 +70,6 @@ variables_map parse_args_helper(	const int argc, const char * const argv[],
 			Utilities::message("version %s", VERSION);
 			exit(EXIT_SUCCESS);
 		}
-
-		// If a config file is being loaded, 
-		/* else if ( args.count("config") ) { */
-			
-		/* 	// Load the config file's options */
-		/* 	const std::string config_file = vm["config"].as<std::string>(); */
-		/* 	std::ifstream ifs( config_file.c_str() ); */
-		/* 	Utilities::assert( ifs, (config_file + " could not be opened.").c_str() ); */
-		/* 	parse_args = std::bind(parse_config_file, std::move(ifs), _1); */
-		/* } */
 
 		// Parse configuration options
 		raw_parsed = command_line_parser(argc, argv)
@@ -120,9 +109,9 @@ variables_map parse_args_helper(	const int argc, const char * const argv[],
 
 
 // Args constructor
-Args::Args(	const std::string & dr, const bool is_int, const std::string & targ, 
-			std::vector<std::string> & targ_args ) : drrun(dr), 
-			is_internal(is_int), target(targ), target_args(std::move(targ_args)) {}
+Args::Args(	const bool is_int, const std::string & targ, 
+			std::vector<std::string> & targ_args ) : is_internal(is_int), 
+			target(targ), target_args(std::move(targ_args)) {}
 
 
 // Returns an args_t containing the parsed arguments
@@ -134,7 +123,6 @@ Args parse_args(const int argc, const char * const argv[]) {
 
 	// Extract the arguments and return the result
 	return std::move( Args( 
-		vm[DRRUN].as<std::string>(),
 		(strcmp(vm[MODE].as<std::string>().c_str(), INTERNAL_MODE_FLAG) == 0),
 		vm[TARGET].as<std::string>(),
 		target_args

@@ -7,8 +7,9 @@ cmake_minimum_required(VERSION 3.5)
 #################################################
 
 
-# Location of DynamoRIO
+# Location of DynamoRIO and drrun
 set(DynamoRIO_DIR /home/vagrant/dynamorio/build/cmake)
+set(DRRUN_PATH /home/vagrant/dynamorio/build/bin64/drrun)
 
 
 ### Developer options below ###
@@ -53,14 +54,13 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Required complication flags
-# TODO:
-set (CMAKE_CXX_FLAGS "-std=c++11 -Wall -Wextra -Wno-unused-parameter") # -Werror" )
+set (CMAKE_CXX_FLAGS "-std=c++11 -Wall -Wextra -Wno-unused-parameter -Werror" )
 
 # Add macro definitions
+add_definitions(-DDRRUN_PATH="${DRRUN_PATH}")
 add_definitions(-DVERSION="${PROGRAM_VERSION}")
 add_definitions(-DPROGRAM_NAME="${PROGRAM_NAME}")
 add_definitions(-DDYNAMORIO_CLIENT_SO="${CMAKE_BINARY_DIR}/lib${SS_DR_CLIENT_SO}.so")
-
 
 
 # If debug mode
