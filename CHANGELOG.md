@@ -15,6 +15,7 @@
 
 **Fixed bugs:**
 
+- --version and --help ignored for sub commands [\#53](https://github.com/zwimer/DrShadowStack/issues/53)
 - Log file bug for non-debug mode [\#48](https://github.com/zwimer/DrShadowStack/issues/48)
 - Argument parser ignores flags of the sub shell [\#41](https://github.com/zwimer/DrShadowStack/issues/41)
 - Log file gets overwritten [\#40](https://github.com/zwimer/DrShadowStack/issues/40)

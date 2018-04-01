@@ -58,7 +58,7 @@ variables_map parse_args_helper(	const int argc, const char * const argv[],
 		store(raw_parsed, args);
 
 		// If help was asked for
-		if ( args.count("help") ) {
+		if ( args.count("help") && (argc == 2) ) {
 			std::stringstream help;
 			help << usage_options << '\n' << config_options;
 			Utilities::message("\n%s", help.str().c_str());
@@ -66,7 +66,7 @@ variables_map parse_args_helper(	const int argc, const char * const argv[],
 		}
 
 		// If version was asked for
-		else if ( args.count("version") ) {
+		else if ( args.count("version") && (argc == 2) ) {
 			Utilities::message("version %s", VERSION);
 			exit(EXIT_SUCCESS);
 		}
