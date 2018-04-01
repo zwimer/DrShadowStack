@@ -26,11 +26,8 @@ variables_map parse_args_helper(	const int argc, const char * const argv[],
 	// For example, do they want help, version info, to load a config file, or normal use?
 	options_description usage_options("Generic options");
 	usage_options.add_options() 
-		("help", "Produce help message");
-		/* ("version,v", "produce version information") */ // TODO
-		/* ("config,c", value<std::string>(), "Config file specifying command line options" */
-		/* 								   "\nIf this flag is used, configuration will" */
-		/* 								   "\noccur using options in the config file only."); */
+		("help,h", "Produce help message")
+		("version,v", "produce version information");
 
 	// Configuration options
 	options_description config_options("Configuration");
@@ -70,10 +67,10 @@ variables_map parse_args_helper(	const int argc, const char * const argv[],
 		}
 
 		// If version was asked for
-		/* else if ( args.count("version") ) { */
-		/* 	std::cout << desc << std::endl; */
-		/* 	exit(EXIT_SUCCESS); */
-		/* } */
+		else if ( args.count("version") ) {
+			Utilities::message("version %s", VERSION);
+			exit(EXIT_SUCCESS);
+		}
 
 		// If a config file is being loaded, 
 		/* else if ( args.count("config") ) { */
