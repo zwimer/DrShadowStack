@@ -18,49 +18,53 @@ using namespace boost::program_options;
 
 
 // Returns a variables map containing the parsed arguments
-variables_map parse_args_helper(const int argc, const char * const argv[]) {
+// The second argument is a pointer to a vector to store the target arguments in
+variables_map parse_args_helper(	const int argc, const char * const argv[], 
+									std::vector<std::string> * const target_args ) {
 
 	// Usage options (i.e. how the user wants to use the program)
 	// For example, do they want help, version info, to load a config file, or normal use?
 	options_description usage_options("Generic options");
 	usage_options.add_options() 
-		("help", "Produce help message")
+		("help", "Produce help message");
 		/* ("version,v", "produce version information") */ // TODO
-		("config,c", value<std::string>(), "Config file specifying command line options"
-										   "\nIf this flag is used, configuration will"
-										   "\noccur using options in the config file only.");
+		/* ("config,c", value<std::string>(), "Config file specifying command line options" */
+		/* 								   "\nIf this flag is used, configuration will" */
+		/* 								   "\noccur using options in the config file only."); */
 
 	// Configuration options
 	options_description config_options("Configuration");
 	config_options.add_options()
-		(DRRUN",d", value<std::string>()->required(), "The drrun executable")
-		(MODE",m", value<std::string>()->required(),
+		(MODE, value<std::string>()->required(),
 					"The mode in which the shadow stack is used"
 					"\n\t" INTERNAL_MODE_FLAG " -- internal shadow stack mode"
 					"\n\t" EXTERNAL_MODE_FLAG " -- external shadow stack mode" )
+		(DRRUN, value<std::string>()->required(), "The drrun executable")
 		(TARGET, value<std::string>()->required(), "The target executable")
 		(TARGET_ARGS, value<std::vector<std::string> >(),
 					"The target executable's arguments" );
 
 	// Declare the target and its arguments as positional
 	positional_options_description target_options;
-	target_options.add("target", 1).add("target-args", -1);
+	target_options
+		.add(TARGET, 1)
+		.add(TARGET_ARGS, -1);
 
 	// Encapsulate arg parsing
 	try {
 
 		// Parse usage options
 		variables_map args;
-		auto unorganized_parsed_args = command_line_parser(argc, argv)
+		auto raw_parsed = command_line_parser(argc, argv)
 			.options(usage_options)
 			.allow_unregistered()
 			.run();
-		store(unorganized_parsed_args, args);
+		store(raw_parsed, args);
 
 		// If help was asked for
 		if ( args.count("help") ) {
 			std::stringstream help;
-			help << usage_options << config_options;
+			help << usage_options << '\n' << config_options;
 			Utilities::message("\n%s", help.str().c_str());
 			exit(EXIT_SUCCESS);
 		}
@@ -82,21 +86,22 @@ variables_map parse_args_helper(const int argc, const char * const argv[]) {
 		/* } */
 
 		// Parse configuration options
-		unorganized_parsed_args = command_line_parser(argc, argv)
+		raw_parsed = command_line_parser(argc, argv)
 			.options(config_options)
 			.positional(target_options)
 			.allow_unregistered()
 			.run();
-		store( unorganized_parsed_args, args );
+		store( raw_parsed, args );
 
 		// Done parsing, check for errors
 		notify(args);
 
-		// If no target options were given, note so
-		if ( args.count(TARGET_ARGS) == 0 ) {
-			const auto empty = variable_value(std::vector<std::string>(), false);
-			args.insert(std::make_pair(TARGET_ARGS, empty));
-		}
+		// Collect all unregistered and positional 
+		// arguments to create the target's argument list
+		*target_args = collect_unrecognized(raw_parsed.options, include_positional);
+		Utilities::assert((*target_args)[0] == args[TARGET].as<std::string>(),
+			"Incorrect usage\nFor usage information, use the --help flag");
+		target_args->erase(target_args->begin());
 
 		// Return the variable map		
 		return std::move(args);
@@ -104,8 +109,7 @@ variables_map parse_args_helper(const int argc, const char * const argv[]) {
 
 	// If an error occured, note so
 	catch (...) {
-		Utilities::log_error("Incorrect usage");
-		Utilities::message("For usage information, use the --help flag");
+		Utilities::err("Incorrect usage\nFor usage information, use the --help flag");
 		exit(EXIT_FAILURE);
 	}
 }
@@ -120,21 +124,22 @@ variables_map parse_args_helper(const int argc, const char * const argv[]) {
 
 // Args constructor
 Args::Args(	const std::string & dr, const bool is_int, const std::string & targ, 
-			const std::vector<std::string> & targ_args ) : drrun(dr), 
-			is_internal(is_int), target(targ), target_args(targ_args) {}
+			std::vector<std::string> & targ_args ) : drrun(dr), 
+			is_internal(is_int), target(targ), target_args(std::move(targ_args)) {}
 
 
 // Returns an args_t containing the parsed arguments
 Args parse_args(const int argc, const char * const argv[]) {
 
 	// Parse the arguments
-	const auto vm = parse_args_helper(argc, argv);
+	std::vector<std::string> target_args;
+	const auto vm = parse_args_helper(argc, argv, & target_args);
 
 	// Extract the arguments and return the result
 	return std::move( Args( 
 		vm[DRRUN].as<std::string>(),
 		(strcmp(vm[MODE].as<std::string>().c_str(), INTERNAL_MODE_FLAG) == 0),
 		vm[TARGET].as<std::string>(),
-		vm[TARGET_ARGS].as<std::vector<std::string> >()
+		target_args
 	));
 }
