@@ -100,8 +100,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a22fd4159fcbcacbe02ccf01e17a85f1c"><td class="memItemLeft" align="right" valign="top">variables_map&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse__args_8cpp.html#a22fd4159fcbcacbe02ccf01e17a85f1c">parse_args_helper</a> (const int argc, const char *const argv[])</td></tr>
-<tr class="separator:a22fd4159fcbcacbe02ccf01e17a85f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a54f0fcfd436afd3c94ab0e38357a85"><td class="memItemLeft" align="right" valign="top">variables_map&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse__args_8cpp.html#a3a54f0fcfd436afd3c94ab0e38357a85">parse_args_helper</a> (const int argc, const char *const argv[], std::vector&lt; std::string &gt; *const target_args)</td></tr>
+<tr class="separator:a3a54f0fcfd436afd3c94ab0e38357a85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a650551bcbe430a563b45949a16f94639"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_args.html">Args</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse__args_8cpp.html#a650551bcbe430a563b45949a16f94639">parse_args</a> (const int argc, const char *const argv[])</td></tr>
 <tr class="memdesc:a650551bcbe430a563b45949a16f94639"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an args_t containing the parsed arguments.  <a href="#a650551bcbe430a563b45949a16f94639">More...</a><br /></td></tr>
 <tr class="separator:a650551bcbe430a563b45949a16f94639"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,7 +135,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a22fd4159fcbcacbe02ccf01e17a85f1c"></a>
+<a class="anchor" id="a3a54f0fcfd436afd3c94ab0e38357a85"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -149,7 +149,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *const&#160;</td>
-          <td class="paramname"><em>argv</em>[]&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::string &gt; *const&#160;</td>
+          <td class="paramname"><em>target_args</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
