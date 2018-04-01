@@ -39,9 +39,11 @@ cmake .. && make -j 4
 
 ## Usage
 
-The usage of this program is: `./DrShadowStack.out <Mode> <drrun> <a.out> <arguments for a.out>`
+The full usage of this program can be found via: `./DrShadowStack.out --help`
 
-There are two different modes, `-int` (internal) and `-ext` (external). The internal mode keeps the shadow stack internally in the DynamoRIO client. The external mode stores the stack in a separate process.
+In general, the usage is of this format: `./DrShadowStack.out --ss_mode <Mode> <executable target> <target arguments>
+
+There are two different modes, `int` (internal) and `ext` (external). The internal mode keeps the shadow stack internally in the DynamoRIO client. The external mode stores the stack in a separate process.
 
 ## Example
 
