@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>Shadow Stack: src/utilities.cpp File Reference</title>
+<title>Shadow Stack: src/parse_args.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -89,42 +89,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">utilities.cpp File Reference</div>  </div>
+<div class="title">parse_args.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="utilities_8hpp_source.html">utilities.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="parse__args_8hpp_source.html">parse_args.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="utilities_8hpp_source.html">utilities.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="constants_8hpp_source.html">constants.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="get__tid_8hpp_source.html">get_tid.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="group_8hpp_source.html">group.hpp</a>&quot;</code><br />
-<code>#include &lt;stdint.h&gt;</code><br />
-<code>#include &lt;stdarg.h&gt;</code><br />
-<code>#include &lt;errno.h&gt;</code><br />
-<code>#include &lt;set&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;utility&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a1c9ff67441d2537fadf0f0d8a655448e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8cpp.html#a1c9ff67441d2537fadf0f0d8a655448e">no_op</a> (const char *const,...)</td></tr>
-<tr class="separator:a1c9ff67441d2537fadf0f0d8a655448e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22fd4159fcbcacbe02ccf01e17a85f1c"><td class="memItemLeft" align="right" valign="top">variables_map&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse__args_8cpp.html#a22fd4159fcbcacbe02ccf01e17a85f1c">parse_args_helper</a> (const int argc, const char *const argv[])</td></tr>
+<tr class="separator:a22fd4159fcbcacbe02ccf01e17a85f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a650551bcbe430a563b45949a16f94639"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_args.html">Args</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse__args_8cpp.html#a650551bcbe430a563b45949a16f94639">parse_args</a> (const int argc, const char *const argv[])</td></tr>
+<tr class="memdesc:a650551bcbe430a563b45949a16f94639"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an args_t containing the parsed arguments.  <a href="#a650551bcbe430a563b45949a16f94639">More...</a><br /></td></tr>
+<tr class="separator:a650551bcbe430a563b45949a16f94639"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a1c9ff67441d2537fadf0f0d8a655448e"></a>
+<a class="anchor" id="a650551bcbe430a563b45949a16f94639"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void no_op </td>
+          <td class="memname"><a class="el" href="struct_args.html">Args</a> parse_args </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>const</em>, </td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
+          <td class="paramtype">const char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -132,11 +129,34 @@ Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
+</div><div class="memdoc">
+
+<p>Returns an args_t containing the parsed arguments. </p>
+
+</div>
+</div>
+<a class="anchor" id="a22fd4159fcbcacbe02ccf01e17a85f1c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">variables_map parse_args_helper </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>

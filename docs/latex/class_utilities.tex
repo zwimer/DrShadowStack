@@ -12,6 +12,8 @@ A general class for utilities.
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+static void \hyperlink{class_utilities_aa448e199bdc43fe62e9b9b989a7f667b}{setup} (const bool clear\+\_\+log)
+\begin{DoxyCompactList}\small\item\em Sets up the utilities class. \end{DoxyCompactList}\item 
 static void \hyperlink{class_utilities_a5308da50597c93aad2b1ca2ecfbcb723}{err} (const char $\ast$const s)
 \begin{DoxyCompactList}\small\item\em To be called in case of an error. \end{DoxyCompactList}\item 
 static void \hyperlink{class_utilities_a22c85a2970e168ca0b9ad6fd86752792}{assert} (const bool b, const char $\ast$const s)
@@ -21,16 +23,25 @@ static void \hyperlink{class_utilities_a7e53321a2a9460f126a476a89b08107b}{log} (
 static void \hyperlink{class_utilities_a0e46f2da74b1069eb9df671efed9180d}{message} (const char $\ast$const format,...)
 \begin{DoxyCompactList}\small\item\em Prints the arguments as printf would to the stdout and log files. \end{DoxyCompactList}\item 
 static void \hyperlink{class_utilities_a48952d33b9dc4fba9846dbc7a12df2f1}{log\+\_\+error} (const char $\ast$const format,...)
-\begin{DoxyCompactList}\small\item\em Logs the arguments as printf would to the error, and log files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Logs the arguments as printf would to the error, and log files. \end{DoxyCompactList}\item 
+static void \hyperlink{class_utilities_a384728ae9b72982c1351d881ba7ff007}{enable\+\_\+multi\+\_\+thread\+\_\+or\+\_\+process\+\_\+mode} ()
+\begin{DoxyCompactList}\small\item\em Once this is called, T\+I\+Ds will be printed with each message. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 static void($\ast$const \hyperlink{class_utilities_aea2455488648f9acb6f72dea878b3782}{verbose\+\_\+log} )(const char $\ast$const format,...) = \hyperlink{utilities_8cpp_a1c9ff67441d2537fadf0f0d8a655448e}{no\+\_\+op}
 \begin{DoxyCompactList}\small\item\em Logs the arguments as printf would to the log file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{class_utilities_abaeaa0c9f6d7b525ac080045f789d2e2}{write\+\_\+log} (F\+I\+LE $\ast$f, const char $\ast$const format, va\+\_\+list args)
+\begin{DoxyCompactList}\small\item\em The helper that writes args in the format of format to f. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-static F\+I\+LE $\ast$const \hyperlink{class_utilities_ab6252fb13f3e69ee6108879fc3125bff}{log\+\_\+file} = \hyperlink{constants_8hpp_a69d4676733f5e850f451942b6d901382}{L\+O\+G\+\_\+\+F\+I\+LE}
+static bool \hyperlink{class_utilities_af893d8dcd5bb1ba3fc72fc108536bcbc}{is\+\_\+multi\+\_\+thread\+\_\+or\+\_\+proccess} = false
+\begin{DoxyCompactList}\small\item\em Notes whether or not any threading / forking has happened yet. \end{DoxyCompactList}\item 
+static F\+I\+LE $\ast$ \hyperlink{class_utilities_a63ce9d08b6459cd102bb368a274aca07}{log\+\_\+file} = nullptr
 \begin{DoxyCompactList}\small\item\em The log file. \end{DoxyCompactList}\item 
 static F\+I\+LE $\ast$const \hyperlink{class_utilities_a224eea0a234ac9877a8334f74fc89ef0}{stdout\+\_\+file} = \hyperlink{constants_8hpp_a195ca3987a60992c5abfc663cd37151d}{S\+T\+D\+O\+U\+T\+\_\+\+F\+I\+LE}
 \begin{DoxyCompactList}\small\item\em The stdout file. \end{DoxyCompactList}\item 
@@ -53,6 +64,17 @@ A general class for utilities.
 
 
 assert b, if false call program\+\_\+err(s) 
+
+\index{Utilities@{Utilities}!enable\+\_\+multi\+\_\+thread\+\_\+or\+\_\+process\+\_\+mode@{enable\+\_\+multi\+\_\+thread\+\_\+or\+\_\+process\+\_\+mode}}
+\index{enable\+\_\+multi\+\_\+thread\+\_\+or\+\_\+process\+\_\+mode@{enable\+\_\+multi\+\_\+thread\+\_\+or\+\_\+process\+\_\+mode}!Utilities@{Utilities}}
+\subsubsection[{\texorpdfstring{enable\+\_\+multi\+\_\+thread\+\_\+or\+\_\+process\+\_\+mode()}{enable_multi_thread_or_process_mode()}}]{\setlength{\rightskip}{0pt plus 5cm}void Utilities\+::enable\+\_\+multi\+\_\+thread\+\_\+or\+\_\+process\+\_\+mode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{class_utilities_a384728ae9b72982c1351d881ba7ff007}{}\label{class_utilities_a384728ae9b72982c1351d881ba7ff007}
+
+
+Once this is called, T\+I\+Ds will be printed with each message. 
 
 \index{Utilities@{Utilities}!err@{err}}
 \index{err@{err}!Utilities@{Utilities}}
@@ -101,7 +123,35 @@ Ends the printed line with a newline then flushes the buffer If either file is n
 
 Prints the arguments as printf would to the stdout and log files. 
 
-Ends the printed line with a newline then flushes the buffer If stdout\+\_\+file is nullptr, this function does nothing This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure 
+Ends the printed line with a newline then flushes the buffer If stdout\+\_\+file is nullptr, this function does nothing This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure \index{Utilities@{Utilities}!setup@{setup}}
+\index{setup@{setup}!Utilities@{Utilities}}
+\subsubsection[{\texorpdfstring{setup(const bool clear\+\_\+log)}{setup(const bool clear_log)}}]{\setlength{\rightskip}{0pt plus 5cm}void Utilities\+::setup (
+\begin{DoxyParamCaption}
+\item[{const bool}]{clear\+\_\+log}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{class_utilities_aa448e199bdc43fe62e9b9b989a7f667b}{}\label{class_utilities_aa448e199bdc43fe62e9b9b989a7f667b}
+
+
+Sets up the utilities class. 
+
+A singleton constructor.
+
+If clear\+\_\+log, the log will be cleared op setup
+
+This exists so that if a global \hyperlink{class_utilities}{Utilities} is declared it will setup everyhing needed for the class \index{Utilities@{Utilities}!write\+\_\+log@{write\+\_\+log}}
+\index{write\+\_\+log@{write\+\_\+log}!Utilities@{Utilities}}
+\subsubsection[{\texorpdfstring{write\+\_\+log(\+F\+I\+L\+E $\ast$f, const char $\ast$const format, va\+\_\+list args)}{write_log(FILE *f, const char *const format, va_list args)}}]{\setlength{\rightskip}{0pt plus 5cm}void Utilities\+::write\+\_\+log (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{f, }
+\item[{const char $\ast$const}]{format, }
+\item[{va\+\_\+list}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{class_utilities_abaeaa0c9f6d7b525ac080045f789d2e2}{}\label{class_utilities_abaeaa0c9f6d7b525ac080045f789d2e2}
+
+
+The helper that writes args in the format of format to f. 
+
+Ends the printed line with a newline then flushes the buffer This function promises N\+O\+T\+H\+I\+NG on failure If the process is multithreaded or has forked, prints the T\+ID first 
 
 \subsection{Field Documentation}
 \index{Utilities@{Utilities}!error\+\_\+file@{error\+\_\+file}}
@@ -111,9 +161,16 @@ Ends the printed line with a newline then flushes the buffer If stdout\+\_\+file
 
 The error file. 
 
-This must be defined before \hyperlink{shadow__stack_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main()} \index{Utilities@{Utilities}!log\+\_\+file@{log\+\_\+file}}
+This must be defined before \hyperlink{shadow__stack_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main()} \index{Utilities@{Utilities}!is\+\_\+multi\+\_\+thread\+\_\+or\+\_\+proccess@{is\+\_\+multi\+\_\+thread\+\_\+or\+\_\+proccess}}
+\index{is\+\_\+multi\+\_\+thread\+\_\+or\+\_\+proccess@{is\+\_\+multi\+\_\+thread\+\_\+or\+\_\+proccess}!Utilities@{Utilities}}
+\subsubsection[{\texorpdfstring{is\+\_\+multi\+\_\+thread\+\_\+or\+\_\+proccess}{is_multi_thread_or_proccess}}]{\setlength{\rightskip}{0pt plus 5cm}bool Utilities\+::is\+\_\+multi\+\_\+thread\+\_\+or\+\_\+proccess = false\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{class_utilities_af893d8dcd5bb1ba3fc72fc108536bcbc}{}\label{class_utilities_af893d8dcd5bb1ba3fc72fc108536bcbc}
+
+
+Notes whether or not any threading / forking has happened yet. 
+
+\index{Utilities@{Utilities}!log\+\_\+file@{log\+\_\+file}}
 \index{log\+\_\+file@{log\+\_\+file}!Utilities@{Utilities}}
-\subsubsection[{\texorpdfstring{log\+\_\+file}{log_file}}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+LE $\ast$const Utilities\+::log\+\_\+file = {\bf L\+O\+G\+\_\+\+F\+I\+LE}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{class_utilities_ab6252fb13f3e69ee6108879fc3125bff}{}\label{class_utilities_ab6252fb13f3e69ee6108879fc3125bff}
+\subsubsection[{\texorpdfstring{log\+\_\+file}{log_file}}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+LE $\ast$ Utilities\+::log\+\_\+file = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{class_utilities_a63ce9d08b6459cd102bb368a274aca07}{}\label{class_utilities_a63ce9d08b6459cd102bb368a274aca07}
 
 
 The log file. 

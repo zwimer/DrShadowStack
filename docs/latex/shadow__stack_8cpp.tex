@@ -3,9 +3,11 @@
 {\ttfamily \#include \char`\"{}shadow\+\_\+stack.\+hpp\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}external\+\_\+stack\+\_\+server.\+hpp\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}quick\+\_\+socket.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}parse\+\_\+args.\+hpp\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}constants.\+hpp\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}utilities.\+hpp\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}group.\+hpp\char`\"{}}\\*
+{\ttfamily \#include $<$boost/filesystem.\+hpp$>$}\\*
 {\ttfamily \#include $<$unistd.\+h$>$}\\*
 {\ttfamily \#include $<$signal.\+h$>$}\\*
 {\ttfamily \#include $<$sstream$>$}\\*
@@ -16,22 +18,13 @@
 \item 
 std\+::string \hyperlink{shadow__stack_8cpp_a5cb8160669276231f62ad2bddf8b04ae}{temp\+\_\+name} ()
 \item 
-void \hyperlink{shadow__stack_8cpp_a028ed2270cda87568348ef46089282d2}{start\+\_\+program} (char $\ast$drrun, char $\ast$a\+\_\+out, char $\ast$$\ast$client\+\_\+argv, const char $\ast$const mode, char $\ast$socket\+\_\+path)
-\item 
-static void \hyperlink{shadow__stack_8cpp_a0e0fd98b241f3d91fa0572b95bfa8022}{incorrect\+\_\+usage} ()
+void \hyperlink{shadow__stack_8cpp_ad203fd9b387f4d1de99b47d7b3135dc9}{start\+\_\+program} (const \hyperlink{struct_args}{Args} input\+\_\+args, char $\ast$socket\+\_\+path)
 \item 
 int \hyperlink{shadow__stack_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
 \end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
-\index{shadow\+\_\+stack.\+cpp@{shadow\+\_\+stack.\+cpp}!incorrect\+\_\+usage@{incorrect\+\_\+usage}}
-\index{incorrect\+\_\+usage@{incorrect\+\_\+usage}!shadow\+\_\+stack.\+cpp@{shadow\+\_\+stack.\+cpp}}
-\subsubsection[{\texorpdfstring{incorrect\+\_\+usage()}{incorrect_usage()}}]{\setlength{\rightskip}{0pt plus 5cm}static void incorrect\+\_\+usage (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shadow__stack_8cpp_a0e0fd98b241f3d91fa0572b95bfa8022}{}\label{shadow__stack_8cpp_a0e0fd98b241f3d91fa0572b95bfa8022}
 \index{shadow\+\_\+stack.\+cpp@{shadow\+\_\+stack.\+cpp}!main@{main}}
 \index{main@{main}!shadow\+\_\+stack.\+cpp@{shadow\+\_\+stack.\+cpp}}
 \subsubsection[{\texorpdfstring{main(int argc, char $\ast$argv[])}{main(int argc, char *argv[])}}]{\setlength{\rightskip}{0pt plus 5cm}int main (
@@ -42,15 +35,12 @@ int \hyperlink{shadow__stack_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main} (int 
 )}\hypertarget{shadow__stack_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{}\label{shadow__stack_8cpp_a0ddf1224851353fc92bfbff6f499fa97}
 \index{shadow\+\_\+stack.\+cpp@{shadow\+\_\+stack.\+cpp}!start\+\_\+program@{start\+\_\+program}}
 \index{start\+\_\+program@{start\+\_\+program}!shadow\+\_\+stack.\+cpp@{shadow\+\_\+stack.\+cpp}}
-\subsubsection[{\texorpdfstring{start\+\_\+program(char $\ast$drrun, char $\ast$a\+\_\+out, char $\ast$$\ast$client\+\_\+argv, const char $\ast$const mode, char $\ast$socket\+\_\+path)}{start_program(char *drrun, char *a_out, char **client_argv, const char *const mode, char *socket_path)}}]{\setlength{\rightskip}{0pt plus 5cm}void start\+\_\+program (
+\subsubsection[{\texorpdfstring{start\+\_\+program(const Args input\+\_\+args, char $\ast$socket\+\_\+path)}{start_program(const Args input_args, char *socket_path)}}]{\setlength{\rightskip}{0pt plus 5cm}void start\+\_\+program (
 \begin{DoxyParamCaption}
-\item[{char $\ast$}]{drrun, }
-\item[{char $\ast$}]{a\+\_\+out, }
-\item[{char $\ast$$\ast$}]{client\+\_\+argv, }
-\item[{const char $\ast$const}]{mode, }
+\item[{const {\bf Args}}]{input\+\_\+args, }
 \item[{char $\ast$}]{socket\+\_\+path}
 \end{DoxyParamCaption}
-)}\hypertarget{shadow__stack_8cpp_a028ed2270cda87568348ef46089282d2}{}\label{shadow__stack_8cpp_a028ed2270cda87568348ef46089282d2}
+)}\hypertarget{shadow__stack_8cpp_ad203fd9b387f4d1de99b47d7b3135dc9}{}\label{shadow__stack_8cpp_ad203fd9b387f4d1de99b47d7b3135dc9}
 \index{shadow\+\_\+stack.\+cpp@{shadow\+\_\+stack.\+cpp}!temp\+\_\+name@{temp\+\_\+name}}
 \index{temp\+\_\+name@{temp\+\_\+name}!shadow\+\_\+stack.\+cpp@{shadow\+\_\+stack.\+cpp}}
 \subsubsection[{\texorpdfstring{temp\+\_\+name()}{temp_name()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string temp\+\_\+name (

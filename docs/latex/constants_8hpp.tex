@@ -14,11 +14,9 @@
 \begin{DoxyCompactList}\small\item\em The default stdout. \end{DoxyCompactList}\item 
 \#define \hyperlink{constants_8hpp_a9fdff3d78b754d4b831816d0560dbb57}{E\+R\+R\+O\+R\+\_\+\+F\+I\+LE}~stderr
 \begin{DoxyCompactList}\small\item\em The default error log file (important events are also noted here) \end{DoxyCompactList}\item 
-\#define \hyperlink{constants_8hpp_a4cbe5f7a62c763a0b09c112f98d43623}{M\+A\+X\+\_\+\+C\+A\+L\+L\+\_\+\+D\+E\+P\+TH}~(1000 $\ast$ sizeof(void $\ast$) $\ast$ 4096)
-\begin{DoxyCompactList}\small\item\em Max internal shadow stack size. \end{DoxyCompactList}\item 
-\#define \hyperlink{constants_8hpp_acba5ef390db17aaf1fb8f323e10a264e}{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG}~\char`\"{}-\/int\char`\"{}
+\#define \hyperlink{constants_8hpp_acba5ef390db17aaf1fb8f323e10a264e}{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG}~\char`\"{}int\char`\"{}
 \begin{DoxyCompactList}\small\item\em The flag that must be passed to invoke internal mode. \end{DoxyCompactList}\item 
-\#define \hyperlink{constants_8hpp_aa6133cd9d000001b3955f86cb54a6c95}{E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG}~\char`\"{}-\/ext\char`\"{}
+\#define \hyperlink{constants_8hpp_aa6133cd9d000001b3955f86cb54a6c95}{E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG}~\char`\"{}ext\char`\"{}
 \begin{DoxyCompactList}\small\item\em The flag that must be passed to invoke external mode. \end{DoxyCompactList}\item 
 \#define \hyperlink{constants_8hpp_a9a81f4649f430c0018713540b8b8678b}{W\+I\+L\+D\+C\+A\+RD}~( -\/1 )
 \begin{DoxyCompactList}\small\item\em Verify the modes are not equal. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -46,14 +44,14 @@ The default error log file (important events are also noted here)
 
 This fill may be nullptr, but may not be N\+U\+LL \index{constants.\+hpp@{constants.\+hpp}!E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG@{E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG}}
 \index{E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG@{E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG}!constants.\+hpp@{constants.\+hpp}}
-\subsubsection[{\texorpdfstring{E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG}{EXTERNAL_MODE_FLAG}}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG~\char`\"{}-\/ext\char`\"{}}\hypertarget{constants_8hpp_aa6133cd9d000001b3955f86cb54a6c95}{}\label{constants_8hpp_aa6133cd9d000001b3955f86cb54a6c95}
+\subsubsection[{\texorpdfstring{E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG}{EXTERNAL_MODE_FLAG}}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG~\char`\"{}ext\char`\"{}}\hypertarget{constants_8hpp_aa6133cd9d000001b3955f86cb54a6c95}{}\label{constants_8hpp_aa6133cd9d000001b3955f86cb54a6c95}
 
 
 The flag that must be passed to invoke external mode. 
 
 \index{constants.\+hpp@{constants.\+hpp}!I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG@{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG}}
 \index{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG@{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG}!constants.\+hpp@{constants.\+hpp}}
-\subsubsection[{\texorpdfstring{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG}{INTERNAL_MODE_FLAG}}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG~\char`\"{}-\/int\char`\"{}}\hypertarget{constants_8hpp_acba5ef390db17aaf1fb8f323e10a264e}{}\label{constants_8hpp_acba5ef390db17aaf1fb8f323e10a264e}
+\subsubsection[{\texorpdfstring{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG}{INTERNAL_MODE_FLAG}}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG~\char`\"{}int\char`\"{}}\hypertarget{constants_8hpp_acba5ef390db17aaf1fb8f323e10a264e}{}\label{constants_8hpp_acba5ef390db17aaf1fb8f323e10a264e}
 
 
 The flag that must be passed to invoke internal mode. 
@@ -65,14 +63,7 @@ The flag that must be passed to invoke internal mode.
 
 The default log file for non-\/debug mode. 
 
-This fill may be nullptr, but may not be N\+U\+LL This should be defined by the cmake on compilation \index{constants.\+hpp@{constants.\+hpp}!M\+A\+X\+\_\+\+C\+A\+L\+L\+\_\+\+D\+E\+P\+TH@{M\+A\+X\+\_\+\+C\+A\+L\+L\+\_\+\+D\+E\+P\+TH}}
-\index{M\+A\+X\+\_\+\+C\+A\+L\+L\+\_\+\+D\+E\+P\+TH@{M\+A\+X\+\_\+\+C\+A\+L\+L\+\_\+\+D\+E\+P\+TH}!constants.\+hpp@{constants.\+hpp}}
-\subsubsection[{\texorpdfstring{M\+A\+X\+\_\+\+C\+A\+L\+L\+\_\+\+D\+E\+P\+TH}{MAX_CALL_DEPTH}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+X\+\_\+\+C\+A\+L\+L\+\_\+\+D\+E\+P\+TH~(1000 $\ast$ sizeof(void $\ast$) $\ast$ 4096)}\hypertarget{constants_8hpp_a4cbe5f7a62c763a0b09c112f98d43623}{}\label{constants_8hpp_a4cbe5f7a62c763a0b09c112f98d43623}
-
-
-Max internal shadow stack size. 
-
-\index{constants.\+hpp@{constants.\+hpp}!P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+A\+ME@{P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+A\+ME}}
+This fill may be nullptr, but may not be N\+U\+LL This should be defined by the cmake on compilation \index{constants.\+hpp@{constants.\+hpp}!P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+A\+ME@{P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+A\+ME}}
 \index{P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+A\+ME@{P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+A\+ME}!constants.\+hpp@{constants.\+hpp}}
 \subsubsection[{\texorpdfstring{P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+A\+ME}{PROGRAM_NAME}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+A\+ME~\char`\"{}P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+A\+M\+E\+\_\+\+P\+L\+A\+C\+E\+H\+O\+L\+D\+ER\char`\"{}}\hypertarget{constants_8hpp_a3b6a35b8be8405a9db72cc5dea97954b}{}\label{constants_8hpp_a3b6a35b8be8405a9db72cc5dea97954b}
 

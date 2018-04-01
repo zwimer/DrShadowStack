@@ -12,6 +12,7 @@
 
 **Fixed bugs:**
 
+- Log file gets overwritten [\#40](https://github.com/zwimer/DrShadowStack/issues/40)
 - Wait function breaks SS [\#33](https://github.com/zwimer/DrShadowStack/issues/33)
 - Main process receiving SigPipe [\#23](https://github.com/zwimer/DrShadowStack/issues/23)
 - boost::interprocess::mutex does not work on dynamorio [\#17](https://github.com/zwimer/DrShadowStack/issues/17)

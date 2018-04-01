@@ -82,11 +82,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <div class="textblock"><p>DrShadowStack is a software defined dynamic shadow stack implemented via DynamoRIO. DrShadowStack implements a shadow stack for most any binary given to it. If the program attempts to return to a corrupted return address, DrShadowStack will terminate the entire process group (which it sets up).</p>
 <h2>Requirements</h2>
-<p>This project utilizes <a href="https://github.com/DynamoRIO/dynamorio">DynamoRIO</a>. Installation instructions may be found <a href="https://github.com/DynamoRIO/dynamorio/wiki/How-To-Build">here</a>.</p>
-<p>The project is built on <a href="http://releases.ubuntu.com/16.04.4/">Ubuntu 16.04</a> via <a href="https://cmake.org/">cmake</a>. It requires compiler that supports <code>C++11</code>.</p>
+<ol type="1">
+<li>This project utilizes <a href="https://github.com/DynamoRIO/dynamorio">DynamoRIO</a>. Installation instructions may be found <a href="https://github.com/DynamoRIO/dynamorio/wiki/How-To-Build">here</a>.</li>
+<li>This project utilizes the C++ library <a href="https://boost.org">Boost</a>. This library can be built from source, as explained <a href="https://www.boost.org/doc/libs/1_66_0/more/getting_started/unix-variants.html">here</a>. On <a href="http://releases.ubuntu.com/16.04.4/">Ubuntu 16.04</a>, this library can be installed as follows: <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;sudo apt-get update &amp;&amp; sudo apt-get install libboost-all-dev</div></div><!-- fragment --></li>
+<li>The project is built on <a href="http://releases.ubuntu.com/16.04.4/">Ubuntu 16.04</a> via <a href="https://cmake.org/">cmake</a>. It requires compiler that supports <code>C++11</code>.</li>
+</ol>
 <h3>Developers</h3>
-<p>The documentation is build via <a href="http://www.stack.nl/~dimitri/doxygen/">Doxygen</a>.</p>
-<p>The changelog is generated via <a href="https://github.com/skywinder/github-changelog-generator">github_changelog_generator</a>, which is installed via the command </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;gem install github_changelog_generator</div></div><!-- fragment --><h2>Installation Instructions</h2>
+<ol type="1">
+<li>The documentation is build via <a href="http://www.stack.nl/~dimitri/doxygen/">Doxygen</a>.</li>
+<li>The changelog is generated via <a href="https://github.com/skywinder/github-changelog-generator">github_changelog_generator</a>, which is installed via the command <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;gem install github_changelog_generator</div></div><!-- fragment --></li>
+</ol>
+<h2>Installation Instructions</h2>
 <ol type="1">
 <li>Install dependencies</li>
 <li>Clone the repository <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;git clone https://github.com/zwimer/DrShadowStack</div></div><!-- fragment --></li>
