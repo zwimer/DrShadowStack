@@ -32,7 +32,7 @@ variables_map parse_args_helper(	const int argc, const char * const argv[],
 	// Configuration options
 	options_description config_options("Configuration");
 	config_options.add_options()
-		(MODE, value<std::string>()->required(),
+		(MODE, value<std::string>(),
 					"The mode in which the shadow stack is used"
 					"\n\t" INTERNAL_MODE_FLAG " -- internal shadow stack mode"
 					"\n\t" EXTERNAL_MODE_FLAG " -- external shadow stack mode" )
@@ -81,6 +81,12 @@ variables_map parse_args_helper(	const int argc, const char * const argv[],
 
 		// Done parsing, check for errors
 		notify(args);
+
+		// If no mode was specified, use the default.
+		if ( args.count(MODE) == 0 ) {
+			args.insert(std::make_pair(	MODE, 
+										variable_value(std::string(DEFAULT_MODE), false)));
+		}
 
 		// Collect all unregistered and positional 
 		// arguments to create the target's argument list
