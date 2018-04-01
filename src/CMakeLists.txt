@@ -41,7 +41,7 @@ set(SS_SUPPORT_LIB ss_support)
 
 # Find packages
 find_package(DynamoRIO REQUIRED)
-find_package(Boost 1.47.0 COMPONENTS program_options REQUIRED)
+find_package(Boost 1.47.0 COMPONENTS program_options filesystem REQUIRED)
 
 # Require C++ 11
 set(CMAKE_CXX_STANDARD 11)
@@ -131,7 +131,8 @@ target_link_libraries(${SS_DR_CLIENT_SO} ${SS_SUPPORT_LIB})
 add_executable(${PROGRAM_NAME}.out
 	external_stack_server.cpp
 	shadow_stack.cpp
+	parse_args.cpp
 	)
 
 # Link to the support library
-target_link_libraries(${PROGRAM_NAME}.out ${SS_SUPPORT_LIB} Boost::program_options)
+target_link_libraries(${PROGRAM_NAME}.out ${SS_SUPPORT_LIB} Boost::program_options Boost::filesystem)
