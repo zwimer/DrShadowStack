@@ -32,6 +32,7 @@
 
 **Merged pull requests:**
 
+- Default mode added and fixed logging bug on non-debug mode [\#49](https://github.com/zwimer/DrShadowStack/pull/49) ([zwimer](https://github.com/zwimer))
 - Readme [\#46](https://github.com/zwimer/DrShadowStack/pull/46) ([zwimer](https://github.com/zwimer))
 - Internal drrun [\#45](https://github.com/zwimer/DrShadowStack/pull/45) ([zwimer](https://github.com/zwimer))
 - Version added [\#44](https://github.com/zwimer/DrShadowStack/pull/44) ([zwimer](https://github.com/zwimer))

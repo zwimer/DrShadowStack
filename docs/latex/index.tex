@@ -53,7 +53,11 @@ Dr\+Shadow\+Stack is a software defined dynamic shadow stack implemented via Dyn
 
 The full usage of this program can be found via\+: {\ttfamily ./\+Dr\+Shadow\+Stack.out -\/-\/help}
 
-In general, the usage is of this format\+: `./\+Dr\+Shadow\+Stack.out \mbox{[}--ss\+\_\+mode $<$\+Mode$>$\mbox{]} $<$executable target$>$=\char`\"{}\char`\"{}$>$ $<$target arguments$>$=\char`\"{}\char`\"{}$>$
+In general, the usage is of this format\+: 
+\begin{DoxyCode}
+1 ./DrShadowStack.out [--ss\_mode <Mode>] <executable target> <target arguments>
+\end{DoxyCode}
+
 
 There are two different modes, {\ttfamily int} (internal) and {\ttfamily ext} (external). The internal mode keeps the shadow stack internally in the Dynamo\+R\+IO client. The external mode stores the stack in a separate process.
 
