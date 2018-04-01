@@ -20,6 +20,10 @@
 class Utilities {
 public:
 
+	/// Sets up the utilities class 
+	/** If clear_log, the log will be cleared op setup */
+	static void setup(const bool clear_log);
+
 	/// To be called in case of an error
 	/** Prints log s to the error file, perrors,
 	 *  then kills the process group */
@@ -74,7 +78,7 @@ private:
 
 	/// The log file
 	/** This must be defined before main() */
-	static FILE * const log_file;
+	static FILE * log_file;
 
 	/// The stdout file
 	/** This must be defined before main() */

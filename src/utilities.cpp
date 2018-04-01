@@ -20,9 +20,17 @@
 bool Utilities::is_multi_thread_or_proccess = false;
 
 // Error checking
-FILE * const Utilities::log_file = LOG_FILE;
+FILE * Utilities::log_file = nullptr;
 FILE * const Utilities::error_file = ERROR_FILE;
 FILE * const Utilities::stdout_file= STDOUT_FILE;
+
+/// A singleton constructor
+/** This exists so that if a global Utilities is declared
+ *  it will setup everyhing needed for the class */
+void Utilities::setup(const bool clear_log) {
+	log_file = fopen(LOG_FILE, clear_log ? "w":"a");
+	assert( log_file != nullptr, "fopen() failed." );
+}
 
 
 /*********************************************************/
@@ -53,8 +61,10 @@ void Utilities::assert(const bool b, const char * const s) {
 /*                                                       */
 /*********************************************************/
 
+
 // Once this is called, TIDs will be printed with each message
 void Utilities::enable_multi_thread_or_process_mode() {
+	log("Multi-process/threading logging enabled");
 	is_multi_thread_or_proccess = true;
 }
 

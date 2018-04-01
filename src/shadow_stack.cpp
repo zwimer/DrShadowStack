@@ -98,7 +98,6 @@ void start_program( const Args input_args, char * socket_path ) {
 		pnt << exec_args[i] << ' ';
 	}
 	Utilities::log(pnt.str().c_str());
-	Utilities::message(pnt.str().c_str());
 	fflush(NULL);
 
 	// Start drrun
@@ -109,6 +108,9 @@ void start_program( const Args input_args, char * socket_path ) {
 
 // Main function
 int main(int argc, char * argv[]) {
+
+	// Setup utilities
+	Utilities::setup(true);
 
 	// Handle arguments
 	const Args args = parse_args(argc, argv);
