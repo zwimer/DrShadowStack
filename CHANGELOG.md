@@ -4,6 +4,7 @@
 
 **Implemented enhancements:**
 
+- Remove need for drrun flag [\#43](https://github.com/zwimer/DrShadowStack/issues/43)
 - Handle signals [\#24](https://github.com/zwimer/DrShadowStack/issues/24)
 - Symbol Resolution on error [\#20](https://github.com/zwimer/DrShadowStack/issues/20)
 - Generate code dcumentation [\#18](https://github.com/zwimer/DrShadowStack/issues/18)
@@ -21,6 +22,7 @@
 
 **Closed issues:**
 
+- Add a version [\#39](https://github.com/zwimer/DrShadowStack/issues/39)
 - Implement process reference counter for external SS [\#34](https://github.com/zwimer/DrShadowStack/issues/34)
 - Remap signals [\#22](https://github.com/zwimer/DrShadowStack/issues/22)
 - Setup a new process group [\#21](https://github.com/zwimer/DrShadowStack/issues/21)
@@ -28,6 +30,8 @@
 
 **Merged pull requests:**
 
+- Version added [\#44](https://github.com/zwimer/DrShadowStack/pull/44) ([zwimer](https://github.com/zwimer))
+- Argument parser [\#42](https://github.com/zwimer/DrShadowStack/pull/42) ([zwimer](https://github.com/zwimer))
 - Updated readme [\#30](https://github.com/zwimer/DrShadowStack/pull/30) ([zwimer](https://github.com/zwimer))
 - Update docs [\#29](https://github.com/zwimer/DrShadowStack/pull/29) ([zwimer](https://github.com/zwimer))
 - Docs [\#28](https://github.com/zwimer/DrShadowStack/pull/28) ([zwimer](https://github.com/zwimer))
