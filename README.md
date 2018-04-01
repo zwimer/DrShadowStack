@@ -4,15 +4,17 @@ DrShadowStack is a software defined dynamic shadow stack implemented via DynamoR
 
 ## Requirements
 
-This project utilizes [DynamoRIO](https://github.com/DynamoRIO/dynamorio). Installation instructions may be found [here](https://github.com/DynamoRIO/dynamorio/wiki/How-To-Build).
-
-The project is built on [Ubuntu 16.04](http://releases.ubuntu.com/16.04.4/) via [cmake](https://cmake.org/). It requires compiler that supports `C++11`.
+1. This project utilizes [DynamoRIO](https://github.com/DynamoRIO/dynamorio). Installation instructions may be found [here](https://github.com/DynamoRIO/dynamorio/wiki/How-To-Build).
+2. This project utilizes the C++ library [Boost](https://boost.org). This library can be built from source, as explained [here](https://www.boost.org/doc/libs/1_66_0/more/getting_started/unix-variants.html). On [Ubuntu 16.04](http://releases.ubuntu.com/16.04.4/), this library can be installed as follows:
+```bash
+sudo apt-get update && sudo apt-get install libboost-all-dev
+```
+3. The project is built on [Ubuntu 16.04](http://releases.ubuntu.com/16.04.4/) via [cmake](https://cmake.org/). It requires compiler that supports `C++11`.
 
 ### Developers
 
-The documentation is build via [Doxygen](http://www.stack.nl/~dimitri/doxygen/).
-
-The changelog is generated via [github\_changelog\_generator](https://github.com/skywinder/github-changelog-generator), which is installed via the command 
+1. The documentation is build via [Doxygen](http://www.stack.nl/~dimitri/doxygen/).
+2. The changelog is generated via [github\_changelog\_generator](https://github.com/skywinder/github-changelog-generator), which is installed via the command 
 ```bash
 gem install github_changelog_generator
 ```

@@ -5,11 +5,16 @@
 #include "utilities.hpp"
 #include "group.hpp"
 
+#include <boost/program_options.hpp>
+/* #include <boost/filesystem.hpp> */ // TODO
 #include <unistd.h>
 #include <signal.h>
 #include <sstream>
 #include <random>
 #include <vector>
+
+// Undefine macro assert, it clobbers the class member function assert
+#undef assert
 
 
 // Return a non-existent filename
@@ -110,14 +115,127 @@ void start_program( char * drrun, char * a_out, char ** client_argv,
 	exit(EXIT_FAILURE);
 }
 
+// Print's usage information
+void help_message(	const boost::program_options::options_description & usage_options, 
+					const boost::program_options::options_description & config_options, 
+					const boost::program_options::positional_options_description &
+						target_options ) {
+	std::stringstream help;
+	help << usage_options << '\n' << config_options; // TODO: << '\n' << target_options;
+	Utilities::message("\n%s", help.str().c_str());
+}
+
+//  TODO
+bool parse_args(const int argc, const char * const argv[]) {
+
+	// For brevity
+	using namespace boost::program_options;
+
+	// Usage options (i.e. how the user wants to use the program)
+	// For example, do they want help, version info, to load a config file, or normal use?
+	options_description usage_options("Generic options");
+	usage_options.add_options() 
+		("help", "Produce help message")
+		/* ("version,v", "produce version information") */ // TODO
+		("config,c", value<std::string>(), "Config file specifying command line options"
+										   "\nIf this flag is used, configuration will"
+										   "\noccur using options in the config file only.");
+
+	// Configuration options
+	options_description config_options("Configuration");
+	config_options.add_options()
+		("drrun,d", value<std::string>()/*->required()*/, "The drrun executable")
+		("mode,m", value<std::string>()/*->required()*/,
+			"The mode in which the shadow stack is used"
+			"\n\t" INTERNAL_MODE_FLAG " -- internal shadow stack mode"
+			"\n\t" EXTERNAL_MODE_FLAG " -- external shadow stack mode" );
+	positional_options_description target_options;
+	target_options./*add("target", 1)*/.add("target-args", -1); // TODO
+
+	// Encapsulate arg parsing
+	try {
+
+		// Parse usage options
+		variables_map args;
+		auto raw_args = command_line_parser(argc, argv);
+		auto unorganized_parsed_args = raw_args
+			.options(usage_options)
+			.allow_unregistered()
+			.run();
+		store(unorganized_parsed_args, args);
+
+		// If help was asked for
+		if ( args.count("help") ) {
+			help_message(usage_options, config_options, target_options);
+			exit(EXIT_SUCCESS);
+		}
+
+		// If version was asked for
+		/* else if ( args.count("version") ) { */
+		/* 	std::cout << desc << std::endl; */
+		/* 	exit(EXIT_SUCCESS); */
+		/* } */
+
+		// If a config file is being loaded, 
+		/* else if ( args.count("config") ) { */
+			
+		/* 	// Load the config file's options */
+		/* 	const std::string config_file = vm["config"].as<std::string>(); */
+		/* 	std::ifstream ifs( config_file.c_str() ); */
+		/* 	Utilities::assert( ifs, (config_file + " could not be opened.").c_str() ); */
+		/* 	parse_args = std::bind(parse_config_file, std::move(ifs), _1); */
+		/* } */
+
+		// Parse configuration options
+		unorganized_parsed_args = raw_args
+			.options(config_options)
+			.positional(target_options)
+			.allow_unregistered()
+			.run();
+		store( unorganized_parsed_args, args );
+Utilities::message("%d", __LINE__);
+
+		// Done parsing
+		notify(args);
+Utilities::message("%d", __LINE__);
+
+		// Read the executable and it's args
+		/* const std::string target = args["target"].as<std::string>(); */
+Utilities::message("%d", __LINE__);
+		args["target-args"];
+Utilities::message("%d", __LINE__);
+		const auto target_args = args["target-args"].as<std::vector<std::string> >();
+Utilities::message("%d", __LINE__);
+	}
+
+	// If an error occured, note so
+	catch (const error & ex) {
+Utilities::message("%d", __LINE__);
+		Utilities::log_error("Incorrect usage");
+		help_message(usage_options, config_options, target_options);
+		exit(EXIT_FAILURE);
+		// TODO: fail
+	}
+Utilities::message("%d", __LINE__);
+
+	// TODO
+_Exit(0);
+	return true;
+}
+
+
 // Main function
 int main(int argc, char * argv[]) {
+
+	// Handle arguments
+	const bool is_internal = parse_args(argc, argv);
+exit(EXIT_SUCCESS); // TODO;
 
 	// Check usage
 	if ( argc < 4 ) {
 		incorrect_usage();
 	}
-	const bool is_internal = (strcmp(argv[1], INTERNAL_MODE_FLAG) == 0 );
+	/* const bool is_internal = (strcmp(argv[1], INTERNAL_MODE_FLAG) == 0 ); */
 	const bool is_external = (strcmp(argv[1], EXTERNAL_MODE_FLAG) == 0 );
 	if ( ! (is_internal || is_external) ) {
 		incorrect_usage();

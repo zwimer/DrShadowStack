@@ -76,10 +76,10 @@ static constexpr bool str_equal( const char * const s1,
 
 
 /** The flag that must be passed to invoke internal mode */
-#define INTERNAL_MODE_FLAG "-int"
+#define INTERNAL_MODE_FLAG "int"
 
 /** The flag that must be passed to invoke external mode */
-#define EXTERNAL_MODE_FLAG "-ext"
+#define EXTERNAL_MODE_FLAG "ext"
 
 /** Verify the modes are not equal */
 static_assert( ! str_equal(INTERNAL_MODE_FLAG, EXTERNAL_MODE_FLAG),
