@@ -7,20 +7,29 @@
 - Handle signals [\#24](https://github.com/zwimer/DrShadowStack/issues/24)
 - Symbol Resolution on error [\#20](https://github.com/zwimer/DrShadowStack/issues/20)
 - Generate code dcumentation [\#18](https://github.com/zwimer/DrShadowStack/issues/18)
+- Use actual arg parser [\#16](https://github.com/zwimer/DrShadowStack/issues/16)
+- CMake should handle pointer size [\#14](https://github.com/zwimer/DrShadowStack/issues/14)
+- README [\#10](https://github.com/zwimer/DrShadowStack/issues/10)
 
 **Fixed bugs:**
 
+- Argument parser ignores flags of the sub shell [\#41](https://github.com/zwimer/DrShadowStack/issues/41)
+- Log file gets overwritten [\#40](https://github.com/zwimer/DrShadowStack/issues/40)
+- Wait function breaks SS [\#33](https://github.com/zwimer/DrShadowStack/issues/33)
 - Main process receiving SigPipe [\#23](https://github.com/zwimer/DrShadowStack/issues/23)
 - boost::interprocess::mutex does not work on dynamorio [\#17](https://github.com/zwimer/DrShadowStack/issues/17)
 
 **Closed issues:**
 
+- Implement process reference counter for external SS [\#34](https://github.com/zwimer/DrShadowStack/issues/34)
 - Remap signals [\#22](https://github.com/zwimer/DrShadowStack/issues/22)
 - Setup a new process group [\#21](https://github.com/zwimer/DrShadowStack/issues/21)
 - Create Utilities [\#19](https://github.com/zwimer/DrShadowStack/issues/19)
 
 **Merged pull requests:**
 
+- Updated readme [\#30](https://github.com/zwimer/DrShadowStack/pull/30) ([zwimer](https://github.com/zwimer))
+- Update docs [\#29](https://github.com/zwimer/DrShadowStack/pull/29) ([zwimer](https://github.com/zwimer))
 - Docs [\#28](https://github.com/zwimer/DrShadowStack/pull/28) ([zwimer](https://github.com/zwimer))
 - Separate log file [\#9](https://github.com/zwimer/DrShadowStack/pull/9) ([zwimer](https://github.com/zwimer))
 - Updated index.html [\#8](https://github.com/zwimer/DrShadowStack/pull/8) ([zwimer](https://github.com/zwimer))
