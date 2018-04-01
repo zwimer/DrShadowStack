@@ -26,7 +26,7 @@ gem install github_changelog_generator
 ```bash
 git clone https://github.com/zwimer/DrShadowStack
 ```
-3. Configure the `DrShadowStack/src/CMakeLists.txt` file. Specifically set the path to where DynamoRIO is built.
+3. Configure the `DrShadowStack/src/CMakeLists.txt` file. Instructions in the file itself.
 4. Create a build directory
 ```bash
 cd DrShadowStack/src
@@ -41,7 +41,10 @@ cmake .. && make -j 4
 
 The full usage of this program can be found via: `./DrShadowStack.out --help`
 
-In general, the usage is of this format: `./DrShadowStack.out [--ss_mode <Mode>] <executable target> <target arguments>
+In general, the usage is of this format: 
+```bash
+./DrShadowStack.out [--ss_mode <Mode>] <executable target> <target arguments>
+```
 
 There are two different modes, `int` (internal) and `ext` (external). The internal mode keeps the shadow stack internally in the DynamoRIO client. The external mode stores the stack in a separate process.
 
@@ -49,7 +52,7 @@ There are two different modes, `int` (internal) and `ext` (external). The intern
 
 From the build directory, an example could be:
 ```bash
-vagrant@ubuntu-xenial ~/S/s/build> ./DrShadowStack.out --ss_mode int ls -la ./
+vagrant@ubuntu-xenial ~/S/s/build> ./DrShadowStack.out ls -la ./
 TID 28866: DynamoRIO client started
 total 748
 drwxrwxr-x 3 vagrant vagrant   4096 Apr  1 06:43 .
