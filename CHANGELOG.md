@@ -30,6 +30,7 @@
 
 **Merged pull requests:**
 
+- Internal drrun [\#45](https://github.com/zwimer/DrShadowStack/pull/45) ([zwimer](https://github.com/zwimer))
 - Version added [\#44](https://github.com/zwimer/DrShadowStack/pull/44) ([zwimer](https://github.com/zwimer))
 - Argument parser [\#42](https://github.com/zwimer/DrShadowStack/pull/42) ([zwimer](https://github.com/zwimer))
 - Updated readme [\#30](https://github.com/zwimer/DrShadowStack/pull/30) ([zwimer](https://github.com/zwimer))

@@ -39,27 +39,31 @@ cmake .. && make -j 4
 
 ## Usage
 
-The usage of this program is: `./DrShadowStack.out <Mode> <drrun> <a.out> <arguments for a.out>`
+The full usage of this program can be found via: `./DrShadowStack.out --help`
 
-There are two different modes, `-int` (internal) and `-ext` (external). The internal mode keeps the shadow stack internally in the DynamoRIO client. The external mode stores the stack in a separate process.
+In general, the usage is of this format: `./DrShadowStack.out --ss_mode <Mode> <executable target> <target arguments>
+
+There are two different modes, `int` (internal) and `ext` (external). The internal mode keeps the shadow stack internally in the DynamoRIO client. The external mode stores the stack in a separate process.
 
 ## Example
 
 From the build directory, an example could be:
 ```bash
-vagrant@ubuntu-xenial ~/S/s/build> ./DrShadowStack.out -int ~/dynamorio/build/bin64/drrun ls -la
-TID 25134: DynamoRIO client started
-total 468
-drwxrwxr-x 3 vagrant vagrant   4096 Mar 31 00:25 ./
-drwxrwxr-x 3 vagrant vagrant   4096 Mar 30 23:34 ../
--rw-rw-r-- 1 vagrant vagrant  11755 Mar 31 00:25 CMakeCache.txt
-drwxrwxr-x 7 vagrant vagrant   4096 Mar 31 00:25 CMakeFiles/
+vagrant@ubuntu-xenial ~/S/s/build> ./DrShadowStack.out --ss_mode int ls -la ./
+TID 28866: DynamoRIO client started
+total 748
+drwxrwxr-x 3 vagrant vagrant   4096 Apr  1 06:43 .
+drwxrwxr-x 3 vagrant vagrant   4096 Apr  1 06:51 ..
+-rw-rw-r-- 1 vagrant vagrant  14518 Apr  1 03:15 CMakeCache.txt
+drwxrwxr-x 7 vagrant vagrant   4096 Apr  1 06:45 CMakeFiles
 -rw-rw-r-- 1 vagrant vagrant   1380 Mar 31 00:25 cmake_install.cmake
--rwxrwxr-x 1 vagrant vagrant 100360 Mar 31 00:25 DrShadowStack.out*
--rwxrwxr-x 1 vagrant vagrant 215888 Mar 31 00:25 libss_dr_client.so*
--rwxrwxr-x 1 vagrant vagrant 102536 Mar 31 00:25 libss_support.so*
--rw-rw-r-- 1 vagrant vagrant  15205 Mar 31 00:25 Makefile
--rw-rw-r-- 1 vagrant vagrant   8157 Mar 31 00:25 ss_dr_client.ldscript
+-rw-rw-r-- 1 vagrant vagrant   8441 Apr  1 06:42 compile_commands.json
+-rwxrwxr-x 1 vagrant vagrant 365520 Apr  1 06:43 DrShadowStack.out
+-rwxrwxr-x 1 vagrant vagrant 216008 Apr  1 06:42 libss_dr_client.so
+-rwxrwxr-x 1 vagrant vagrant 102744 Apr  1 06:42 libss_support.so
+-rw-rw-r-- 1 vagrant vagrant    441 Apr  1 06:52 log
+-rw-rw-r-- 1 vagrant vagrant  16012 Apr  1 06:42 Makefile
+-rw-rw-r-- 1 vagrant vagrant   8157 Apr  1 06:42 ss_dr_client.ldscript
 ```
 
 ## Documentation
