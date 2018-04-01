@@ -71,10 +71,6 @@ static constexpr bool str_equal( const char * const s1,
 #define ERROR_FILE stderr
 
 
-/** Max internal shadow stack size */
-#define MAX_CALL_DEPTH (1000 * sizeof(void *) * 4096)
-
-
 /** The flag that must be passed to invoke internal mode */
 #define INTERNAL_MODE_FLAG "int"
 
@@ -90,19 +86,5 @@ static_assert( ! str_equal(INTERNAL_MODE_FLAG, EXTERNAL_MODE_FLAG),
  *  Since no call or ret will ever happen here, 
  *  during normal use, it is fine */
 #define WILDCARD ( -1 )
-
-
-/*********************************************************/
-/*                                                       */
-/*	  				   Due to the OS					 */
-/*                                                       */
-/*********************************************************/
-
-
-#ifdef __APPLE__
-/** The max number of signals on linux allowed */
-#define _NSIG 65
-#endif
-
 
 #endif

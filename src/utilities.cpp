@@ -11,10 +11,13 @@
 
 /*********************************************************/
 /*                                                       */
-/*             			Defining files					 */
+/*             		   Initalizations					 */	
 /*                                                       */
 /*********************************************************/
 
+
+// Notes whether or not any threading / forking has happened yet
+bool Utilities::is_multi_thread_or_proccess = false;
 
 // Error checking
 FILE * const Utilities::log_file = LOG_FILE;
@@ -50,6 +53,10 @@ void Utilities::assert(const bool b, const char * const s) {
 /*                                                       */
 /*********************************************************/
 
+// Once this is called, TIDs will be printed with each message
+void Utilities::enable_multi_thread_or_process_mode() {
+	is_multi_thread_or_proccess = true;
+}
 
 // This function does nothing but return
 inline static void no_op(const char * const, ...) {}
@@ -57,13 +64,15 @@ inline static void no_op(const char * const, ...) {}
 // The helper that writes args in the format of format to f
 // Ends the printed line with a newline then flushes the buffer
 // This function promises NOTHING on failure
-inline static void write_log(FILE * f, const char * const format, va_list args) {
-	fprintf(f, "TID %jd: ", (intmax_t) get_tid());
+// If the process is multithreaded or has forked, prints the TID first
+void Utilities::write_log(FILE * f, const char * const format, va_list args) {
+	if (is_multi_thread_or_proccess) {
+		fprintf(f, "TID %jd: ", (intmax_t) get_tid());
+	}
 	vfprintf(f, format, args);
 	fprintf(f, "\n");
 	fflush(f);
 }
-
 
 // Logs the arguments as printf would to the log file
 // Ends the printed line with a newline then flushes the buffer
