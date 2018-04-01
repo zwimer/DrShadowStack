@@ -41,6 +41,7 @@ set(SS_SUPPORT_LIB ss_support)
 
 # Find packages
 find_package(DynamoRIO REQUIRED)
+find_package(Boost 1.47.0 COMPONENTS program_options REQUIRED)
 
 # Require C++ 11
 set(CMAKE_CXX_STANDARD 11)
@@ -133,4 +134,4 @@ add_executable(${PROGRAM_NAME}.out
 	)
 
 # Link to the support library
-target_link_libraries(${PROGRAM_NAME}.out ${SS_SUPPORT_LIB})
+target_link_libraries(${PROGRAM_NAME}.out ${SS_SUPPORT_LIB} Boost::program_options)
