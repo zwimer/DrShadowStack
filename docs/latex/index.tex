@@ -59,19 +59,21 @@ There are two different modes, {\ttfamily -\/int} (internal) and {\ttfamily -\/e
 
 From the build directory, an example could be\+: 
 \begin{DoxyCode}
-1 vagrant@ubuntu-xenial ~/S/s/build> ./DrShadowStack.out -int ~/dynamorio/build/bin64/drrun ls -la
-2 TID 25134: DynamoRIO client started
-3 total 468
-4 drwxrwxr-x 3 vagrant vagrant   4096 Mar 31 00:25 ./
-5 drwxrwxr-x 3 vagrant vagrant   4096 Mar 30 23:34 ../
-6 -rw-rw-r-- 1 vagrant vagrant  11755 Mar 31 00:25 CMakeCache.txt
-7 drwxrwxr-x 7 vagrant vagrant   4096 Mar 31 00:25 CMakeFiles/
+1 vagrant@ubuntu-xenial ~/S/s/build> ./DrShadowStack.out --ss\_mode int ls -la ./
+2 TID 28866: DynamoRIO client started
+3 total 748
+4 drwxrwxr-x 3 vagrant vagrant   4096 Apr  1 06:43 .
+5 drwxrwxr-x 3 vagrant vagrant   4096 Apr  1 06:51 ..
+6 -rw-rw-r-- 1 vagrant vagrant  14518 Apr  1 03:15 CMakeCache.txt
+7 drwxrwxr-x 7 vagrant vagrant   4096 Apr  1 06:45 CMakeFiles
 8 -rw-rw-r-- 1 vagrant vagrant   1380 Mar 31 00:25 cmake\_install.cmake
-9 -rwxrwxr-x 1 vagrant vagrant 100360 Mar 31 00:25 DrShadowStack.out*
-10 -rwxrwxr-x 1 vagrant vagrant 215888 Mar 31 00:25 libss\_dr\_client.so*
-11 -rwxrwxr-x 1 vagrant vagrant 102536 Mar 31 00:25 libss\_support.so*
-12 -rw-rw-r-- 1 vagrant vagrant  15205 Mar 31 00:25 Makefile
-13 -rw-rw-r-- 1 vagrant vagrant   8157 Mar 31 00:25 ss\_dr\_client.ldscript
+9 -rw-rw-r-- 1 vagrant vagrant   8441 Apr  1 06:42 compile\_commands.json
+10 -rwxrwxr-x 1 vagrant vagrant 365520 Apr  1 06:43 DrShadowStack.out
+11 -rwxrwxr-x 1 vagrant vagrant 216008 Apr  1 06:42 libss\_dr\_client.so
+12 -rwxrwxr-x 1 vagrant vagrant 102744 Apr  1 06:42 libss\_support.so
+13 -rw-rw-r-- 1 vagrant vagrant    441 Apr  1 06:52 log
+14 -rw-rw-r-- 1 vagrant vagrant  16012 Apr  1 06:42 Makefile
+15 -rw-rw-r-- 1 vagrant vagrant   8157 Apr  1 06:42 ss\_dr\_client.ldscript
 \end{DoxyCode}
 
 
