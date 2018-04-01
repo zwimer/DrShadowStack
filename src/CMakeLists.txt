@@ -13,6 +13,7 @@ set(DynamoRIO_DIR /home/vagrant/dynamorio/build/cmake)
 
 ### Developer options below ###
 
+
 # Debug mode options. Comment out to disable
 #set(DEBUG_MODE "VERBOSE")
 set(DEBUG_MODE "ON")
@@ -31,6 +32,10 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # Set the program name
 set(PROGRAM_NAME DrShadowStack)
 project(${PROGRAM_NAME})
+
+# Set the program version
+set(PROGRAM_VERSION 0.0.1)
+
 
 # The name of the client shared library for DynamoRio
 set(SS_DR_CLIENT_SO ss_dr_client)
@@ -52,6 +57,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set (CMAKE_CXX_FLAGS "-std=c++11 -Wall -Wextra -Wno-unused-parameter") # -Werror" )
 
 # Add macro definitions
+add_definitions(-DVERSION="${PROGRAM_VERSION}")
 add_definitions(-DPROGRAM_NAME="${PROGRAM_NAME}")
 add_definitions(-DDYNAMORIO_CLIENT_SO="${CMAKE_BINARY_DIR}/lib${SS_DR_CLIENT_SO}.so")
 
