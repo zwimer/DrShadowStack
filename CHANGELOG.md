@@ -7,11 +7,13 @@
 - Handle signals [\#24](https://github.com/zwimer/DrShadowStack/issues/24)
 - Symbol Resolution on error [\#20](https://github.com/zwimer/DrShadowStack/issues/20)
 - Generate code dcumentation [\#18](https://github.com/zwimer/DrShadowStack/issues/18)
+- Use actual arg parser [\#16](https://github.com/zwimer/DrShadowStack/issues/16)
 - CMake should handle pointer size [\#14](https://github.com/zwimer/DrShadowStack/issues/14)
 - README [\#10](https://github.com/zwimer/DrShadowStack/issues/10)
 
 **Fixed bugs:**
 
+- Argument parser ignores flags of the sub shell [\#41](https://github.com/zwimer/DrShadowStack/issues/41)
 - Log file gets overwritten [\#40](https://github.com/zwimer/DrShadowStack/issues/40)
 - Wait function breaks SS [\#33](https://github.com/zwimer/DrShadowStack/issues/33)
 - Main process receiving SigPipe [\#23](https://github.com/zwimer/DrShadowStack/issues/23)
