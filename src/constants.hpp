@@ -51,23 +51,23 @@ static constexpr bool str_equal( const char * const s1,
 #ifdef DEBUG_MODE 
 
 /// The default log file for debug mode
-/** This fill may be nullptr, but may not be NULL 
+/** This fill may be nullptr
  *  This should be defined by the cmake on compilation */
 #define LOG_FILE "./log"
 #else 
 
 /// The default log file for non-debug mode
-/** This fill may be nullptr, but may not be NULL 
+/** This fill may be nullptr
  *  This should be defined by the cmake on compilation */
 #define LOG_FILE nullptr 
 #endif
 
 /// The default stdout
-/**  This fill may be nullptr, but may not be NULL */
+/**  This fill may be nullptr */
 #define STDOUT_FILE stdout
 
 /// The default error log file (important events are also noted here)
-/**  This fill may be nullptr, but may not be NULL */
+/**  This fill may be nullptr */
 #define ERROR_FILE stderr
 
 
