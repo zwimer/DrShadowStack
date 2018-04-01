@@ -71,7 +71,7 @@ void start_program( const Args input_args, char * socket_path ) {
 	std::vector<const char *> exec_args;
 	
 	// Drrun a client
-	exec_args.push_back(input_args.drrun.c_str());
+	exec_args.push_back(DRRUN_PATH);
 	exec_args.push_back("-c");
 
 	// ShadowStack dynamorio client + args
@@ -101,7 +101,7 @@ void start_program( const Args input_args, char * socket_path ) {
 	fflush(NULL);
 
 	// Start drrun
-	execvp(input_args.drrun.c_str(), (char **) exec_args.data());
+	execvp(DRRUN_PATH, (char **) exec_args.data());
 	Utilities::err("execvp() failed.");
 }
 

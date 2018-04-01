@@ -17,9 +17,6 @@
 /** The key to the variables map that stores the target */
 #define TARGET "target"
 
-/** The key to the variables map that stores the path to drrun */
-#define DRRUN "ss_drrun"
-
 /** The key to the variables map that stores the mode */
 #define MODE "ss_mode"
 
@@ -35,11 +32,8 @@
 struct Args {
 
 	/** Constructor */
-	Args(	const std::string & dr, const bool is_int, const std::string & targ, 
+	Args(	const bool is_int, const std::string & targ, 
 			std::vector<std::string> & targ_args );
-
-	/** Path to drrun */
-	const std::string drrun;
 
 	/** State if mode is internal */
 	const bool is_internal;
