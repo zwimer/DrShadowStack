@@ -28,8 +28,10 @@ FILE * const Utilities::stdout_file= STDOUT_FILE;
 /** This exists so that if a global Utilities is declared
  *  it will setup everyhing needed for the class */
 void Utilities::setup(const bool clear_log) {
-	log_file = fopen(LOG_FILE, clear_log ? "w":"a");
-	assert( log_file != nullptr, "fopen() failed." );
+	if ( LOG_FILE != nullptr ) {
+		log_file = fopen(LOG_FILE, clear_log ? "w":"a");
+		assert( log_file != nullptr, "fopen() failed." );
+	}
 }
 
 

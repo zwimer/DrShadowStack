@@ -4,6 +4,7 @@
 
 **Implemented enhancements:**
 
+- Add default mode [\#47](https://github.com/zwimer/DrShadowStack/issues/47)
 - Remove need for drrun flag [\#43](https://github.com/zwimer/DrShadowStack/issues/43)
 - Handle signals [\#24](https://github.com/zwimer/DrShadowStack/issues/24)
 - Symbol Resolution on error [\#20](https://github.com/zwimer/DrShadowStack/issues/20)
@@ -14,6 +15,7 @@
 
 **Fixed bugs:**
 
+- Log file bug for non-debug mode [\#48](https://github.com/zwimer/DrShadowStack/issues/48)
 - Argument parser ignores flags of the sub shell [\#41](https://github.com/zwimer/DrShadowStack/issues/41)
 - Log file gets overwritten [\#40](https://github.com/zwimer/DrShadowStack/issues/40)
 - Wait function breaks SS [\#33](https://github.com/zwimer/DrShadowStack/issues/33)
@@ -30,6 +32,7 @@
 
 **Merged pull requests:**
 
+- Readme [\#46](https://github.com/zwimer/DrShadowStack/pull/46) ([zwimer](https://github.com/zwimer))
 - Internal drrun [\#45](https://github.com/zwimer/DrShadowStack/pull/45) ([zwimer](https://github.com/zwimer))
 - Version added [\#44](https://github.com/zwimer/DrShadowStack/pull/44) ([zwimer](https://github.com/zwimer))
 - Argument parser [\#42](https://github.com/zwimer/DrShadowStack/pull/42) ([zwimer](https://github.com/zwimer))
