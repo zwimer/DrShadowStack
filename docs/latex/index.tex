@@ -35,7 +35,7 @@ Dr\+Shadow\+Stack is a software defined dynamic shadow stack implemented via Dyn
 1 git clone https://github.com/zwimer/DrShadowStack
 \end{DoxyCode}
 
-\item Configure the {\ttfamily Dr\+Shadow\+Stack/src/\+C\+Make\+Lists.\+txt} file. Specifically set the path to where Dynamo\+R\+IO is built.
+\item Configure the {\ttfamily Dr\+Shadow\+Stack/src/\+C\+Make\+Lists.\+txt} file. Instructions in the file itself.
 \item Create a build directory 
 \begin{DoxyCode}
 1 cd DrShadowStack/src
@@ -53,7 +53,11 @@ Dr\+Shadow\+Stack is a software defined dynamic shadow stack implemented via Dyn
 
 The full usage of this program can be found via\+: {\ttfamily ./\+Dr\+Shadow\+Stack.out -\/-\/help}
 
-In general, the usage is of this format\+: `./\+Dr\+Shadow\+Stack.out \mbox{[}--ss\+\_\+mode $<$\+Mode$>$\mbox{]} $<$executable target$>$=\char`\"{}\char`\"{}$>$ $<$target arguments$>$=\char`\"{}\char`\"{}$>$
+In general, the usage is of this format\+: 
+\begin{DoxyCode}
+1 ./DrShadowStack.out [--ss\_mode <Mode>] <executable target> <target arguments>
+\end{DoxyCode}
+
 
 There are two different modes, {\ttfamily int} (internal) and {\ttfamily ext} (external). The internal mode keeps the shadow stack internally in the Dynamo\+R\+IO client. The external mode stores the stack in a separate process.
 
@@ -61,7 +65,7 @@ There are two different modes, {\ttfamily int} (internal) and {\ttfamily ext} (e
 
 From the build directory, an example could be\+: 
 \begin{DoxyCode}
-1 vagrant@ubuntu-xenial ~/S/s/build> ./DrShadowStack.out --ss\_mode int ls -la ./
+1 vagrant@ubuntu-xenial ~/S/s/build> ./DrShadowStack.out ls -la ./
 2 TID 28866: DynamoRIO client started
 3 total 748
 4 drwxrwxr-x 3 vagrant vagrant   4096 Apr  1 06:43 .
