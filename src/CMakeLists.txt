@@ -11,13 +11,16 @@ cmake_minimum_required(VERSION 3.5)
 set(DynamoRIO_DIR /home/vagrant/dynamorio/build/cmake)
 set(DRRUN_PATH /home/vagrant/dynamorio/build/bin64/drrun)
 
+# Default mode: int for internal, ext for external
+set(DEFAULT_MODE int)
+
 
 ### Developer options below ###
 
 
 # Debug mode options. Comment out to disable
 #set(DEBUG_MODE "VERBOSE")
-set(DEBUG_MODE "ON")
+#set(DEBUG_MODE "ON")
 
 # For YouCompleteMe vim plugin
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -59,6 +62,7 @@ set (CMAKE_CXX_FLAGS "-std=c++11 -Wall -Wextra -Wno-unused-parameter -Werror" )
 # Add macro definitions
 add_definitions(-DDRRUN_PATH="${DRRUN_PATH}")
 add_definitions(-DVERSION="${PROGRAM_VERSION}")
+add_definitions(-DDEFAULT_MODE="${DEFAULT_MODE}")
 add_definitions(-DPROGRAM_NAME="${PROGRAM_NAME}")
 add_definitions(-DDYNAMORIO_CLIENT_SO="${CMAKE_BINARY_DIR}/lib${SS_DR_CLIENT_SO}.so")
 
