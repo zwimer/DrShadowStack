@@ -97,6 +97,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &quot;<a class="el" href="dr__print__sym_8hpp_source.html">dr_print_sym.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="constants_8hpp_source.html">constants.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="utilities_8hpp_source.html">utilities.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="proc__rc_8hpp_source.html">proc_rc.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="group_8hpp_source.html">group.hpp</a>&quot;</code><br />
 <code>#include &lt;stack&gt;</code><br />
 </div><table class="memberdecls">
@@ -108,6 +109,12 @@ Functions</h2></td></tr>
 <tr class="separator:ac3b510b4eb4f19ab3f68d8183f9d802b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad657672c35176858cd3bd4fac5bd089b"><td class="memItemLeft" align="right" valign="top">static dr_signal_action_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__internal__ss__events_8cpp.html#ad657672c35176858cd3bd4fac5bd089b">signal_event</a> (void *drcontext, dr_siginfo_t *info)</td></tr>
 <tr class="separator:ad657672c35176858cd3bd4fac5bd089b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34e05a4b90b22002c7fb2c942c2ec517"><td class="memItemLeft" align="right" valign="top">dr_emit_flags_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__internal__ss__events_8cpp.html#a34e05a4b90b22002c7fb2c942c2ec517">internal_event_app_instruction</a> (void *drcontext, void *tag, instrlist_t *bb, instr_t *instr, bool for_trace, bool translating, void *user_data)</td></tr>
+<tr class="separator:a34e05a4b90b22002c7fb2c942c2ec517"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17cd7a5fe35d593c82aff0cc5f3b5919"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__internal__ss__events_8cpp.html#a17cd7a5fe35d593c82aff0cc5f3b5919">proc_rc_inc</a> (void *)</td></tr>
+<tr class="separator:a17cd7a5fe35d593c82aff0cc5f3b5919"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e88ba7b8918dead03f7d731342f09dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__internal__ss__events_8cpp.html#a6e88ba7b8918dead03f7d731342f09dd">proc_rc_dec</a> (void *)</td></tr>
+<tr class="separator:a6e88ba7b8918dead03f7d731342f09dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -115,6 +122,62 @@ Variables</h2></td></tr>
 <tr class="separator:a4d533d2157d896693f65cc71f4b3bf5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a34e05a4b90b22002c7fb2c942c2ec517"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dr_emit_flags_t internal_event_app_instruction </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>drcontext</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>tag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">instrlist_t *&#160;</td>
+          <td class="paramname"><em>bb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">instr_t *&#160;</td>
+          <td class="paramname"><em>instr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>for_trace</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>translating</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>user_data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a8161a26ec065b8c83d2f42637896162c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -169,6 +232,38 @@ Variables</h2></td></tr>
 <span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a6e88ba7b8918dead03f7d731342f09dd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void proc_rc_dec </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a17cd7a5fe35d593c82aff0cc5f3b5919"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void proc_rc_inc </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>
