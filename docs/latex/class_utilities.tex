@@ -101,7 +101,7 @@ Prints log s to the error file, perrors, then kills the process group \index{Uti
 
 Logs the arguments as cout would to the log file if not null. 
 
-Ends the printed line(s) with a newline then flushes the buffer \index{Utilities@{Utilities}!log\+\_\+error@{log\+\_\+error}}
+Ends the printed line(s) with a newline then flushes the buffer On faliure, silently fails (since it cannot write out) \index{Utilities@{Utilities}!log\+\_\+error@{log\+\_\+error}}
 \index{log\+\_\+error@{log\+\_\+error}!Utilities@{Utilities}}
 \subsubsection[{\texorpdfstring{log\+\_\+error(\+Args \&\&...\+args)}{log_error(Args &&...args)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename... Args$>$ static void Utilities\+::log\+\_\+error (
 \begin{DoxyParamCaption}
@@ -112,7 +112,7 @@ Ends the printed line(s) with a newline then flushes the buffer \index{Utilities
 
 Prints the arguments as cout would to the error and log files. 
 
-Ends the printed line(s) with a newline then flushes the buffer If either file pointer is null, that file is skipped \index{Utilities@{Utilities}!message@{message}}
+Ends the printed line(s) with a newline then flushes the buffer If either file pointer is null, that file is skipped On faliure, silently fails (since it cannot write out) \index{Utilities@{Utilities}!message@{message}}
 \index{message@{message}!Utilities@{Utilities}}
 \subsubsection[{\texorpdfstring{message(\+Args \&\&...\+args)}{message(Args &&...args)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename... Args$>$ static void Utilities\+::message (
 \begin{DoxyParamCaption}
@@ -123,7 +123,7 @@ Ends the printed line(s) with a newline then flushes the buffer If either file p
 
 Prints the arguments as cout would to the stdout and log files. 
 
-Ends the printed line(s) with a newline then flushes the buffer If either file pointer is null, that file is skipped \index{Utilities@{Utilities}!setup@{setup}}
+Ends the printed line(s) with a newline then flushes the buffer If either file pointer is null, that file is skipped On faliure, silently fails (since it cannot write out) \index{Utilities@{Utilities}!setup@{setup}}
 \index{setup@{setup}!Utilities@{Utilities}}
 \subsubsection[{\texorpdfstring{setup(const bool clear\+\_\+log)}{setup(const bool clear_log)}}]{\setlength{\rightskip}{0pt plus 5cm}void Utilities\+::setup (
 \begin{DoxyParamCaption}
@@ -161,7 +161,7 @@ Ends the printed line(s) with a newline then flushes the buffer This function on
 
 A wrapper that writes args to f if f is not null. 
 
-Ends the printed line(s) with a newline then flushes the buffer This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure If the process is multithreaded or has forked, prints the T\+ID first \index{Utilities@{Utilities}!write\+\_\+log\+\_\+helper@{write\+\_\+log\+\_\+helper}}
+Ends the printed line(s) with a newline then flushes the buffer On faliure, silently fails (since it cannot write out) If the process is multithreaded or has forked, prints the T\+ID first \index{Utilities@{Utilities}!write\+\_\+log\+\_\+helper@{write\+\_\+log\+\_\+helper}}
 \index{write\+\_\+log\+\_\+helper@{write\+\_\+log\+\_\+helper}!Utilities@{Utilities}}
 \subsubsection[{\texorpdfstring{write\+\_\+log\+\_\+helper(std\+::stringstream \&stream, Args \&\&...\+args)}{write_log_helper(std::stringstream &stream, Args &&...args)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename... Args$>$ static void Utilities\+::write\+\_\+log\+\_\+helper (
 \begin{DoxyParamCaption}
@@ -173,7 +173,7 @@ Ends the printed line(s) with a newline then flushes the buffer This function pr
 
 Adds the arguments to the stream. 
 
-Ends the printed line(s) with a newline then flushes the buffer This function promises {\bfseries N\+O\+T\+H\+I\+NG} on failure If the process is multithreaded or has forked, prints the T\+ID first \index{Utilities@{Utilities}!write\+\_\+log\+\_\+helper@{write\+\_\+log\+\_\+helper}}
+Ends the printed line(s) with a newline then flushes the buffer If the process is multithreaded or has forked, prints the T\+ID first \index{Utilities@{Utilities}!write\+\_\+log\+\_\+helper@{write\+\_\+log\+\_\+helper}}
 \index{write\+\_\+log\+\_\+helper@{write\+\_\+log\+\_\+helper}!Utilities@{Utilities}}
 \subsubsection[{\texorpdfstring{write\+\_\+log\+\_\+helper(std\+::stringstream \&stream, T \&\&val)}{write_log_helper(std::stringstream &stream, T &&val)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ static void Utilities\+::write\+\_\+log\+\_\+helper (
 \begin{DoxyParamCaption}
