@@ -139,6 +139,7 @@ template<typename... Args> void Utilities::write_log(FILE * const f, Args && ...
 		// Create the stream
 		std::stringstream stream;
 		write_log_helper( stream, std::forward<Args>(args)... );
+		stream << '\n';
 
 		// Write the string then flush the buffer
 		const std::string str = stream.str();

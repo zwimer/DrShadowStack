@@ -23,6 +23,7 @@ set(DEFAULT_MODE int)
 #set(DEBUG_MODE "ON")
 
 # For YouCompleteMe vim plugin
+# Disable for non-developers
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 
