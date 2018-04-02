@@ -2,6 +2,7 @@
 #include "dr_print_sym.hpp"
 #include "constants.hpp"
 #include "utilities.hpp"
+#include "proc_rc.hpp"
 #include "group.hpp"
 
 #include <stack>
@@ -93,10 +94,10 @@ static dr_signal_action_t signal_event(void *drcontext, dr_siginfo_t *info) {
 // called once for each instruction in it. If either a call
 // or a ret is seen, the call and ret handlers are inserted 
 // before said instruction. Note: an app_pc is defined in comments
-dr_emit_flags_t InternalSS::event_app_instruction(	void * drcontext, void * tag, 
-													instrlist_t * bb, instr_t *instr, 
-													bool for_trace, bool translating, 
-													void * user_data ) {
+dr_emit_flags_t internal_event_app_instruction(	void * drcontext, void * tag, 
+												instrlist_t * bb, instr_t *instr, 
+												bool for_trace, bool translating, 
+												void * user_data ) {
 
 	// Concerning DynamoRIO's app_pc type. From their source"
 	// include/dr_defines.h:typedef byte * app_pc;
@@ -125,14 +126,16 @@ dr_emit_flags_t InternalSS::event_app_instruction(	void * drcontext, void * tag,
     return DR_EMIT_DEFAULT;
 }
 
-// Called on exit of client program
-// Checks how the client returned then exits
-void InternalSS::exit_event() {
-	Utilities::assert(	drmgr_unregister_bb_insertion_event(event_app_instruction),
-						"client process returned improperly." );
-	Sym::finish();
-	drmgr_exit();
-	Utilities::log("Program ended without issue");
+// Increments the program reference counter
+// This is a wrapper that can be used as an event
+void proc_rc_inc(void *) {
+	prc->inc();
+}
+
+// Decrements the program reference counter
+// This is a wrapper that can be used as an event
+void proc_rc_dec(void *) {
+	prc->dec();
 }
 
 // Setup the internal stack server for the DynamoRIO client
@@ -141,6 +144,15 @@ void InternalSS::setup(const char * const socket_path) {
 	// Setup
 	Utilities::assert( drmgr_init(), "drmgr_init() failed." );
 	Sym::init();
+
+	// Handle forking and threading, and register the exit event (via thread exit)
+	// Note: On exit, thread_exit will be called, so no general exit event is needed
+	drmgr_register_thread_exit_event(proc_rc_dec);
+	drmgr_register_thread_init_event(proc_rc_inc);
+	dr_register_fork_init_event(proc_rc_inc);
+
+	// The event used to re-route call and ret's
+    drmgr_register_bb_instrumentation_event(NULL, internal_event_app_instruction, NULL);
 
 	// Whenever a singal is caught, we add a wildcard to the stack
 	drmgr_register_signal_event(signal_event);

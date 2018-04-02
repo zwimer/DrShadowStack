@@ -157,19 +157,8 @@ void Group::setup() {
 	}
 	fflush(nullptr);
 
-	// If setup was complete, this is a server process, kill the group
-	// Since we may return before kernel kills everything after that
-	if ( Group::setup_complete ) {
-		kill_9_group();
-	}
-
-	// Otherwise, this was a DynamoRIO client process, just kill this process
-	_Exit(EXIT_SUCCESS);
-}
-
-// Return setup_complete
-bool Group::is_setup() {
-	return setup_complete;
+	// Kill the process group
+	kill_9_group();
 }
 
 // Registers the proc_rc destructor

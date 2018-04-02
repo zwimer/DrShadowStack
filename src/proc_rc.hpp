@@ -29,7 +29,7 @@ private:
 	ProcRC & operator=( const ProcRC & ) = delete;
 
 	/** The process rc pointer */
-	prc_t * const proc_rc;
+	prc_t * proc_rc;
 
 	/** The mutex used to protect the reference coutner */
 	IPCLock rc_lock;
@@ -58,7 +58,7 @@ public:
 
 
 // A global process rc
-extern ProcRC * const prc;
+extern ProcRC * prc;
 
 
 #endif

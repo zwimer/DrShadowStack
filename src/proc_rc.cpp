@@ -5,7 +5,7 @@
 
 
 // A global process rc
-ProcRC * const prc = new ProcRC();
+ProcRC * prc = new ProcRC();
 
 // Initalize the setup variable of ProcRC
 bool ProcRC::setup = false;
@@ -61,8 +61,16 @@ ProcRC::ProcRC() : proc_rc((prc_t*) create_shared_memory(sizeof(prc_t))),
 // Destructor
 ProcRC::~ProcRC() {	
 	Utilities::log("ProcRC destructor called");
-	Utilities::assert( munmap( prc->proc_rc, sizeof(prc_t)) == 0, 
-		"munmap() failed." );
+	if ( prc->proc_rc != nullptr ) {
+
+		// To prevent an infinite loop in case of failure
+		prc_t * const rc = prc->proc_rc;
+		prc->proc_rc = nullptr;
+		prc = nullptr;
+
+		// Remove the shared memory
+		Utilities::assert( munmap( rc, sizeof(prc_t)) == 0, "munmap() failed." );
+	}
 }
 
 // This function increases the reference count
@@ -70,6 +78,7 @@ void ProcRC::inc() {
 	TerminateOnDestruction tod;
 	rc_lock.lock();
 	*proc_rc += 1;
+	Utilities::log("Process RC incremented. Now: %d", *proc_rc);
 	rc_lock.unlock();
 	tod.disable();
 }
@@ -82,6 +91,7 @@ void ProcRC::dec() {
 	// Decrement the rc
 	rc_lock.lock();
 	*proc_rc -= 1;
+	Utilities::log("Process RC decremented. Now: %d", *proc_rc);
 
 	// If the rc is 0, release the lock then kill everything
 	if ( *proc_rc <= 0 ) {
