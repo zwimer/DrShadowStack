@@ -21,7 +21,7 @@ static void \hyperlink{struct_sym_aa14d1ce9dbef3383d591499714c4d164}{init} ()
 \begin{DoxyCompactList}\small\item\em The setup function for dr\+\_\+print\+\_\+sym Must be called {\itshape by the DR client} before print. \end{DoxyCompactList}\item 
 static void \hyperlink{struct_sym_a474eb27bfe01436357e0be478020611c}{finish} ()
 \begin{DoxyCompactList}\small\item\em This function should be called when the client terminates. \end{DoxyCompactList}\item 
-static void \hyperlink{struct_sym_acda3df3e55ac97cbf38459b1121b9673}{print} (\hyperlink{struct_sym_a7d4d0c72d65ffac9eb1d1eca78d58992}{Print\+Fn} pnt, \hyperlink{struct_sym_a7d4d0c72d65ffac9eb1d1eca78d58992}{Print\+Fn} perr, const char $\ast$const description, const app\+\_\+pc addr)
+static void \hyperlink{struct_sym_abe62e638eae7f459e420c7361e41fe71}{print} (const char $\ast$const description, const app\+\_\+pc addr)
 \begin{DoxyCompactList}\small\item\em Print symbol information for the what is located at addr. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Types}
 \begin{DoxyCompactItemize}
@@ -87,19 +87,17 @@ The setup function for dr\+\_\+print\+\_\+sym Must be called {\itshape by the DR
 
 \index{Sym@{Sym}!print@{print}}
 \index{print@{print}!Sym@{Sym}}
-\subsubsection[{\texorpdfstring{print(\+Print\+Fn pnt, Print\+Fn perr, const char $\ast$const description, const app\+\_\+pc addr)}{print(PrintFn pnt, PrintFn perr, const char *const description, const app_pc addr)}}]{\setlength{\rightskip}{0pt plus 5cm}void Sym\+::print (
+\subsubsection[{\texorpdfstring{print(const char $\ast$const description, const app\+\_\+pc addr)}{print(const char *const description, const app_pc addr)}}]{\setlength{\rightskip}{0pt plus 5cm}void Sym\+::print (
 \begin{DoxyParamCaption}
-\item[{{\bf Print\+Fn}}]{pnt, }
-\item[{{\bf Print\+Fn}}]{perr, }
 \item[{const char $\ast$const}]{description, }
 \item[{const app\+\_\+pc}]{addr}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{struct_sym_acda3df3e55ac97cbf38459b1121b9673}{}\label{struct_sym_acda3df3e55ac97cbf38459b1121b9673}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{struct_sym_abe62e638eae7f459e420c7361e41fe71}{}\label{struct_sym_abe62e638eae7f459e420c7361e41fe71}
 
 
 Print symbol information for the what is located at addr. 
 
-Prints out information via the pnt function which works like printf Prints out errors via the perr function which works like printf description is a description of what the address addr points to 
+description is a description of what the address addr points to 
 
 \subsection{Field Documentation}
 \index{Sym@{Sym}!setup@{setup}}
