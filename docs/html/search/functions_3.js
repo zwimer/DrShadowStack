@@ -2,6 +2,6 @@ var searchData=
 [
   ['enable_5fmulti_5fthread_5for_5fprocess_5fmode',['enable_multi_thread_or_process_mode',['../class_utilities.html#a384728ae9b72982c1351d881ba7ff007',1,'Utilities']]],
   ['err',['err',['../class_utilities.html#a5308da50597c93aad2b1ca2ecfbcb723',1,'Utilities']]],
-  ['event_5fapp_5finstruction',['event_app_instruction',['../namespace_external_s_s.html#a20e2ed7203e7e62d060cd8e020016c69',1,'ExternalSS::event_app_instruction()'],['../namespace_internal_s_s.html#af5fff02fcf86ee0fd0134fc412c128bc',1,'InternalSS::event_app_instruction()']]],
-  ['exit_5fevent',['exit_event',['../namespace_external_s_s.html#ad7eae72b68a78913eb9e92f19cd53868',1,'ExternalSS::exit_event()'],['../namespace_internal_s_s.html#a20eb78818d452ee5e8d96e2b39a8f323',1,'InternalSS::exit_event()']]]
+  ['exit_5fevent',['exit_event',['../dr__external__ss__events_8cpp.html#a655c944988bd65e5216f857f33e2f174',1,'dr_external_ss_events.cpp']]],
+  ['external_5fevent_5fapp_5finstruction',['external_event_app_instruction',['../dr__external__ss__events_8cpp.html#a14668a99e9c1c591ee2ae89b26748bdf',1,'dr_external_ss_events.cpp']]]
 ];

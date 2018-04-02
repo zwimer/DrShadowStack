@@ -6,11 +6,9 @@
 #include "utilities.hpp"
 #include "group.hpp"
 
-#include <boost/filesystem.hpp> // TODO
+#include <boost/filesystem.hpp>
 #include <unistd.h>
 #include <signal.h>
-#include <sstream>
-#include <random>
 #include <vector>
 
 
@@ -21,46 +19,23 @@
 // Return a non-existent filename
 std::string temp_name() {
 
-boost::filesystem::unique_path();
-	// The desired size file name
-	static const int size = 23;
+	// For brevity
+	namespace fs = boost::filesystem;
 
-	// Check lenth of string. Note, bind will not accept 
-	// file names longer than something like 108 characters
-	static_assert( size < 100, "file name too long!" );
+	// Create the model to be used
+	static constexpr const int basename_size = 50;
+	static const fs::path tmp_dir = fs::temp_directory_path();
+	static const fs::path model(tmp_dir.string() + "/" + std::string(50, '%').c_str());
 
-	// The desired location
-	static char where[] = "/tmp/";
-	static const int len_where = strlen(where);
+	// Generate the unique path
+	try {
+		const std::string ret = fs::unique_path(model).string();
+		return std::move(ret);
+	}
 
-	// Characters which may be used in the file name
-	static char lib[] =	"abcdefghijklmnopqrstuvwxyz"
-						"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-						"1234567890";
-	static const int lib_size = strlen(lib);
-
-	// Until an un-seen filename is generated, loop
-	char fname[size + 1];
-	std::random_device rd;
-	while (true) {
-
-		// Generate a randome filename
-		strncpy(fname, where, len_where);
-		for ( int i = len_where; i < size; ++i ) {
-			fname[i] = lib[rd() % lib_size];
-		}
-		fname[size] = '\0';
-
-		// We temprarily borrow errno below		
-		int old_errno = errno;
-		errno = 0;
-
-		// If the file does not exists, restore errno and return it
-		if ( access( fname, F_OK ) == -1 ) {
-			Utilities::assert( errno == ENOENT, "access failed()." );
-			errno = old_errno;
-			return fname;
-		}
+	// If failure, note so
+	catch (...) {
+		Utilities::err("boost::filesystem::unique_path() failed.");
 	}
 }
 

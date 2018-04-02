@@ -110,6 +110,10 @@ Functions</h2></td></tr>
 <tr class="separator:a8161a26ec065b8c83d2f42637896162c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42c8b67f8f85fd6bad5bd11892c0d5bc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__external__ss__events_8cpp.html#a42c8b67f8f85fd6bad5bd11892c0d5bc">on_ret</a> (const app_pc instr_addr, const app_pc target_addr)</td></tr>
 <tr class="separator:a42c8b67f8f85fd6bad5bd11892c0d5bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14668a99e9c1c591ee2ae89b26748bdf"><td class="memItemLeft" align="right" valign="top">dr_emit_flags_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__external__ss__events_8cpp.html#a14668a99e9c1c591ee2ae89b26748bdf">external_event_app_instruction</a> (void *drcontext, void *tag, instrlist_t *bb, instr_t *instr, bool for_trace, bool translating, void *user_data)</td></tr>
+<tr class="separator:a14668a99e9c1c591ee2ae89b26748bdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a655c944988bd65e5216f857f33e2f174"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__external__ss__events_8cpp.html#a655c944988bd65e5216f857f33e2f174">exit_event</a> ()</td></tr>
+<tr class="separator:a655c944988bd65e5216f857f33e2f174"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -117,6 +121,77 @@ Variables</h2></td></tr>
 <tr class="separator:a5903d0b282fc5eae503de618f896b5e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a655c944988bd65e5216f857f33e2f174"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void exit_event </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a14668a99e9c1c591ee2ae89b26748bdf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dr_emit_flags_t external_event_app_instruction </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>drcontext</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>tag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">instrlist_t *&#160;</td>
+          <td class="paramname"><em>bb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">instr_t *&#160;</td>
+          <td class="paramname"><em>instr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>for_trace</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>translating</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>user_data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a8161a26ec065b8c83d2f42637896162c"></a>
 <div class="memitem">
 <div class="memproto">

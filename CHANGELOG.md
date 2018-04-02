@@ -4,6 +4,7 @@
 
 **Implemented enhancements:**
 
+- Do not generate unique path [\#58](https://github.com/zwimer/DrShadowStack/issues/58)
 - Add default mode [\#47](https://github.com/zwimer/DrShadowStack/issues/47)
 - Remove need for drrun flag [\#43](https://github.com/zwimer/DrShadowStack/issues/43)
 - Handle signals [\#24](https://github.com/zwimer/DrShadowStack/issues/24)
@@ -27,12 +28,15 @@
 
 - Add a version [\#39](https://github.com/zwimer/DrShadowStack/issues/39)
 - Implement process reference counter for external SS [\#34](https://github.com/zwimer/DrShadowStack/issues/34)
+- Enable basic forking / threading for internal SS [\#32](https://github.com/zwimer/DrShadowStack/issues/32)
 - Remap signals [\#22](https://github.com/zwimer/DrShadowStack/issues/22)
 - Setup a new process group [\#21](https://github.com/zwimer/DrShadowStack/issues/21)
 - Create Utilities [\#19](https://github.com/zwimer/DrShadowStack/issues/19)
 
 **Merged pull requests:**
 
+- Internal SS now reference counts! [\#57](https://github.com/zwimer/DrShadowStack/pull/57) ([zwimer](https://github.com/zwimer))
+- Bug fix [\#54](https://github.com/zwimer/DrShadowStack/pull/54) ([zwimer](https://github.com/zwimer))
 - Docs [\#50](https://github.com/zwimer/DrShadowStack/pull/50) ([zwimer](https://github.com/zwimer))
 - Default mode added and fixed logging bug on non-debug mode [\#49](https://github.com/zwimer/DrShadowStack/pull/49) ([zwimer](https://github.com/zwimer))
 - Readme [\#46](https://github.com/zwimer/DrShadowStack/pull/46) ([zwimer](https://github.com/zwimer))

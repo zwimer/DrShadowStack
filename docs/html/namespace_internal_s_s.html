@@ -94,96 +94,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af5fff02fcf86ee0fd0134fc412c128bc"><td class="memItemLeft" align="right" valign="top">dr_emit_flags_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_internal_s_s.html#af5fff02fcf86ee0fd0134fc412c128bc">event_app_instruction</a> (void *drcontext, void *tag, instrlist_t *bb, instr_t *instr, bool for_trace, bool translating, void *user_data)</td></tr>
-<tr class="memdesc:af5fff02fcf86ee0fd0134fc412c128bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function that inserts the call and ret handlers.  <a href="#af5fff02fcf86ee0fd0134fc412c128bc">More...</a><br /></td></tr>
-<tr class="separator:af5fff02fcf86ee0fd0134fc412c128bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91c77a886d93d8526bf619cb3eeeec6c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_internal_s_s.html#a91c77a886d93d8526bf619cb3eeeec6c">setup</a> (const char *const)</td></tr>
 <tr class="memdesc:a91c77a886d93d8526bf619cb3eeeec6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup the internal stack server for the DynamoRIO client.  <a href="#a91c77a886d93d8526bf619cb3eeeec6c">More...</a><br /></td></tr>
 <tr class="separator:a91c77a886d93d8526bf619cb3eeeec6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20eb78818d452ee5e8d96e2b39a8f323"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_internal_s_s.html#a20eb78818d452ee5e8d96e2b39a8f323">exit_event</a> ()</td></tr>
-<tr class="memdesc:a20eb78818d452ee5e8d96e2b39a8f323"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called on exit of client program.  <a href="#a20eb78818d452ee5e8d96e2b39a8f323">More...</a><br /></td></tr>
-<tr class="separator:a20eb78818d452ee5e8d96e2b39a8f323"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Make a distinction between the internal and external SS functions. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="af5fff02fcf86ee0fd0134fc412c128bc"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">dr_emit_flags_t InternalSS::event_app_instruction </td>
-          <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>drcontext</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>tag</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">instrlist_t *&#160;</td>
-          <td class="paramname"><em>bb</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">instr_t *&#160;</td>
-          <td class="paramname"><em>instr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>for_trace</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>translating</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>user_data</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The function that inserts the call and ret handlers. </p>
-<p>Whenever a new basic block is seen, this function will be called once for each instruction in it. If either a call or a ret is seen, the call and ret handlers are inserted before said instruction. Note: an app_pc is defined in comments </p>
-
-</div>
-</div>
-<a class="anchor" id="a20eb78818d452ee5e8d96e2b39a8f323"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void InternalSS::exit_event </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Called on exit of client program. </p>
-<p>Checks how the client returned then exits </p>
-
-</div>
-</div>
 <a class="anchor" id="a91c77a886d93d8526bf619cb3eeeec6c"></a>
 <div class="memitem">
 <div class="memproto">
