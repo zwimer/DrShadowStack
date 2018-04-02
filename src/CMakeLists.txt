@@ -19,10 +19,11 @@ set(DEFAULT_MODE int)
 
 
 # Debug mode options. Comment out to disable
-set(DEBUG_MODE "VERBOSE")
+#set(DEBUG_MODE "VERBOSE")
 #set(DEBUG_MODE "ON")
 
 # For YouCompleteMe vim plugin
+# Disable for non-developers
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 
@@ -138,11 +139,11 @@ target_link_libraries(${SS_DR_CLIENT_SO} ${SS_SUPPORT_LIB})
 
 
 # Build the shadow stack executable
-add_executable(${PROGRAM_NAME}.out
+add_executable(${PROGRAM_NAME}
 	external_stack_server.cpp
 	shadow_stack.cpp
 	parse_args.cpp
 	)
 
 # Link to the support library
-target_link_libraries(${PROGRAM_NAME}.out ${SS_SUPPORT_LIB} Boost::program_options Boost::filesystem)
+target_link_libraries(${PROGRAM_NAME} ${SS_SUPPORT_LIB} Boost::program_options Boost::filesystem)
