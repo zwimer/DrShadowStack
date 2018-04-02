@@ -4,6 +4,7 @@
 
 **Implemented enhancements:**
 
+- Convert IO to use streams [\#61](https://github.com/zwimer/DrShadowStack/issues/61)
 - Do not generate unique path [\#58](https://github.com/zwimer/DrShadowStack/issues/58)
 - Add default mode [\#47](https://github.com/zwimer/DrShadowStack/issues/47)
 - Remove need for drrun flag [\#43](https://github.com/zwimer/DrShadowStack/issues/43)
@@ -16,6 +17,7 @@
 
 **Fixed bugs:**
 
+- External logging failed [\#60](https://github.com/zwimer/DrShadowStack/issues/60)
 - --version and --help ignored for sub commands [\#53](https://github.com/zwimer/DrShadowStack/issues/53)
 - Log file bug for non-debug mode [\#48](https://github.com/zwimer/DrShadowStack/issues/48)
 - Argument parser ignores flags of the sub shell [\#41](https://github.com/zwimer/DrShadowStack/issues/41)
@@ -23,6 +25,7 @@
 - Wait function breaks SS [\#33](https://github.com/zwimer/DrShadowStack/issues/33)
 - Main process receiving SigPipe [\#23](https://github.com/zwimer/DrShadowStack/issues/23)
 - boost::interprocess::mutex does not work on dynamorio [\#17](https://github.com/zwimer/DrShadowStack/issues/17)
+- Implement process reference counter for internal SS [\#13](https://github.com/zwimer/DrShadowStack/issues/13)
 
 **Closed issues:**
 
@@ -35,6 +38,7 @@
 
 **Merged pull requests:**
 
+- Now use boost filesystem to generate unique path [\#59](https://github.com/zwimer/DrShadowStack/pull/59) ([zwimer](https://github.com/zwimer))
 - Internal SS now reference counts! [\#57](https://github.com/zwimer/DrShadowStack/pull/57) ([zwimer](https://github.com/zwimer))
 - Bug fix [\#54](https://github.com/zwimer/DrShadowStack/pull/54) ([zwimer](https://github.com/zwimer))
 - Docs [\#50](https://github.com/zwimer/DrShadowStack/pull/50) ([zwimer](https://github.com/zwimer))

@@ -72,7 +72,7 @@ void start_program( const Args input_args, char * socket_path ) {
 	for ( unsigned long i = 0; i < exec_args.size() - 1; ++i ) {
 		pnt << exec_args[i] << ' ';
 	}
-	Utilities::log(pnt.str().c_str());
+	Utilities::log(pnt.str());
 	fflush(NULL);
 
 	// Start drrun
@@ -86,6 +86,7 @@ int main(int argc, char * argv[]) {
 
 	// Setup utilities
 	Utilities::setup(true);
+	Utilities::log("DrShadowStack initalized");
 
 	// Handle arguments
 	const Args args = parse_args(argc, argv);

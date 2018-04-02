@@ -78,7 +78,7 @@ void ProcRC::inc() {
 	TerminateOnDestruction tod;
 	rc_lock.lock();
 	*proc_rc += 1;
-	Utilities::log("Process RC incremented. Now: %d", *proc_rc);
+	Utilities::log("Process RC incremented. Now: ", *proc_rc);
 	rc_lock.unlock();
 	tod.disable();
 }
@@ -91,7 +91,7 @@ void ProcRC::dec() {
 	// Decrement the rc
 	rc_lock.lock();
 	*proc_rc -= 1;
-	Utilities::log("Process RC decremented. Now: %d", *proc_rc);
+	Utilities::log("Process RC decremented. Now: ", *proc_rc);
 
 	// If the rc is 0, release the lock then kill everything
 	if ( *proc_rc <= 0 ) {

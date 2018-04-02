@@ -59,15 +59,13 @@ variables_map parse_args_helper(	const int argc, const char * const argv[],
 
 		// If help was asked for
 		if ( args.count("help") && (argc == 2) ) {
-			std::stringstream help;
-			help << usage_options << '\n' << config_options;
-			Utilities::message("\n%s", help.str().c_str());
+			Utilities::message("\n", usage_options, '\n', config_options);
 			exit(EXIT_SUCCESS);
 		}
 
 		// If version was asked for
 		else if ( args.count("version") && (argc == 2) ) {
-			Utilities::message("version %s", VERSION);
+			Utilities::message("version ", VERSION);
 			exit(EXIT_SUCCESS);
 		}
 
@@ -85,7 +83,7 @@ variables_map parse_args_helper(	const int argc, const char * const argv[],
 		// If no mode was specified, use the default.
 		if ( args.count(MODE) == 0 ) {
 			args.insert(std::make_pair(	MODE, 
-										variable_value(std::string(DEFAULT_MODE), false)));
+				variable_value(std::string(DEFAULT_MODE), false)));
 		}
 
 		// Collect all unregistered and positional 

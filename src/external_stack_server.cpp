@@ -49,7 +49,7 @@ void add_wildcard(pointer_stack & stk, const char * const, const int) {
 // Called when a 'call' was detected
 void call_handler(pointer_stack & stk, const char * const buffer, const int) {
 	const char * const addr = * ((char **) buffer);
-	Utilities::verbose_log("(server) Push(%p)", addr);
+	Utilities::verbose_log("(server) Push(", (void *) addr, ")");
 	stk.push(addr);
 }
 
@@ -58,13 +58,13 @@ void ret_handler(pointer_stack & stk, const char * const buffer, const int sock)
 
 	// Log the address
 	const char * const addr = * ((char **) buffer);
-	Utilities::verbose_log("(server) Pop(%p)\n", addr);
+	Utilities::verbose_log("(server) Pop(", (void *) addr,")\n");
 
 	// If the stack is empty, error
 	if ( stk.empty() ) {
 		Utilities::log_error( 	"*** Shadow stack mistmach detected! ***\n"
-								"Attempting to return to %p\n"
-								"\tShadow Stack is empty.\n", addr );
+								"Attempting to return to ", (void *) addr, 
+								"\n\tShadow Stack is empty.\n" );
 		Group::terminate(nullptr);
 	}
 	
@@ -78,9 +78,8 @@ void ret_handler(pointer_stack & stk, const char * const buffer, const int sock)
 	// If the return address is incorrect, error
 	else if ( addr != top ) {
 		Utilities::log_error(	"*** Shadow stack mistmach detected! ***\n"
-								"Attempting to return to %p\n"
-								"\tTop of shadow stack is %p\n",
-								addr, top );
+								"Attempting to return to ", (void *) addr,
+								"\n\tTop of shadow stack is ", (void *) top, "\n" );
 		Group::terminate(nullptr);
 	}
 
@@ -133,7 +132,7 @@ void start_external_shadow_stack( const int sock ) {
 		// Verify the message is valid then call the appropriate function
 		const std::string message_type(buffer, MESSAGE_HEADER_LENGTH);
 		const auto function_ptr = call_correct_function[message_type];
-		Utilities::verbose_log("Got message header: %*.s", MESSAGE_HEADER_LENGTH, buffer);
+		Utilities::verbose_log("Got message header: ", std::string(buffer, MESSAGE_HEADER_LENGTH));
 		Utilities::assert( function_ptr != nullptr, "Sever recieved wrong type of message!" );
 		function_ptr(stk, & buffer[MESSAGE_HEADER_LENGTH], sock);
 	}

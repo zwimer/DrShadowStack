@@ -28,11 +28,8 @@ public:
 	static void finish();
 
 	/// Print symbol information for the what is located at addr
-	/** Prints out information via the pnt function which works like printf
-	 *  Prints out errors via the perr function which works like printf
-	 *  description is a description of what the address addr points to */
-	static void print( PrintFn pnt, PrintFn perr, const char * const description,
-						const app_pc addr );
+	/** description is a description of what the address addr points to */
+	static void print( const char * const description, const app_pc addr );
 };
 
 #endif
