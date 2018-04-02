@@ -39,11 +39,11 @@ cmake .. && make -j 4
 
 ## Usage
 
-The full usage of this program can be found via: `./DrShadowStack.out --help`
+The full usage of this program can be found via: `./DrShadowStack --help`
 
 In general, the usage is of this format: 
 ```bash
-./DrShadowStack.out [--ss_mode <Mode>] <executable target> <target arguments>
+./DrShadowStack [--ss_mode <Mode>] <executable target> <target arguments>
 ```
 
 There are two different modes, `int` (internal) and `ext` (external). The internal mode keeps the shadow stack internally in the DynamoRIO client. The external mode stores the stack in a separate process.
@@ -52,7 +52,7 @@ There are two different modes, `int` (internal) and `ext` (external). The intern
 
 From the build directory, an example could be:
 ```bash
-vagrant@ubuntu-xenial ~/S/s/build> ./DrShadowStack.out ls -la ./
+vagrant@ubuntu-xenial ~/S/s/build> ./DrShadowStack ls -la ./
 TID 28866: DynamoRIO client started
 total 748
 drwxrwxr-x 3 vagrant vagrant   4096 Apr  1 06:43 .
@@ -61,7 +61,7 @@ drwxrwxr-x 3 vagrant vagrant   4096 Apr  1 06:51 ..
 drwxrwxr-x 7 vagrant vagrant   4096 Apr  1 06:45 CMakeFiles
 -rw-rw-r-- 1 vagrant vagrant   1380 Mar 31 00:25 cmake_install.cmake
 -rw-rw-r-- 1 vagrant vagrant   8441 Apr  1 06:42 compile_commands.json
--rwxrwxr-x 1 vagrant vagrant 365520 Apr  1 06:43 DrShadowStack.out
+-rwxrwxr-x 1 vagrant vagrant 365520 Apr  1 06:43 DrShadowStack
 -rwxrwxr-x 1 vagrant vagrant 216008 Apr  1 06:42 libss_dr_client.so
 -rwxrwxr-x 1 vagrant vagrant 102744 Apr  1 06:42 libss_support.so
 -rw-rw-r-- 1 vagrant vagrant    441 Apr  1 06:52 log

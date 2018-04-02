@@ -51,11 +51,11 @@ Dr\+Shadow\+Stack is a software defined dynamic shadow stack implemented via Dyn
 
 \subsection*{Usage}
 
-The full usage of this program can be found via\+: {\ttfamily ./\+Dr\+Shadow\+Stack.out -\/-\/help}
+The full usage of this program can be found via\+: {\ttfamily ./\+Dr\+Shadow\+Stack -\/-\/help}
 
 In general, the usage is of this format\+: 
 \begin{DoxyCode}
-1 ./DrShadowStack.out [--ss\_mode <Mode>] <executable target> <target arguments>
+1 ./DrShadowStack [--ss\_mode <Mode>] <executable target> <target arguments>
 \end{DoxyCode}
 
 
@@ -65,7 +65,7 @@ There are two different modes, {\ttfamily int} (internal) and {\ttfamily ext} (e
 
 From the build directory, an example could be\+: 
 \begin{DoxyCode}
-1 vagrant@ubuntu-xenial ~/S/s/build> ./DrShadowStack.out ls -la ./
+1 vagrant@ubuntu-xenial ~/S/s/build> ./DrShadowStack ls -la ./
 2 TID 28866: DynamoRIO client started
 3 total 748
 4 drwxrwxr-x 3 vagrant vagrant   4096 Apr  1 06:43 .
@@ -74,7 +74,7 @@ From the build directory, an example could be\+:
 7 drwxrwxr-x 7 vagrant vagrant   4096 Apr  1 06:45 CMakeFiles
 8 -rw-rw-r-- 1 vagrant vagrant   1380 Mar 31 00:25 cmake\_install.cmake
 9 -rw-rw-r-- 1 vagrant vagrant   8441 Apr  1 06:42 compile\_commands.json
-10 -rwxrwxr-x 1 vagrant vagrant 365520 Apr  1 06:43 DrShadowStack.out
+10 -rwxrwxr-x 1 vagrant vagrant 365520 Apr  1 06:43 DrShadowStack
 11 -rwxrwxr-x 1 vagrant vagrant 216008 Apr  1 06:42 libss\_dr\_client.so
 12 -rwxrwxr-x 1 vagrant vagrant 102744 Apr  1 06:42 libss\_support.so
 13 -rw-rw-r-- 1 vagrant vagrant    441 Apr  1 06:52 log
