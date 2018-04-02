@@ -12,6 +12,6 @@ void win() {
 // Overwrite main's return address
 int main() {
 	char buf[4];
-	memcpy(buf+24, "\x86\x05@\x00\x00\x00\x00\x00", sizeof(void*));
+	memcpy(buf+24, "\xf6\x05@\x00\x00\x00\x00\x00", sizeof(void*));
 	return 0;
 }

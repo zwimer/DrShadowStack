@@ -30,7 +30,7 @@ FILE * const Utilities::stdout_file= STDOUT_FILE;
 /** This exists so that if a global Utilities is declared
  *  it will setup everyhing needed for the class */
 void Utilities::setup(const bool clear_log) {
-	if ( LOG_FILE != nullptr ) {
+#ifdef LOG_FILE
 
 		// If log should be remove, try to unlink it
 		if (clear_log) {
@@ -41,7 +41,7 @@ void Utilities::setup(const bool clear_log) {
 		// Open the log file
 		log_file = fopen(LOG_FILE, "a");
 		assert( log_file != nullptr, "fopen() failed." );
-	}
+#endif
 }
 
 

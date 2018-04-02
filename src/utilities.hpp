@@ -62,14 +62,16 @@ public:
 	}
 
 	/// Logs the arguments as cout would to the log file if not null
-	/** Ends the printed line(s) with a newline then flushes the buffer */
+	/** Ends the printed line(s) with a newline then flushes the buffer
+	 *  On faliure, silently fails (since it cannot write out) */
 	template<typename... Args> static void log(Args && ... args) {
 		write_log(log_file, std::forward<Args>(args)... );
 	}
 
 	/// Prints the arguments as cout would to the stdout and log files 
 	/** Ends the printed line(s) with a newline then flushes the buffer
-	 *  If either file pointer is null, that file is skipped */
+	 *  If either file pointer is null, that file is skipped
+	 *  On faliure, silently fails (since it cannot write out) */
 	template<typename... Args> static void message(Args && ... args) {
 		write_log(log_file, std::forward<Args>(args)... );
 		write_log(stdout_file, std::forward<Args>(args)... );
@@ -77,7 +79,8 @@ public:
 
 	/// Prints the arguments as cout would to the error and log files 
 	/** Ends the printed line(s) with a newline then flushes the buffer
-	 *  If either file pointer is null, that file is skipped */
+	 *  If either file pointer is null, that file is skipped
+	 *  On faliure, silently fails (since it cannot write out) */
 	template<typename... Args> static void log_error(Args && ... args) {
 		write_log(log_file, std::forward<Args>(args)... );
 		write_log(error_file, std::forward<Args>(args)... );
@@ -90,13 +93,12 @@ private:
 
 	/// A wrapper that writes args to f if f is not null
 	/** Ends the printed line(s) with a newline then flushes the buffer
-	 *  This function promises **NOTHING** on failure
+	 *  On faliure, silently fails (since it cannot write out)
 	 *  If the process is multithreaded or has forked, prints the TID first */
 	template<typename... Args> static void write_log(FILE * const f, Args && ... args);
 
     /// Adds the arguments to the stream
     /** Ends the printed line(s) with a newline then flushes the buffer
-     *  This function promises **NOTHING** on failure
      *  If the process is multithreaded or has forked, prints the TID first */
     template<typename... Args> static void write_log_helper(std::stringstream & stream,
                                                             Args && ... args);
@@ -130,13 +132,20 @@ private:
 
 
 // Write the arguments to f if f is not null
+// On faliure, silently fails (since it cannot write out)
 template<typename... Args> void Utilities::write_log(FILE * const f, Args && ... args) {
 	if ( f != nullptr ) {
+
+		// Create the stream
 		std::stringstream stream;
 		write_log_helper( stream, std::forward<Args>(args)... );
+		stream << '\n';
+
+		// Write the string then flush the buffer
 		const std::string str = stream.str();
 		const auto len = str.size();
-		Utilities::assert( fwrite(str.c_str(), 1, len, f) == len, nullptr );
+		Utilities::assert( fwrite(str.c_str(), len, 1, f) == 1, nullptr );
+		Utilities::assert( fflush(f) == 0, nullptr );
 	}
 }
 

@@ -278,7 +278,7 @@ template&lt;typename... Args&gt; </div>
 </div><div class="memdoc">
 
 <p>Logs the arguments as cout would to the log file if not null. </p>
-<p>Ends the printed line(s) with a newline then flushes the buffer </p>
+<p>Ends the printed line(s) with a newline then flushes the buffer On faliure, silently fails (since it cannot write out) </p>
 
 </div>
 </div>
@@ -307,7 +307,7 @@ template&lt;typename... Args&gt; </div>
 </div><div class="memdoc">
 
 <p>Prints the arguments as cout would to the error and log files. </p>
-<p>Ends the printed line(s) with a newline then flushes the buffer If either file pointer is null, that file is skipped </p>
+<p>Ends the printed line(s) with a newline then flushes the buffer If either file pointer is null, that file is skipped On faliure, silently fails (since it cannot write out) </p>
 
 </div>
 </div>
@@ -336,7 +336,7 @@ template&lt;typename... Args&gt; </div>
 </div><div class="memdoc">
 
 <p>Prints the arguments as cout would to the stdout and log files. </p>
-<p>Ends the printed line(s) with a newline then flushes the buffer If either file pointer is null, that file is skipped </p>
+<p>Ends the printed line(s) with a newline then flushes the buffer If either file pointer is null, that file is skipped On faliure, silently fails (since it cannot write out) </p>
 
 </div>
 </div>
@@ -433,7 +433,7 @@ template&lt;typename... Args&gt; </div>
 </div><div class="memdoc">
 
 <p>A wrapper that writes args to f if f is not null. </p>
-<p>Ends the printed line(s) with a newline then flushes the buffer This function promises <b>NOTHING</b> on failure If the process is multithreaded or has forked, prints the TID first </p>
+<p>Ends the printed line(s) with a newline then flushes the buffer On faliure, silently fails (since it cannot write out) If the process is multithreaded or has forked, prints the TID first </p>
 
 </div>
 </div>
@@ -472,7 +472,7 @@ template&lt;typename... Args&gt; </div>
 </div><div class="memdoc">
 
 <p>Adds the arguments to the stream. </p>
-<p>Ends the printed line(s) with a newline then flushes the buffer This function promises <b>NOTHING</b> on failure If the process is multithreaded or has forked, prints the TID first </p>
+<p>Ends the printed line(s) with a newline then flushes the buffer If the process is multithreaded or has forked, prints the TID first </p>
 
 </div>
 </div>
