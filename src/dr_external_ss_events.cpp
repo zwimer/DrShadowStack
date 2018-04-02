@@ -37,7 +37,7 @@ static dr_signal_action_t signal_event(void *drcontext, dr_siginfo_t *info) {
 static void on_call(const app_pc ret_to_addr) {
 
 	// Log the call
-	Utilities::verbose_log("(client) Call(%p)", ret_to_addr);
+	Utilities::verbose_log("(client) Call @ %p - 0x5", ret_to_addr);
 
 	// Create and send the message
 	Message::Call to_send( (char *) & ret_to_addr );
@@ -51,7 +51,7 @@ static void on_call(const app_pc ret_to_addr) {
 static void on_ret(const app_pc instr_addr, const app_pc target_addr) {
 
 	// Log the ret
-	Utilities::verbose_log("(client) Ret(%p)", target_addr);
+	Utilities::verbose_log("(client) Ret to %p", target_addr);
 
 	// Create and send the message
 	Message::Ret to_send( (char *) & target_addr );

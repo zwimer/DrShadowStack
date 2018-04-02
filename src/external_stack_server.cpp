@@ -133,7 +133,7 @@ void start_external_shadow_stack( const int sock ) {
 		// Verify the message is valid then call the appropriate function
 		const std::string message_type(buffer, MESSAGE_HEADER_LENGTH);
 		const auto function_ptr = call_correct_function[message_type];
-		Utilities::verbose_log("Got message header: %*.s", MESSAGE_HEADER_LENGTH, buffer);
+		Utilities::verbose_log("Got message header: %.*s", MESSAGE_HEADER_LENGTH, buffer);
 		Utilities::assert( function_ptr != nullptr, "Sever recieved wrong type of message!" );
 		function_ptr(stk, & buffer[MESSAGE_HEADER_LENGTH], sock);
 	}

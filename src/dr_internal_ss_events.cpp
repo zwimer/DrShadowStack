@@ -17,7 +17,7 @@ std::stack<app_pc> shadow_stack;
 // This function is called whenever a call instruction is about 
 // to execute. This function is static for optimization reasons */
 static void on_call(const app_pc ret_to_addr) {
-	Utilities::verbose_log("Call(%p)", ret_to_addr );
+	Utilities::verbose_log("Call @ %p", ret_to_addr );
 	shadow_stack.push( ret_to_addr );
 }
 
@@ -31,7 +31,7 @@ static void on_ret(app_pc, const app_pc target_addr) {
 	const constexpr auto message = Utilities::message;
 
 	// Log the address being returned to
-	Utilities::verbose_log("Ret(%p)", target_addr);
+	Utilities::verbose_log("Ret to %p", target_addr);
 
 	// If the shadow stack is empty, we cannot return
 	if ( shadow_stack.empty() ) {

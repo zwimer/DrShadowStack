@@ -31,7 +31,15 @@ FILE * const Utilities::stdout_file= STDOUT_FILE;
  *  it will setup everyhing needed for the class */
 void Utilities::setup(const bool clear_log) {
 	if ( LOG_FILE != nullptr ) {
-		log_file = fopen(LOG_FILE, clear_log ? "w":"a");
+
+		// If log should be remove, try to unlink it
+		if (clear_log) {
+			const int rv = unlink(LOG_FILE);
+			assert( (rv == 0) || (rv == ENOENT), "unlink() failed." );
+		}
+
+		// Open the log file
+		log_file = fopen(LOG_FILE, "a");
 		assert( log_file != nullptr, "fopen() failed." );
 	}
 }
