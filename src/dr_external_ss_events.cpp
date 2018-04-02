@@ -82,10 +82,10 @@ static void on_ret(const app_pc instr_addr, const app_pc target_addr) {
 // called once for each instruction in it. If either a call
 // or a ret is seen, the call and ret handlers are inserted 
 // before said instruction. Note: an app_pc is defined in comments
-dr_emit_flags_t ExternalSS::event_app_instruction(	void *drcontext, void *tag, 
-													instrlist_t *bb, instr_t *instr, 
-													bool for_trace, bool translating, 
-													void *user_data ) {
+dr_emit_flags_t external_event_app_instruction(	void *drcontext, void *tag, 
+												instrlist_t *bb, instr_t *instr, 
+												bool for_trace, bool translating, 
+												void *user_data ) {
 
 	// Concerning DynamoRIO's app_pc type. From their source"
 	// include/dr_defines.h:typedef byte * app_pc;
@@ -116,8 +116,8 @@ dr_emit_flags_t ExternalSS::event_app_instruction(	void *drcontext, void *tag,
 
 // Called on exit of client program
 // Checks how the client returned then exits
-void ExternalSS::exit_event() {
-	Utilities::assert(	drmgr_unregister_bb_insertion_event(event_app_instruction),
+void exit_event() {
+	Utilities::assert(	drmgr_unregister_bb_insertion_event(external_event_app_instruction),
 						"client process returned improperly." );
 	drmgr_exit();
 }
@@ -125,9 +125,18 @@ void ExternalSS::exit_event() {
 // Setup the external stack server for the DynamoRIO client
 void ExternalSS::setup(const char * const socket_path) {
 
+	// Setup
+	Utilities::assert( drmgr_init(), "drmgr_init() failed." );
+
+	// Register exit event
+	dr_register_exit_event(exit_event);
+
 	// Create the socket to be used
 	Utilities::log("Client connecting to %s", socket_path);
 	sock = QS::create_client(socket_path);
+
+	// The event used to re-route call and ret's
+    drmgr_register_bb_instrumentation_event(NULL, external_event_app_instruction, NULL);
 
 	// Whenever a singal is caught, we add a wildcard to the stack
 	drmgr_register_signal_event(signal_event);

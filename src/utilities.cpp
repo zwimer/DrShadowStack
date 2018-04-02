@@ -3,6 +3,8 @@
 #include "get_tid.hpp"
 #include "group.hpp"
 
+#include <unistd.h>
+#include <signal.h>
 #include <stdint.h>
 #include <stdarg.h>
 #include <errno.h>
