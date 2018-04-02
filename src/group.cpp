@@ -39,8 +39,7 @@ const static std::set<int> no_change {
 // A default signal handler
 // This handler will terminate the process group 
 void default_signal_handler(int sig) {
-	Utilities::log_error("\nSignal %d caught. Terminating "
-							"process group...", sig);
+	Utilities::log_error("\nSignal ", sig, " caught.\nTerminating process group...");
 	Group::terminate(nullptr);
 }
 
@@ -55,8 +54,8 @@ void set_default_signal_handler(void (*handler) (int sig)) {
 			// Try to change the handler. If signal fails 
 			// for any reason other than EINVAL, terminate the group
 			if ( (signal(i, handler) == SIG_ERR) && (errno != EINVAL) ) {
-				Utilities::log_error("failed to change signal handler of signal: %d\n"
-									 "strerror returns: %s", i, strerror(errno));
+				Utilities::log_error(	"failed to change signal handler of signal: ",
+									 	i, "\nstrerror returns: ", strerror(errno));
 				Group::terminate(nullptr);
 			}
 		}
@@ -111,7 +110,7 @@ void Group::setup() {
 
 		// Set up the group
 		setsid();
-		Utilities::log("Setup group with group id: %d", getpgrp());
+		Utilities::log("Setup group with group id: ", getpgrp());
 
 		// Remap signal handlers
 		set_default_signal_handler(default_signal_handler);
@@ -153,7 +152,12 @@ void Group::setup() {
 
 	// Print the message via the correct function then flush the buffers
 	if (msg != nullptr) {
-		(is_error ? Utilities::log_error : Utilities::message)("%s", msg);
+		if ( is_error ) {
+			Utilities::log_error(msg);
+		}
+		else {
+			Utilities::message(msg);
+		}
 	}
 	fflush(nullptr);
 

@@ -18,7 +18,7 @@ static int sock = -1;
 static dr_signal_action_t signal_event(void *drcontext, dr_siginfo_t *info) {
 
 	// Log the signal
-	Utilities::verbose_log("(client) Caught signal %d", info->sig);
+	Utilities::verbose_log("(client) Caught signal ", info->sig);
 
 	// Create and send the message
 	char buffer[sizeof(intmax_t) + 1];
@@ -37,7 +37,7 @@ static dr_signal_action_t signal_event(void *drcontext, dr_siginfo_t *info) {
 static void on_call(const app_pc ret_to_addr) {
 
 	// Log the call
-	Utilities::verbose_log("(client) Call @ %p - 0x5", ret_to_addr);
+	Utilities::verbose_log("(client) Call @ ", (void *) ret_to_addr, " - 0x5");
 
 	// Create and send the message
 	Message::Call to_send( (char *) & ret_to_addr );
@@ -51,7 +51,7 @@ static void on_call(const app_pc ret_to_addr) {
 static void on_ret(const app_pc instr_addr, const app_pc target_addr) {
 
 	// Log the ret
-	Utilities::verbose_log("(client) Ret to %p", target_addr);
+	Utilities::verbose_log("(client) Ret to ", (void *) target_addr);
 
 	// Create and send the message
 	Message::Ret to_send( (char *) & target_addr );
@@ -132,7 +132,7 @@ void ExternalSS::setup(const char * const socket_path) {
 	dr_register_exit_event(exit_event);
 
 	// Create the socket to be used
-	Utilities::log("Client connecting to %s", socket_path);
+	Utilities::log("Client connecting to ", socket_path);
 	sock = QS::create_client(socket_path);
 
 	// The event used to re-route call and ret's

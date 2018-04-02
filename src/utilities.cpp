@@ -54,9 +54,12 @@ void Utilities::setup(const bool clear_log) {
 
 // To be called in case of an error
 // Error logs s, perrors, then kills the process group
+// If s is null, just terminates the group
 [[ noreturn ]] void Utilities::err(const char * const s) {
 	TerminateOnDestruction tod;
-    log_error("%s\nMessage from strerror: %s", s, strerror(errno));
+	if ( s != nullptr ) {
+		log_error(s, "\nMessage from strerror: ", strerror(errno));
+	}
 	Group::terminate(nullptr);
 }
 
@@ -80,8 +83,9 @@ void Utilities::enable_multi_thread_or_process_mode() {
 	is_multi_thread_or_proccess = true;
 }
 
+#if 0
 // This function does nothing but return
-inline static void no_op(const char * const, ...) {}
+inline static void no_op(...) {}
 
 // The helper that writes args in the format of format to f
 // Ends the printed line with a newline then flushes the buffer
@@ -162,3 +166,4 @@ void Utilities::log_error(const char * const format, ...) {
 		}
 	}
 }
+#endif

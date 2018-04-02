@@ -48,7 +48,7 @@ int QS::create_server(const char * const fname) {
 
 	// Begin listening for exactly one client
 	Utilities::assert( listen(server_sock, 1) != -1, "listen() failed." );
-	Utilities::log("Created server %s\n\t- Listening for one client...", fname);
+	Utilities::log("Created server ", fname, "\n\t- Listening for one client...");
 
 	// Return the server and client sockets
 	return server_sock;
@@ -67,7 +67,7 @@ int QS::create_client(const char * sock_name) {
 	struct sockaddr_un server = make_unix_server(sock_name);
 	Utilities::assert( connect(client, (struct sockaddr *) &server, 
 				sizeof(struct sockaddr_un)) == 0, "connect() failed" );
-	Utilities::log("New client connected to %s", sock_name);
+	Utilities::log("New client connected to ", sock_name);
 
 	// Return the client
 	return client;
@@ -78,6 +78,6 @@ int QS::create_client(const char * sock_name) {
 int QS::accept_client(const int sock) {
 	const int accepted_sock = accept(sock, 0, 0);
 	Utilities::assert( accepted_sock != -1, "accept() failed" );
-	Utilities::log("Server on fd %d accepted one client", sock);
+	Utilities::log("Server on fd ", sock, " accepted one client");
 	return accepted_sock;
 }

@@ -17,7 +17,7 @@ std::stack<app_pc> shadow_stack;
 // This function is called whenever a call instruction is about 
 // to execute. This function is static for optimization reasons */
 static void on_call(const app_pc ret_to_addr) {
-	Utilities::verbose_log("Call @ %p", ret_to_addr );
+	Utilities::verbose_log("Call @ ", (void *) ret_to_addr );
 	shadow_stack.push( ret_to_addr );
 }
 
@@ -26,20 +26,16 @@ static void on_call(const app_pc ret_to_addr) {
 // to execute. This function is static for optimization reasons */
 static void on_ret(app_pc, const app_pc target_addr) {
 
-	// For clarity
-	const constexpr auto log_error = Utilities::log_error;
-	const constexpr auto message = Utilities::message;
-
 	// Log the address being returned to
-	Utilities::verbose_log("Ret to %p", target_addr);
+	Utilities::verbose_log("Ret to ", (void *) target_addr);
 
 	// If the shadow stack is empty, we cannot return
 	if ( shadow_stack.empty() ) {
 		TerminateOnDestruction tod;
-		Sym::print(message, log_error, "return address", target_addr);
-		log_error(	"*** Shadow stack mistmach detected! ***\n"
-					"Attempting to return to %p\n"
-					"\tShadow stack is empty!\n", target_addr );
+		Sym::print("return address", target_addr);
+		Utilities::log_error(	"*** Shadow stack mistmach detected! ***\n"
+								"Attempting to return to ", (void *) target_addr,
+								"\n\tShadow stack is empty!\n");
 		Group::terminate(nullptr);
 	}
 
@@ -63,20 +59,20 @@ static void on_ret(app_pc, const app_pc target_addr) {
 		TerminateOnDestruction tod;
 
 		// Print out the mismatch error
-		log_error( "*** Shadow stack mistmach detected! ***\n"
-			 "Attempting to return to %p\n"
-			 "\tTop of shadow stack is %p\n", target_addr, top );
+		Utilities::log_error(	"*** Shadow stack mistmach detected! ***\n"
+								"Attempting to return to ", (void *) target_addr,
+								"\n\tTop of shadow stack is ", (void *) top, '\n' );
 
 		// Print out symbol information, then terminate the group
-		Sym::print(message, log_error, "top of shadow stack", (app_pc) shadow_stack.top());
-		Sym::print(message, log_error, "return address", target_addr);
+		Sym::print("top of shadow stack", (app_pc) shadow_stack.top());
+		Sym::print("return address", target_addr);
 		Group::terminate(nullptr);
 	}
 }
 
 // Called whenever a signal is called. Adds a wildcard to the shadow stack
 static dr_signal_action_t signal_event(void *drcontext, dr_siginfo_t *info) {
-	Utilities::verbose_log("Caught sig %d\n", info->sig);
+	Utilities::verbose_log("Caught sig ", info->sig);
 	shadow_stack.push( (app_pc) WILDCARD );
     return DR_SIGNAL_DELIVER;
 }
