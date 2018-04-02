@@ -28,15 +28,12 @@ void Sym::finish() {
     Utilities::assert( drsym_exit() == DRSYM_SUCCESS, "drsym_exit() failed." );
 }
 
-// Print symbol information for the what is located at addr
-// Prints out information via the pnt function which works like printf
-// Prints out errors via the perr function which works like printf
-// description is a description of what the address addr points to
-void Sym::print( PrintFn pnt, PrintFn perr, const char * const description, 
-				 const app_pc addr ) {
+/// Print symbol information for the what is located at addr
+/** description is a description of what the address addr points to */
+void Sym::print( const char * const description, const app_pc addr ) {
  
 	// Print out the description
-	pnt("Printing symbol information for %s...", description);
+	Utilities::message("Printing symbol information for ", description, "...");
 
 	// Temporaries used for struct internals
     char name[MAX_SYM_RESULT + 1];
@@ -46,7 +43,7 @@ void Sym::print( PrintFn pnt, PrintFn perr, const char * const description,
 	// If it is not in any, note so then return
     module_data_t * data = dr_lookup_module(addr);
     if (data == nullptr) {
-        perr("Unknown symbol for %p", addr);
+        Utilities::log_error("Unknown symbol for ", (void *) addr);
         return;
     }
 
@@ -71,14 +68,14 @@ void Sym::print( PrintFn pnt, PrintFn perr, const char * const description,
 
 		// If an unknown error happened, note so
 		default :
-			perr(	"drsym_lookup_address() failed for %p"
-					"with error number: %d", addr, symres );
+			Utilities::log_error(	"drsym_lookup_address() failed for ", 
+									(void *) addr, "with error number: ", symres );
 			return;
 
 		// If the symbol was not found, note so
 		case DRSYM_ERROR_SYMBOL_NOT_FOUND : 
-			perr(	"drsym_lookup_address() failed for %p"
-					" - symbol not found", addr );
+			Utilities::log_error(	"drsym_lookup_address() failed for ", 
+									(void *) addr," - symbol not found" );
 			return;
 
 		// If the sym is known, continue on
@@ -94,17 +91,18 @@ void Sym::print( PrintFn pnt, PrintFn perr, const char * const description,
 	}
 
 	// Print the basic symbol info	
-	pnt( "Address: %p\n\t- Module: %s\n\t- Symbol: %s + %p",
-		 addr, modname, sym.name, addr - data->start - sym.start_offs);
+	Utilities::message( 	"Address: ", (void *) addr, "\n\t- Module: ", 
+							modname, "\n\t- Symbol: ", sym.name, " + ",
+							addr - data->start - sym.start_offs );
 
 	// If possible, print line specific information
 	if (symres == DRSYM_ERROR_LINE_NOT_AVAILABLE) {
-		pnt( "\t- File: %s\n\t- Line: %llu + %p\n",
-			 sym.file, sym.line, sym.line_offs );
+		Utilities::message(	"\t- File: ", sym.file, "\n\t- Line: ", 
+								sym.line, " + ", sym.line_offs);
 	}
 
 	// Otherwise, note that no info is available
 	else {
-		pnt("\t- No line specific information available.\n");
+		Utilities::message("\t- No line specific information available.\n");
 	}
 }

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['unlock',['unlock',['../class_i_p_c_lock.html#a28399a1d6ba139319c4addcaccb93a79',1,'IPCLock']]]
+  ['verbose_5flog',['verbose_log',['../class_utilities.html#ad7251bf1dd140719a5ff384d81dc4ac0',1,'Utilities']]]
 ];
