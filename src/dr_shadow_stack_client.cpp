@@ -17,7 +17,7 @@ DR_EXPORT void dr_client_main(client_id_t id, int argc, const char *argv[]) {
 	Utilities::enable_multi_thread_or_process_mode();
 
 	// Alert the user that DynamoRIO has started
-	Utilities::message("DynamoRIO client started");
+	Utilities::log("DynamoRIO client started");
 	Utilities::assert(argc == 3, "Incorrect usage of dr_client_main\n"
 								 "Expected args: <Mode> <Socket path or empty string>" );
 
