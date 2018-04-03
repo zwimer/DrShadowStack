@@ -2,7 +2,6 @@
 #include "dr_print_sym.hpp"
 #include "constants.hpp"
 #include "utilities.hpp"
-#include "proc_rc.hpp"
 #include "group.hpp"
 
 #include <stack>
@@ -72,7 +71,7 @@ static void on_ret(app_pc, const app_pc target_addr) {
 
 // Called whenever a signal is called. Adds a wildcard to the shadow stack
 static dr_signal_action_t signal_event(void *drcontext, dr_siginfo_t *info) {
-	Utilities::verbose_log("Caught sig ", info->sig);
+	Utilities::verbose_log("Caught sig ", info->sig, " - ", strsignal(info->sig));
 	shadow_stack.push( (app_pc) WILDCARD );
     return DR_SIGNAL_DELIVER;
 }
@@ -122,30 +121,12 @@ dr_emit_flags_t internal_event_app_instruction(	void * drcontext, void * tag,
     return DR_EMIT_DEFAULT;
 }
 
-// Increments the program reference counter
-// This is a wrapper that can be used as an event
-void proc_rc_inc(void *) {
-	prc->inc();
-}
-
-// Decrements the program reference counter
-// This is a wrapper that can be used as an event
-void proc_rc_dec(void *) {
-	prc->dec();
-}
-
 // Setup the internal stack server for the DynamoRIO client
 void InternalSS::setup(const char * const socket_path) {
 
 	// Setup
 	Utilities::assert( drmgr_init(), "drmgr_init() failed." );
 	Sym::init();
-
-	// Handle forking and threading, and register the exit event (via thread exit)
-	// Note: On exit, thread_exit will be called, so no general exit event is needed
-	drmgr_register_thread_exit_event(proc_rc_dec);
-	drmgr_register_thread_init_event(proc_rc_inc);
-	dr_register_fork_init_event(proc_rc_inc);
 
 	// The event used to re-route call and ret's
     drmgr_register_bb_instrumentation_event(NULL, internal_event_app_instruction, NULL);

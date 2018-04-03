@@ -15,14 +15,7 @@ A static class holding the group functions.
 static void \hyperlink{struct_group_a9e2d7e0c56696de4592f1b166188c10a}{setup} ()
 \begin{DoxyCompactList}\small\item\em Setup the group. \end{DoxyCompactList}\item 
 static void \hyperlink{struct_group_a8867a6d9f7987d3db83bf193bf42f858}{terminate} (const char $\ast$const msg, bool is\+\_\+error=false)
-\begin{DoxyCompactList}\small\item\em Terminates the process group via S\+I\+G\+K\+I\+LL. \end{DoxyCompactList}\item 
-static void \hyperlink{struct_group_a2db75d95407105dceb19a644750d001d}{register\+\_\+delete\+\_\+proc\+\_\+rc} (void($\ast$call)())
-\begin{DoxyCompactList}\small\item\em Registers the proc\+\_\+rc destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Static Public Attributes}
-\begin{DoxyCompactItemize}
-\item 
-static void($\ast$ \hyperlink{struct_group_a737564dd9819ea8050f6f3019c550da2}{delete\+\_\+proc\+\_\+rc} )() = nullptr
-\begin{DoxyCompactList}\small\item\em The recorded callback to the proc\+\_\+rc destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Terminates the process group via S\+I\+G\+K\+I\+LL. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -34,18 +27,7 @@ static bool \hyperlink{struct_group_a35632ca452cfe09fbf723539cd264f58}{setup\+\_
 A static class holding the group functions. 
 
 \subsection{Member Function Documentation}
-\index{Group@{Group}!register\+\_\+delete\+\_\+proc\+\_\+rc@{register\+\_\+delete\+\_\+proc\+\_\+rc}}
-\index{register\+\_\+delete\+\_\+proc\+\_\+rc@{register\+\_\+delete\+\_\+proc\+\_\+rc}!Group@{Group}}
-\subsubsection[{\texorpdfstring{register\+\_\+delete\+\_\+proc\+\_\+rc(void($\ast$call)())}{register_delete_proc_rc(void(*call)())}}]{\setlength{\rightskip}{0pt plus 5cm}void Group\+::register\+\_\+delete\+\_\+proc\+\_\+rc (
-\begin{DoxyParamCaption}
-\item[{void($\ast$)()}]{call}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{struct_group_a2db75d95407105dceb19a644750d001d}{}\label{struct_group_a2db75d95407105dceb19a644750d001d}
-
-
-Registers the proc\+\_\+rc destructor. 
-
-This function exists as \hyperlink{group_8cpp}{group.\+cpp} may N\+OT include \hyperlink{proc__rc_8hpp}{proc\+\_\+rc.\+hpp}, as \hyperlink{proc__rc_8hpp}{proc\+\_\+rc.\+hpp} generally uses pthreads internally. Dynamo\+R\+IO does not play nice with pthreads. Thus to free allocated memory, a callback registration is required \index{Group@{Group}!setup@{setup}}
+\index{Group@{Group}!setup@{setup}}
 \index{setup@{setup}!Group@{Group}}
 \subsubsection[{\texorpdfstring{setup()}{setup()}}]{\setlength{\rightskip}{0pt plus 5cm}void Group\+::setup (
 \begin{DoxyParamCaption}
@@ -68,16 +50,9 @@ This function should N\+OT be called by the dynamorio client. By then the group 
 
 Terminates the process group via S\+I\+G\+K\+I\+LL. 
 
-Frees shared memeory via delete\+\_\+proc\+\_\+rc If is\+\_\+error is set to true, msg is logged to the E\+R\+R\+OR file, otherwise it is logged via \hyperlink{class_utilities_ae8efd2e8950fe6641d87296b8120d246}{Utilities\+::message} If msg is nullptr, no message is passed. If this function ends up calling itself, immediate process group termination will occur 
+If is\+\_\+error is set to true, msg is logged to the E\+R\+R\+OR file, otherwise it is logged via \hyperlink{class_utilities_ae8efd2e8950fe6641d87296b8120d246}{Utilities\+::message} If msg is nullptr, no message is passed. If this function ends up calling itself, immediate process group termination will occur 
 
-\subsection{Field Documentation}
-\index{Group@{Group}!delete\+\_\+proc\+\_\+rc@{delete\+\_\+proc\+\_\+rc}}
-\index{delete\+\_\+proc\+\_\+rc@{delete\+\_\+proc\+\_\+rc}!Group@{Group}}
-\subsubsection[{\texorpdfstring{delete\+\_\+proc\+\_\+rc}{delete_proc_rc}}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ Group\+::delete\+\_\+proc\+\_\+rc)() = nullptr\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{struct_group_a737564dd9819ea8050f6f3019c550da2}{}\label{struct_group_a737564dd9819ea8050f6f3019c550da2}
-
-
-The recorded callback to the proc\+\_\+rc destructor. 
-
+\subsection{Member Data Documentation}
 \index{Group@{Group}!setup\+\_\+complete@{setup\+\_\+complete}}
 \index{setup\+\_\+complete@{setup\+\_\+complete}!Group@{Group}}
 \subsubsection[{\texorpdfstring{setup\+\_\+complete}{setup_complete}}]{\setlength{\rightskip}{0pt plus 5cm}bool Group\+::setup\+\_\+complete = false\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{struct_group_a35632ca452cfe09fbf723539cd264f58}{}\label{struct_group_a35632ca452cfe09fbf723539cd264f58}

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['procrc',['ProcRC',['../class_proc_r_c.html',1,'']]]
+  ['retinfo',['RetInfo',['../struct_message_1_1_ret_info.html',1,'Message']]]
 ];

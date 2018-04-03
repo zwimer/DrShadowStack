@@ -8,6 +8,5 @@ var searchData=
   ['continue',['Continue',['../class_message.html#a04de61b84a209cdf372b6f53f3adf7c4',1,'Message::Continue()'],['../external__stack__server_8cpp.html#a7169d6206004f5e46aba26d60d62eee7',1,'Continue():&#160;external_stack_server.cpp']]],
   ['continueinfo',['ContinueInfo',['../struct_message_1_1_continue_info.html',1,'Message']]],
   ['create_5fclient',['create_client',['../namespace_q_s.html#a506085f54f85632d5cef32833b717245',1,'QS']]],
-  ['create_5fserver',['create_server',['../namespace_q_s.html#a2076a50ca1402320c07d752e8b26caec',1,'QS']]],
-  ['create_5fshared_5fmemory',['create_shared_memory',['../proc__rc_8cpp.html#a1213efca8ce96d016978a2f4bab88590',1,'proc_rc.cpp']]]
+  ['create_5fserver',['create_server',['../namespace_q_s.html#a2076a50ca1402320c07d752e8b26caec',1,'QS']]]
 ];

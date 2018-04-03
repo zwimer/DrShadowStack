@@ -2,7 +2,6 @@
 #include "constants.hpp"
 #include "utilities.hpp"
 #include "message.hpp"
-#include "proc_rc.hpp"
 #include "group.hpp"
 
 #include <sys/socket.h>
@@ -19,6 +18,8 @@
 // For brevity
 using NewSignal = Message::NewSignal;
 using Continue = Message::Continue;
+using Thread = Message::Thread;
+using Fork = Message::Fork;
 using Call = Message::Call;
 using Ret = Message::Ret;
 
@@ -91,17 +92,32 @@ void ret_handler(pointer_stack & stk, const char * const buffer, const int sock)
 	Utilities::assert( bytes_sent == Continue::size, "write() failed." );
 }
 
+// Called when the process forks
+void fork_handler(pointer_stack & stk, const char * const buffer, const int) {
+	// TODO
+	/* new_proc_handler(); */
+}
+
+// Called when the process starts a new thread
+void thread_handler(pointer_stack & stk, const char * const buffer, const int) {
+	// TODO
+	/* while ( ! stk.empty() ) { */
+	/* 	stk.pop(); */
+	/* } */
+	/* new_proc_handler(); */
+}
+
+
 // The external shadow stack function
 // Communicates with the unix socket server file descriptor sock
 void start_external_shadow_stack( const int sock ) {
 	TerminateOnDestruction tod;
 
-	// Declare this as a valid process
-	prc->inc();
-
 	// Create the message handling function map and populate it
 	std::map<std::string, message_handler> call_correct_function {
 		{ std::string( NewSignal::header ), add_wildcard },
+		{ std::string( Thread::header ), thread_handler },
+		{ std::string( Fork::header ), fork_handler },
 		{ std::string( Call::header ), call_handler },
 		{ std::string( Ret::header ), ret_handler }
 	};
@@ -136,10 +152,6 @@ void start_external_shadow_stack( const int sock ) {
 		Utilities::assert( function_ptr != nullptr, "Sever recieved wrong type of message!" );
 		function_ptr(stk, & buffer[MESSAGE_HEADER_LENGTH], sock);
 	}
-
-	// The process died (we think, but if not this is safe still)
-	// decrement the reference count of processes
-	prc->dec();
 
 	// If the program reached this point, another
 	// thread / process must be active, gracefully return

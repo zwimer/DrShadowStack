@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Shadow Stack
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">0.1</span>
    </div>
   </td>
  </tr>
@@ -40,7 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li class="current"><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -62,9 +62,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
-      <li><a href="classes.html"><span>Data&#160;Structure&#160;Index</span></a></li>
-      <li><a href="functions.html"><span>Data&#160;Fields</span></a></li>
+      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -85,8 +85,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a>  </div>
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
+<a href="struct_group-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Group Struct Reference</div>  </div>
 </div><!--header-->
@@ -105,15 +105,6 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a8867a6d9f7987d3db83bf193bf42f858"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_group.html#a8867a6d9f7987d3db83bf193bf42f858">terminate</a> (const char *const msg, bool is_error=false)</td></tr>
 <tr class="memdesc:a8867a6d9f7987d3db83bf193bf42f858"><td class="mdescLeft">&#160;</td><td class="mdescRight">Terminates the process group via SIGKILL.  <a href="#a8867a6d9f7987d3db83bf193bf42f858">More...</a><br /></td></tr>
 <tr class="separator:a8867a6d9f7987d3db83bf193bf42f858"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2db75d95407105dceb19a644750d001d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_group.html#a2db75d95407105dceb19a644750d001d">register_delete_proc_rc</a> (void(*call)())</td></tr>
-<tr class="memdesc:a2db75d95407105dceb19a644750d001d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers the proc_rc destructor.  <a href="#a2db75d95407105dceb19a644750d001d">More...</a><br /></td></tr>
-<tr class="separator:a2db75d95407105dceb19a644750d001d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:a737564dd9819ea8050f6f3019c550da2"><td class="memItemLeft" align="right" valign="top">static void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_group.html#a737564dd9819ea8050f6f3019c550da2">delete_proc_rc</a> )() = nullptr</td></tr>
-<tr class="memdesc:a737564dd9819ea8050f6f3019c550da2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The recorded callback to the proc_rc destructor.  <a href="#a737564dd9819ea8050f6f3019c550da2">More...</a><br /></td></tr>
-<tr class="separator:a737564dd9819ea8050f6f3019c550da2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
@@ -124,33 +115,6 @@ Static Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A static class holding the group functions. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a2db75d95407105dceb19a644750d001d"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Group::register_delete_proc_rc </td>
-          <td>(</td>
-          <td class="paramtype">void(*)()&#160;</td>
-          <td class="paramname"><em>call</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Registers the proc_rc destructor. </p>
-<p>This function exists as <a class="el" href="group_8cpp.html">group.cpp</a> may NOT include <a class="el" href="proc__rc_8hpp.html">proc_rc.hpp</a>, as <a class="el" href="proc__rc_8hpp.html">proc_rc.hpp</a> generally uses pthreads internally. DynamoRIO does not play nice with pthreads. Thus to free allocated memory, a callback registration is required </p>
-
-</div>
-</div>
 <a class="anchor" id="a9e2d7e0c56696de4592f1b166188c10a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -210,33 +174,11 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Terminates the process group via SIGKILL. </p>
-<p>Frees shared memeory via delete_proc_rc If is_error is set to true, msg is logged to the ERROR file, otherwise it is logged via <a class="el" href="class_utilities.html#ae8efd2e8950fe6641d87296b8120d246" title="Prints the arguments as cout would to the stdout and log files. ">Utilities::message</a> If msg is nullptr, no message is passed. If this function ends up calling itself, immediate process group termination will occur </p>
+<p>If is_error is set to true, msg is logged to the ERROR file, otherwise it is logged via <a class="el" href="class_utilities.html#ae8efd2e8950fe6641d87296b8120d246" title="Prints the arguments as cout would to the stdout and log files. ">Utilities::message</a> If msg is nullptr, no message is passed. If this function ends up calling itself, immediate process group termination will occur </p>
 
 </div>
 </div>
-<h2 class="groupheader">Field Documentation</h2>
-<a class="anchor" id="a737564dd9819ea8050f6f3019c550da2"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void(* Group::delete_proc_rc)() = nullptr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The recorded callback to the proc_rc destructor. </p>
-
-</div>
-</div>
+<h2 class="groupheader">Member Data Documentation</h2>
 <a class="anchor" id="a35632ca452cfe09fbf723539cd264f58"></a>
 <div class="memitem">
 <div class="memproto">
