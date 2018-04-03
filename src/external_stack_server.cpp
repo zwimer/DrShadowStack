@@ -93,12 +93,19 @@ void ret_handler(pointer_stack & stk, const char * const buffer, const int sock)
 	Utilities::assert( bytes_sent == Continue::size, "write() failed." );
 }
 
+// Called when the process forks
 void fork_handler(pointer_stack & stk, const char * const buffer, const int) {
 	// TODO
+	/* new_proc_handler(); */
 }
 
+// Called when the process starts a new thread
 void thread_handler(pointer_stack & stk, const char * const buffer, const int) {
 	// TODO
+	/* while ( ! stk.empty() ) { */
+	/* 	stk.pop(); */
+	/* } */
+	/* new_proc_handler(); */
 }
 
 

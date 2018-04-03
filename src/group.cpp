@@ -39,7 +39,8 @@ const static std::set<int> no_change {
 // A default signal handler
 // This handler will terminate the process group 
 void default_signal_handler(int sig) {
-	Utilities::log_error("\nSignal ", sig, " caught.\nTerminating process group...");
+	Utilities::log_error(	"\nSignal ", sig, " (", strsignal(sig),
+							") caught.\nTerminating process group...");
 	Group::terminate(nullptr);
 }
 
