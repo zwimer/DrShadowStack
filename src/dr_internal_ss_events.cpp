@@ -72,7 +72,7 @@ static void on_ret(app_pc, const app_pc target_addr) {
 
 // Called whenever a signal is called. Adds a wildcard to the shadow stack
 static dr_signal_action_t signal_event(void *drcontext, dr_siginfo_t *info) {
-	Utilities::verbose_log("Caught sig ", info->sig);
+	Utilities::verbose_log("Caught sig ", info->sig, " - ", strsignal(info->sig));
 	shadow_stack.push( (app_pc) WILDCARD );
     return DR_SIGNAL_DELIVER;
 }
