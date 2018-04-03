@@ -19,6 +19,8 @@
 // For brevity
 using NewSignal = Message::NewSignal;
 using Continue = Message::Continue;
+using Thread = Message::Thread;
+using Fork = Message::Fork;
 using Call = Message::Call;
 using Ret = Message::Ret;
 
@@ -91,6 +93,15 @@ void ret_handler(pointer_stack & stk, const char * const buffer, const int sock)
 	Utilities::assert( bytes_sent == Continue::size, "write() failed." );
 }
 
+void fork_handler(pointer_stack & stk, const char * const buffer, const int) {
+	// TODO
+}
+
+void thread_handler(pointer_stack & stk, const char * const buffer, const int) {
+	// TODO
+}
+
+
 // The external shadow stack function
 // Communicates with the unix socket server file descriptor sock
 void start_external_shadow_stack( const int sock ) {
@@ -102,6 +113,8 @@ void start_external_shadow_stack( const int sock ) {
 	// Create the message handling function map and populate it
 	std::map<std::string, message_handler> call_correct_function {
 		{ std::string( NewSignal::header ), add_wildcard },
+		{ std::string( Thread::header ), thread_handler },
+		{ std::string( Fork::header ), fork_handler },
 		{ std::string( Call::header ), call_handler },
 		{ std::string( Ret::header ), ret_handler }
 	};

@@ -98,13 +98,11 @@ class Message final {
 		static constexpr const char * const header = "CONT";
 	};
 
-
 	/** A class containing the header of Call message */
 	struct CallInfo final {
 		/** The header of the Call message */
 		static const constexpr char * const header = "CALL";
 	};
-
 
 	/** A class containing the header of Call message */
 	struct RetInfo final {
@@ -112,21 +110,17 @@ class Message final {
 		static const constexpr char * const header = "RET-";
 	};
 
-#if 0
-	// Internal SS messages
-
-	/** A class containing the header of Call message */
-	struct NewIntProcInfo final {
-		/** The header of the NewIntProc message */
-		static const constexpr char * const header = "NIPR";
+	/** A class containing the header of Fork message */
+	struct ForkInfo final {
+		/** The header of the Fork message */
+		static const constexpr char * const header = "FORK";
 	};
 
-	/** A class containing the header of Call message */
-	struct IntProcDeathInfo final {
-		/** The header of the IntProcDeath message */
-		static const constexpr char * const header = "IPRD";
+	/** A class containing the header of Thread message */
+	struct ThreadInfo final {
+		/** The header of the Thread message */
+		static const constexpr char * const header = "THRD";
 	};
-#endif
 
 public:
 
@@ -143,13 +137,10 @@ public:
 	typedef MessageType<false, CallInfo> Call;
 	/** A typedef for the ret message */
 	typedef MessageType<false, RetInfo> Ret;
-
-#if 0
-	/** A typedef for the new int proc message */
-	typedef MessageType<true, NewIntProcInfo> NewIntProc;
-	/** A typedef for the new int proc message */
-	typedef MessageType<true, IntProcDeathInfo> IntProcDeath;
-#endif
+	/** A typedef for the fork message */
+	typedef MessageType<true, ForkInfo> Fork;
+	/** A typedef for the thread message */
+	typedef MessageType<true, ThreadInfo> Thread;
 };
 
 
