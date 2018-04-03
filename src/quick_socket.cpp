@@ -1,10 +1,15 @@
 #include "quick_socket.hpp"
 #include "utilities.hpp"
 
-#include <sys/types.h>
+#include <boost/filesystem.hpp>
 #include <sys/socket.h>
+#include <sys/types.h>
 #include <sys/un.h>
 #include <string.h>
+
+
+// Undefine macro assert, it clobbers the class member function assert
+#undef assert
 
 
 /*********************************************************/
