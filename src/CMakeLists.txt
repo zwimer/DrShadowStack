@@ -143,6 +143,7 @@ add_executable(${PROGRAM_NAME}
 	external_stack_server.cpp
 	shadow_stack.cpp
 	parse_args.cpp
+	temp_name.cpp
 	)
 
 # Link to the support library

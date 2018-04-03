@@ -38,6 +38,8 @@
 
 **Merged pull requests:**
 
+- Docs [\#64](https://github.com/zwimer/DrShadowStack/pull/64) ([zwimer](https://github.com/zwimer))
+- Bug fix [\#63](https://github.com/zwimer/DrShadowStack/pull/63) ([zwimer](https://github.com/zwimer))
 - Improve logging [\#62](https://github.com/zwimer/DrShadowStack/pull/62) ([zwimer](https://github.com/zwimer))
 - Now use boost filesystem to generate unique path [\#59](https://github.com/zwimer/DrShadowStack/pull/59) ([zwimer](https://github.com/zwimer))
 - Internal SS now reference counts! [\#57](https://github.com/zwimer/DrShadowStack/pull/57) ([zwimer](https://github.com/zwimer))
