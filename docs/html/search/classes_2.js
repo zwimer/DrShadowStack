@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['group',['Group',['../struct_group.html',1,'']]]
+  ['forkinfo',['ForkInfo',['../struct_message_1_1_fork_info.html',1,'Message']]]
 ];

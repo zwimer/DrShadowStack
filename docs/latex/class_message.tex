@@ -9,13 +9,15 @@ A class used for defining all message types.
 
 {\ttfamily \#include $<$message.\+hpp$>$}
 
-\subsection*{Data Structures}
+\subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \hyperlink{struct_message_1_1_call_info}{Call\+Info}
 \begin{DoxyCompactList}\small\item\em A class containing the header of Call message. \end{DoxyCompactList}\item 
 struct \hyperlink{struct_message_1_1_continue_info}{Continue\+Info}
 \begin{DoxyCompactList}\small\item\em A class containing the header of Continue message. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_message_1_1_fork_info}{Fork\+Info}
+\begin{DoxyCompactList}\small\item\em A class containing the header of Fork message. \end{DoxyCompactList}\item 
 struct \hyperlink{struct_message_1_1_message_type}{Message\+Type}
 \begin{DoxyCompactList}\small\item\em A templated message class A valid message is defined by constructing a \hyperlink{struct_message_1_1_message_type}{Message\+Type} around it. \end{DoxyCompactList}\item 
 struct \hyperlink{struct_message_1_1_message_type_3_01false_00_01_info_01_4}{Message\+Type$<$ false, Info $>$}
@@ -25,7 +27,9 @@ struct \hyperlink{struct_message_1_1_message_type_3_01true_00_01_info_01_4}{Mess
 struct \hyperlink{struct_message_1_1_new_signal_info}{New\+Signal\+Info}
 \begin{DoxyCompactList}\small\item\em A class containing the header of New\+Signal message. \end{DoxyCompactList}\item 
 struct \hyperlink{struct_message_1_1_ret_info}{Ret\+Info}
-\begin{DoxyCompactList}\small\item\em A class containing the header of Call message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A class containing the header of Call message. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_message_1_1_thread_info}{Thread\+Info}
+\begin{DoxyCompactList}\small\item\em A class containing the header of Thread message. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
@@ -36,7 +40,11 @@ typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ true, \hyp
 typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ false, \hyperlink{struct_message_1_1_call_info}{Call\+Info} $>$ \hyperlink{class_message_a0fd0ed431cb0d672045d09368a5d2126}{Call}
 \begin{DoxyCompactList}\small\item\em A typedef for the call message. \end{DoxyCompactList}\item 
 typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ false, \hyperlink{struct_message_1_1_ret_info}{Ret\+Info} $>$ \hyperlink{class_message_a146628035f5a0723cb04f7a328858e34}{Ret}
-\begin{DoxyCompactList}\small\item\em A typedef for the ret message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A typedef for the ret message. \end{DoxyCompactList}\item 
+typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ true, \hyperlink{struct_message_1_1_fork_info}{Fork\+Info} $>$ \hyperlink{class_message_ad1eca09e5cd0c92f940f51b847dd7f14}{Fork}
+\begin{DoxyCompactList}\small\item\em A typedef for the fork message. \end{DoxyCompactList}\item 
+typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ true, \hyperlink{struct_message_1_1_thread_info}{Thread\+Info} $>$ \hyperlink{class_message_ad3f3fae0323770c88017fc75b50682d1}{Thread}
+\begin{DoxyCompactList}\small\item\em A typedef for the thread message. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -64,6 +72,13 @@ A typedef for the call message.
 
 A typedef for the continue message. 
 
+\index{Message@{Message}!Fork@{Fork}}
+\index{Fork@{Fork}!Message@{Message}}
+\subsubsection[{\texorpdfstring{Fork}{Fork}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Message\+Type}$<$true, {\bf Fork\+Info}$>$ {\bf Message\+::\+Fork}}\hypertarget{class_message_ad1eca09e5cd0c92f940f51b847dd7f14}{}\label{class_message_ad1eca09e5cd0c92f940f51b847dd7f14}
+
+
+A typedef for the fork message. 
+
 \index{Message@{Message}!New\+Signal@{New\+Signal}}
 \index{New\+Signal@{New\+Signal}!Message@{Message}}
 \subsubsection[{\texorpdfstring{New\+Signal}{NewSignal}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Message\+Type}$<$false, {\bf New\+Signal\+Info}$>$ {\bf Message\+::\+New\+Signal}}\hypertarget{class_message_a9f57a1ee0e722668e9101b737d7c9844}{}\label{class_message_a9f57a1ee0e722668e9101b737d7c9844}
@@ -77,6 +92,13 @@ A typedef for the new signal message.
 
 
 A typedef for the ret message. 
+
+\index{Message@{Message}!Thread@{Thread}}
+\index{Thread@{Thread}!Message@{Message}}
+\subsubsection[{\texorpdfstring{Thread}{Thread}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Message\+Type}$<$true, {\bf Thread\+Info}$>$ {\bf Message\+::\+Thread}}\hypertarget{class_message_ad3f3fae0323770c88017fc75b50682d1}{}\label{class_message_ad3f3fae0323770c88017fc75b50682d1}
+
+
+A typedef for the thread message. 
 
 
 

@@ -1,7 +1,7 @@
 var searchData=
 [
   ['set_5fdefault_5fsignal_5fhandler',['set_default_signal_handler',['../group_8cpp.html#aba809f5ad91e68dea5a38257008ec829',1,'group.cpp']]],
-  ['setup',['setup',['../struct_sym.html#a5b0d02c05e1a5450e6dc79903615ab46',1,'Sym::setup()'],['../class_proc_r_c.html#acccb74d8597ab4b0041ba32ea64ea06d',1,'ProcRC::setup()'],['../struct_group.html#a9e2d7e0c56696de4592f1b166188c10a',1,'Group::setup()'],['../class_utilities.html#aa448e199bdc43fe62e9b9b989a7f667b',1,'Utilities::setup()'],['../namespace_external_s_s.html#a1ab997e2712a2124a7056765313589a1',1,'ExternalSS::setup()'],['../namespace_internal_s_s.html#a91c77a886d93d8526bf619cb3eeeec6c',1,'InternalSS::setup()']]],
+  ['setup',['setup',['../struct_sym.html#a5b0d02c05e1a5450e6dc79903615ab46',1,'Sym::setup()'],['../struct_group.html#a9e2d7e0c56696de4592f1b166188c10a',1,'Group::setup()'],['../class_utilities.html#aa448e199bdc43fe62e9b9b989a7f667b',1,'Utilities::setup()'],['../namespace_external_s_s.html#a1ab997e2712a2124a7056765313589a1',1,'ExternalSS::setup()'],['../namespace_internal_s_s.html#a91c77a886d93d8526bf619cb3eeeec6c',1,'InternalSS::setup()']]],
   ['setup_5fcomplete',['setup_complete',['../struct_group.html#a35632ca452cfe09fbf723539cd264f58',1,'Group']]],
   ['shadow_5fstack',['shadow_stack',['../dr__internal__ss__events_8cpp.html#a4d533d2157d896693f65cc71f4b3bf5e',1,'dr_internal_ss_events.cpp']]],
   ['shadow_5fstack_2ecpp',['shadow_stack.cpp',['../shadow__stack_8cpp.html',1,'']]],
