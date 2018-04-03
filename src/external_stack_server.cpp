@@ -2,7 +2,6 @@
 #include "constants.hpp"
 #include "utilities.hpp"
 #include "message.hpp"
-#include "proc_rc.hpp"
 #include "group.hpp"
 
 #include <sys/socket.h>
@@ -114,9 +113,6 @@ void thread_handler(pointer_stack & stk, const char * const buffer, const int) {
 void start_external_shadow_stack( const int sock ) {
 	TerminateOnDestruction tod;
 
-	// Declare this as a valid process
-	prc->inc();
-
 	// Create the message handling function map and populate it
 	std::map<std::string, message_handler> call_correct_function {
 		{ std::string( NewSignal::header ), add_wildcard },
@@ -156,10 +152,6 @@ void start_external_shadow_stack( const int sock ) {
 		Utilities::assert( function_ptr != nullptr, "Sever recieved wrong type of message!" );
 		function_ptr(stk, & buffer[MESSAGE_HEADER_LENGTH], sock);
 	}
-
-	// The process died (we think, but if not this is safe still)
-	// decrement the reference count of processes
-	prc->dec();
 
 	// If the program reached this point, another
 	// thread / process must be active, gracefully return

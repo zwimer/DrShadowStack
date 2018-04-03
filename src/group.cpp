@@ -9,9 +9,6 @@
 #include <set>
 
 
-// My default the callback should be null
-void (* Group::delete_proc_rc) () = nullptr;
-
 // Used to tell if the process group has started
 bool Group::setup_complete = false;
 
@@ -129,7 +126,6 @@ void Group::setup() {
 }
 
 // Terminates the process group via SIGKILL
-// Frees shared memeory via delete_proc_rc
 // If is_error is set to true, msg is logged to the
 // ERROR file, otherwise it is logged via Utilities::message
 // If msg is nullptr, no message is passed.
@@ -146,11 +142,6 @@ void Group::setup() {
 	terminate_already_called = true;
 	TerminateOnDestruction tod;
 
-	// If the delete_proc_rc callback was registered, call it
-	if ( delete_proc_rc != nullptr ) {
-		delete_proc_rc();
-	}
-
 	// Print the message via the correct function then flush the buffers
 	if (msg != nullptr) {
 		if ( is_error ) {
@@ -164,15 +155,4 @@ void Group::setup() {
 
 	// Kill the process group
 	kill_9_group();
-}
-
-// Registers the proc_rc destructor
-// This function exists as group.cpp may NOT include
-// proc_rc.hpp, as proc_rc.hpp generally uses pthreads
-// internally. DynamoRIO does not play nice with pthreads.
-// Thus to free allocated memory, a callback registration is required */
-void Group::register_delete_proc_rc( void (* call) () ) {
-	Utilities::assert( delete_proc_rc == nullptr, 
-		"delete_proc_rc already registered!" );
-	delete_proc_rc = call;
 }
