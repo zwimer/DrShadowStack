@@ -59,23 +59,12 @@ struct Group {
 	static void setup();
 
 	/// Terminates the process group via SIGKILL
-	/** Frees shared memeory via delete_proc_rc
-	 *  If is_error is set to true, msg is logged to the
+	/** If is_error is set to true, msg is logged to the
 	 *  ERROR file, otherwise it is logged via Utilities::message
 	 *  If msg is nullptr, no message is passed.
 	 *  If this function ends up calling itself, 
 	 *  immediate process group termination will occur */
 	[[ noreturn ]] static void terminate(const char * const msg, bool is_error = false);
- 
-	/// Registers the proc_rc destructor
-	/** This function exists as group.cpp may NOT include
-	 *  proc_rc.hpp, as proc_rc.hpp generally uses pthreads
-	 *  internally. DynamoRIO does not play nice with pthreads.
-	 *  Thus to free allocated memory, a callback registration is required */
-	static void register_delete_proc_rc( void (* call) () );
-
-	/** The recorded callback to the proc_rc destructor */
-	static void (* delete_proc_rc) ();
 
 private:
 

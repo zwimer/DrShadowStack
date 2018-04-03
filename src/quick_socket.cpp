@@ -1,7 +1,6 @@
 #include "quick_socket.hpp"
 #include "utilities.hpp"
 
-#include <boost/filesystem.hpp>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <sys/un.h>

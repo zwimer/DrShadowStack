@@ -39,7 +39,7 @@ set(PROGRAM_NAME DrShadowStack)
 project(${PROGRAM_NAME})
 
 # Set the program version
-set(PROGRAM_VERSION 0.0.1)
+set(PROGRAM_VERSION 0.1)
 
 
 # The name of the client shared library for DynamoRio
@@ -101,8 +101,6 @@ message(${CMAKE_CXX_FLAGS})
 add_library(${SS_SUPPORT_LIB} SHARED 
 	quick_socket.cpp
 	utilities.cpp
-	ipc_lock.cpp
-	proc_rc.cpp
 	get_tid.cpp
 	group.cpp
 	)
@@ -130,6 +128,7 @@ use_DynamoRIO_extension(${SS_DR_CLIENT_SO} "drsyms")
 
 # Link to the support library
 target_link_libraries(${SS_DR_CLIENT_SO} ${SS_SUPPORT_LIB})
+
 
 #################################################
 #												#
