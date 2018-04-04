@@ -6,12 +6,11 @@
 {\ttfamily \#include \char`\"{}message.\+hpp\char`\"{}}\\*
 {\ttfamily \#include $<$sys/socket.\+h$>$}\\*
 {\ttfamily \#include $<$unistd.\+h$>$}\\*
-{\ttfamily \#include $<$stdint.\+h$>$}\\*
 {\ttfamily \#include \char`\"{}drmgr.\+h\char`\"{}}\\*
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-static dr\+\_\+signal\+\_\+action\+\_\+t \hyperlink{dr__external__ss__events_8cpp_ad657672c35176858cd3bd4fac5bd089b}{signal\+\_\+event} (void $\ast$drcontext, dr\+\_\+siginfo\+\_\+t $\ast$info)
+static void \hyperlink{dr__external__ss__events_8cpp_ac865060ad09d7ce8d78ee609d322a6e1}{kernel\+\_\+xfer\+\_\+event\+\_\+handler} (void $\ast$, const dr\+\_\+kernel\+\_\+xfer\+\_\+info\+\_\+t $\ast$info)
 \item 
 static void \hyperlink{dr__external__ss__events_8cpp_a8161a26ec065b8c83d2f42637896162c}{on\+\_\+call} (const app\+\_\+pc ret\+\_\+to\+\_\+addr)
 \item 
@@ -49,6 +48,14 @@ static int \hyperlink{dr__external__ss__events_8cpp_a5903d0b282fc5eae503de618f89
 \item[{void $\ast$}]{user\+\_\+data}
 \end{DoxyParamCaption}
 )}\hypertarget{dr__external__ss__events_8cpp_a14668a99e9c1c591ee2ae89b26748bdf}{}\label{dr__external__ss__events_8cpp_a14668a99e9c1c591ee2ae89b26748bdf}
+\index{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}!kernel\+\_\+xfer\+\_\+event\+\_\+handler@{kernel\+\_\+xfer\+\_\+event\+\_\+handler}}
+\index{kernel\+\_\+xfer\+\_\+event\+\_\+handler@{kernel\+\_\+xfer\+\_\+event\+\_\+handler}!dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}}
+\subsubsection[{\texorpdfstring{kernel\+\_\+xfer\+\_\+event\+\_\+handler(void $\ast$, const dr\+\_\+kernel\+\_\+xfer\+\_\+info\+\_\+t $\ast$info)}{kernel_xfer_event_handler(void *, const dr_kernel_xfer_info_t *info)}}]{\setlength{\rightskip}{0pt plus 5cm}static void kernel\+\_\+xfer\+\_\+event\+\_\+handler (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{, }
+\item[{const dr\+\_\+kernel\+\_\+xfer\+\_\+info\+\_\+t $\ast$}]{info}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__external__ss__events_8cpp_ac865060ad09d7ce8d78ee609d322a6e1}{}\label{dr__external__ss__events_8cpp_ac865060ad09d7ce8d78ee609d322a6e1}
 \index{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}!on\+\_\+call@{on\+\_\+call}}
 \index{on\+\_\+call@{on\+\_\+call}!dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}}
 \subsubsection[{\texorpdfstring{on\+\_\+call(const app\+\_\+pc ret\+\_\+to\+\_\+addr)}{on_call(const app_pc ret_to_addr)}}]{\setlength{\rightskip}{0pt plus 5cm}static void on\+\_\+call (
@@ -64,14 +71,6 @@ static int \hyperlink{dr__external__ss__events_8cpp_a5903d0b282fc5eae503de618f89
 \item[{const app\+\_\+pc}]{target\+\_\+addr}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__external__ss__events_8cpp_a42c8b67f8f85fd6bad5bd11892c0d5bc}{}\label{dr__external__ss__events_8cpp_a42c8b67f8f85fd6bad5bd11892c0d5bc}
-\index{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}!signal\+\_\+event@{signal\+\_\+event}}
-\index{signal\+\_\+event@{signal\+\_\+event}!dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}}
-\subsubsection[{\texorpdfstring{signal\+\_\+event(void $\ast$drcontext, dr\+\_\+siginfo\+\_\+t $\ast$info)}{signal_event(void *drcontext, dr_siginfo_t *info)}}]{\setlength{\rightskip}{0pt plus 5cm}static dr\+\_\+signal\+\_\+action\+\_\+t signal\+\_\+event (
-\begin{DoxyParamCaption}
-\item[{void $\ast$}]{drcontext, }
-\item[{dr\+\_\+siginfo\+\_\+t $\ast$}]{info}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__external__ss__events_8cpp_ad657672c35176858cd3bd4fac5bd089b}{}\label{dr__external__ss__events_8cpp_ad657672c35176858cd3bd4fac5bd089b}
 
 
 \subsection{Variable Documentation}

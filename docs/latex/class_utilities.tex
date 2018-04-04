@@ -28,6 +28,11 @@ static void \hyperlink{class_utilities_a22c85a2970e168ca0b9ad6fd86752792}{assert
 \begin{DoxyCompactList}\small\item\em Prints the arguments as cout would to the error and log files. \end{DoxyCompactList}\item 
 static void \hyperlink{class_utilities_a384728ae9b72982c1351d881ba7ff007}{enable\+\_\+multi\+\_\+thread\+\_\+or\+\_\+process\+\_\+mode} ()
 \begin{DoxyCompactList}\small\item\em Once this is called, T\+I\+Ds will be printed with each message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+pid\+\_\+t \hyperlink{class_utilities_a93f3699cf92128c66efa084ff1399a45}{get\+\_\+tid} ()
+\begin{DoxyCompactList}\small\item\em Define a gettid function. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -90,7 +95,18 @@ Once this is called, T\+I\+Ds will be printed with each message.
 
 To be called in case of an error. 
 
-Prints log s to the error file, perrors, then kills the process group \index{Utilities@{Utilities}!log@{log}}
+Prints log s to the error file, perrors, then kills the process group \index{Utilities@{Utilities}!get\+\_\+tid@{get\+\_\+tid}}
+\index{get\+\_\+tid@{get\+\_\+tid}!Utilities@{Utilities}}
+\subsubsection[{\texorpdfstring{get\+\_\+tid()}{get_tid()}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t Utilities\+::get\+\_\+tid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_utilities_a93f3699cf92128c66efa084ff1399a45}{}\label{class_utilities_a93f3699cf92128c66efa084ff1399a45}
+
+
+Define a gettid function. 
+
+On failure, disables multi\+\_\+threaded / functionality (to continue logging) then terminates the group \index{Utilities@{Utilities}!log@{log}}
 \index{log@{log}!Utilities@{Utilities}}
 \subsubsection[{\texorpdfstring{log(\+Args \&\&...\+args)}{log(Args &&...args)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename... Args$>$ static void Utilities\+::log (
 \begin{DoxyParamCaption}

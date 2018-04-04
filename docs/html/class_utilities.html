@@ -85,6 +85,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_utilities-members.html">List of all members</a>  </div>
@@ -128,6 +129,12 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a384728ae9b72982c1351d881ba7ff007"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilities.html#a384728ae9b72982c1351d881ba7ff007">enable_multi_thread_or_process_mode</a> ()</td></tr>
 <tr class="memdesc:a384728ae9b72982c1351d881ba7ff007"><td class="mdescLeft">&#160;</td><td class="mdescRight">Once this is called, TIDs will be printed with each message.  <a href="#a384728ae9b72982c1351d881ba7ff007">More...</a><br /></td></tr>
 <tr class="separator:a384728ae9b72982c1351d881ba7ff007"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a93f3699cf92128c66efa084ff1399a45"><td class="memItemLeft" align="right" valign="top">pid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilities.html#a93f3699cf92128c66efa084ff1399a45">get_tid</a> ()</td></tr>
+<tr class="memdesc:a93f3699cf92128c66efa084ff1399a45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define a gettid function.  <a href="#a93f3699cf92128c66efa084ff1399a45">More...</a><br /></td></tr>
+<tr class="separator:a93f3699cf92128c66efa084ff1399a45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
@@ -251,6 +258,32 @@ Static Private Attributes</h2></td></tr>
 
 <p>To be called in case of an error. </p>
 <p>Prints log s to the error file, perrors, then kills the process group </p>
+
+</div>
+</div>
+<a class="anchor" id="a93f3699cf92128c66efa084ff1399a45"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">pid_t Utilities::get_tid </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Define a gettid function. </p>
+<p>On failure, disables multi_threaded / functionality (to continue logging) then terminates the group </p>
 
 </div>
 </div>

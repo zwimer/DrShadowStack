@@ -8,7 +8,7 @@
 \begin{DoxyCompactItemize}
 \item 
 pid\+\_\+t \hyperlink{get__tid_8cpp_a60fcb535009abf2c358cae02017c988e}{get\+\_\+tid} ()
-\begin{DoxyCompactList}\small\item\em Define a mac-\/equivalent gettid function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The actual gettid function is not glibc and may not exist on many machines, so we make one. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
@@ -21,6 +21,5 @@ pid\+\_\+t \hyperlink{get__tid_8cpp_a60fcb535009abf2c358cae02017c988e}{get\+\_\+
 )}\hypertarget{get__tid_8cpp_a60fcb535009abf2c358cae02017c988e}{}\label{get__tid_8cpp_a60fcb535009abf2c358cae02017c988e}
 
 
-Define a mac-\/equivalent gettid function. 
+The actual gettid function is not glibc and may not exist on many machines, so we make one. 
 
-The actual gettid function is not glibc and may not exist on many machines, so we make one 

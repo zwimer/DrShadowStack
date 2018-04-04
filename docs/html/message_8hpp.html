@@ -88,7 +88,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#define-members">Macros</a>  </div>
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">message.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -138,6 +139,15 @@ Macros</h2></td></tr>
 <tr class="memitem:ac119f42bacd57152815371e9527d1059"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="message_8hpp.html#ac119f42bacd57152815371e9527d1059">MESSAGE_HEADER_LENGTH</a>&#160;&#160;&#160;4</td></tr>
 <tr class="memdesc:ac119f42bacd57152815371e9527d1059"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of characters a message header can be.  <a href="#ac119f42bacd57152815371e9527d1059">More...</a><br /></td></tr>
 <tr class="separator:ac119f42bacd57152815371e9527d1059"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeca90e1c1c62b70670514ffc18c9dfd4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="message_8hpp.html#aeca90e1c1c62b70670514ffc18c9dfd4">MESSAGE_SIZE</a>&#160;&#160;&#160;(<a class="el" href="message_8hpp.html#a70eafdf190b8f3be16349543fe1b39ae">POINTER_SIZE</a> + <a class="el" href="message_8hpp.html#ac119f42bacd57152815371e9527d1059">MESSAGE_HEADER_LENGTH</a>)</td></tr>
+<tr class="memdesc:aeca90e1c1c62b70670514ffc18c9dfd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The size of a message.  <a href="#aeca90e1c1c62b70670514ffc18c9dfd4">More...</a><br /></td></tr>
+<tr class="separator:aeca90e1c1c62b70670514ffc18c9dfd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a76492c6757465a28076985bfda38bab2"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="message_8hpp.html#a76492c6757465a28076985bfda38bab2">set_length</a> (char *const dst, const char *const src, const int n)</td></tr>
+<tr class="memdesc:a76492c6757465a28076985bfda38bab2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies n bytes from src into dst during static initil If src is less than n bytes, fills the rest of dst with zeros.  <a href="#a76492c6757465a28076985bfda38bab2">More...</a><br /></td></tr>
+<tr class="separator:a76492c6757465a28076985bfda38bab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="ac119f42bacd57152815371e9527d1059"></a>
@@ -154,6 +164,20 @@ Macros</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aeca90e1c1c62b70670514ffc18c9dfd4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MESSAGE_SIZE&#160;&#160;&#160;(<a class="el" href="message_8hpp.html#a70eafdf190b8f3be16349543fe1b39ae">POINTER_SIZE</a> + <a class="el" href="message_8hpp.html#ac119f42bacd57152815371e9527d1059">MESSAGE_HEADER_LENGTH</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The size of a message. </p>
+
+</div>
+</div>
 <a class="anchor" id="a70eafdf190b8f3be16349543fe1b39ae"></a>
 <div class="memitem">
 <div class="memproto">
@@ -166,6 +190,42 @@ Macros</h2></td></tr>
 
 <p>The size of a pointer in the target program. </p>
 <p>To run on 32 bit programs, change this value! </p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a76492c6757465a28076985bfda38bab2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* set_length </td>
+          <td>(</td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>dst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *const&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copies n bytes from src into dst during static initil If src is less than n bytes, fills the rest of dst with zeros. </p>
+<p>It will return dst so that dst can be assigned to a static initalization </p>
 
 </div>
 </div>
