@@ -3,14 +3,12 @@
 #include "utilities.hpp"
 #include "message.hpp"
 
-#include <sys/socket.h>
-#include <unistd.h>
-
 #include "drmgr.h"
 
 
 // The socket to be used by this client
 static int sock = -1;
+
 
 
 // Called whenever a signal is called. Adds a wildcard to the shadow stack
@@ -19,9 +17,7 @@ static void kernel_xfer_event_handler(void *, const dr_kernel_xfer_info_t * info
 	if (info->type == DR_XFER_SIGNAL_DELIVERY) {
 		Utilities::verbose_log(	"Caught sig ", info->sig, " - ", strsignal(info->sig),
 								"\t\n- Handler address = ", (void *) info->target_pc);
-		const constexpr int size = Message::Continue::size;
-		const int bytes_sent = write(sock, Message::NewSignal::header, size);
-		Utilities::assert( bytes_sent == size, "write() failed!");
+		send_msg<Message::NewSignal>(sock);
 	}
 }
 
@@ -29,38 +25,33 @@ static void kernel_xfer_event_handler(void *, const dr_kernel_xfer_info_t * info
 // This function is called whenever a call instruction is about 
 // to execute. This function is static for optimization reasons */
 static void on_call(const app_pc ret_to_addr) {
-
-	// Log the call
 	Utilities::verbose_log("(client) Call @ ", (void *) ret_to_addr, " - 0x5");
-
-	// Create and send the message
-	Message::Call to_send( (char *) & ret_to_addr );
-	const int bytes_sent = write(sock, to_send.message, to_send.size);
-	Utilities::assert( bytes_sent == to_send.size, "write() failed!");
+	send_msg<Message::Call>(sock, (char *) & ret_to_addr );
 }
 
 // The ret handler. 
 // This function is called whenever a ret instruction is about 
 // to execute. This function is static for optimization reasons */
 static void on_ret(const app_pc instr_addr, const app_pc target_addr) {
-
-	// Log the ret
 	Utilities::verbose_log("(client) Ret to ", (void *) target_addr);
+	send_msg<Message::Ret>(sock, (char *) & target_addr );
+	(void) recv_msg<Message::Continue>(sock);
+}
 
-	// Create and send the message
-	Message::Ret to_send( (char *) & target_addr );
-	const int bytes_sent = write(sock, to_send.message, to_send.size);
-	Utilities::assert( bytes_sent == to_send.size, "write() failed!");
+// The fork event handler
+// This function is called by the child process after a fork
+void fork_event( void * ) {
+	Utilities::verbose_log("(client) Fork event caught");
+	// TODO
+}
 
-	// For clarity
-	const constexpr int size = Message::Continue::size;
-	const constexpr auto is_continue = Message::is_a_valid<Message::Continue>;
+// The thread event handler
+// This function is called by the new thread whenever the process threads
+void thread_event( void * ) {
+	Utilities::verbose_log("(client) Thread event caught");
 
-	// Wait until a we get a 'continue'
-	char buffer[size];
-	const int bytes_recv = recv( sock, buffer, size, MSG_WAITALL );
-	Utilities::assert( bytes_recv == size, "Did not get full size message!");
-	Utilities::assert( is_continue(buffer), "Received incorrect message!");
+	Utilities::log_error("TODO: is this called on fork event?"); // TODO
+	// TODO
 }
 
 // The function that inserts the call and ret handlers
@@ -122,8 +113,10 @@ void ExternalSS::setup(const char * const socket_path) {
 	// Setup
 	Utilities::assert( drmgr_init(), "drmgr_init() failed." );
 
-	// Register exit event
+	// Register events
 	dr_register_exit_event(exit_event);
+	dr_register_fork_init_event(fork_event);
+	drmgr_register_thread_init_event(thread_event);
 
 	// Create the socket to be used
 	Utilities::log("Client connecting to ", socket_path);
