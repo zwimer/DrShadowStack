@@ -106,8 +106,8 @@ Functions</h2></td></tr>
 <tr class="separator:a8161a26ec065b8c83d2f42637896162c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3b510b4eb4f19ab3f68d8183f9d802b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__internal__ss__events_8cpp.html#ac3b510b4eb4f19ab3f68d8183f9d802b">on_ret</a> (app_pc, const app_pc target_addr)</td></tr>
 <tr class="separator:ac3b510b4eb4f19ab3f68d8183f9d802b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad657672c35176858cd3bd4fac5bd089b"><td class="memItemLeft" align="right" valign="top">static dr_signal_action_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__internal__ss__events_8cpp.html#ad657672c35176858cd3bd4fac5bd089b">signal_event</a> (void *drcontext, dr_siginfo_t *info)</td></tr>
-<tr class="separator:ad657672c35176858cd3bd4fac5bd089b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac865060ad09d7ce8d78ee609d322a6e1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__internal__ss__events_8cpp.html#ac865060ad09d7ce8d78ee609d322a6e1">kernel_xfer_event_handler</a> (void *, const dr_kernel_xfer_info_t *info)</td></tr>
+<tr class="separator:ac865060ad09d7ce8d78ee609d322a6e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34e05a4b90b22002c7fb2c942c2ec517"><td class="memItemLeft" align="right" valign="top">dr_emit_flags_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__internal__ss__events_8cpp.html#a34e05a4b90b22002c7fb2c942c2ec517">internal_event_app_instruction</a> (void *drcontext, void *tag, instrlist_t *bb, instr_t *instr, bool for_trace, bool translating, void *user_data)</td></tr>
 <tr class="separator:a34e05a4b90b22002c7fb2c942c2ec517"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -173,6 +173,40 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ac865060ad09d7ce8d78ee609d322a6e1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void kernel_xfer_event_handler </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const dr_kernel_xfer_info_t *&#160;</td>
+          <td class="paramname"><em>info</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a8161a26ec065b8c83d2f42637896162c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -215,40 +249,6 @@ Variables</h2></td></tr>
           <td></td>
           <td class="paramtype">const app_pc&#160;</td>
           <td class="paramname"><em>target_addr</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ad657672c35176858cd3bd4fac5bd089b"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static dr_signal_action_t signal_event </td>
-          <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>drcontext</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">dr_siginfo_t *&#160;</td>
-          <td class="paramname"><em>info</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

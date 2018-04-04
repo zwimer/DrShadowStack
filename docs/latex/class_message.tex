@@ -33,14 +33,14 @@ struct \hyperlink{struct_message_1_1_thread_info}{Thread\+Info}
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ false, \hyperlink{struct_message_1_1_new_signal_info}{New\+Signal\+Info} $>$ \hyperlink{class_message_a9f57a1ee0e722668e9101b737d7c9844}{New\+Signal}
-\begin{DoxyCompactList}\small\item\em A typedef for the new signal message. \end{DoxyCompactList}\item 
 typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ true, \hyperlink{struct_message_1_1_continue_info}{Continue\+Info} $>$ \hyperlink{class_message_a04de61b84a209cdf372b6f53f3adf7c4}{Continue}
 \begin{DoxyCompactList}\small\item\em A typedef for the continue message. \end{DoxyCompactList}\item 
 typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ false, \hyperlink{struct_message_1_1_call_info}{Call\+Info} $>$ \hyperlink{class_message_a0fd0ed431cb0d672045d09368a5d2126}{Call}
 \begin{DoxyCompactList}\small\item\em A typedef for the call message. \end{DoxyCompactList}\item 
 typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ false, \hyperlink{struct_message_1_1_ret_info}{Ret\+Info} $>$ \hyperlink{class_message_a146628035f5a0723cb04f7a328858e34}{Ret}
 \begin{DoxyCompactList}\small\item\em A typedef for the ret message. \end{DoxyCompactList}\item 
+typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ true, \hyperlink{struct_message_1_1_new_signal_info}{New\+Signal\+Info} $>$ \hyperlink{class_message_a1b5e44c60a29dd5a935dc354cfa94284}{New\+Signal}
+\begin{DoxyCompactList}\small\item\em A typedef for the new signal message. \end{DoxyCompactList}\item 
 typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ true, \hyperlink{struct_message_1_1_fork_info}{Fork\+Info} $>$ \hyperlink{class_message_ad1eca09e5cd0c92f940f51b847dd7f14}{Fork}
 \begin{DoxyCompactList}\small\item\em A typedef for the fork message. \end{DoxyCompactList}\item 
 typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ true, \hyperlink{struct_message_1_1_thread_info}{Thread\+Info} $>$ \hyperlink{class_message_ad3f3fae0323770c88017fc75b50682d1}{Thread}
@@ -81,7 +81,7 @@ A typedef for the fork message.
 
 \index{Message@{Message}!New\+Signal@{New\+Signal}}
 \index{New\+Signal@{New\+Signal}!Message@{Message}}
-\subsubsection[{\texorpdfstring{New\+Signal}{NewSignal}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Message\+Type}$<$false, {\bf New\+Signal\+Info}$>$ {\bf Message\+::\+New\+Signal}}\hypertarget{class_message_a9f57a1ee0e722668e9101b737d7c9844}{}\label{class_message_a9f57a1ee0e722668e9101b737d7c9844}
+\subsubsection[{\texorpdfstring{New\+Signal}{NewSignal}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Message\+Type}$<$true, {\bf New\+Signal\+Info}$>$ {\bf Message\+::\+New\+Signal}}\hypertarget{class_message_a1b5e44c60a29dd5a935dc354cfa94284}{}\label{class_message_a1b5e44c60a29dd5a935dc354cfa94284}
 
 
 A typedef for the new signal message. 

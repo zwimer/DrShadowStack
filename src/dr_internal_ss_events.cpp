@@ -6,6 +6,7 @@
 
 #include <stack>
 
+
 // The stack of shadow stacks that holds the return addresses of the program
 // Everytime a signal handler is called, a shadow stack is pushed with a wildcard
 // Everytime we return from a signal handler, the stack pops a wildcard
@@ -70,19 +71,14 @@ static void on_ret(app_pc, const app_pc target_addr) {
 }
 
 // Called whenever a signal is called. Adds a wildcard to the shadow stack
-static dr_signal_action_t signal_event(void *drcontext, dr_siginfo_t *info) {
-	Utilities::verbose_log("Caught sig ", info->sig, " - ", strsignal(info->sig));
-	shadow_stack.push( (app_pc) WILDCARD );
-    return DR_SIGNAL_DELIVER;
+// Note: the reason we use this instead of the signal event is this ignores ignored signals
+static void kernel_xfer_event_handler(void *, const dr_kernel_xfer_info_t * info) {
+	if (info->type == DR_XFER_SIGNAL_DELIVERY) {
+		Utilities::verbose_log(	"Caught sig ", info->sig, " - ", strsignal(info->sig),
+								"\t\n- Handler address = ", (void *) info->target_pc);
+		shadow_stack.push( (app_pc) WILDCARD );
+	}
 }
-
-
-/*********************************************************/
-/*                                                       */
-/*                  	  From Header					 */
-/*                                                       */
-/*********************************************************/
-
 
 // The function that inserts the call and ret handlers
 // Whenever a new basic block is seen, this function will be
@@ -121,6 +117,14 @@ dr_emit_flags_t internal_event_app_instruction(	void * drcontext, void * tag,
     return DR_EMIT_DEFAULT;
 }
 
+
+/*********************************************************/
+/*                                                       */
+/*                  	  From Header					 */
+/*                                                       */
+/*********************************************************/
+
+
 // Setup the internal stack server for the DynamoRIO client
 void InternalSS::setup(const char * const socket_path) {
 
@@ -131,6 +135,6 @@ void InternalSS::setup(const char * const socket_path) {
 	// The event used to re-route call and ret's
     drmgr_register_bb_instrumentation_event(NULL, internal_event_app_instruction, NULL);
 
-	// Whenever a singal is caught, we add a wildcard to the stack
-	drmgr_register_signal_event(signal_event);
+	// Whenever a non-ignored singal is caught, we add a wildcard to the stack
+	drmgr_register_kernel_xfer_event(kernel_xfer_event_handler);
 }

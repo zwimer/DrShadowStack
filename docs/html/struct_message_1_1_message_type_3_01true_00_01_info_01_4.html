@@ -90,6 +90,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="struct_message_1_1_message_type_3_01true_00_01_info_01_4-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Message::MessageType&lt; true, Info &gt; Struct Template Reference<span class="mlabels"><span class="mlabel">final</span></span></div>  </div>
@@ -107,15 +108,21 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a2cc4f5dbfaba4502c6209e73836c96f1"><td class="memItemLeft" align="right" valign="top">static const constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_message_1_1_message_type_3_01true_00_01_info_01_4.html#a2cc4f5dbfaba4502c6209e73836c96f1">size</a> = <a class="el" href="message_8hpp.html#ac119f42bacd57152815371e9527d1059">MESSAGE_HEADER_LENGTH</a></td></tr>
-<tr class="memdesc:a2cc4f5dbfaba4502c6209e73836c96f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The size of header only messages.  <a href="#a2cc4f5dbfaba4502c6209e73836c96f1">More...</a><br /></td></tr>
+<tr class="memitem:a2cc4f5dbfaba4502c6209e73836c96f1"><td class="memItemLeft" align="right" valign="top">static const constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_message_1_1_message_type_3_01true_00_01_info_01_4.html#a2cc4f5dbfaba4502c6209e73836c96f1">size</a> = <a class="el" href="message_8hpp.html#aeca90e1c1c62b70670514ffc18c9dfd4">MESSAGE_SIZE</a></td></tr>
+<tr class="memdesc:a2cc4f5dbfaba4502c6209e73836c96f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The size of the message.  <a href="#a2cc4f5dbfaba4502c6209e73836c96f1">More...</a><br /></td></tr>
 <tr class="separator:a2cc4f5dbfaba4502c6209e73836c96f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1518832727d6d5e69c44f12f88a70783"><td class="memItemLeft" align="right" valign="top">static const constexpr char *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_message_1_1_message_type_3_01true_00_01_info_01_4.html#a1518832727d6d5e69c44f12f88a70783">header</a> = Info::header</td></tr>
 <tr class="memdesc:a1518832727d6d5e69c44f12f88a70783"><td class="mdescLeft">&#160;</td><td class="mdescRight">The header of the message.  <a href="#a1518832727d6d5e69c44f12f88a70783">More...</a><br /></td></tr>
 <tr class="separator:a1518832727d6d5e69c44f12f88a70783"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7da3fc36e70029f1aab4b702dc88f764"><td class="memItemLeft" align="right" valign="top">static const constexpr char *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_message_1_1_message_type_3_01true_00_01_info_01_4.html#a7da3fc36e70029f1aab4b702dc88f764">message</a> = <a class="el" href="struct_message_1_1_message_type_3_01true_00_01_info_01_4.html#a1518832727d6d5e69c44f12f88a70783">header</a></td></tr>
-<tr class="memdesc:a7da3fc36e70029f1aab4b702dc88f764"><td class="mdescLeft">&#160;</td><td class="mdescRight">The message of this type of message is just the header.  <a href="#a7da3fc36e70029f1aab4b702dc88f764">More...</a><br /></td></tr>
-<tr class="separator:a7da3fc36e70029f1aab4b702dc88f764"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ec12f51c4311bf137bc356da823255a"><td class="memItemLeft" align="right" valign="top">static const char *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_message_1_1_message_type_3_01true_00_01_info_01_4.html#a8ec12f51c4311bf137bc356da823255a">message</a></td></tr>
+<tr class="memdesc:a8ec12f51c4311bf137bc356da823255a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verify the size of the header.  <a href="#a8ec12f51c4311bf137bc356da823255a">More...</a><br /></td></tr>
+<tr class="separator:a8ec12f51c4311bf137bc356da823255a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:aeea842ffe065f9b13581baa057f0e691"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_message_1_1_message_type_3_01true_00_01_info_01_4.html#aeea842ffe065f9b13581baa057f0e691">internal</a> [<a class="el" href="struct_message_1_1_message_type_3_01true_00_01_info_01_4.html#a2cc4f5dbfaba4502c6209e73836c96f1">size</a>]</td></tr>
+<tr class="memdesc:aeea842ffe065f9b13581baa057f0e691"><td class="mdescLeft">&#160;</td><td class="mdescRight">An internal buffer pointed to by message.  <a href="#aeea842ffe065f9b13581baa057f0e691">More...</a><br /></td></tr>
+<tr class="separator:aeea842ffe065f9b13581baa057f0e691"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename Info&gt;<br />
@@ -175,7 +182,7 @@ template&lt;typename Info &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a7da3fc36e70029f1aab4b702dc88f764"></a>
+<a class="anchor" id="aeea842ffe065f9b13581baa057f0e691"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -185,7 +192,31 @@ template&lt;typename Info &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const constexpr char* const <a class="el" href="struct_message_1_1_message_type.html">Message::MessageType</a>&lt; true, Info &gt;::message = <a class="el" href="struct_message_1_1_message_type_3_01true_00_01_info_01_4.html#a1518832727d6d5e69c44f12f88a70783">header</a></td>
+          <td class="memname">char <a class="el" href="struct_message_1_1_message_type.html">Message::MessageType</a>&lt; true, Info &gt;::internal[<a class="el" href="struct_message_1_1_message_type_3_01true_00_01_info_01_4.html#a2cc4f5dbfaba4502c6209e73836c96f1">size</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>An internal buffer pointed to by message. </p>
+
+</div>
+</div>
+<a class="anchor" id="a8ec12f51c4311bf137bc356da823255a"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Info &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* const <a class="el" href="struct_message_1_1_message_type.html">Message::MessageType</a>&lt; true, Info &gt;::message</td>
         </tr>
       </table>
   </td>
@@ -195,7 +226,8 @@ template&lt;typename Info &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>The message of this type of message is just the header. </p>
+<p>Verify the size of the header. </p>
+<p>Note C++ allocates an extra character for the null terminator this is fine so long as we make sure not to send it The message of this type of message is just the header This is <b>NOT</b> null terminated </p>
 
 </div>
 </div>
@@ -209,7 +241,7 @@ template&lt;typename Info &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const constexpr int <a class="el" href="struct_message_1_1_message_type.html">Message::MessageType</a>&lt; true, Info &gt;::size = <a class="el" href="message_8hpp.html#ac119f42bacd57152815371e9527d1059">MESSAGE_HEADER_LENGTH</a></td>
+          <td class="memname">const constexpr int <a class="el" href="struct_message_1_1_message_type.html">Message::MessageType</a>&lt; true, Info &gt;::size = <a class="el" href="message_8hpp.html#aeca90e1c1c62b70670514ffc18c9dfd4">MESSAGE_SIZE</a></td>
         </tr>
       </table>
   </td>
@@ -219,7 +251,7 @@ template&lt;typename Info &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>The size of header only messages. </p>
+<p>The size of the message. </p>
 
 </div>
 </div>
