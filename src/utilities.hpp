@@ -38,7 +38,7 @@ class Utilities {
 	/// Define a gettid function
 	/** On failure, disables multi_threaded / functionality 
 	 *  (to continue logging) then terminates the group */
-	pid_t get_tid();
+	static pid_t get_tid();
 
 public:
 
@@ -141,8 +141,12 @@ private:
 template<typename... Args> void Utilities::write_log(FILE * const f, Args && ... args) {
 	if ( f != nullptr ) {
 
-		// Create the stream
+		// Create the stream and note the tid if is_multi_thread_or_proccess
 		std::stringstream stream;
+		if ( is_multi_thread_or_proccess ) {
+			stream << get_tid() << ": ";
+		}
+
 		write_log_helper( stream, std::forward<Args>(args)... );
 		stream << '\n';
 

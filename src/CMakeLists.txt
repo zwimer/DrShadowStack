@@ -101,7 +101,7 @@ message(${CMAKE_CXX_FLAGS})
 add_library(${SS_SUPPORT_LIB} SHARED 
 	quick_socket.cpp
 	utilities.cpp
-	get_tid.cpp
+	message.cpp
 	group.cpp
 	)
 

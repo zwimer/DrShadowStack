@@ -50,7 +50,7 @@ There are two different modes, `int` (internal) and `ext` (external). The intern
 
 ## Example
 
-From the build directory, an example could be:
+From the build directory of a previous version, an example could be:
 ```bash
 vagrant@ubuntu-xenial ~/S/s/build> ./DrShadowStack ls -la ./
 total 612
