@@ -41,6 +41,7 @@
 
 **Merged pull requests:**
 
+- Fix signal and message bugs [\#68](https://github.com/zwimer/DrShadowStack/pull/68) ([zwimer](https://github.com/zwimer))
 - Remove rc [\#66](https://github.com/zwimer/DrShadowStack/pull/66) ([zwimer](https://github.com/zwimer))
 - Docs [\#64](https://github.com/zwimer/DrShadowStack/pull/64) ([zwimer](https://github.com/zwimer))
 - Bug fix [\#63](https://github.com/zwimer/DrShadowStack/pull/63) ([zwimer](https://github.com/zwimer))
