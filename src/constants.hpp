@@ -78,6 +78,7 @@ static_assert( ! str_equal(INTERNAL_MODE_FLAG, EXTERNAL_MODE_FLAG),
 /** This address matches any address on the stack
  *  Since no call or ret will ever happen here, 
  *  during normal use, it is fine */
+// TODO
 #define WILDCARD ( -1 )
 
 #endif

@@ -35,6 +35,11 @@ class Utilities {
 	/** This must be defined before main() */
 	static FILE * const error_file;
 
+	/// Define a gettid function
+	/** On failure, disables multi_threaded / functionality 
+	 *  (to continue logging) then terminates the group */
+	pid_t get_tid();
+
 public:
 
 	/// Sets up the utilities class 

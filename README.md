@@ -53,20 +53,18 @@ There are two different modes, `int` (internal) and `ext` (external). The intern
 From the build directory, an example could be:
 ```bash
 vagrant@ubuntu-xenial ~/S/s/build> ./DrShadowStack ls -la ./
-TID 28866: DynamoRIO client started
-total 748
-drwxrwxr-x 3 vagrant vagrant   4096 Apr  1 06:43 .
-drwxrwxr-x 3 vagrant vagrant   4096 Apr  1 06:51 ..
--rw-rw-r-- 1 vagrant vagrant  14518 Apr  1 03:15 CMakeCache.txt
-drwxrwxr-x 7 vagrant vagrant   4096 Apr  1 06:45 CMakeFiles
--rw-rw-r-- 1 vagrant vagrant   1380 Mar 31 00:25 cmake_install.cmake
--rw-rw-r-- 1 vagrant vagrant   8441 Apr  1 06:42 compile_commands.json
--rwxrwxr-x 1 vagrant vagrant 365520 Apr  1 06:43 DrShadowStack
--rwxrwxr-x 1 vagrant vagrant 216008 Apr  1 06:42 libss_dr_client.so
--rwxrwxr-x 1 vagrant vagrant 102744 Apr  1 06:42 libss_support.so
--rw-rw-r-- 1 vagrant vagrant    441 Apr  1 06:52 log
--rw-rw-r-- 1 vagrant vagrant  16012 Apr  1 06:42 Makefile
--rw-rw-r-- 1 vagrant vagrant   8157 Apr  1 06:42 ss_dr_client.ldscript
+total 612
+drwxrwxr-x 3 vagrant vagrant   4096 Apr  3 20:01 .
+drwxrwxr-x 4 vagrant vagrant   4096 Apr  3 19:59 ..
+-rw-rw-r-- 1 vagrant vagrant  14536 Apr  3 19:59 CMakeCache.txt
+drwxrwxr-x 7 vagrant vagrant   4096 Apr  3 20:01 CMakeFiles
+-rw-rw-r-- 1 vagrant vagrant   1381 Apr  3 19:59 cmake_install.cmake
+-rw-rw-r-- 1 vagrant vagrant   8045 Apr  3 20:01 compile_commands.json
+-rwxrwxr-x 1 vagrant vagrant 402168 Apr  3 20:01 DrShadowStack
+-rwxrwxr-x 1 vagrant vagrant  53264 Apr  3 20:00 libss_dr_client.so
+-rwxrwxr-x 1 vagrant vagrant  96304 Apr  3 19:59 libss_support.so
+-rw-rw-r-- 1 vagrant vagrant  15265 Apr  3 20:01 Makefile
+-rw-rw-r-- 1 vagrant vagrant   8157 Apr  3 20:01 ss_dr_client.ldscript
 ```
 
 ## Documentation

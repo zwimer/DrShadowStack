@@ -141,7 +141,7 @@ void start_external_shadow_stack( const int sock ) {
 
 		// If the client disconnected, break
 		if (bytes_recv == 0) {
-			Utilities::message("Client Disconnected.");
+			Utilities::log("Client Disconnected.");
 			break;
 		}
 

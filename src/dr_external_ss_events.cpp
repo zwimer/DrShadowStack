@@ -5,7 +5,6 @@
 
 #include <sys/socket.h>
 #include <unistd.h>
-#include <stdint.h>
 
 #include "drmgr.h"
 
@@ -14,21 +13,16 @@
 static int sock = -1;
 
 
-// The event that occurs before a signal is given to the program
-static dr_signal_action_t signal_event(void *drcontext, dr_siginfo_t *info) {
-
-	// Log the signal
-	Utilities::verbose_log("(client) Caught signal ", info->sig);
-
-	// Create and send the message
-	char buffer[sizeof(intmax_t) + 1];
-	sprintf(buffer, "%d", info->sig);
-	Message::NewSignal msg( buffer );
-	const int bytes_sent = write(sock, msg.message, msg.size);
-	Utilities::assert( bytes_sent == msg.size, "write() failed!");
-
-	// Deliver the signal
-    return DR_SIGNAL_DELIVER;
+// Called whenever a signal is called. Adds a wildcard to the shadow stack
+// Note: the reason we use this instead of the signal event is this ignores ignored signals
+static void kernel_xfer_event_handler(void *, const dr_kernel_xfer_info_t * info) {
+	if (info->type == DR_XFER_SIGNAL_DELIVERY) {
+		Utilities::verbose_log(	"Caught sig ", info->sig, " - ", strsignal(info->sig),
+								"\t\n- Handler address = ", (void *) info->target_pc);
+		const constexpr int size = Message::Continue::size;
+		const int bytes_sent = write(sock, Message::NewSignal::header, size);
+		Utilities::assert( bytes_sent == size, "write() failed!");
+	}
 }
 
 // The call handler. 
@@ -68,14 +62,6 @@ static void on_ret(const app_pc instr_addr, const app_pc target_addr) {
 	Utilities::assert( bytes_recv == size, "Did not get full size message!");
 	Utilities::assert( is_continue(buffer), "Received incorrect message!");
 }
-
-
-/*********************************************************/
-/*                                                       */
-/*                  	  From Header					 */
-/*                                                       */
-/*********************************************************/
-
 
 // The function that inserts the call and ret handlers
 // Whenever a new basic block is seen, this function will be
@@ -122,6 +108,14 @@ void exit_event() {
 	drmgr_exit();
 }
 
+
+/*********************************************************/
+/*                                                       */
+/*                  	  From Header					 */
+/*                                                       */
+/*********************************************************/
+
+
 // Setup the external stack server for the DynamoRIO client
 void ExternalSS::setup(const char * const socket_path) {
 
@@ -138,6 +132,6 @@ void ExternalSS::setup(const char * const socket_path) {
 	// The event used to re-route call and ret's
     drmgr_register_bb_instrumentation_event(NULL, external_event_app_instruction, NULL);
 
-	// Whenever a singal is caught, we add a wildcard to the stack
-	drmgr_register_signal_event(signal_event);
+	// Whenever a non-ignored singal is caught, we add a wildcard to the stack
+	drmgr_register_kernel_xfer_event(kernel_xfer_event_handler);
 }

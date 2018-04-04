@@ -17,7 +17,10 @@
 
 **Fixed bugs:**
 
+- Message bug - Wrong size message sent [\#67](https://github.com/zwimer/DrShadowStack/issues/67)
+- Process RC created twice [\#65](https://github.com/zwimer/DrShadowStack/issues/65)
 - External logging failed [\#60](https://github.com/zwimer/DrShadowStack/issues/60)
+- Signal exception errors for SIGCHILD [\#56](https://github.com/zwimer/DrShadowStack/issues/56)
 - --version and --help ignored for sub commands [\#53](https://github.com/zwimer/DrShadowStack/issues/53)
 - Log file bug for non-debug mode [\#48](https://github.com/zwimer/DrShadowStack/issues/48)
 - Argument parser ignores flags of the sub shell [\#41](https://github.com/zwimer/DrShadowStack/issues/41)
@@ -38,6 +41,7 @@
 
 **Merged pull requests:**
 
+- Remove rc [\#66](https://github.com/zwimer/DrShadowStack/pull/66) ([zwimer](https://github.com/zwimer))
 - Docs [\#64](https://github.com/zwimer/DrShadowStack/pull/64) ([zwimer](https://github.com/zwimer))
 - Bug fix [\#63](https://github.com/zwimer/DrShadowStack/pull/63) ([zwimer](https://github.com/zwimer))
 - Improve logging [\#62](https://github.com/zwimer/DrShadowStack/pull/62) ([zwimer](https://github.com/zwimer))

@@ -1,8 +1,8 @@
 #include "utilities.hpp"
 #include "constants.hpp"
-#include "get_tid.hpp"
 #include "group.hpp"
 
+#include <sys/syscall.h>
 #include <unistd.h>
 #include <set>
 
@@ -30,13 +30,16 @@ void Utilities::setup(const bool clear_log) {
 
 		// If log should be remove, try to unlink it
 		if (clear_log) {
-			const int rv = unlink(LOG_FILE);
-			assert( (rv == 0) || (rv == ENOENT), "unlink() failed." );
+			const auto old = errno;
+			assert( (unlink(LOG_FILE) == 0) || (errno == ENOENT), "unlink() failed." );
+			errno = old;
 		}
 
 		// Open the log file
+		// Note: if fopen fails, log_file is nullptr, so the
+		// logging functions will ignore it - It is safe to call them
 		log_file = fopen(LOG_FILE, "a");
-		assert( log_file != nullptr, "fopen() failed." );
+		assert( log_file != nullptr, "fopen() failed.");
 #endif
 }
 
@@ -72,6 +75,17 @@ void Utilities::assert(const bool b, const char * const s) {
 /*                                                       */
 /*********************************************************/
 
+
+// Define a gettid function
+// On failure, disables multi_threaded / functionality 
+// (to continue logging) then terminates the group
+pid_t Utilities::get_tid() {
+	const pid_t ret = syscall(SYS_gettid);
+	if ( ret == -1 ) {
+		is_multi_thread_or_proccess = false;
+		Group::terminate("get_tid() failed.");
+	}
+}
 
 // Once this is called, TIDs will be printed with each message
 void Utilities::enable_multi_thread_or_process_mode() {
