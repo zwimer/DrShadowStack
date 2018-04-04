@@ -97,8 +97,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &quot;<a class="el" href="quick__socket_8hpp_source.html">quick_socket.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="utilities_8hpp_source.html">utilities.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="message_8hpp_source.html">message.hpp</a>&quot;</code><br />
-<code>#include &lt;sys/socket.h&gt;</code><br />
-<code>#include &lt;unistd.h&gt;</code><br />
 <code>#include &quot;drmgr.h&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -109,6 +107,10 @@ Functions</h2></td></tr>
 <tr class="separator:a8161a26ec065b8c83d2f42637896162c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42c8b67f8f85fd6bad5bd11892c0d5bc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__external__ss__events_8cpp.html#a42c8b67f8f85fd6bad5bd11892c0d5bc">on_ret</a> (const app_pc instr_addr, const app_pc target_addr)</td></tr>
 <tr class="separator:a42c8b67f8f85fd6bad5bd11892c0d5bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2cfa3642a80b1480f624e8ed7b36b5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__external__ss__events_8cpp.html#ac2cfa3642a80b1480f624e8ed7b36b5c">fork_event</a> (void *)</td></tr>
+<tr class="separator:ac2cfa3642a80b1480f624e8ed7b36b5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3db9de884a3b901180efbc6a522c737"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__external__ss__events_8cpp.html#ad3db9de884a3b901180efbc6a522c737">thread_event</a> (void *)</td></tr>
+<tr class="separator:ad3db9de884a3b901180efbc6a522c737"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14668a99e9c1c591ee2ae89b26748bdf"><td class="memItemLeft" align="right" valign="top">dr_emit_flags_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__external__ss__events_8cpp.html#a14668a99e9c1c591ee2ae89b26748bdf">external_event_app_instruction</a> (void *drcontext, void *tag, instrlist_t *bb, instr_t *instr, bool for_trace, bool translating, void *user_data)</td></tr>
 <tr class="separator:a14668a99e9c1c591ee2ae89b26748bdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a655c944988bd65e5216f857f33e2f174"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__external__ss__events_8cpp.html#a655c944988bd65e5216f857f33e2f174">exit_event</a> ()</td></tr>
@@ -185,6 +187,22 @@ Variables</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac2cfa3642a80b1480f624e8ed7b36b5c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fork_event </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -279,6 +297,22 @@ Variables</h2></td></tr>
 <span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad3db9de884a3b901180efbc6a522c737"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void thread_event </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>

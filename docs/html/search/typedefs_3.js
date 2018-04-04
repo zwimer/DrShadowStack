@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['newsignal',['NewSignal',['../class_message.html#a1b5e44c60a29dd5a935dc354cfa94284',1,'Message::NewSignal()'],['../external__stack__server_8cpp.html#ae9be84814199431b661da0379b3a3883',1,'NewSignal():&#160;external_stack_server.cpp']]]
+  ['message_5fhandler',['message_handler',['../external__stack__server_8cpp.html#ace913347ce4667e1807900fe0a8d7c54',1,'external_stack_server.cpp']]]
 ];

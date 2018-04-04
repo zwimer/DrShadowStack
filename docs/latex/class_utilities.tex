@@ -28,14 +28,11 @@ static void \hyperlink{class_utilities_a22c85a2970e168ca0b9ad6fd86752792}{assert
 \begin{DoxyCompactList}\small\item\em Prints the arguments as cout would to the error and log files. \end{DoxyCompactList}\item 
 static void \hyperlink{class_utilities_a384728ae9b72982c1351d881ba7ff007}{enable\+\_\+multi\+\_\+thread\+\_\+or\+\_\+process\+\_\+mode} ()
 \begin{DoxyCompactList}\small\item\em Once this is called, T\+I\+Ds will be printed with each message. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Private Member Functions}
-\begin{DoxyCompactItemize}
-\item 
-pid\+\_\+t \hyperlink{class_utilities_a93f3699cf92128c66efa084ff1399a45}{get\+\_\+tid} ()
-\begin{DoxyCompactList}\small\item\em Define a gettid function. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+static pid\+\_\+t \hyperlink{class_utilities_a93f3699cf92128c66efa084ff1399a45}{get\+\_\+tid} ()
+\begin{DoxyCompactList}\small\item\em Define a gettid function. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename... Args$>$ }\\static void \hyperlink{class_utilities_a7085b246ac1d31d8d3ac16663e6718d9}{write\+\_\+log} (F\+I\+LE $\ast$const f, \hyperlink{struct_args}{Args} \&\&...args)
 \begin{DoxyCompactList}\small\item\em A wrapper that writes args to f if f is not null. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename... Args$>$ }\\static void \hyperlink{class_utilities_a0763f59c16f6eb83b9c0e8abe014287a}{write\+\_\+log\+\_\+helper} (std\+::stringstream \&stream, \hyperlink{struct_args}{Args} \&\&...args)
@@ -101,7 +98,7 @@ Prints log s to the error file, perrors, then kills the process group \index{Uti
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_utilities_a93f3699cf92128c66efa084ff1399a45}{}\label{class_utilities_a93f3699cf92128c66efa084ff1399a45}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{class_utilities_a93f3699cf92128c66efa084ff1399a45}{}\label{class_utilities_a93f3699cf92128c66efa084ff1399a45}
 
 
 Define a gettid function. 
