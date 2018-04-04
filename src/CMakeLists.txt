@@ -19,7 +19,7 @@ set(DEFAULT_MODE int)
 
 
 # Debug mode options. Comment out to disable
-#set(DEBUG_MODE "VERBOSE")
+set(DEBUG_MODE "VERBOSE")
 #set(DEBUG_MODE "ON")
 
 # For YouCompleteMe vim plugin
