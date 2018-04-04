@@ -109,14 +109,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_message_1_1_fork_info.html">ForkInfo</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class containing the header of Fork message.  <a href="struct_message_1_1_fork_info.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_message_1_1_message_type.html">MessageType</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A templated message class A valid message is defined by constructing a <a class="el" href="struct_message_1_1_message_type.html" title="A templated message class A valid message is defined by constructing a MessageType around it...">MessageType</a> around it.  <a href="struct_message_1_1_message_type.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_message_1_1_message_type_3_01false_00_01_info_01_4.html">MessageType&lt; false, Info &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A specification for non-header only messages.  <a href="struct_message_1_1_message_type_3_01false_00_01_info_01_4.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_message_1_1_message_type_3_01true_00_01_info_01_4.html">MessageType&lt; true, Info &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A specification for header only messages.  <a href="struct_message_1_1_message_type_3_01true_00_01_info_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_1_1_msg.html">Msg</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the types of messages which can be sent.  <a href="class_message_1_1_msg.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_message_1_1_new_signal_info.html">NewSignalInfo</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class containing the header of NewSignal message.  <a href="struct_message_1_1_new_signal_info.html#details">More...</a><br /></td></tr>
@@ -130,24 +124,24 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a04de61b84a209cdf372b6f53f3adf7c4"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="struct_message_1_1_message_type.html">MessageType</a>&lt; true, <a class="el" href="struct_message_1_1_continue_info.html">ContinueInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message.html#a04de61b84a209cdf372b6f53f3adf7c4">Continue</a></td></tr>
-<tr class="memdesc:a04de61b84a209cdf372b6f53f3adf7c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">A typedef for the continue message.  <a href="#a04de61b84a209cdf372b6f53f3adf7c4">More...</a><br /></td></tr>
-<tr class="separator:a04de61b84a209cdf372b6f53f3adf7c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fd0ed431cb0d672045d09368a5d2126"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="struct_message_1_1_message_type.html">MessageType</a>&lt; false, <a class="el" href="struct_message_1_1_call_info.html">CallInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message.html#a0fd0ed431cb0d672045d09368a5d2126">Call</a></td></tr>
-<tr class="memdesc:a0fd0ed431cb0d672045d09368a5d2126"><td class="mdescLeft">&#160;</td><td class="mdescRight">A typedef for the call message.  <a href="#a0fd0ed431cb0d672045d09368a5d2126">More...</a><br /></td></tr>
-<tr class="separator:a0fd0ed431cb0d672045d09368a5d2126"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a146628035f5a0723cb04f7a328858e34"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="struct_message_1_1_message_type.html">MessageType</a>&lt; false, <a class="el" href="struct_message_1_1_ret_info.html">RetInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message.html#a146628035f5a0723cb04f7a328858e34">Ret</a></td></tr>
-<tr class="memdesc:a146628035f5a0723cb04f7a328858e34"><td class="mdescLeft">&#160;</td><td class="mdescRight">A typedef for the ret message.  <a href="#a146628035f5a0723cb04f7a328858e34">More...</a><br /></td></tr>
-<tr class="separator:a146628035f5a0723cb04f7a328858e34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b5e44c60a29dd5a935dc354cfa94284"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="struct_message_1_1_message_type.html">MessageType</a>&lt; true, <a class="el" href="struct_message_1_1_new_signal_info.html">NewSignalInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message.html#a1b5e44c60a29dd5a935dc354cfa94284">NewSignal</a></td></tr>
-<tr class="memdesc:a1b5e44c60a29dd5a935dc354cfa94284"><td class="mdescLeft">&#160;</td><td class="mdescRight">A typedef for the new signal message.  <a href="#a1b5e44c60a29dd5a935dc354cfa94284">More...</a><br /></td></tr>
-<tr class="separator:a1b5e44c60a29dd5a935dc354cfa94284"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1eca09e5cd0c92f940f51b847dd7f14"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="struct_message_1_1_message_type.html">MessageType</a>&lt; true, <a class="el" href="struct_message_1_1_fork_info.html">ForkInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message.html#ad1eca09e5cd0c92f940f51b847dd7f14">Fork</a></td></tr>
-<tr class="memdesc:ad1eca09e5cd0c92f940f51b847dd7f14"><td class="mdescLeft">&#160;</td><td class="mdescRight">A typedef for the fork message.  <a href="#ad1eca09e5cd0c92f940f51b847dd7f14">More...</a><br /></td></tr>
-<tr class="separator:ad1eca09e5cd0c92f940f51b847dd7f14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3f3fae0323770c88017fc75b50682d1"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="struct_message_1_1_message_type.html">MessageType</a>&lt; true, <a class="el" href="struct_message_1_1_thread_info.html">ThreadInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message.html#ad3f3fae0323770c88017fc75b50682d1">Thread</a></td></tr>
-<tr class="memdesc:ad3f3fae0323770c88017fc75b50682d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">A typedef for the thread message.  <a href="#ad3f3fae0323770c88017fc75b50682d1">More...</a><br /></td></tr>
-<tr class="separator:ad3f3fae0323770c88017fc75b50682d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3575d142bf847cc5a7aecd718434fe4f"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_message_1_1_msg.html#a56cc5b2c5d898b85e97b1f3a46ab3999">Msg::HeaderOnly</a>&lt; <a class="el" href="struct_message_1_1_continue_info.html">ContinueInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message.html#a3575d142bf847cc5a7aecd718434fe4f">Continue</a></td></tr>
+<tr class="memdesc:a3575d142bf847cc5a7aecd718434fe4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">A typedef for the continue message.  <a href="#a3575d142bf847cc5a7aecd718434fe4f">More...</a><br /></td></tr>
+<tr class="separator:a3575d142bf847cc5a7aecd718434fe4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65eabf9d1dcd603d2e7c14c5274a5bdb"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_message_1_1_msg.html#a385691f2f7fc10f0b4c1544b8892a6c9">Msg::WithBody</a>&lt; <a class="el" href="struct_message_1_1_call_info.html">CallInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message.html#a65eabf9d1dcd603d2e7c14c5274a5bdb">Call</a></td></tr>
+<tr class="memdesc:a65eabf9d1dcd603d2e7c14c5274a5bdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">A typedef for the call message.  <a href="#a65eabf9d1dcd603d2e7c14c5274a5bdb">More...</a><br /></td></tr>
+<tr class="separator:a65eabf9d1dcd603d2e7c14c5274a5bdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40df5862ba4d83b310c203e0873c15eb"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_message_1_1_msg.html#a385691f2f7fc10f0b4c1544b8892a6c9">Msg::WithBody</a>&lt; <a class="el" href="struct_message_1_1_ret_info.html">RetInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message.html#a40df5862ba4d83b310c203e0873c15eb">Ret</a></td></tr>
+<tr class="memdesc:a40df5862ba4d83b310c203e0873c15eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">A typedef for the ret message.  <a href="#a40df5862ba4d83b310c203e0873c15eb">More...</a><br /></td></tr>
+<tr class="separator:a40df5862ba4d83b310c203e0873c15eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1eb217095ab4b8fede7aed3c9fb0787c"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_message_1_1_msg.html#a56cc5b2c5d898b85e97b1f3a46ab3999">Msg::HeaderOnly</a>&lt; <a class="el" href="struct_message_1_1_new_signal_info.html">NewSignalInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message.html#a1eb217095ab4b8fede7aed3c9fb0787c">NewSignal</a></td></tr>
+<tr class="memdesc:a1eb217095ab4b8fede7aed3c9fb0787c"><td class="mdescLeft">&#160;</td><td class="mdescRight">A typedef for the new signal message.  <a href="#a1eb217095ab4b8fede7aed3c9fb0787c">More...</a><br /></td></tr>
+<tr class="separator:a1eb217095ab4b8fede7aed3c9fb0787c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7272b7d937a8248ca0fe6148044e9dc"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_message_1_1_msg.html#a56cc5b2c5d898b85e97b1f3a46ab3999">Msg::HeaderOnly</a>&lt; <a class="el" href="struct_message_1_1_fork_info.html">ForkInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message.html#af7272b7d937a8248ca0fe6148044e9dc">Fork</a></td></tr>
+<tr class="memdesc:af7272b7d937a8248ca0fe6148044e9dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">A typedef for the fork message.  <a href="#af7272b7d937a8248ca0fe6148044e9dc">More...</a><br /></td></tr>
+<tr class="separator:af7272b7d937a8248ca0fe6148044e9dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab425362459d8d4440f14d6e02e8c6566"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_message_1_1_msg.html#a56cc5b2c5d898b85e97b1f3a46ab3999">Msg::HeaderOnly</a>&lt; <a class="el" href="struct_message_1_1_thread_info.html">ThreadInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message.html#ab425362459d8d4440f14d6e02e8c6566">Thread</a></td></tr>
+<tr class="memdesc:ab425362459d8d4440f14d6e02e8c6566"><td class="mdescLeft">&#160;</td><td class="mdescRight">A typedef for the thread message.  <a href="#ab425362459d8d4440f14d6e02e8c6566">More...</a><br /></td></tr>
+<tr class="separator:ab425362459d8d4440f14d6e02e8c6566"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -160,12 +154,12 @@ Static Public Member Functions</h2></td></tr>
 <div class="textblock"><p>A class used for defining all message types. </p>
 <p>Messages come in two forms. Ones that are only headers, and ones that pass a pointer as a body </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="a0fd0ed431cb0d672045d09368a5d2126"></a>
+<a class="anchor" id="a65eabf9d1dcd603d2e7c14c5274a5bdb"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="struct_message_1_1_message_type.html">MessageType</a>&lt;false, <a class="el" href="struct_message_1_1_call_info.html">CallInfo</a>&gt; <a class="el" href="class_message.html#a0fd0ed431cb0d672045d09368a5d2126">Message::Call</a></td>
+          <td class="memname">typedef <a class="el" href="class_message_1_1_msg.html#a385691f2f7fc10f0b4c1544b8892a6c9">Msg::WithBody</a>&lt;<a class="el" href="struct_message_1_1_call_info.html">CallInfo</a>&gt; <a class="el" href="class_message.html#a65eabf9d1dcd603d2e7c14c5274a5bdb">Message::Call</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -174,12 +168,12 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a04de61b84a209cdf372b6f53f3adf7c4"></a>
+<a class="anchor" id="a3575d142bf847cc5a7aecd718434fe4f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="struct_message_1_1_message_type.html">MessageType</a>&lt;true, <a class="el" href="struct_message_1_1_continue_info.html">ContinueInfo</a>&gt; <a class="el" href="class_message.html#a04de61b84a209cdf372b6f53f3adf7c4">Message::Continue</a></td>
+          <td class="memname">typedef <a class="el" href="class_message_1_1_msg.html#a56cc5b2c5d898b85e97b1f3a46ab3999">Msg::HeaderOnly</a>&lt;<a class="el" href="struct_message_1_1_continue_info.html">ContinueInfo</a>&gt; <a class="el" href="class_message.html#a3575d142bf847cc5a7aecd718434fe4f">Message::Continue</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -188,12 +182,12 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad1eca09e5cd0c92f940f51b847dd7f14"></a>
+<a class="anchor" id="af7272b7d937a8248ca0fe6148044e9dc"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="struct_message_1_1_message_type.html">MessageType</a>&lt;true, <a class="el" href="struct_message_1_1_fork_info.html">ForkInfo</a>&gt; <a class="el" href="class_message.html#ad1eca09e5cd0c92f940f51b847dd7f14">Message::Fork</a></td>
+          <td class="memname">typedef <a class="el" href="class_message_1_1_msg.html#a56cc5b2c5d898b85e97b1f3a46ab3999">Msg::HeaderOnly</a>&lt;<a class="el" href="struct_message_1_1_fork_info.html">ForkInfo</a>&gt; <a class="el" href="class_message.html#af7272b7d937a8248ca0fe6148044e9dc">Message::Fork</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -202,12 +196,12 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a1b5e44c60a29dd5a935dc354cfa94284"></a>
+<a class="anchor" id="a1eb217095ab4b8fede7aed3c9fb0787c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="struct_message_1_1_message_type.html">MessageType</a>&lt;true, <a class="el" href="struct_message_1_1_new_signal_info.html">NewSignalInfo</a>&gt; <a class="el" href="class_message.html#a1b5e44c60a29dd5a935dc354cfa94284">Message::NewSignal</a></td>
+          <td class="memname">typedef <a class="el" href="class_message_1_1_msg.html#a56cc5b2c5d898b85e97b1f3a46ab3999">Msg::HeaderOnly</a>&lt;<a class="el" href="struct_message_1_1_new_signal_info.html">NewSignalInfo</a>&gt; <a class="el" href="class_message.html#a1eb217095ab4b8fede7aed3c9fb0787c">Message::NewSignal</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -216,12 +210,12 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a146628035f5a0723cb04f7a328858e34"></a>
+<a class="anchor" id="a40df5862ba4d83b310c203e0873c15eb"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="struct_message_1_1_message_type.html">MessageType</a>&lt;false, <a class="el" href="struct_message_1_1_ret_info.html">RetInfo</a>&gt; <a class="el" href="class_message.html#a146628035f5a0723cb04f7a328858e34">Message::Ret</a></td>
+          <td class="memname">typedef <a class="el" href="class_message_1_1_msg.html#a385691f2f7fc10f0b4c1544b8892a6c9">Msg::WithBody</a>&lt;<a class="el" href="struct_message_1_1_ret_info.html">RetInfo</a>&gt; <a class="el" href="class_message.html#a40df5862ba4d83b310c203e0873c15eb">Message::Ret</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -230,12 +224,12 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad3f3fae0323770c88017fc75b50682d1"></a>
+<a class="anchor" id="ab425362459d8d4440f14d6e02e8c6566"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="struct_message_1_1_message_type.html">MessageType</a>&lt;true, <a class="el" href="struct_message_1_1_thread_info.html">ThreadInfo</a>&gt; <a class="el" href="class_message.html#ad3f3fae0323770c88017fc75b50682d1">Message::Thread</a></td>
+          <td class="memname">typedef <a class="el" href="class_message_1_1_msg.html#a56cc5b2c5d898b85e97b1f3a46ab3999">Msg::HeaderOnly</a>&lt;<a class="el" href="struct_message_1_1_thread_info.html">ThreadInfo</a>&gt; <a class="el" href="class_message.html#ab425362459d8d4440f14d6e02e8c6566">Message::Thread</a></td>
         </tr>
       </table>
 </div><div class="memdoc">

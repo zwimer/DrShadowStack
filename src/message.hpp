@@ -1,7 +1,11 @@
 /** @file */
 #ifndef __MESSAGE_HPP__
-#define  __MESSAGE_HPP__
+#define __MESSAGE_HPP__
 
+#include "utilities.hpp"
+
+#include <sys/socket.h>
+#include <unistd.h>
 #include <string.h>
 
 
@@ -25,21 +29,6 @@
 
 /*********************************************************/
 /*                                                       */
-/*					  Helper functions					 */
-/*                                                       */
-/*********************************************************/
-
-
-/** Copies n bytes from src into dst during static initil
- *  If src is less than n bytes, fills the rest of dst with zeros.
- *  It will return dst so that dst can be assigned to a static initalization */
-const char * set_length( char * const dst, const char * const src, const int n) {
-	return strncpy((char *) memset((void *)dst, 0, n), src, n);
-}
-
-
-/*********************************************************/
-/*                                                       */
 /*					  Message classes					 */ 
 /*                                                       */
 /*********************************************************/
@@ -50,71 +39,88 @@ const char * set_length( char * const dst, const char * const src, const int n) 
  *  headers, and ones that pass a pointer as a body */
 class Message final {
 
-	/** A templated message class
-	 *  A valid message is defined by constructing a MessageType around it */
-	template<bool only_header, typename Info> struct MessageType;
+	/** Defines the types of messages which can be sent */
+	class Msg final {
+
+		/** Copies n bytes from src into dst during static initilization
+		 *  If src is less than n bytes, fills the rest of dst with zeros.
+		 *  It will return dst so that dst can be assigned to a static initalization */
+		static const char * set_length(char * const dst, const char * const src, const int n);
 
 
-	// Note: **ALL** messages will be of the same size.
-	// Header only messages - the contents of the body do not matter.
+		/** A templated message class
+		 *  A valid message is defined by constructing a MessageType around it */
+		template<bool only_header, typename Info> struct MessageType;
 
 
-	/** A specification for header only messages */
-	template<typename Info>
-	struct MessageType<true, Info> final {
-		
-		/** Disable construction of the class */
-		MessageType<true, Info>() = delete;
+		// Note: **ALL** messages will be of the same size.
+		// Header only messages - the contents of the body do not matter.
 
-		/** The size of the message */
-		static const constexpr int size = MESSAGE_SIZE;
 
-		/** The header of the message */
-		static const constexpr char * const header = Info::header;
+	/** The internals of a message. We use a macro to enforce consistency */
+#define MESSAGE_INTERNALS(HEADER_ONLY) 									\
+			/** Declares if the message is header only */ 					\
+			static const constexpr bool header_only = HEADER_ONLY; 			\
+			/** Define the size of the message */							\
+			static const constexpr int size = MESSAGE_SIZE;					\
+			/** The header of the message */								\
+			static const constexpr char * const header = Info::header;		\
+			/** Verify the size of the header.
+			 *  Note C++ allocates an extra character
+			 *  for the null terminator this is fine so
+			 *  long as we make sure not to send it */						\
+			static_assert( strlen(Info::header) == MESSAGE_HEADER_LENGTH,	\
+				"Header is of wrong size." );								\
+			/** Delete the default constructor */							\
+			MessageType<HEADER_ONLY, Info>() = delete;
 
-		/// Verify the size of the header.
-		/** Note C++ allocates an extra character for the null terminator
-		 *  this is fine so long as we make sure not to send it */
-		static_assert( strlen(Info::header) == MESSAGE_HEADER_LENGTH,
-			"Header is of wrong size." );
+		/** A specification for header only messages */
+		template<typename Info>
+		struct MessageType<true, Info> final {
+			
+			// Setup the internals of the message
+			MESSAGE_INTERNALS(true)
 
-		/** The message of this type of message is just the header
-		 *  This is **NOT** null terminated */
-		static const char * const message;
+			/** The message of this type of message is just the header
+			 *  This is **NOT** null terminated */
+			static const char * const message;
 
-	private:
+		private:
 
-		/** An internal buffer pointed to by message */
-		static char internal[size];
+			/** An internal buffer pointed to by message */
+			static char internal[size];
+		};
+
+		/** A specification for non-header only messages */
+		template<typename Info>
+		struct MessageType<false, Info> final {
+
+			// Setup the internals of the message
+			MESSAGE_INTERNALS(false)
+
+			/** The constructor */
+			explicit MessageType<false, Info>(const char * const ptr) {
+				memcpy(message, header, MESSAGE_HEADER_LENGTH);
+				memcpy( & message[MESSAGE_HEADER_LENGTH], ptr, POINTER_SIZE);
+			}
+
+			/// The message an instanation of the class holds
+			/* This message is NOT null terminated! */
+			char message[size];
+		};
+
+// Remove macros
+#undef MESSAGE_INTERNALS
+
+	public:
+
+		/** A typedef for header only type */
+		template<typename T> using HeaderOnly = MessageType<true, T>;
+
+		/** A typedef for non-header only type */
+		template<typename T> using WithBody = MessageType<false, T>;
 	};
 
-	/** A specification for non-header only messages */
-	template<typename Info>
-	struct MessageType<false, Info> {
-
-		/** The size of the message */
-		static const constexpr int size = MESSAGE_SIZE;
-
-		/** The header of the message */
-		static const constexpr char * const header = Info::header;
-
-		/** Verify the size of the header. */
-		static_assert( strlen(header) == MESSAGE_HEADER_LENGTH, 
-			"Header is of wrong size." );
-
-		/** Delete the default constructor */
-		MessageType<false, Info>() = delete;
-
-		/** The constructor */
-		explicit MessageType<false, Info>(const char * const ptr) {
-			memcpy(message, header, MESSAGE_HEADER_LENGTH);
-			memcpy( & message[MESSAGE_HEADER_LENGTH], ptr, POINTER_SIZE);
-		}
-
-		/// The message an instanation of the class holds
-		/* This message is NOT null terminated! */
-		char message[size];
-	};
 
 	// General Headers
 
@@ -162,28 +168,74 @@ public:
 	}
 
 	/** A typedef for the continue message */
-	typedef MessageType<true, ContinueInfo> Continue;
+	typedef Msg::HeaderOnly<ContinueInfo> Continue;
 	/** A typedef for the call message */
-	typedef MessageType<false, CallInfo> Call;
+	typedef Msg::WithBody<CallInfo> Call;
 	/** A typedef for the ret message */
-	typedef MessageType<false, RetInfo> Ret;
+	typedef Msg::WithBody<RetInfo> Ret;
 
 	/** A typedef for the new signal message */
-	typedef MessageType<true, NewSignalInfo> NewSignal;
+	typedef Msg::HeaderOnly<NewSignalInfo> NewSignal;
 	/** A typedef for the fork message */
-	typedef MessageType<true, ForkInfo> Fork;
+	typedef Msg::HeaderOnly<ForkInfo> Fork;
 	/** A typedef for the thread message */
-	typedef MessageType<true, ThreadInfo> Thread;
+	typedef Msg::HeaderOnly<ThreadInfo> Thread;
 };
 
 
 // Initalize MessageType<true, Info>::internal
-template<typename T> char Message::MessageType<true, T>::internal[size] = {};
+template<typename T> char Message::Msg::MessageType<true, T>::internal[size] = {};
 
 // Initalize MessageType<true, Info>::message
-template<typename T> const char * const Message::MessageType<true, T>::message
-	= set_length(	Message::MessageType<true, T>::internal, 
-					Message::MessageType<true, T>::header, 
-					Message::MessageType<true, T>::size );
+template<typename T> const char * const Message::Msg::MessageType<true, T>::message
+	= set_length(	Message::Msg::MessageType<true, T>::internal, 
+					Message::Msg::MessageType<true, T>::header, 
+					Message::Msg::MessageType<true, T>::size );
+
+
+/*********************************************************/
+/*                                                       */
+/*				 Used to send / recieve messages		 */
+/*                                                       */
+/*********************************************************/
+
+
+/** Sends a header only Msg to sock */
+template<typename Msg> void send_msg(const int sock) {
+	static_assert(Msg::header_only == true, "wrong send_msg called.");
+	const int bytes_sent = write(sock, Msg::header, Msg::size);
+	Utilities::assert( bytes_sent == Msg::size, "write() failed!");
+}
+
+/** Sends a non-header only Msg with body bdy to sock */
+template<typename Msg> void send_msg(const int sock, const char * const bdy) {
+	static_assert(Msg::header_only == false, "wrong send_msg called.");
+	Msg to_send( bdy );
+	const int bytes_sent = write(sock, to_send.message, to_send.size);
+	Utilities::assert( bytes_sent == to_send.size, "write() failed!");
+}
+
+/** Reads a header only Msg from sock */
+template<typename Msg> void recv_msg(const int sock) {
+	static_assert(Msg::header_only == true, "wrong recv_msg called.");
+	char buffer[Msg::size];
+	const int bytes_recv = recv( sock, buffer, Msg::size, MSG_WAITALL );
+	Utilities::assert( bytes_recv == Msg::size, "Did not get full size message!");
+	const constexpr auto is_msg = Message::is_a_valid<Message::Continue>;
+	Utilities::assert( is_msg(buffer), "Received incorrect message!");
+}
+
+/** Reads a only Msg from sock
+ *  This function is **NOT** reentrant */
+template<typename Msg> const char * recv_msg_and_body(const int sock) {
+	static_assert(Msg::header_only == false, "wrong recv_msg called.");
+	static char buffer[Msg::size];
+	const int bytes_recv = recv( sock, buffer, Msg::size, MSG_WAITALL );
+	Utilities::assert( bytes_recv == Msg::size, "Did not get full size message!");
+	const constexpr auto is_msg = Message::is_a_valid<Message::Continue>;
+	Utilities::assert( is_msg(buffer), "Received incorrect message!");
+	return buffer;
+}
+
 
 #endif

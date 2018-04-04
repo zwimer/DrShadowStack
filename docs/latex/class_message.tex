@@ -18,12 +18,8 @@ struct \hyperlink{struct_message_1_1_continue_info}{Continue\+Info}
 \begin{DoxyCompactList}\small\item\em A class containing the header of Continue message. \end{DoxyCompactList}\item 
 struct \hyperlink{struct_message_1_1_fork_info}{Fork\+Info}
 \begin{DoxyCompactList}\small\item\em A class containing the header of Fork message. \end{DoxyCompactList}\item 
-struct \hyperlink{struct_message_1_1_message_type}{Message\+Type}
-\begin{DoxyCompactList}\small\item\em A templated message class A valid message is defined by constructing a \hyperlink{struct_message_1_1_message_type}{Message\+Type} around it. \end{DoxyCompactList}\item 
-struct \hyperlink{struct_message_1_1_message_type_3_01false_00_01_info_01_4}{Message\+Type$<$ false, Info $>$}
-\begin{DoxyCompactList}\small\item\em A specification for non-\/header only messages. \end{DoxyCompactList}\item 
-struct \hyperlink{struct_message_1_1_message_type_3_01true_00_01_info_01_4}{Message\+Type$<$ true, Info $>$}
-\begin{DoxyCompactList}\small\item\em A specification for header only messages. \end{DoxyCompactList}\item 
+class \hyperlink{class_message_1_1_msg}{Msg}
+\begin{DoxyCompactList}\small\item\em Defines the types of messages which can be sent. \end{DoxyCompactList}\item 
 struct \hyperlink{struct_message_1_1_new_signal_info}{New\+Signal\+Info}
 \begin{DoxyCompactList}\small\item\em A class containing the header of New\+Signal message. \end{DoxyCompactList}\item 
 struct \hyperlink{struct_message_1_1_ret_info}{Ret\+Info}
@@ -33,17 +29,17 @@ struct \hyperlink{struct_message_1_1_thread_info}{Thread\+Info}
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ true, \hyperlink{struct_message_1_1_continue_info}{Continue\+Info} $>$ \hyperlink{class_message_a04de61b84a209cdf372b6f53f3adf7c4}{Continue}
+typedef \hyperlink{class_message_1_1_msg_a56cc5b2c5d898b85e97b1f3a46ab3999}{Msg\+::\+Header\+Only}$<$ \hyperlink{struct_message_1_1_continue_info}{Continue\+Info} $>$ \hyperlink{class_message_a3575d142bf847cc5a7aecd718434fe4f}{Continue}
 \begin{DoxyCompactList}\small\item\em A typedef for the continue message. \end{DoxyCompactList}\item 
-typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ false, \hyperlink{struct_message_1_1_call_info}{Call\+Info} $>$ \hyperlink{class_message_a0fd0ed431cb0d672045d09368a5d2126}{Call}
+typedef \hyperlink{class_message_1_1_msg_a385691f2f7fc10f0b4c1544b8892a6c9}{Msg\+::\+With\+Body}$<$ \hyperlink{struct_message_1_1_call_info}{Call\+Info} $>$ \hyperlink{class_message_a65eabf9d1dcd603d2e7c14c5274a5bdb}{Call}
 \begin{DoxyCompactList}\small\item\em A typedef for the call message. \end{DoxyCompactList}\item 
-typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ false, \hyperlink{struct_message_1_1_ret_info}{Ret\+Info} $>$ \hyperlink{class_message_a146628035f5a0723cb04f7a328858e34}{Ret}
+typedef \hyperlink{class_message_1_1_msg_a385691f2f7fc10f0b4c1544b8892a6c9}{Msg\+::\+With\+Body}$<$ \hyperlink{struct_message_1_1_ret_info}{Ret\+Info} $>$ \hyperlink{class_message_a40df5862ba4d83b310c203e0873c15eb}{Ret}
 \begin{DoxyCompactList}\small\item\em A typedef for the ret message. \end{DoxyCompactList}\item 
-typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ true, \hyperlink{struct_message_1_1_new_signal_info}{New\+Signal\+Info} $>$ \hyperlink{class_message_a1b5e44c60a29dd5a935dc354cfa94284}{New\+Signal}
+typedef \hyperlink{class_message_1_1_msg_a56cc5b2c5d898b85e97b1f3a46ab3999}{Msg\+::\+Header\+Only}$<$ \hyperlink{struct_message_1_1_new_signal_info}{New\+Signal\+Info} $>$ \hyperlink{class_message_a1eb217095ab4b8fede7aed3c9fb0787c}{New\+Signal}
 \begin{DoxyCompactList}\small\item\em A typedef for the new signal message. \end{DoxyCompactList}\item 
-typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ true, \hyperlink{struct_message_1_1_fork_info}{Fork\+Info} $>$ \hyperlink{class_message_ad1eca09e5cd0c92f940f51b847dd7f14}{Fork}
+typedef \hyperlink{class_message_1_1_msg_a56cc5b2c5d898b85e97b1f3a46ab3999}{Msg\+::\+Header\+Only}$<$ \hyperlink{struct_message_1_1_fork_info}{Fork\+Info} $>$ \hyperlink{class_message_af7272b7d937a8248ca0fe6148044e9dc}{Fork}
 \begin{DoxyCompactList}\small\item\em A typedef for the fork message. \end{DoxyCompactList}\item 
-typedef \hyperlink{struct_message_1_1_message_type}{Message\+Type}$<$ true, \hyperlink{struct_message_1_1_thread_info}{Thread\+Info} $>$ \hyperlink{class_message_ad3f3fae0323770c88017fc75b50682d1}{Thread}
+typedef \hyperlink{class_message_1_1_msg_a56cc5b2c5d898b85e97b1f3a46ab3999}{Msg\+::\+Header\+Only}$<$ \hyperlink{struct_message_1_1_thread_info}{Thread\+Info} $>$ \hyperlink{class_message_ab425362459d8d4440f14d6e02e8c6566}{Thread}
 \begin{DoxyCompactList}\small\item\em A typedef for the thread message. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -60,42 +56,42 @@ Messages come in two forms. Ones that are only headers, and ones that pass a poi
 \subsection{Member Typedef Documentation}
 \index{Message@{Message}!Call@{Call}}
 \index{Call@{Call}!Message@{Message}}
-\subsubsection[{\texorpdfstring{Call}{Call}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Message\+Type}$<$false, {\bf Call\+Info}$>$ {\bf Message\+::\+Call}}\hypertarget{class_message_a0fd0ed431cb0d672045d09368a5d2126}{}\label{class_message_a0fd0ed431cb0d672045d09368a5d2126}
+\subsubsection[{\texorpdfstring{Call}{Call}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Msg\+::\+With\+Body}$<${\bf Call\+Info}$>$ {\bf Message\+::\+Call}}\hypertarget{class_message_a65eabf9d1dcd603d2e7c14c5274a5bdb}{}\label{class_message_a65eabf9d1dcd603d2e7c14c5274a5bdb}
 
 
 A typedef for the call message. 
 
 \index{Message@{Message}!Continue@{Continue}}
 \index{Continue@{Continue}!Message@{Message}}
-\subsubsection[{\texorpdfstring{Continue}{Continue}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Message\+Type}$<$true, {\bf Continue\+Info}$>$ {\bf Message\+::\+Continue}}\hypertarget{class_message_a04de61b84a209cdf372b6f53f3adf7c4}{}\label{class_message_a04de61b84a209cdf372b6f53f3adf7c4}
+\subsubsection[{\texorpdfstring{Continue}{Continue}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Msg\+::\+Header\+Only}$<${\bf Continue\+Info}$>$ {\bf Message\+::\+Continue}}\hypertarget{class_message_a3575d142bf847cc5a7aecd718434fe4f}{}\label{class_message_a3575d142bf847cc5a7aecd718434fe4f}
 
 
 A typedef for the continue message. 
 
 \index{Message@{Message}!Fork@{Fork}}
 \index{Fork@{Fork}!Message@{Message}}
-\subsubsection[{\texorpdfstring{Fork}{Fork}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Message\+Type}$<$true, {\bf Fork\+Info}$>$ {\bf Message\+::\+Fork}}\hypertarget{class_message_ad1eca09e5cd0c92f940f51b847dd7f14}{}\label{class_message_ad1eca09e5cd0c92f940f51b847dd7f14}
+\subsubsection[{\texorpdfstring{Fork}{Fork}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Msg\+::\+Header\+Only}$<${\bf Fork\+Info}$>$ {\bf Message\+::\+Fork}}\hypertarget{class_message_af7272b7d937a8248ca0fe6148044e9dc}{}\label{class_message_af7272b7d937a8248ca0fe6148044e9dc}
 
 
 A typedef for the fork message. 
 
 \index{Message@{Message}!New\+Signal@{New\+Signal}}
 \index{New\+Signal@{New\+Signal}!Message@{Message}}
-\subsubsection[{\texorpdfstring{New\+Signal}{NewSignal}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Message\+Type}$<$true, {\bf New\+Signal\+Info}$>$ {\bf Message\+::\+New\+Signal}}\hypertarget{class_message_a1b5e44c60a29dd5a935dc354cfa94284}{}\label{class_message_a1b5e44c60a29dd5a935dc354cfa94284}
+\subsubsection[{\texorpdfstring{New\+Signal}{NewSignal}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Msg\+::\+Header\+Only}$<${\bf New\+Signal\+Info}$>$ {\bf Message\+::\+New\+Signal}}\hypertarget{class_message_a1eb217095ab4b8fede7aed3c9fb0787c}{}\label{class_message_a1eb217095ab4b8fede7aed3c9fb0787c}
 
 
 A typedef for the new signal message. 
 
 \index{Message@{Message}!Ret@{Ret}}
 \index{Ret@{Ret}!Message@{Message}}
-\subsubsection[{\texorpdfstring{Ret}{Ret}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Message\+Type}$<$false, {\bf Ret\+Info}$>$ {\bf Message\+::\+Ret}}\hypertarget{class_message_a146628035f5a0723cb04f7a328858e34}{}\label{class_message_a146628035f5a0723cb04f7a328858e34}
+\subsubsection[{\texorpdfstring{Ret}{Ret}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Msg\+::\+With\+Body}$<${\bf Ret\+Info}$>$ {\bf Message\+::\+Ret}}\hypertarget{class_message_a40df5862ba4d83b310c203e0873c15eb}{}\label{class_message_a40df5862ba4d83b310c203e0873c15eb}
 
 
 A typedef for the ret message. 
 
 \index{Message@{Message}!Thread@{Thread}}
 \index{Thread@{Thread}!Message@{Message}}
-\subsubsection[{\texorpdfstring{Thread}{Thread}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Message\+Type}$<$true, {\bf Thread\+Info}$>$ {\bf Message\+::\+Thread}}\hypertarget{class_message_ad3f3fae0323770c88017fc75b50682d1}{}\label{class_message_ad3f3fae0323770c88017fc75b50682d1}
+\subsubsection[{\texorpdfstring{Thread}{Thread}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Msg\+::\+Header\+Only}$<${\bf Thread\+Info}$>$ {\bf Message\+::\+Thread}}\hypertarget{class_message_ab425362459d8d4440f14d6e02e8c6566}{}\label{class_message_ab425362459d8d4440f14d6e02e8c6566}
 
 
 A typedef for the thread message. 
