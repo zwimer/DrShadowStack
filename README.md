@@ -1,6 +1,15 @@
 # DrShadowStack
 
-DrShadowStack is a software defined dynamic shadow stack implemented via DynamoRIO. DrShadowStack implements a shadow stack for most any binary given to it. If the program attempts to return to a corrupted return address, DrShadowStack will terminate the entire process group (which it sets up).
+DrShadowStack is a software defined dynamic shadow stack implemented via DynamoRIO. DrShadowStack implements a shadow stack any binary given to it, provided the file has an ELF header. If the program attempts to return to a corrupted return address, DrShadowStack will terminate the entire process group (which it sets up). DrShadowStack can handle multi-threaded processes, processes that fork, processes that call any variation of exec. All of these processes will also be protected by DrShadowStack.
+
+# Table of Contents
+
+1. [Requirements](#requirements)
+1. [Installation Instructions](#installation-instructions)
+1. [Usage](#usage)
+1. [Example](#example)
+1. [Documentation](#documentation)
+1. [Developers](#developers)
 
 ## Requirements
 
@@ -9,15 +18,10 @@ DrShadowStack is a software defined dynamic shadow stack implemented via DynamoR
 ```bash
 sudo apt-get update && sudo apt-get install libboost-all-dev
 ```
-3. The project is built on [Ubuntu 16.04](http://releases.ubuntu.com/16.04.4/) via [cmake](https://cmake.org/). It requires compiler that supports `C++11`.
+3. The project is built on [Ubuntu 16.04 LTS](http://releases.ubuntu.com/16.04.4/) via [CMake](https://cmake.org/). It requires compiler that supports `C++11`.
+4. The system architecture is in the x86 or x86\_64 families.
 
-### Developers
-
-1. The documentation is build via [Doxygen](http://www.stack.nl/~dimitri/doxygen/).
-2. The changelog is generated via [github\_changelog\_generator](https://github.com/skywinder/github-changelog-generator), which is installed via the command 
-```bash
-gem install github_changelog_generator
-```
+For more specific information about requirements, visit the requirements wiki page [here](https://github.com/zwimer/DrShadowStack/wiki/Requirements).
 
 ## Installation Instructions
 
@@ -68,5 +72,9 @@ drwxrwxr-x 7 vagrant vagrant   4096 Apr  3 20:01 CMakeFiles
 ```
 
 ## Documentation
+
+Additional documentation of DrShadowStack can be found in the [wiki](https://github.com/zwimer/DrShadowStack/wiki).
+
+## Developers
 
 Additional documentation to each component of DrShadowStack is build via [Doxygen](http://www.stack.nl/~dimitri/doxygen/), and hosted [here](https://zwimer.com/DrShadowStack).
