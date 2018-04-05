@@ -1,4 +1,26 @@
-Dr\+Shadow\+Stack is a software defined dynamic shadow stack implemented via Dynamo\+R\+IO. Dr\+Shadow\+Stack implements a shadow stack for most any binary given to it. If the program attempts to return to a corrupted return address, Dr\+Shadow\+Stack will terminate the entire process group (which it sets up).
+Dr\+Shadow\+Stack is a software defined dynamic shadow stack implemented via Dynamo\+R\+IO. Dr\+Shadow\+Stack implements a shadow stack any binary given to it, provided the file has an E\+LF header. If the program attempts to return to a corrupted return address, Dr\+Shadow\+Stack will terminate the entire process group (which it sets up). Dr\+Shadow\+Stack can handle multi-\/threaded processes, processes that fork, processes that call any variation of exec. All of these processes will also be protected by Dr\+Shadow\+Stack.
+
+\section*{Table of Contents}
+
+
+\begin{DoxyEnumerate}
+\item \href{#requirements}{\tt Requirements}
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item \href{#installation-instructions}{\tt Installation Instructions}
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item \href{#usage}{\tt Usage}
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item \href{#example}{\tt Example}
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item \href{#documentation}{\tt Documentation}
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item \href{#developers}{\tt Developers}
+\end{DoxyEnumerate}
 
 \subsection*{Requirements}
 
@@ -10,20 +32,11 @@ Dr\+Shadow\+Stack is a software defined dynamic shadow stack implemented via Dyn
 1 sudo apt-get update && sudo apt-get install libboost-all-dev
 \end{DoxyCode}
 
-\item The project is built on \href{http://releases.ubuntu.com/16.04.4/}{\tt Ubuntu 16.\+04} via \href{https://cmake.org/}{\tt cmake}. It requires compiler that supports {\ttfamily C++11}.
+\item The project is built on \href{http://releases.ubuntu.com/16.04.4/}{\tt Ubuntu 16.\+04 L\+TS} via \href{https://cmake.org/}{\tt C\+Make}. It requires compiler that supports {\ttfamily C++11}.
+\item The system architecture is in the x86 or x86\+\_\+64 families.
 \end{DoxyEnumerate}
 
-\subsubsection*{Developers}
-
-
-\begin{DoxyEnumerate}
-\item The documentation is build via \href{http://www.stack.nl/~dimitri/doxygen/}{\tt Doxygen}.
-\item The changelog is generated via \href{https://github.com/skywinder/github-changelog-generator}{\tt github\+\_\+changelog\+\_\+generator}, which is installed via the command 
-\begin{DoxyCode}
-1 gem install github\_changelog\_generator
-\end{DoxyCode}
-
-\end{DoxyEnumerate}
+For more specific information about requirements, visit the requirements wiki page \href{https://github.com/zwimer/DrShadowStack/wiki/Requirements}{\tt here}.
 
 \subsection*{Installation Instructions}
 
@@ -82,5 +95,9 @@ From the build directory of a previous version, an example could be\+:
 
 
 \subsection*{Documentation}
+
+Additional documentation of Dr\+Shadow\+Stack can be found in the \href{https://github.com/zwimer/DrShadowStack/wiki}{\tt wiki}.
+
+\subsection*{Developers}
 
 Additional documentation to each component of Dr\+Shadow\+Stack is build via \href{http://www.stack.nl/~dimitri/doxygen/}{\tt Doxygen}, and hosted \href{https://zwimer.com/DrShadowStack}{\tt here}. 

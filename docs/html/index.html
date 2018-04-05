@@ -80,18 +80,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">DrShadowStack </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>DrShadowStack is a software defined dynamic shadow stack implemented via DynamoRIO. DrShadowStack implements a shadow stack for most any binary given to it. If the program attempts to return to a corrupted return address, DrShadowStack will terminate the entire process group (which it sets up).</p>
+<div class="textblock"><p>DrShadowStack is a software defined dynamic shadow stack implemented via DynamoRIO. DrShadowStack implements a shadow stack any binary given to it, provided the file has an ELF header. If the program attempts to return to a corrupted return address, DrShadowStack will terminate the entire process group (which it sets up). DrShadowStack can handle multi-threaded processes, processes that fork, processes that call any variation of exec. All of these processes will also be protected by DrShadowStack.</p>
+<h1>Table of Contents</h1>
+<ol type="1">
+<li><a href="#requirements">Requirements</a></li>
+</ol>
+<ol type="1">
+<li><a href="#installation-instructions">Installation Instructions</a></li>
+</ol>
+<ol type="1">
+<li><a href="#usage">Usage</a></li>
+</ol>
+<ol type="1">
+<li><a href="#example">Example</a></li>
+</ol>
+<ol type="1">
+<li><a href="#documentation">Documentation</a></li>
+</ol>
+<ol type="1">
+<li><a href="#developers">Developers</a></li>
+</ol>
 <h2>Requirements</h2>
 <ol type="1">
 <li>This project utilizes <a href="https://github.com/DynamoRIO/dynamorio">DynamoRIO</a>. Installation instructions may be found <a href="https://github.com/DynamoRIO/dynamorio/wiki/How-To-Build">here</a>.</li>
 <li>This project utilizes the C++ library <a href="https://boost.org">Boost</a>. This library can be built from source, as explained <a href="https://www.boost.org/doc/libs/1_66_0/more/getting_started/unix-variants.html">here</a>. On <a href="http://releases.ubuntu.com/16.04.4/">Ubuntu 16.04</a>, this library can be installed as follows: <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;sudo apt-get update &amp;&amp; sudo apt-get install libboost-all-dev</div></div><!-- fragment --></li>
-<li>The project is built on <a href="http://releases.ubuntu.com/16.04.4/">Ubuntu 16.04</a> via <a href="https://cmake.org/">cmake</a>. It requires compiler that supports <code>C++11</code>.</li>
+<li>The project is built on <a href="http://releases.ubuntu.com/16.04.4/">Ubuntu 16.04 LTS</a> via <a href="https://cmake.org/">CMake</a>. It requires compiler that supports <code>C++11</code>.</li>
+<li>The system architecture is in the x86 or x86_64 families.</li>
 </ol>
-<h3>Developers</h3>
-<ol type="1">
-<li>The documentation is build via <a href="http://www.stack.nl/~dimitri/doxygen/">Doxygen</a>.</li>
-<li>The changelog is generated via <a href="https://github.com/skywinder/github-changelog-generator">github_changelog_generator</a>, which is installed via the command <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;gem install github_changelog_generator</div></div><!-- fragment --></li>
-</ol>
+<p>For more specific information about requirements, visit the requirements wiki page <a href="https://github.com/zwimer/DrShadowStack/wiki/Requirements">here</a>.</p>
 <h2>Installation Instructions</h2>
 <ol type="1">
 <li>Install dependencies</li>
@@ -105,6 +121,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>In general, the usage is of this format: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;./DrShadowStack [--ss_mode &lt;Mode&gt;] &lt;executable target&gt; &lt;target arguments&gt;</div></div><!-- fragment --><p>There are two different modes, <code>int</code> (internal) and <code>ext</code> (external). The internal mode keeps the shadow stack internally in the DynamoRIO client. The external mode stores the stack in a separate process.</p>
 <h2>Example</h2>
 <p>From the build directory of a previous version, an example could be: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;vagrant@ubuntu-xenial ~/S/s/build&gt; ./DrShadowStack ls -la ./</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;total 612</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;drwxrwxr-x 3 vagrant vagrant   4096 Apr  3 20:01 .</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;drwxrwxr-x 4 vagrant vagrant   4096 Apr  3 19:59 ..</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;-rw-rw-r-- 1 vagrant vagrant  14536 Apr  3 19:59 CMakeCache.txt</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;drwxrwxr-x 7 vagrant vagrant   4096 Apr  3 20:01 CMakeFiles</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;-rw-rw-r-- 1 vagrant vagrant   1381 Apr  3 19:59 cmake_install.cmake</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;-rw-rw-r-- 1 vagrant vagrant   8045 Apr  3 20:01 compile_commands.json</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;-rwxrwxr-x 1 vagrant vagrant 402168 Apr  3 20:01 DrShadowStack</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;-rwxrwxr-x 1 vagrant vagrant  53264 Apr  3 20:00 libss_dr_client.so</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;-rwxrwxr-x 1 vagrant vagrant  96304 Apr  3 19:59 libss_support.so</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;-rw-rw-r-- 1 vagrant vagrant  15265 Apr  3 20:01 Makefile</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;-rw-rw-r-- 1 vagrant vagrant   8157 Apr  3 20:01 ss_dr_client.ldscript</div></div><!-- fragment --><h2>Documentation</h2>
+<p>Additional documentation of DrShadowStack can be found in the <a href="https://github.com/zwimer/DrShadowStack/wiki">wiki</a>.</p>
+<h2>Developers</h2>
 <p>Additional documentation to each component of DrShadowStack is build via <a href="http://www.stack.nl/~dimitri/doxygen/">Doxygen</a>, and hosted <a href="https://zwimer.com/DrShadowStack">here</a>. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
