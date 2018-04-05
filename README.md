@@ -77,4 +77,4 @@ Additional documentation of DrShadowStack can be found in the [wiki](https://git
 
 ## Developers
 
-Additional documentation to each component of DrShadowStack is build via [Doxygen](http://www.stack.nl/~dimitri/doxygen/), and hosted [here](https://zwimer.com/DrShadowStack).
+Additional documentation to each component of DrShadowStack is built via [Doxygen](http://www.stack.nl/~dimitri/doxygen/), and hosted [here](https://zwimer.com/DrShadowStack).
