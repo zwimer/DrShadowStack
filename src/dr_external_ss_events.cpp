@@ -41,16 +41,21 @@ static void on_ret(const app_pc instr_addr, const app_pc target_addr) {
 // The fork event handler
 // This function is called by the child process after a fork
 void fork_event( void * ) {
+	return;
 	Utilities::verbose_log("(client) Fork event caught");
+	send_msg<Message::Fork>(sock);
+	Utilities::log_error("FORK - TODO");
 	// TODO
 }
 
 // The thread event handler
 // This function is called by the new thread whenever the process threads
 void thread_event( void * ) {
+	return;
 	Utilities::verbose_log("(client) Thread event caught");
+	send_msg<Message::Thread>(sock);
 
-	Utilities::log_error("TODO: is this called on fork event?"); // TODO
+	Utilities::log_error("THREAD - TODO");
 	// TODO
 }
 
