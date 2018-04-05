@@ -11,9 +11,6 @@ cmake_minimum_required(VERSION 3.5)
 set(DynamoRIO_DIR /home/vagrant/dynamorio/build/cmake)
 set(DRRUN_PATH /home/vagrant/dynamorio/build/bin64/drrun)
 
-# Default mode: int for internal, ext for external
-set(DEFAULT_MODE int)
-
 
 ### Developer options below ###
 
@@ -22,6 +19,9 @@ set(DEFAULT_MODE int)
 set(DEBUG_MODE "VERBOSE")
 #set(DEBUG_MODE "ON")
 
+# The name of the log file (only used for DEBUG_MODE)
+set(DR_SS_LOG_FILE "dr_shadow_stack.log")
+
 # For YouCompleteMe vim plugin
 # Disable for non-developers
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -29,7 +29,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 #################################################
 #												#
-#				Automated - General				#
+#				Program Constants				#
 #												#
 #################################################
 
@@ -42,11 +42,22 @@ project(${PROGRAM_NAME})
 set(PROGRAM_VERSION 0.1)
 
 
+# Default mode: int for internal, ext for external
+set(DEFAULT_MODE int)
+
+
 # The name of the client shared library for DynamoRio
 set(SS_DR_CLIENT_SO ss_dr_client)
 
 # The name of the support library
 set(SS_SUPPORT_LIB ss_support)
+
+
+#################################################
+#												#
+#				Automated - General				#
+#												#
+#################################################
 
 
 # Find packages
@@ -78,8 +89,10 @@ if(DEFINED DEBUG_MODE)
 		add_definitions(-DVERBOSE)
 	endif()
 
+	# Compile the program for debugging
 	set(CMAKE_BUILD_TYPE debug)
 	add_definitions(-DDEBUG_MODE)
+	add_definitions(-DLOG_FILE="${DR_SS_LOG_FILE}")
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -ggdb")
 
 # Not debug mode
@@ -87,7 +100,6 @@ else()
 	message("Debug Mode OFF!")
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
 endif()
-message(${CMAKE_CXX_FLAGS})
 
 
 #################################################
