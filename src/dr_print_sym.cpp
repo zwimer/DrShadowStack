@@ -5,6 +5,7 @@
 #include "drsyms.h"
 #include "drmgr.h"
 
+#include <sstream>
 #include <memory>
 
 // The maximum length a symbol may be
@@ -90,19 +91,23 @@ void Sym::print( const char * const description, const app_pc addr ) {
 		modname = "<noname>";
 	}
 
-	// Print the basic symbol info	
-	Utilities::message( 	"Address: ", (void *) addr, "\n\t- Module: ", 
-							modname, "\n\t- Symbol: ", sym.name, " + ",
-							addr - data->start - sym.start_offs );
+	// Get the basic symbol info	
+	std::stringstream symbol_info;	
+	symbol_info	<< "Address: " << (void *) addr << "\n\t- Module: "
+				<< modname << "\n\t- Symbol: " << sym.name << " + "
+				<< addr - data->start - sym.start_offs;
 
 	// If possible, print line specific information
 	if (symres == DRSYM_ERROR_LINE_NOT_AVAILABLE) {
-		Utilities::message(	"\t- File: ", sym.file, "\n\t- Line: ", 
-								sym.line, " + ", sym.line_offs);
+		symbol_info	<< "\n\t- File: " << sym.file << "\n\t- Line: "
+					<< sym.line << " + " << sym.line_offs;
 	}
 
 	// Otherwise, note that no info is available
 	else {
-		Utilities::message("\t- No line specific information available.\n");
+		symbol_info << "\n\t- No line specific information available.\n";
 	}
+
+	// Print the info
+	Utilities::message( symbol_info.str() );
 }

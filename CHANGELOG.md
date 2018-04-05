@@ -6,8 +6,10 @@
 
 - Convert IO to use streams [\#61](https://github.com/zwimer/DrShadowStack/issues/61)
 - Do not generate unique path [\#58](https://github.com/zwimer/DrShadowStack/issues/58)
+- Document exceptions [\#51](https://github.com/zwimer/DrShadowStack/issues/51)
 - Add default mode [\#47](https://github.com/zwimer/DrShadowStack/issues/47)
 - Remove need for drrun flag [\#43](https://github.com/zwimer/DrShadowStack/issues/43)
+- Document failure cases [\#26](https://github.com/zwimer/DrShadowStack/issues/26)
 - Handle signals [\#24](https://github.com/zwimer/DrShadowStack/issues/24)
 - Symbol Resolution on error [\#20](https://github.com/zwimer/DrShadowStack/issues/20)
 - Generate code dcumentation [\#18](https://github.com/zwimer/DrShadowStack/issues/18)
@@ -41,6 +43,7 @@
 
 **Merged pull requests:**
 
+- Message refactor [\#69](https://github.com/zwimer/DrShadowStack/pull/69) ([zwimer](https://github.com/zwimer))
 - Fix signal and message bugs [\#68](https://github.com/zwimer/DrShadowStack/pull/68) ([zwimer](https://github.com/zwimer))
 - Remove rc [\#66](https://github.com/zwimer/DrShadowStack/pull/66) ([zwimer](https://github.com/zwimer))
 - Docs [\#64](https://github.com/zwimer/DrShadowStack/pull/64) ([zwimer](https://github.com/zwimer))

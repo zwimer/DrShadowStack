@@ -49,10 +49,12 @@ static constexpr bool str_equal( const char * const s1,
 #endif
 
 #ifdef DEBUG_MODE 
+#ifndef LOG_FILE
 /// The default log file for debug mode
 /** This fill may be nullptr
  *  This should be defined by the cmake on compilation */
-#define LOG_FILE "dr_shadow_stack.log"
+#define LOG_FILE "LOG_FILE_PLACEHOLDER"
+#endif
 #endif
 
 /// The default stdout
