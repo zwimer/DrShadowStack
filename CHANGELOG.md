@@ -6,15 +6,18 @@
 
 - Convert IO to use streams [\#61](https://github.com/zwimer/DrShadowStack/issues/61)
 - Do not generate unique path [\#58](https://github.com/zwimer/DrShadowStack/issues/58)
+- Create a wiki [\#52](https://github.com/zwimer/DrShadowStack/issues/52)
 - Document exceptions [\#51](https://github.com/zwimer/DrShadowStack/issues/51)
 - Add default mode [\#47](https://github.com/zwimer/DrShadowStack/issues/47)
 - Remove need for drrun flag [\#43](https://github.com/zwimer/DrShadowStack/issues/43)
+- README description [\#27](https://github.com/zwimer/DrShadowStack/issues/27)
 - Document failure cases [\#26](https://github.com/zwimer/DrShadowStack/issues/26)
 - Handle signals [\#24](https://github.com/zwimer/DrShadowStack/issues/24)
 - Symbol Resolution on error [\#20](https://github.com/zwimer/DrShadowStack/issues/20)
 - Generate code dcumentation [\#18](https://github.com/zwimer/DrShadowStack/issues/18)
 - Use actual arg parser [\#16](https://github.com/zwimer/DrShadowStack/issues/16)
 - CMake should handle pointer size [\#14](https://github.com/zwimer/DrShadowStack/issues/14)
+- More toy examples [\#11](https://github.com/zwimer/DrShadowStack/issues/11)
 - README [\#10](https://github.com/zwimer/DrShadowStack/issues/10)
 
 **Fixed bugs:**
@@ -43,6 +46,7 @@
 
 **Merged pull requests:**
 
+- Documentation [\#73](https://github.com/zwimer/DrShadowStack/pull/73) ([zwimer](https://github.com/zwimer))
 - Message refactor [\#69](https://github.com/zwimer/DrShadowStack/pull/69) ([zwimer](https://github.com/zwimer))
 - Fix signal and message bugs [\#68](https://github.com/zwimer/DrShadowStack/pull/68) ([zwimer](https://github.com/zwimer))
 - Remove rc [\#66](https://github.com/zwimer/DrShadowStack/pull/66) ([zwimer](https://github.com/zwimer))
