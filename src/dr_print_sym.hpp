@@ -27,8 +27,8 @@ public:
 	/** This function should be called when the client terminates */
 	static void finish();
 
-	/// Print symbol information for the what is located at addr
-	/** description is a description of what the address addr points to */
+	/** Print symbol information for the what is located at addr
+	 *  description is a description of what the address addr points to */
 	static void print( const char * const description, const app_pc addr );
 };
 

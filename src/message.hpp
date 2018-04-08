@@ -16,8 +16,8 @@
 /*********************************************************/
 
 
-/// The size of a pointer in the target program
-/** To run on 32 bit programs, change this value! */
+/** The size of a pointer in the target program
+ *  To run on 32 bit programs, change this value! */
 #define POINTER_SIZE ( sizeof(void *) )
 
 /** The number of characters a message header can be */
@@ -34,8 +34,8 @@
 /*********************************************************/
 
 
-/// A class used for defining all message types
-/** Messages come in two forms. Ones that are only
+/** A class used for defining all message types
+ *  Messages come in two forms. Ones that are only
  *  headers, and ones that pass a pointer as a body */
 class Message final {
 
@@ -104,8 +104,8 @@ class Message final {
 				memcpy( & message[MESSAGE_HEADER_LENGTH], ptr, POINTER_SIZE);
 			}
 
-			/// The message an instanation of the class holds
-			/* This message is NOT null terminated! */
+			/** The message an instanation of the class holds
+			 * This message is NOT null terminated! */
 			char message[size];
 		};
 

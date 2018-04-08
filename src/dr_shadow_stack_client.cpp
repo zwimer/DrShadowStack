@@ -8,8 +8,8 @@
 #include "drmgr.h"
 
 
-/// The main client function
-/** This function dynamically 'injects' the shadow stack */
+/** The main client function
+ *  This function dynamically 'injects' the shadow stack */
 DR_EXPORT void dr_client_main(client_id_t id, int argc, const char *argv[]) {	
 
 	// Setup utilities
