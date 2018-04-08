@@ -22,24 +22,29 @@ FILE * Utilities::log_file = nullptr;
 FILE * const Utilities::error_file = ERROR_FILE;
 FILE * const Utilities::stdout_file= STDOUT_FILE;
 
-// A singleton constructor
-// This exists so that if a global Utilities is declared
-// it will setup everyhing needed for the class
+// Sets up the utility class
 void Utilities::setup(const bool clear_log) {
 #ifdef LOG_FILE
+
+		// Note: if anything fails, log_file is nullptr, so the
+		// logging functions will ignore it - It is safe to call them
 
 		// If log should be remove, try to unlink it
 		if (clear_log) {
 			const auto old = errno;
-			assert( (unlink(LOG_FILE) == 0) || (errno == ENOENT), "unlink() failed." );
+			if ((unlink(LOG_FILE) != 0) && (errno != ENOENT)) {
+				log_error("unlink() failed.");
+				exit(EXIT_FAILURE);
+			}
 			errno = old;
 		}
 
 		// Open the log file
-		// Note: if fopen fails, log_file is nullptr, so the
-		// logging functions will ignore it - It is safe to call them
 		log_file = fopen(LOG_FILE, "a");
-		assert( log_file != nullptr, "fopen() failed.");
+		if ( log_file == nullptr ) {
+			log_error("fopen() failed.");
+			exit(EXIT_FAILURE);
+		}
 #endif
 }
 

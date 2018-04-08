@@ -1,5 +1,8 @@
+/** @file */
 #ifndef __PARSE_ARGS_HPP__
 #define __PARSE_ARGS_HPP__
+
+#include "ss_mode.hpp"
 
 #include <boost/program_options.hpp>
 
@@ -32,11 +35,11 @@
 struct Args {
 
 	/** Constructor */
-	Args(	const bool is_int, const std::string & targ, 
+	Args(	SSMode && mode_, const std::string & targ, 
 			std::vector<std::string> & targ_args );
 
-	/** State if mode is internal */
-	const bool is_internal;
+	/** The shadow stack mode */
+	const SSMode mode;
 
 	/** Path to target executable */
 	const std::string target;

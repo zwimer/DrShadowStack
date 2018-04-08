@@ -1,8 +1,9 @@
 /** @file */
-#include"dr_internal_ss_events.hpp"
-#include"dr_external_ss_events.hpp"
+#include "dr_internal_ss_events.hpp"
+#include "dr_external_ss_events.hpp"
 #include "constants.hpp"
 #include "utilities.hpp"
+#include "ss_mode.hpp"
 
 #include "dr_api.h"
 #include "drmgr.h"
@@ -29,7 +30,7 @@ DR_EXPORT void dr_client_main(client_id_t id, int argc, const char *argv[]) {
     Utilities::log("Client 'DrShadowStack' initializing\n");
 
 	// If the decide what setup function to use based on the mode
-	const bool is_internal = ( strcmp(argv[1], INTERNAL_MODE_FLAG) == 0 );
+	const bool is_internal = SSMode(argv[1]).is_internal;
 	const auto setup = is_internal ? InternalSS::setup : ExternalSS::setup;
 
 	// Setup the SS's client side part
