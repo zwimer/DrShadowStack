@@ -22,9 +22,9 @@ FILE * Utilities::log_file = nullptr;
 FILE * const Utilities::error_file = ERROR_FILE;
 FILE * const Utilities::stdout_file= STDOUT_FILE;
 
-/// A singleton constructor
-/** This exists so that if a global Utilities is declared
- *  it will setup everyhing needed for the class */
+// A singleton constructor
+// This exists so that if a global Utilities is declared
+// it will setup everyhing needed for the class
 void Utilities::setup(const bool clear_log) {
 #ifdef LOG_FILE
 
@@ -43,14 +43,14 @@ void Utilities::setup(const bool clear_log) {
 #endif
 }
 
-/** Get the system page size */
+// Get the system page size
 inline size_t get_page_size() {
 	static const size_t page_size = (size_t) sysconf(_SC_PAGESIZE);
 	Utilities::assert( page_size != -1, "sysconf() failed.");
 	return page_size;
 }
 
-/** Returns the system page size */
+// Returns the system page size
 size_t Utilities::get_page_size() {
 	static const size_t page_size = (size_t) sysconf(_SC_PAGESIZE);
 	return page_size;

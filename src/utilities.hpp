@@ -23,27 +23,27 @@ class Utilities {
 	/** Notes whether or not any threading / forking has happened yet */
 	static bool is_multi_thread_or_proccess;
 
-	/// The log file
-	/** This must be defined before main() */
+	/** The log file
+	 *  This must be defined before main() */
 	static FILE * log_file;
 
-	/// The stdout file
-	/** This must be defined before main() */
+	/** The stdout file
+	 *  This must be defined before main() */
 	static FILE * const stdout_file;
 
-	/// The error file
-	/** This must be defined before main() */
+	/** The error file
+	 *  This must be defined before main() */
 	static FILE * const error_file;
 
-	/// Define a gettid function
-	/** On failure, disables multi_threaded / functionality 
+	/** Define a gettid function
+	 *  On failure, disables multi_threaded / functionality 
 	 *  (to continue logging) then terminates the group */
 	static pid_t get_tid();
 
 public:
 
-	/// Sets up the utilities class 
-	/** If clear_log, the log will be cleared op setup
+	/** Sets up the utilities class 
+	 *  If clear_log, the log will be cleared op setup
 	 *  If s is null, just terminates the group */
 	static void setup(const bool clear_log);
 
@@ -57,8 +57,8 @@ public:
 	/*********************************************************/
 
 
-	/// To be called in case of an error
-	/** Prints log s to the error file, perrors,
+	/** To be called in case of an error
+	 *  Prints log s to the error file, perrors,
 	 *  then kills the process group */
 	[[noreturn]] static void err(const char * const s);
 
@@ -73,8 +73,8 @@ public:
 	/*********************************************************/
 
 
-	/// Logs the arguments as cout would to the log file if not null
-	/** Ends the printed line(s) with a newline then flushes the buffer
+	/** Logs the arguments as cout would to the log file if not null
+	 *  Ends the printed line(s) with a newline then flushes the buffer
 	 *  This function only runs if VERBOSE is defined */
 	template<typename... Args> static void verbose_log(Args && ... args) {
 #ifdef VERBOSE
@@ -82,15 +82,15 @@ public:
 #endif
 	}
 
-	/// Logs the arguments as cout would to the log file if not null
-	/** Ends the printed line(s) with a newline then flushes the buffer
+	/** Logs the arguments as cout would to the log file if not null
+	 *  Ends the printed line(s) with a newline then flushes the buffer
 	 *  On faliure, silently fails (since it cannot write out) */
 	template<typename... Args> static void log(Args && ... args) {
 		write_log(log_file, std::forward<Args>(args)... );
 	}
 
-	/// Prints the arguments as cout would to the stdout and log files 
-	/** Ends the printed line(s) with a newline then flushes the buffer
+	/** Prints the arguments as cout would to the stdout and log files 
+	 *  Ends the printed line(s) with a newline then flushes the buffer
 	 *  If either file pointer is null, that file is skipped
 	 *  On faliure, silently fails (since it cannot write out) */
 	template<typename... Args> static void message(Args && ... args) {
@@ -98,8 +98,8 @@ public:
 		write_log(stdout_file, std::forward<Args>(args)... );
 	}
 
-	/// Prints the arguments as cout would to the error and log files 
-	/** Ends the printed line(s) with a newline then flushes the buffer
+	/** Prints the arguments as cout would to the error and log files 
+	 *  Ends the printed line(s) with a newline then flushes the buffer
 	 *  If either file pointer is null, that file is skipped
 	 *  On faliure, silently fails (since it cannot write out) */
 	template<typename... Args> static void log_error(Args && ... args) {
@@ -112,14 +112,14 @@ public:
 
 private:
 
-	/// A wrapper that writes args to f if f is not null
-	/** Ends the printed line(s) with a newline then flushes the buffer
+	/** A wrapper that writes args to f if f is not null
+	 *  Ends the printed line(s) with a newline then flushes the buffer
 	 *  On faliure, silently fails (since it cannot write out)
 	 *  If the process is multithreaded or has forked, prints the TID first */
 	template<typename... Args> static void write_log(FILE * const f, Args && ... args);
 
-    /// Adds the arguments to the stream
-    /** Ends the printed line(s) with a newline then flushes the buffer
+    /** Adds the arguments to the stream
+     *  Ends the printed line(s) with a newline then flushes the buffer
      *  If the process is multithreaded or has forked, prints the TID first */
     template<typename... Args> static void write_log_helper(std::stringstream & stream,
                                                             Args && ... args);

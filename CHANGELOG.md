@@ -46,6 +46,7 @@
 
 **Merged pull requests:**
 
+- Typos [\#75](https://github.com/zwimer/DrShadowStack/pull/75) ([zwimer](https://github.com/zwimer))
 - Documentation [\#73](https://github.com/zwimer/DrShadowStack/pull/73) ([zwimer](https://github.com/zwimer))
 - Message refactor [\#69](https://github.com/zwimer/DrShadowStack/pull/69) ([zwimer](https://github.com/zwimer))
 - Fix signal and message bugs [\#68](https://github.com/zwimer/DrShadowStack/pull/68) ([zwimer](https://github.com/zwimer))
