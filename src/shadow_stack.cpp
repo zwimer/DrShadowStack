@@ -5,7 +5,6 @@
 #include "constants.hpp"
 #include "utilities.hpp"
 #include "group.hpp"
-#include "message.hpp" // TODO
 
 #include <unistd.h>
 #include <signal.h>
