@@ -1,8 +1,8 @@
 #include "parse_args.hpp"
 #include "utilities.hpp"
 #include "constants.hpp"
+#include "group.hpp"
 
-#include <string.h>
 #include <utility>
 
 
@@ -16,6 +16,11 @@ using namespace boost::program_options;
 /*                                                       */
 /*********************************************************/
 
+
+// Called if used incorrectly
+[[ noreturn ]] void incorrect_usage() {
+	Group::terminate("Incorrect usage\nFor usage information, use the --help flag\n");
+}
 
 // Returns a variables map containing the parsed arguments
 // The second argument is a pointer to a vector to store the target arguments in
@@ -35,7 +40,8 @@ variables_map parse_args_helper(	const int argc, const char * const argv[],
 		(MODE, value<std::string>(),
 					"The mode in which the shadow stack is used"
 					"\n\t" INTERNAL_MODE_FLAG " -- internal shadow stack mode"
-					"\n\t" EXTERNAL_MODE_FLAG " -- external shadow stack mode" )
+					"\n\t" EXTERNAL_MODE_FLAG " -- external shadow stack mode"
+					"\n\t" PROT_INTERNAL_MODE_FLAG " -- protected internal shadow stack mode" )
 		(TARGET, value<std::string>()->required(), "The target executable")
 		(TARGET_ARGS, value<std::vector<std::string> >(),
 					"The target executable's arguments" );
@@ -89,8 +95,9 @@ variables_map parse_args_helper(	const int argc, const char * const argv[],
 		// Collect all unregistered and positional 
 		// arguments to create the target's argument list
 		*target_args = collect_unrecognized(raw_parsed.options, include_positional);
-		Utilities::assert((*target_args)[0] == args[TARGET].as<std::string>(),
-			"Incorrect usage\nFor usage information, use the --help flag");
+		if ((*target_args)[0] != args[TARGET].as<std::string>()) {
+			incorrect_usage();
+		}
 		target_args->erase(target_args->begin());
 
 		// Return the variable map		
@@ -99,8 +106,7 @@ variables_map parse_args_helper(	const int argc, const char * const argv[],
 
 	// If an error occured, note so
 	catch (...) {
-		Utilities::err("Incorrect usage\nFor usage information, use the --help flag");
-		exit(EXIT_FAILURE);
+		incorrect_usage();
 	}
 }
 
@@ -113,8 +119,8 @@ variables_map parse_args_helper(	const int argc, const char * const argv[],
 
 
 // Args constructor
-Args::Args(	const bool is_int, const std::string & targ, 
-			std::vector<std::string> & targ_args ) : is_internal(is_int), 
+Args::Args(	SSMode && mode_, const std::string & targ, 
+			std::vector<std::string> & targ_args ) : mode(std::move(mode_)), 
 			target(targ), target_args(std::move(targ_args)) {}
 
 
@@ -125,9 +131,16 @@ Args parse_args(const int argc, const char * const argv[]) {
 	std::vector<std::string> target_args;
 	const auto vm = parse_args_helper(argc, argv, & target_args);
 
+	// Verify the mode
+	SSMode mode(vm[MODE].as<std::string>().c_str());
+	if ( ( ! mode.is_internal ) && ( ! mode.is_external ) ) {
+		Utilities::log_error("Invalid mode given");
+		incorrect_usage();
+	}
+
 	// Extract the arguments and return the result
 	return std::move( Args( 
-		(strcmp(vm[MODE].as<std::string>().c_str(), INTERNAL_MODE_FLAG) == 0),
+		std::move(mode),
 		vm[TARGET].as<std::string>(),
 		target_args
 	));

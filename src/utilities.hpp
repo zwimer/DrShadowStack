@@ -43,8 +43,8 @@ class Utilities {
 public:
 
 	/** Sets up the utilities class 
-	 *  If clear_log, the log will be cleared op setup
-	 *  If s is null, just terminates the group */
+	 *  If clear_log, the log will be cleared on setup
+	 *  If this function fails, it exists *ONLY* the current process */
 	static void setup(const bool clear_log);
 
 	/** Returns the system page size */

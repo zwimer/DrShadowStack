@@ -63,7 +63,9 @@ struct Group {
 	 *  ERROR file, otherwise it is logged via Utilities::message
 	 *  If msg is nullptr, no message is passed.
 	 *  If this function ends up calling itself, 
-	 *  immediate process group termination will occur */
+	 *  immediate process group termination will occur
+	 *  setup() **DOES NOT** have to be called before this function 
+	 *  in every process. However, it **MUST** be called by DrShadowStack once first */
 	[[ noreturn ]] static void terminate(const char * const msg, bool is_error = false);
 
 private:
