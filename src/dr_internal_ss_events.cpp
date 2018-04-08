@@ -1,16 +1,16 @@
 #include "dr_internal_ss_events.hpp"
 #include "dr_print_sym.hpp"
+#include "data_stack.hpp"
 #include "constants.hpp"
 #include "utilities.hpp"
 #include "group.hpp"
 
 #include <stack>
 
-
 // The stack of shadow stacks that holds the return addresses of the program
 // Everytime a signal handler is called, a shadow stack is pushed with a wildcard
 // Everytime we return from a signal handler, the stack pops a wildcard
-std::stack<app_pc> shadow_stack;
+DataStack::Stack<app_pc> shadow_stack;
 
 
 // The call handler. 
@@ -35,7 +35,7 @@ static void on_ret(app_pc, const app_pc target_addr) {
 		Sym::print("return address", target_addr);
 		Utilities::log_error(	"*** Shadow stack mistmach detected! ***\n"
 								"Attempting to return to ", (void *) target_addr,
-								"\n\tShadow stack is empty!\n");
+								"\n\tShadow stack is empty!\n" );
 		Group::terminate(nullptr);
 	}
 

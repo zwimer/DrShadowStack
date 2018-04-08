@@ -47,6 +47,16 @@ public:
 	 *  If s is null, just terminates the group */
 	static void setup(const bool clear_log);
 
+	/** Returns the system page size */
+	static size_t get_page_size();
+
+	/*********************************************************/
+	/*                                                       */
+	/*                		Error checking		             */
+	/*                                                       */
+	/*********************************************************/
+
+
 	/// To be called in case of an error
 	/** Prints log s to the error file, perrors,
 	 *  then kills the process group */
@@ -55,7 +65,13 @@ public:
 	/** assert b, if false call program_err(s) */
 	static void assert(const bool b, const char * const s);
 
-	// For logging
+
+	/*********************************************************/
+	/*                                                       */
+	/*                  	 for logging					 */
+	/*                                                       */
+	/*********************************************************/
+
 
 	/// Logs the arguments as cout would to the log file if not null
 	/** Ends the printed line(s) with a newline then flushes the buffer
