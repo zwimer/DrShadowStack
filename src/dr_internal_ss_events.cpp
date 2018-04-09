@@ -117,6 +117,14 @@ dr_emit_flags_t internal_event_app_instruction(	void * drcontext, void * tag,
     return DR_EMIT_DEFAULT;
 }
 
+// Called on exit of client program
+// Checks how the client returned then exits
+void exit_event() {
+	Utilities::assert(	drmgr_unregister_bb_insertion_event(internal_event_app_instruction),
+						"client process returned improperly." );
+	drmgr_exit();
+}
+
 
 /*********************************************************/
 /*                                                       */
@@ -131,6 +139,9 @@ void InternalSS::setup(const char * const socket_path) {
 	// Setup
 	Utilities::assert( drmgr_init(), "drmgr_init() failed." );
 	Sym::init();
+
+	// Register events
+	dr_register_exit_event(exit_event);
 
 	// The event used to re-route call and ret's
     drmgr_register_bb_instrumentation_event(NULL, internal_event_app_instruction, NULL);

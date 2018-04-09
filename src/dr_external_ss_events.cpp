@@ -10,17 +10,6 @@
 static int sock = -1;
 
 
-
-// Called whenever a signal is called. Adds a wildcard to the shadow stack
-// Note: the reason we use this instead of the signal event is this ignores ignored signals
-static void kernel_xfer_event_handler(void *, const dr_kernel_xfer_info_t * info) {
-	if (info->type == DR_XFER_SIGNAL_DELIVERY) {
-		Utilities::verbose_log(	"Caught sig ", info->sig, " - ", strsignal(info->sig),
-								"\t\n- Handler address = ", (void *) info->target_pc);
-		send_msg<Message::NewSignal>(sock);
-	}
-}
-
 // The call handler. 
 // This function is called whenever a call instruction is about 
 // to execute. This function is static for optimization reasons */
@@ -41,22 +30,25 @@ static void on_ret(const app_pc instr_addr, const app_pc target_addr) {
 // The fork event handler
 // This function is called by the child process after a fork
 void fork_event( void * ) {
-	return;
 	Utilities::verbose_log("(client) Fork event caught");
-	send_msg<Message::Fork>(sock);
-	Utilities::log_error("FORK - TODO");
 	// TODO
 }
 
 // The thread event handler
 // This function is called by the new thread whenever the process threads
 void thread_event( void * ) {
-	return;
 	Utilities::verbose_log("(client) Thread event caught");
-	send_msg<Message::Thread>(sock);
-
-	Utilities::log_error("THREAD - TODO");
 	// TODO
+}
+
+// Called whenever a signal is called. Adds a wildcard to the shadow stack
+// Note: the reason we use this instead of the signal event is this ignores ignored signals
+static void kernel_xfer_event_handler(void *, const dr_kernel_xfer_info_t * info) {
+	if (info->type == DR_XFER_SIGNAL_DELIVERY) {
+		Utilities::verbose_log(	"Caught sig ", info->sig, " - ", strsignal(info->sig),
+								"\t\n- Handler address = ", (void *) info->target_pc);
+		send_msg<Message::NewSignal>(sock);
+	}
 }
 
 // The function that inserts the call and ret handlers
