@@ -4,6 +4,7 @@
 
 **Implemented enhancements:**
 
+- ss\_mode internal + mprotect [\#74](https://github.com/zwimer/DrShadowStack/issues/74)
 - Convert IO to use streams [\#61](https://github.com/zwimer/DrShadowStack/issues/61)
 - Do not generate unique path [\#58](https://github.com/zwimer/DrShadowStack/issues/58)
 - Create a wiki [\#52](https://github.com/zwimer/DrShadowStack/issues/52)
