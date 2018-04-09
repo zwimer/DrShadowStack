@@ -27,14 +27,17 @@ struct SSMode final {
 	/** The mode */
 	const char * const str;
 
-	/** true if mode = internal */
+	/** True if mode = internal */
 	const bool is_internal;
 
-	/** true if mode = protected internal */
+	/** True if mode = protected internal */
 	const bool is_protected_internal;
 
-	/** true if mode = external */
+	/** True if mode = external */
 	const bool is_external;
+
+	/** True if any mode is valid */
+	const bool is_valid_mode;
 };
 
 

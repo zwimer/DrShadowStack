@@ -40,8 +40,7 @@ variables_map parse_args_helper(	const int argc, const char * const argv[],
 		(MODE, value<std::string>(),
 					"The mode in which the shadow stack is used"
 					"\n\t" INTERNAL_MODE_FLAG " -- internal shadow stack mode"
-					"\n\t" EXTERNAL_MODE_FLAG " -- external shadow stack mode"
-					"\n\t" PROT_INTERNAL_MODE_FLAG " -- protected internal shadow stack mode" )
+					"\n\t" EXTERNAL_MODE_FLAG " -- external shadow stack mode")
 		(TARGET, value<std::string>()->required(), "The target executable")
 		(TARGET_ARGS, value<std::vector<std::string> >(),
 					"The target executable's arguments" );
@@ -133,7 +132,7 @@ Args parse_args(const int argc, const char * const argv[]) {
 
 	// Verify the mode
 	SSMode mode(vm[MODE].as<std::string>().c_str());
-	if ( ( ! mode.is_internal ) && ( ! mode.is_external ) ) {
+	if ( ! mode.is_valid_mode ) {
 		Utilities::log_error("Invalid mode given");
 		incorrect_usage();
 	}

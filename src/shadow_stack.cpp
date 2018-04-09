@@ -15,8 +15,24 @@
 #undef assert
 
 
+// Calls setup functions. 
+// The order of these functions matters !
+inline void run_before_everything() {
+
+	// Setup utilities
+	Utilities::setup(true);
+	Utilities::log("DrShadowStack initalized");
+
+	// Create a new process group by starting a new session
+	// Many terminals will automatically do this, but just in case...
+	// Also changes many default signal handlers to kill the process group
+	Utilities::log("Setting up the group now...");
+	Group::setup();
+
+}
+
 // Start's the program passed in via drrun
-void start_program( const Args input_args, char * socket_path ) {
+[[ noreturn ]] void start_program( const Args input_args, char * socket_path ) {
 
 	// Construct args to give to exec
 	std::vector<const char *> exec_args;
@@ -56,20 +72,48 @@ void start_program( const Args input_args, char * socket_path ) {
 	Utilities::err("execvp() failed.");
 }
 
-// Calls setup functions. 
-// The order of these functions matters !
-inline void run_before_everything() {
+// Setup and start the external client
+[[ noreturn ]] void start_external_client( const Args & args ) {
+		
+	// Setup a unix server
+	// Technically, between generating the name name and the
+	// server starting, the file could have been created.
+	// However, this is safe as the program will crash if so
+	const std::string server_name = temp_name();
+	const int sock = QS::create_server(server_name.c_str());
 
-	// Setup utilities
-	Utilities::setup(true);
-	Utilities::log("DrShadowStack initalized");
+	// Just in case an exception occurs, setup a class
+	// whose desctructor will terminate the group
+	TerminateOnDestruction tod;
 
-	// Create a new process group by starting a new session
-	// Many terminals will automatically do this, but just in case...
-	// Also changes many default signal handlers to kill the process group
-	Utilities::log("Setting up the group now...");
-	Group::setup();
+	// Fork
+	// Note that the server belongs to the parent, the client is the child
+	Utilities::log("Starting initial fork...");
+	const pid_t pid = fork();
+	Utilities::assert( pid != -1, "fork() failed" );
+	
+	// If this is the child process,
+	// start the program to be protected
+	if (pid == 0) {
+		Utilities::log("Forming drrun args...");
+		start_program( args, (char *) server_name.c_str() );
+	}
 
+	// Otherwise, this is the parent process
+	else {
+
+		// Wait for the client then start the shadow stack
+		Utilities::log("Waiting for client");
+		const int client_sock = QS::accept_client(sock);
+
+		// Start the shadow stack server
+		start_external_shadow_stack(client_sock);
+
+		// If the program made it to this point, nothing
+		// went wrong, gracefully exit
+		tod.disable();
+		Group::terminate("Program exited. Killing group", false);
+	}
 }
 
 // Main function
@@ -96,45 +140,11 @@ int main(int argc, char * argv[]) {
 
 	// If the shadow stack should be external
 	else if (args.mode.is_external) {
-		
-		// Setup a unix server
-		// Technically, between generating the name name and the
-		// server starting, the file could have been created.
-		// However, this is safe as the program will crash if so
-		const std::string server_name = temp_name();
-		const int sock = QS::create_server(server_name.c_str());
+		start_external_client( args );
+	}
 
-		// Just in case an exception occurs, setup a class
-		// whose desctructor will terminate the group
-		TerminateOnDestruction tod;
-
-		// Fork
-		// Note that the server belongs to the parent, the client is the child
-		Utilities::log("Starting initial fork...");
-		const pid_t pid = fork();
-		Utilities::assert( pid != -1, "fork() failed" );
-		
-		// If this is the child process,
-		// start the program to be protected
-		if (pid == 0) {
-			Utilities::log("Forming drrun args...");
-			start_program( args, (char *) server_name.c_str() );
-		}
-
-		// Otherwise, this is the parent process
-		else {
-
-			// Wait for the client then start the shadow stack
-			Utilities::log("Waiting for client");
-			const int client_sock = QS::accept_client(sock);
-
-			// Start the shadow stack server
-			start_external_shadow_stack(client_sock);
-
-			// If the program made it to this point, nothing
-			// went wrong, gracefully exit
-			tod.disable();
-			exit(EXIT_SUCCESS);
-		}
+	// Otherwise an unknown mode was called
+	else {
+		Group::terminate("Unimplemented ss_mode called.");
 	}
 }

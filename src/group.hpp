@@ -66,7 +66,7 @@ struct Group {
 	 *  immediate process group termination will occur
 	 *  setup() **DOES NOT** have to be called before this function 
 	 *  in every process. However, it **MUST** be called by DrShadowStack once first */
-	[[ noreturn ]] static void terminate(const char * const msg, bool is_error = false);
+	[[ noreturn ]] static void terminate(const char * const msg, bool is_error = true);
 
 private:
 
