@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>Shadow Stack: src/external_stack_server.hpp File Reference</title>
+<title>Shadow Stack: src/ss_mode.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -89,34 +89,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">external_stack_server.hpp File Reference</div>  </div>
+<div class="title">ss_mode.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p><a href="external__stack__server_8hpp_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
+<div class="textblock"><code>#include &quot;<a class="el" href="ss__mode_8hpp_source.html">ss_mode.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="utilities_8hpp_source.html">utilities.hpp</a>&quot;</code><br />
+<code>#include &quot;string.h&quot;</code><br />
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a252e11ac536869ac19a832791df111a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="external__stack__server_8hpp.html#a252e11ac536869ac19a832791df111a7">start_external_shadow_stack</a> (const int <a class="el" href="dr__external__ss__events_8cpp.html#a5903d0b282fc5eae503de618f896b5e1">sock</a>)</td></tr>
-<tr class="memdesc:a252e11ac536869ac19a832791df111a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function for running the external shadow stack sever Sock must be the file descriptor to the unix domain server that connects the shadow stack program to the dynamorio client managing the program to be run.  <a href="#a252e11ac536869ac19a832791df111a7">More...</a><br /></td></tr>
-<tr class="separator:a252e11ac536869ac19a832791df111a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abde0b16253f068c806c770c87a9304dc"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ss__mode_8cpp.html#abde0b16253f068c806c770c87a9304dc">safe_strdup</a> (const char *const s)</td></tr>
+<tr class="separator:abde0b16253f068c806c770c87a9304dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a252e11ac536869ac19a832791df111a7"></a>
+<a class="anchor" id="abde0b16253f068c806c770c87a9304dc"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void start_external_shadow_stack </td>
+          <td class="memname">char* safe_strdup </td>
           <td>(</td>
-          <td class="paramtype">const int&#160;</td>
-          <td class="paramname"><em>sock</em></td><td>)</td>
+          <td class="paramtype">const char *const&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>The function for running the external shadow stack sever Sock must be the file descriptor to the unix domain server that connects the shadow stack program to the dynamorio client managing the program to be run. </p>
 
 </div>
 </div>

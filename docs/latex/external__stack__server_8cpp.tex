@@ -45,7 +45,7 @@ void \hyperlink{external__stack__server_8cpp_a982a481632c7cb255658096b753e3d65}{
 void \hyperlink{external__stack__server_8cpp_a2c50333d2b76707fb0068ddfe0743f11}{thread\+\_\+handler} (\hyperlink{external__stack__server_8cpp_a7ad69d2104372457e0bfbbb85270bbf5}{pointer\+\_\+stack} \&stk, const char $\ast$const buffer, const int)
 \item 
 void \hyperlink{external__stack__server_8cpp_a252e11ac536869ac19a832791df111a7}{start\+\_\+external\+\_\+shadow\+\_\+stack} (const int \hyperlink{dr__external__ss__events_8cpp_a5903d0b282fc5eae503de618f896b5e1}{sock})
-\begin{DoxyCompactList}\small\item\em The function for running the external shadow stack sever. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The function for running the external shadow stack sever Sock must be the file descriptor to the unix domain server that connects the shadow stack program to the dynamorio client managing the program to be run. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Typedef Documentation}
@@ -121,9 +121,9 @@ void \hyperlink{external__stack__server_8cpp_a252e11ac536869ac19a832791df111a7}{
 )}\hypertarget{external__stack__server_8cpp_a252e11ac536869ac19a832791df111a7}{}\label{external__stack__server_8cpp_a252e11ac536869ac19a832791df111a7}
 
 
-The function for running the external shadow stack sever. 
+The function for running the external shadow stack sever Sock must be the file descriptor to the unix domain server that connects the shadow stack program to the dynamorio client managing the program to be run. 
 
-Sock must be the file descriptor to the unix domain server that connects the shadow stack program to the dynamorio client managing the program to be run \index{external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}!thread\+\_\+handler@{thread\+\_\+handler}}
+\index{external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}!thread\+\_\+handler@{thread\+\_\+handler}}
 \index{thread\+\_\+handler@{thread\+\_\+handler}!external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}}
 \subsubsection[{\texorpdfstring{thread\+\_\+handler(pointer\+\_\+stack \&stk, const char $\ast$const buffer, const int)}{thread_handler(pointer_stack &stk, const char *const buffer, const int)}}]{\setlength{\rightskip}{0pt plus 5cm}void thread\+\_\+handler (
 \begin{DoxyParamCaption}

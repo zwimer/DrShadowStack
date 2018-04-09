@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['safe_5fstrdup',['safe_strdup',['../ss__mode_8cpp.html#abde0b16253f068c806c770c87a9304dc',1,'ss_mode.cpp']]],
   ['send_5fmsg',['send_msg',['../message_8hpp.html#a3aa9717aa0491750127da5a9a495b581',1,'send_msg(const int sock):&#160;message.hpp'],['../message_8hpp.html#af23b6dee074534894de2efbc329cb3ca',1,'send_msg(const int sock, const char *const bdy):&#160;message.hpp']]],
   ['set_5fdefault_5fsignal_5fhandler',['set_default_signal_handler',['../group_8cpp.html#aba809f5ad91e68dea5a38257008ec829',1,'group.cpp']]],
   ['set_5flength',['set_length',['../class_message_1_1_msg.html#adacbbaadf7d1f920e837d07d3dd39725',1,'Message::Msg']]],
@@ -9,9 +10,14 @@ var searchData=
   ['shadow_5fstack_2ecpp',['shadow_stack.cpp',['../shadow__stack_8cpp.html',1,'']]],
   ['sock',['sock',['../dr__external__ss__events_8cpp.html#a5903d0b282fc5eae503de618f896b5e1',1,'dr_external_ss_events.cpp']]],
   ['source_5fextensions',['SOURCE_EXTENSIONS',['../_8ycm__extra__conf_8py.html#a47014996e1e517071cd0412a22adb123',1,'.ycm_extra_conf.py']]],
+  ['ss_5fmode_2ecpp',['ss_mode.cpp',['../ss__mode_8cpp.html',1,'']]],
+  ['ss_5fmode_2ehpp',['ss_mode.hpp',['../ss__mode_8hpp.html',1,'']]],
+  ['ssmode',['SSMode',['../struct_s_s_mode.html',1,'SSMode'],['../struct_s_s_mode.html#acf06136523caccfa31298e20db0980ce',1,'SSMode::SSMode(const char *const m)'],['../struct_s_s_mode.html#ab0b59c6a937b185e602dc4b252c0f036',1,'SSMode::SSMode()=delete']]],
+  ['start_5fexternal_5fclient',['start_external_client',['../shadow__stack_8cpp.html#af11cbb19bd7940f8e1b5243d0f0389e6',1,'shadow_stack.cpp']]],
   ['start_5fexternal_5fshadow_5fstack',['start_external_shadow_stack',['../external__stack__server_8cpp.html#a252e11ac536869ac19a832791df111a7',1,'start_external_shadow_stack(const int sock):&#160;external_stack_server.cpp'],['../external__stack__server_8hpp.html#a252e11ac536869ac19a832791df111a7',1,'start_external_shadow_stack(const int sock):&#160;external_stack_server.cpp']]],
   ['start_5fprogram',['start_program',['../shadow__stack_8cpp.html#ad203fd9b387f4d1de99b47d7b3135dc9',1,'shadow_stack.cpp']]],
   ['stdout_5ffile',['stdout_file',['../class_utilities.html#a224eea0a234ac9877a8334f74fc89ef0',1,'Utilities::stdout_file()'],['../constants_8hpp.html#a195ca3987a60992c5abfc663cd37151d',1,'STDOUT_FILE():&#160;constants.hpp']]],
-  ['str_5fequal',['str_equal',['../constants_8hpp.html#aeefadcfa43a02760a17171e91775a1c0',1,'constants.hpp']]],
+  ['str',['str',['../struct_s_s_mode.html#a82376c7c47401dc851ea16b1b35cd4b7',1,'SSMode']]],
+  ['str_5fequal',['str_equal',['../ss__mode_8hpp.html#aeefadcfa43a02760a17171e91775a1c0',1,'ss_mode.hpp']]],
   ['sym',['Sym',['../struct_sym.html',1,'Sym'],['../struct_sym.html#aa2c1e0336fc028030e91c380230a0ae3',1,'Sym::Sym()']]]
 ];

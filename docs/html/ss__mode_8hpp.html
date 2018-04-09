@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>Shadow Stack: src/parse_args.hpp File Reference</title>
+<title>Shadow Stack: src/ss_mode.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -91,97 +91,98 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">parse_args.hpp File Reference</div>  </div>
+<div class="title">ss_mode.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="ss__mode_8hpp_source.html">ss_mode.hpp</a>&quot;</code><br />
-<code>#include &lt;boost/program_options.hpp&gt;</code><br />
-</div>
-<p><a href="parse__args_8hpp_source.html">Go to the source code of this file.</a></p>
+
+<p><a href="ss__mode_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_args.html">Args</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct returned by the argument parser.  <a href="struct_args.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_s_s_mode.html">SSMode</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A tiny struct that represents a shadow stack mode.  <a href="struct_s_s_mode.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a9cfe9398b36d43435709e5c3b7de2e85"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse__args_8hpp.html#a9cfe9398b36d43435709e5c3b7de2e85">TARGET_ARGS</a>&#160;&#160;&#160;&quot;target-args&quot;</td></tr>
-<tr class="memdesc:a9cfe9398b36d43435709e5c3b7de2e85"><td class="mdescLeft">&#160;</td><td class="mdescRight">The key to the variables map that stores the target arguments.  <a href="#a9cfe9398b36d43435709e5c3b7de2e85">More...</a><br /></td></tr>
-<tr class="separator:a9cfe9398b36d43435709e5c3b7de2e85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9fec70a17d0bcef23cf03c45a7b7caba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse__args_8hpp.html#a9fec70a17d0bcef23cf03c45a7b7caba">TARGET</a>&#160;&#160;&#160;&quot;target&quot;</td></tr>
-<tr class="memdesc:a9fec70a17d0bcef23cf03c45a7b7caba"><td class="mdescLeft">&#160;</td><td class="mdescRight">The key to the variables map that stores the target.  <a href="#a9fec70a17d0bcef23cf03c45a7b7caba">More...</a><br /></td></tr>
-<tr class="separator:a9fec70a17d0bcef23cf03c45a7b7caba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8c52c1b4c021ed3e6b6b677bd2ac019"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse__args_8hpp.html#ab8c52c1b4c021ed3e6b6b677bd2ac019">MODE</a>&#160;&#160;&#160;&quot;ss_mode&quot;</td></tr>
-<tr class="memdesc:ab8c52c1b4c021ed3e6b6b677bd2ac019"><td class="mdescLeft">&#160;</td><td class="mdescRight">The key to the variables map that stores the mode.  <a href="#ab8c52c1b4c021ed3e6b6b677bd2ac019">More...</a><br /></td></tr>
-<tr class="separator:ab8c52c1b4c021ed3e6b6b677bd2ac019"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acba5ef390db17aaf1fb8f323e10a264e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ss__mode_8hpp.html#acba5ef390db17aaf1fb8f323e10a264e">INTERNAL_MODE_FLAG</a>&#160;&#160;&#160;&quot;int&quot;</td></tr>
+<tr class="memdesc:acba5ef390db17aaf1fb8f323e10a264e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The flag that must be passed to invoke internal mode.  <a href="#acba5ef390db17aaf1fb8f323e10a264e">More...</a><br /></td></tr>
+<tr class="separator:acba5ef390db17aaf1fb8f323e10a264e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af579a52f69eab23f63d3ff30491c5be8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ss__mode_8hpp.html#af579a52f69eab23f63d3ff30491c5be8">PROT_INTERNAL_MODE_FLAG</a>&#160;&#160;&#160;&quot;prot_int&quot;</td></tr>
+<tr class="memdesc:af579a52f69eab23f63d3ff30491c5be8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The flag that must be passed to invoke protected internal mode.  <a href="#af579a52f69eab23f63d3ff30491c5be8">More...</a><br /></td></tr>
+<tr class="separator:af579a52f69eab23f63d3ff30491c5be8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6133cd9d000001b3955f86cb54a6c95"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ss__mode_8hpp.html#aa6133cd9d000001b3955f86cb54a6c95">EXTERNAL_MODE_FLAG</a>&#160;&#160;&#160;&quot;ext&quot;</td></tr>
+<tr class="memdesc:aa6133cd9d000001b3955f86cb54a6c95"><td class="mdescLeft">&#160;</td><td class="mdescRight">The flag that must be passed to invoke external mode.  <a href="#aa6133cd9d000001b3955f86cb54a6c95">More...</a><br /></td></tr>
+<tr class="separator:aa6133cd9d000001b3955f86cb54a6c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a650551bcbe430a563b45949a16f94639"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_args.html">Args</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse__args_8hpp.html#a650551bcbe430a563b45949a16f94639">parse_args</a> (const int argc, const char *const argv[])</td></tr>
-<tr class="memdesc:a650551bcbe430a563b45949a16f94639"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an args_t containing the parsed arguments.  <a href="#a650551bcbe430a563b45949a16f94639">More...</a><br /></td></tr>
-<tr class="separator:a650551bcbe430a563b45949a16f94639"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeefadcfa43a02760a17171e91775a1c0"><td class="memItemLeft" align="right" valign="top">static constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ss__mode_8hpp.html#aeefadcfa43a02760a17171e91775a1c0">str_equal</a> (const char *const s1, const char *const s2)</td></tr>
+<tr class="memdesc:aeefadcfa43a02760a17171e91775a1c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">A compile time strcmp Recursively checks if the first characters of the strings match.  <a href="#aeefadcfa43a02760a17171e91775a1c0">More...</a><br /></td></tr>
+<tr class="separator:aeefadcfa43a02760a17171e91775a1c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ab8c52c1b4c021ed3e6b6b677bd2ac019"></a>
+<a class="anchor" id="aa6133cd9d000001b3955f86cb54a6c95"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define MODE&#160;&#160;&#160;&quot;ss_mode&quot;</td>
+          <td class="memname">#define EXTERNAL_MODE_FLAG&#160;&#160;&#160;&quot;ext&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>The key to the variables map that stores the mode. </p>
+<p>The flag that must be passed to invoke external mode. </p>
 
 </div>
 </div>
-<a class="anchor" id="a9fec70a17d0bcef23cf03c45a7b7caba"></a>
+<a class="anchor" id="acba5ef390db17aaf1fb8f323e10a264e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define TARGET&#160;&#160;&#160;&quot;target&quot;</td>
+          <td class="memname">#define INTERNAL_MODE_FLAG&#160;&#160;&#160;&quot;int&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>The key to the variables map that stores the target. </p>
+<p>The flag that must be passed to invoke internal mode. </p>
 
 </div>
 </div>
-<a class="anchor" id="a9cfe9398b36d43435709e5c3b7de2e85"></a>
+<a class="anchor" id="af579a52f69eab23f63d3ff30491c5be8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define TARGET_ARGS&#160;&#160;&#160;&quot;target-args&quot;</td>
+          <td class="memname">#define PROT_INTERNAL_MODE_FLAG&#160;&#160;&#160;&quot;prot_int&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>The key to the variables map that stores the target arguments. </p>
+<p>The flag that must be passed to invoke protected internal mode. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a650551bcbe430a563b45949a16f94639"></a>
+<a class="anchor" id="aeefadcfa43a02760a17171e91775a1c0"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_args.html">Args</a> parse_args </td>
+          <td class="memname">static constexpr bool str_equal </td>
           <td>(</td>
-          <td class="paramtype">const int&#160;</td>
-          <td class="paramname"><em>argc</em>, </td>
+          <td class="paramtype">const char *const&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *const&#160;</td>
-          <td class="paramname"><em>argv</em>[]&#160;</td>
+          <td class="paramname"><em>s2</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -189,9 +190,14 @@ Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Returns an args_t containing the parsed arguments. </p>
+<p>A compile time strcmp Recursively checks if the first characters of the strings match. </p>
 
 </div>
 </div>

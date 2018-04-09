@@ -93,7 +93,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>A class that terminates the group when its destructor is called.  
+<p>A class that terminates the group when its destructor is called This is called even if a C++ exception is thrown Note: this should be used as a backup, terminate_group should still be called if termination is desired!  
  <a href="class_terminate_on_destruction.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="group_8hpp_source.html">group.hpp</a>&gt;</code></p>
@@ -101,10 +101,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac1b230c0858db2e39b83188eae7c5a8e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_terminate_on_destruction.html#ac1b230c0858db2e39b83188eae7c5a8e">TerminateOnDestruction</a> ()</td></tr>
-<tr class="memdesc:ac1b230c0858db2e39b83188eae7c5a8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#ac1b230c0858db2e39b83188eae7c5a8e">More...</a><br /></td></tr>
+<tr class="memdesc:ac1b230c0858db2e39b83188eae7c5a8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor Enabled terminateion on destruction by default.  <a href="#ac1b230c0858db2e39b83188eae7c5a8e">More...</a><br /></td></tr>
 <tr class="separator:ac1b230c0858db2e39b83188eae7c5a8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e2e372004731b788bb9df84d618181f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_terminate_on_destruction.html#a1e2e372004731b788bb9df84d618181f">~TerminateOnDestruction</a> ()</td></tr>
-<tr class="memdesc:a1e2e372004731b788bb9df84d618181f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#a1e2e372004731b788bb9df84d618181f">More...</a><br /></td></tr>
+<tr class="memdesc:a1e2e372004731b788bb9df84d618181f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor On destruction, terminate the group if enabled.  <a href="#a1e2e372004731b788bb9df84d618181f">More...</a><br /></td></tr>
 <tr class="separator:a1e2e372004731b788bb9df84d618181f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ee7e31e435328d6ff97edd5627f7c27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_terminate_on_destruction.html#a3ee7e31e435328d6ff97edd5627f7c27">disable</a> ()</td></tr>
 <tr class="memdesc:a3ee7e31e435328d6ff97edd5627f7c27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable termination of the group on destruction.  <a href="#a3ee7e31e435328d6ff97edd5627f7c27">More...</a><br /></td></tr>
@@ -125,8 +125,7 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a17854fe56e131d017df98b77f9c4cbfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A class that terminates the group when its destructor is called. </p>
-<p>This is called even if a C++ exception is thrown Note: this should be used as a backup, terminate_group should still be called if termination is desired! </p>
+<div class="textblock"><p>A class that terminates the group when its destructor is called This is called even if a C++ exception is thrown Note: this should be used as a backup, terminate_group should still be called if termination is desired! </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="afbcf618507814357fc16fcf49ac27316"></a>
 <div class="memitem">
@@ -189,8 +188,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructor. </p>
-<p>Enabled terminateion on destruction by default </p>
+<p>Constructor Enabled terminateion on destruction by default. </p>
 
 </div>
 </div>
@@ -207,8 +205,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Destructor. </p>
-<p>On destruction, terminate the group if enabled </p>
+<p>Destructor On destruction, terminate the group if enabled. </p>
 
 </div>
 </div>

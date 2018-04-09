@@ -7,22 +7,13 @@
 \#define \hyperlink{constants_8hpp_a55bbcf5179640df5d0c10b9677a19370}{D\+Y\+N\+A\+M\+O\+R\+I\+O\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+SO}~\char`\"{}/path/to/.so/\char`\"{}
 \begin{DoxyCompactList}\small\item\em The .so of the shadow stack Dynamo\+R\+IO client. \end{DoxyCompactList}\item 
 \#define \hyperlink{constants_8hpp_a3b6a35b8be8405a9db72cc5dea97954b}{P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+A\+ME}~\char`\"{}P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+A\+M\+E\+\_\+\+P\+L\+A\+C\+E\+H\+O\+L\+D\+ER\char`\"{}
-\begin{DoxyCompactList}\small\item\em The name of the program. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em The name of the program This should be defined by the cmake on compilation. \end{DoxyCompactList}\item 
 \#define \hyperlink{constants_8hpp_a195ca3987a60992c5abfc663cd37151d}{S\+T\+D\+O\+U\+T\+\_\+\+F\+I\+LE}~stdout
-\begin{DoxyCompactList}\small\item\em The default stdout. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em The default stdout This fill may be nullptr. \end{DoxyCompactList}\item 
 \#define \hyperlink{constants_8hpp_a9fdff3d78b754d4b831816d0560dbb57}{E\+R\+R\+O\+R\+\_\+\+F\+I\+LE}~stderr
-\begin{DoxyCompactList}\small\item\em The default error log file (important events are also noted here) \end{DoxyCompactList}\item 
-\#define \hyperlink{constants_8hpp_acba5ef390db17aaf1fb8f323e10a264e}{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG}~\char`\"{}int\char`\"{}
-\begin{DoxyCompactList}\small\item\em The flag that must be passed to invoke internal mode. \end{DoxyCompactList}\item 
-\#define \hyperlink{constants_8hpp_aa6133cd9d000001b3955f86cb54a6c95}{E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG}~\char`\"{}ext\char`\"{}
-\begin{DoxyCompactList}\small\item\em The flag that must be passed to invoke external mode. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em The default error log file (important events are also noted here) This fill may be nullptr. \end{DoxyCompactList}\item 
 \#define \hyperlink{constants_8hpp_a9a81f4649f430c0018713540b8b8678b}{W\+I\+L\+D\+C\+A\+RD}~( -\/1 )
-\begin{DoxyCompactList}\small\item\em Verify the modes are not equal. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Functions}
-\begin{DoxyCompactItemize}
-\item 
-static constexpr bool \hyperlink{constants_8hpp_aeefadcfa43a02760a17171e91775a1c0}{str\+\_\+equal} (const char $\ast$const s1, const char $\ast$const s2)
-\begin{DoxyCompactList}\small\item\em A compile time strcmp. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Wildcard address matching value This address matches any address on the stack Since no call or ret will ever happen here, during normal use, it is fine. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Macro Definition Documentation}
@@ -38,56 +29,26 @@ This should be defined by the cmake on compilation \index{constants.\+hpp@{const
 \subsubsection[{\texorpdfstring{E\+R\+R\+O\+R\+\_\+\+F\+I\+LE}{ERROR_FILE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+R\+R\+O\+R\+\_\+\+F\+I\+LE~stderr}\hypertarget{constants_8hpp_a9fdff3d78b754d4b831816d0560dbb57}{}\label{constants_8hpp_a9fdff3d78b754d4b831816d0560dbb57}
 
 
-The default error log file (important events are also noted here) 
-
-This fill may be nullptr \index{constants.\+hpp@{constants.\+hpp}!E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG@{E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG}}
-\index{E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG@{E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG}!constants.\+hpp@{constants.\+hpp}}
-\subsubsection[{\texorpdfstring{E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG}{EXTERNAL_MODE_FLAG}}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG~\char`\"{}ext\char`\"{}}\hypertarget{constants_8hpp_aa6133cd9d000001b3955f86cb54a6c95}{}\label{constants_8hpp_aa6133cd9d000001b3955f86cb54a6c95}
-
-
-The flag that must be passed to invoke external mode. 
-
-\index{constants.\+hpp@{constants.\+hpp}!I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG@{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG}}
-\index{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG@{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG}!constants.\+hpp@{constants.\+hpp}}
-\subsubsection[{\texorpdfstring{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG}{INTERNAL_MODE_FLAG}}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+M\+O\+D\+E\+\_\+\+F\+L\+AG~\char`\"{}int\char`\"{}}\hypertarget{constants_8hpp_acba5ef390db17aaf1fb8f323e10a264e}{}\label{constants_8hpp_acba5ef390db17aaf1fb8f323e10a264e}
-
-
-The flag that must be passed to invoke internal mode. 
+The default error log file (important events are also noted here) This fill may be nullptr. 
 
 \index{constants.\+hpp@{constants.\+hpp}!P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+A\+ME@{P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+A\+ME}}
 \index{P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+A\+ME@{P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+A\+ME}!constants.\+hpp@{constants.\+hpp}}
 \subsubsection[{\texorpdfstring{P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+A\+ME}{PROGRAM_NAME}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+A\+ME~\char`\"{}P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+A\+M\+E\+\_\+\+P\+L\+A\+C\+E\+H\+O\+L\+D\+ER\char`\"{}}\hypertarget{constants_8hpp_a3b6a35b8be8405a9db72cc5dea97954b}{}\label{constants_8hpp_a3b6a35b8be8405a9db72cc5dea97954b}
 
 
-The name of the program. 
+The name of the program This should be defined by the cmake on compilation. 
 
-This should be defined by the cmake on compilation \index{constants.\+hpp@{constants.\+hpp}!S\+T\+D\+O\+U\+T\+\_\+\+F\+I\+LE@{S\+T\+D\+O\+U\+T\+\_\+\+F\+I\+LE}}
+\index{constants.\+hpp@{constants.\+hpp}!S\+T\+D\+O\+U\+T\+\_\+\+F\+I\+LE@{S\+T\+D\+O\+U\+T\+\_\+\+F\+I\+LE}}
 \index{S\+T\+D\+O\+U\+T\+\_\+\+F\+I\+LE@{S\+T\+D\+O\+U\+T\+\_\+\+F\+I\+LE}!constants.\+hpp@{constants.\+hpp}}
 \subsubsection[{\texorpdfstring{S\+T\+D\+O\+U\+T\+\_\+\+F\+I\+LE}{STDOUT_FILE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+T\+D\+O\+U\+T\+\_\+\+F\+I\+LE~stdout}\hypertarget{constants_8hpp_a195ca3987a60992c5abfc663cd37151d}{}\label{constants_8hpp_a195ca3987a60992c5abfc663cd37151d}
 
 
-The default stdout. 
+The default stdout This fill may be nullptr. 
 
-This fill may be nullptr \index{constants.\+hpp@{constants.\+hpp}!W\+I\+L\+D\+C\+A\+RD@{W\+I\+L\+D\+C\+A\+RD}}
+\index{constants.\+hpp@{constants.\+hpp}!W\+I\+L\+D\+C\+A\+RD@{W\+I\+L\+D\+C\+A\+RD}}
 \index{W\+I\+L\+D\+C\+A\+RD@{W\+I\+L\+D\+C\+A\+RD}!constants.\+hpp@{constants.\+hpp}}
 \subsubsection[{\texorpdfstring{W\+I\+L\+D\+C\+A\+RD}{WILDCARD}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+I\+L\+D\+C\+A\+RD~( -\/1 )}\hypertarget{constants_8hpp_a9a81f4649f430c0018713540b8b8678b}{}\label{constants_8hpp_a9a81f4649f430c0018713540b8b8678b}
 
 
-Verify the modes are not equal. 
+Wildcard address matching value This address matches any address on the stack Since no call or ret will ever happen here, during normal use, it is fine. 
 
-Wildcard address matching value This address matches any address on the stack Since no call or ret will ever happen here, during normal use, it is fine 
-
-\subsection{Function Documentation}
-\index{constants.\+hpp@{constants.\+hpp}!str\+\_\+equal@{str\+\_\+equal}}
-\index{str\+\_\+equal@{str\+\_\+equal}!constants.\+hpp@{constants.\+hpp}}
-\subsubsection[{\texorpdfstring{str\+\_\+equal(const char $\ast$const s1, const char $\ast$const s2)}{str_equal(const char *const s1, const char *const s2)}}]{\setlength{\rightskip}{0pt plus 5cm}static constexpr bool str\+\_\+equal (
-\begin{DoxyParamCaption}
-\item[{const char $\ast$const}]{s1, }
-\item[{const char $\ast$const}]{s2}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{constants_8hpp_aeefadcfa43a02760a17171e91775a1c0}{}\label{constants_8hpp_aeefadcfa43a02760a17171e91775a1c0}
-
-
-A compile time strcmp. 
-
-Recursively checks if the first characters of the strings match 
