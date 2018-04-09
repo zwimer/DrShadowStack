@@ -3,7 +3,6 @@
 
 #include "dr_api.h"
 #include "drsyms.h"
-#include "drmgr.h"
 
 #include <sstream>
 #include <memory>
