@@ -47,6 +47,7 @@
 
 **Merged pull requests:**
 
+- Mode class [\#76](https://github.com/zwimer/DrShadowStack/pull/76) ([zwimer](https://github.com/zwimer))
 - Typos [\#75](https://github.com/zwimer/DrShadowStack/pull/75) ([zwimer](https://github.com/zwimer))
 - Documentation [\#73](https://github.com/zwimer/DrShadowStack/pull/73) ([zwimer](https://github.com/zwimer))
 - Message refactor [\#69](https://github.com/zwimer/DrShadowStack/pull/69) ([zwimer](https://github.com/zwimer))

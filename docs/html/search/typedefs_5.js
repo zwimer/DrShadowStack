@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['pointer_5fstack',['pointer_stack',['../external__stack__server_8cpp.html#a7ad69d2104372457e0bfbbb85270bbf5',1,'external_stack_server.cpp']]],
-  ['printfn',['PrintFn',['../struct_sym.html#a7d4d0c72d65ffac9eb1d1eca78d58992',1,'Sym']]]
+  ['on_5fcall_5fsignature',['on_call_signature',['../class_s_s_handlers.html#aa202bfb2f7c6236c0f1ee6f61d366487',1,'SSHandlers']]],
+  ['on_5fret_5fsignature',['on_ret_signature',['../class_s_s_handlers.html#a0aff437ef4f59faacb14bb1fb55e214c',1,'SSHandlers']]],
+  ['on_5fsignal_5fsignature',['on_signal_signature',['../class_s_s_handlers.html#a7b77d0dda29c2fe22e6aeddd4807387f',1,'SSHandlers']]]
 ];

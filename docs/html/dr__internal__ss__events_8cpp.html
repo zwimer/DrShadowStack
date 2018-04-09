@@ -102,14 +102,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8161a26ec065b8c83d2f42637896162c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__internal__ss__events_8cpp.html#a8161a26ec065b8c83d2f42637896162c">on_call</a> (const app_pc ret_to_addr)</td></tr>
-<tr class="separator:a8161a26ec065b8c83d2f42637896162c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3b510b4eb4f19ab3f68d8183f9d802b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__internal__ss__events_8cpp.html#ac3b510b4eb4f19ab3f68d8183f9d802b">on_ret</a> (app_pc, const app_pc target_addr)</td></tr>
-<tr class="separator:ac3b510b4eb4f19ab3f68d8183f9d802b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac865060ad09d7ce8d78ee609d322a6e1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__internal__ss__events_8cpp.html#ac865060ad09d7ce8d78ee609d322a6e1">kernel_xfer_event_handler</a> (void *, const dr_kernel_xfer_info_t *info)</td></tr>
-<tr class="separator:ac865060ad09d7ce8d78ee609d322a6e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34e05a4b90b22002c7fb2c942c2ec517"><td class="memItemLeft" align="right" valign="top">dr_emit_flags_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__internal__ss__events_8cpp.html#a34e05a4b90b22002c7fb2c942c2ec517">internal_event_app_instruction</a> (void *drcontext, void *tag, instrlist_t *bb, instr_t *instr, bool for_trace, bool translating, void *user_data)</td></tr>
-<tr class="separator:a34e05a4b90b22002c7fb2c942c2ec517"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a273951c2f48526aefe80467812c06bf0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__internal__ss__events_8cpp.html#a273951c2f48526aefe80467812c06bf0">on_call</a> (const app_pc ret_to_addr)</td></tr>
+<tr class="separator:a273951c2f48526aefe80467812c06bf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a355e86d607356d27d9e8e6a1b70340db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__internal__ss__events_8cpp.html#a355e86d607356d27d9e8e6a1b70340db">on_ret</a> (app_pc, const app_pc target_addr)</td></tr>
+<tr class="separator:a355e86d607356d27d9e8e6a1b70340db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ab8756aab33706f6a6bf31d0d893add"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__internal__ss__events_8cpp.html#a3ab8756aab33706f6a6bf31d0d893add">on_signal</a> ()</td></tr>
+<tr class="separator:a3ab8756aab33706f6a6bf31d0d893add"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -117,129 +115,28 @@ Variables</h2></td></tr>
 <tr class="separator:a4d533d2157d896693f65cc71f4b3bf5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a34e05a4b90b22002c7fb2c942c2ec517"></a>
+<a class="anchor" id="a273951c2f48526aefe80467812c06bf0"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">dr_emit_flags_t internal_event_app_instruction </td>
-          <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>drcontext</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>tag</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">instrlist_t *&#160;</td>
-          <td class="paramname"><em>bb</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">instr_t *&#160;</td>
-          <td class="paramname"><em>instr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>for_trace</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>translating</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>user_data</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ac865060ad09d7ce8d78ee609d322a6e1"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void kernel_xfer_event_handler </td>
-          <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const dr_kernel_xfer_info_t *&#160;</td>
-          <td class="paramname"><em>info</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a8161a26ec065b8c83d2f42637896162c"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void on_call </td>
+          <td class="memname">void on_call </td>
           <td>(</td>
           <td class="paramtype">const app_pc&#160;</td>
           <td class="paramname"><em>ret_to_addr</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="ac3b510b4eb4f19ab3f68d8183f9d802b"></a>
+<a class="anchor" id="a355e86d607356d27d9e8e6a1b70340db"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void on_ret </td>
+          <td class="memname">void on_ret </td>
           <td>(</td>
           <td class="paramtype">app_pc&#160;</td>
           <td class="paramname">, </td>
@@ -256,11 +153,21 @@ Variables</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a3ab8756aab33706f6a6bf31d0d893add"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void on_signal </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>
