@@ -7,14 +7,17 @@
 {\ttfamily \#include \char`\"{}constants.\+hpp\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}utilities.\+hpp\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}group.\+hpp\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}message.\+hpp\char`\"{}}\\*
 {\ttfamily \#include $<$unistd.\+h$>$}\\*
 {\ttfamily \#include $<$signal.\+h$>$}\\*
 {\ttfamily \#include $<$vector$>$}\\*
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+void \hyperlink{shadow__stack_8cpp_ac772186bc3be1e31a1593cc5e08d3cd9}{run\+\_\+before\+\_\+everything} ()
+\item 
 void \hyperlink{shadow__stack_8cpp_ad203fd9b387f4d1de99b47d7b3135dc9}{start\+\_\+program} (const \hyperlink{struct_args}{Args} input\+\_\+args, char $\ast$socket\+\_\+path)
+\item 
+void \hyperlink{shadow__stack_8cpp_af11cbb19bd7940f8e1b5243d0f0389e6}{start\+\_\+external\+\_\+client} (const \hyperlink{struct_args}{Args} \&args)
 \item 
 int \hyperlink{shadow__stack_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
 \end{DoxyCompactItemize}
@@ -29,6 +32,20 @@ int \hyperlink{shadow__stack_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main} (int 
 \item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
 \end{DoxyParamCaption}
 )}\hypertarget{shadow__stack_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{}\label{shadow__stack_8cpp_a0ddf1224851353fc92bfbff6f499fa97}
+\index{shadow\+\_\+stack.\+cpp@{shadow\+\_\+stack.\+cpp}!run\+\_\+before\+\_\+everything@{run\+\_\+before\+\_\+everything}}
+\index{run\+\_\+before\+\_\+everything@{run\+\_\+before\+\_\+everything}!shadow\+\_\+stack.\+cpp@{shadow\+\_\+stack.\+cpp}}
+\subsubsection[{\texorpdfstring{run\+\_\+before\+\_\+everything()}{run_before_everything()}}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+before\+\_\+everything (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{shadow__stack_8cpp_ac772186bc3be1e31a1593cc5e08d3cd9}{}\label{shadow__stack_8cpp_ac772186bc3be1e31a1593cc5e08d3cd9}
+\index{shadow\+\_\+stack.\+cpp@{shadow\+\_\+stack.\+cpp}!start\+\_\+external\+\_\+client@{start\+\_\+external\+\_\+client}}
+\index{start\+\_\+external\+\_\+client@{start\+\_\+external\+\_\+client}!shadow\+\_\+stack.\+cpp@{shadow\+\_\+stack.\+cpp}}
+\subsubsection[{\texorpdfstring{start\+\_\+external\+\_\+client(const Args \&args)}{start_external_client(const Args &args)}}]{\setlength{\rightskip}{0pt plus 5cm}void start\+\_\+external\+\_\+client (
+\begin{DoxyParamCaption}
+\item[{const {\bf Args} \&}]{args}
+\end{DoxyParamCaption}
+)}\hypertarget{shadow__stack_8cpp_af11cbb19bd7940f8e1b5243d0f0389e6}{}\label{shadow__stack_8cpp_af11cbb19bd7940f8e1b5243d0f0389e6}
 \index{shadow\+\_\+stack.\+cpp@{shadow\+\_\+stack.\+cpp}!start\+\_\+program@{start\+\_\+program}}
 \index{start\+\_\+program@{start\+\_\+program}!shadow\+\_\+stack.\+cpp@{shadow\+\_\+stack.\+cpp}}
 \subsubsection[{\texorpdfstring{start\+\_\+program(const Args input\+\_\+args, char $\ast$socket\+\_\+path)}{start_program(const Args input_args, char *socket_path)}}]{\setlength{\rightskip}{0pt plus 5cm}void start\+\_\+program (

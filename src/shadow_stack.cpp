@@ -5,7 +5,6 @@
 #include "constants.hpp"
 #include "utilities.hpp"
 #include "group.hpp"
-#include "message.hpp" // TODO
 
 #include <unistd.h>
 #include <signal.h>
@@ -16,8 +15,24 @@
 #undef assert
 
 
+// Calls setup functions. 
+// The order of these functions matters !
+inline void run_before_everything() {
+
+	// Setup utilities
+	Utilities::setup(true);
+	Utilities::log("DrShadowStack initalized");
+
+	// Create a new process group by starting a new session
+	// Many terminals will automatically do this, but just in case...
+	// Also changes many default signal handlers to kill the process group
+	Utilities::log("Setting up the group now...");
+	Group::setup();
+
+}
+
 // Start's the program passed in via drrun
-void start_program( const Args input_args, char * socket_path ) {
+[[ noreturn ]] void start_program( const Args input_args, char * socket_path ) {
 
 	// Construct args to give to exec
 	std::vector<const char *> exec_args;
@@ -28,7 +43,7 @@ void start_program( const Args input_args, char * socket_path ) {
 
 	// ShadowStack dynamorio client + args
 	exec_args.push_back(DYNAMORIO_CLIENT_SO);
-	exec_args.push_back(input_args.is_internal ? INTERNAL_MODE_FLAG : EXTERNAL_MODE_FLAG);
+	exec_args.push_back(input_args.mode.str);
 	exec_args.push_back(socket_path);
 
 	// Specify target a.out
@@ -57,37 +72,9 @@ void start_program( const Args input_args, char * socket_path ) {
 	Utilities::err("execvp() failed.");
 }
 
-
-// Main function
-int main(int argc, char * argv[]) {
-
-	// Setup utilities
-	Utilities::setup(true);
-	Utilities::log("DrShadowStack initalized");
-
-	// Handle arguments
-	const Args args = parse_args(argc, argv);
-
-	// Create a new process group by starting a new session
-	// Many terminals will automatically do this, but just in case...
-	// Also changes many default signal handlers to kill the process group
-	Group::setup();
-
-	// We check for the return statuses of functions, so ignore sigpipe
-	Utilities::assert( signal(SIGCHLD, SIG_IGN) != SIG_ERR, "signal() failed." );
-	Utilities::assert( signal(SIGPIPE, SIG_IGN) != SIG_ERR, "signal() failed." );
-	Utilities::log("Sigpipe and Sigchild ignored");
-
-	// Setup complete, allow forking / threading beyond this point
-	Utilities::log("DrShadowStack initalized");
-	Utilities::enable_multi_thread_or_process_mode();
-
-	// If the shadow stack should be internal, start it
-	if (args.is_internal) {
-		char buf[10];
-		start_program( args, buf );
-	}
-
+// Setup and start the external client
+[[ noreturn ]] void start_external_client( const Args & args ) {
+		
 	// Setup a unix server
 	// Technically, between generating the name name and the
 	// server starting, the file could have been created.
@@ -125,6 +112,39 @@ int main(int argc, char * argv[]) {
 		// If the program made it to this point, nothing
 		// went wrong, gracefully exit
 		tod.disable();
-		exit(EXIT_SUCCESS);
+		Group::terminate("Program exited. Killing group", false);
+	}
+}
+
+// Main function
+int main(int argc, char * argv[]) {
+
+	// Setup then handle arguments
+	run_before_everything();
+	const Args args = parse_args(argc, argv);
+
+	// We check for the return statuses of functions, so ignore sigpipe
+	Utilities::assert( signal(SIGCHLD, SIG_IGN) != SIG_ERR, "signal() failed." );
+	Utilities::assert( signal(SIGPIPE, SIG_IGN) != SIG_ERR, "signal() failed." );
+	Utilities::log("Sigpipe and Sigchild ignored");
+
+	// Setup complete, allow forking / threading beyond this point
+	Utilities::log("DrShadowStack initalized");
+	Utilities::enable_multi_thread_or_process_mode();
+
+	// If the shadow stack should be internal, start it
+	if (args.mode.is_internal) {
+		char buf[10];
+		start_program( args, buf );
+	}
+
+	// If the shadow stack should be external
+	else if (args.mode.is_external) {
+		start_external_client( args );
+	}
+
+	// Otherwise an unknown mode was called
+	else {
+		Group::terminate("Unimplemented ss_mode called.");
 	}
 }

@@ -12,13 +12,13 @@ A struct returned by the argument parser.
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{struct_args_a8ac9d30553b5fd1c8b6589cc9dd952ef}{Args} (const bool is\+\_\+int, const std\+::string \&targ, std\+::vector$<$ std\+::string $>$ \&targ\+\_\+args)
+\hyperlink{struct_args_a84627d98452f42aaed06fd75f1b659df}{Args} (\hyperlink{struct_s_s_mode}{S\+S\+Mode} \&\&mode\+\_\+, const std\+::string \&targ, std\+::vector$<$ std\+::string $>$ \&targ\+\_\+args)
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-const bool \hyperlink{struct_args_a52d1f8c8297b000e30ff84b9ff1b9321}{is\+\_\+internal}
-\begin{DoxyCompactList}\small\item\em State if mode is internal. \end{DoxyCompactList}\item 
+const \hyperlink{struct_s_s_mode}{S\+S\+Mode} \hyperlink{struct_args_ab0be2adf6b41e1aa9803a6f2ea6fc6b2}{mode}
+\begin{DoxyCompactList}\small\item\em The shadow stack mode. \end{DoxyCompactList}\item 
 const std\+::string \hyperlink{struct_args_a49f5255b7466ee4e1329aa32ca069da6}{target}
 \begin{DoxyCompactList}\small\item\em Path to target executable. \end{DoxyCompactList}\item 
 const std\+::vector$<$ std\+::string $>$ \hyperlink{struct_args_aa9f8e387df0b3691352daf352876176d}{target\+\_\+args}
@@ -31,13 +31,13 @@ A struct returned by the argument parser.
 \subsection{Constructor \& Destructor Documentation}
 \index{Args@{Args}!Args@{Args}}
 \index{Args@{Args}!Args@{Args}}
-\subsubsection[{\texorpdfstring{Args(const bool is\+\_\+int, const std\+::string \&targ, std\+::vector$<$ std\+::string $>$ \&targ\+\_\+args)}{Args(const bool is_int, const std::string &targ, std::vector< std::string > &targ_args)}}]{\setlength{\rightskip}{0pt plus 5cm}Args\+::\+Args (
+\subsubsection[{\texorpdfstring{Args(\+S\+S\+Mode \&\&mode\+\_\+, const std\+::string \&targ, std\+::vector$<$ std\+::string $>$ \&targ\+\_\+args)}{Args(SSMode &&mode_, const std::string &targ, std::vector< std::string > &targ_args)}}]{\setlength{\rightskip}{0pt plus 5cm}Args\+::\+Args (
 \begin{DoxyParamCaption}
-\item[{const bool}]{is\+\_\+int, }
+\item[{{\bf S\+S\+Mode} \&\&}]{mode\+\_\+, }
 \item[{const std\+::string \&}]{targ, }
 \item[{std\+::vector$<$ std\+::string $>$ \&}]{targ\+\_\+args}
 \end{DoxyParamCaption}
-)}\hypertarget{struct_args_a8ac9d30553b5fd1c8b6589cc9dd952ef}{}\label{struct_args_a8ac9d30553b5fd1c8b6589cc9dd952ef}
+)}\hypertarget{struct_args_a84627d98452f42aaed06fd75f1b659df}{}\label{struct_args_a84627d98452f42aaed06fd75f1b659df}
 
 
 Constructor. 
@@ -45,12 +45,12 @@ Constructor.
 
 
 \subsection{Member Data Documentation}
-\index{Args@{Args}!is\+\_\+internal@{is\+\_\+internal}}
-\index{is\+\_\+internal@{is\+\_\+internal}!Args@{Args}}
-\subsubsection[{\texorpdfstring{is\+\_\+internal}{is_internal}}]{\setlength{\rightskip}{0pt plus 5cm}const bool Args\+::is\+\_\+internal}\hypertarget{struct_args_a52d1f8c8297b000e30ff84b9ff1b9321}{}\label{struct_args_a52d1f8c8297b000e30ff84b9ff1b9321}
+\index{Args@{Args}!mode@{mode}}
+\index{mode@{mode}!Args@{Args}}
+\subsubsection[{\texorpdfstring{mode}{mode}}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf S\+S\+Mode} Args\+::mode}\hypertarget{struct_args_ab0be2adf6b41e1aa9803a6f2ea6fc6b2}{}\label{struct_args_ab0be2adf6b41e1aa9803a6f2ea6fc6b2}
 
 
-State if mode is internal. 
+The shadow stack mode. 
 
 \index{Args@{Args}!target@{target}}
 \index{target@{target}!Args@{Args}}

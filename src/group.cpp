@@ -131,6 +131,8 @@ void Group::setup() {
 // If msg is nullptr, no message is passed.
 // If this function ends up calling itself, 
 // immediate process group termination will occur
+// setup() **DOES NOT** have to be called before this function 
+// in every process. However, it **MUST** be called by DrShadowStack once first
 [[ noreturn ]] void Group::terminate(const char * const msg, bool is_error) {
 
 	// If this is ever true coming in, temrinate_group()

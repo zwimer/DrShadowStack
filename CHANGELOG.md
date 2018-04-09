@@ -4,6 +4,7 @@
 
 **Implemented enhancements:**
 
+- ss\_mode internal + mprotect [\#74](https://github.com/zwimer/DrShadowStack/issues/74)
 - Convert IO to use streams [\#61](https://github.com/zwimer/DrShadowStack/issues/61)
 - Do not generate unique path [\#58](https://github.com/zwimer/DrShadowStack/issues/58)
 - Create a wiki [\#52](https://github.com/zwimer/DrShadowStack/issues/52)
@@ -46,6 +47,7 @@
 
 **Merged pull requests:**
 
+- Typos [\#75](https://github.com/zwimer/DrShadowStack/pull/75) ([zwimer](https://github.com/zwimer))
 - Documentation [\#73](https://github.com/zwimer/DrShadowStack/pull/73) ([zwimer](https://github.com/zwimer))
 - Message refactor [\#69](https://github.com/zwimer/DrShadowStack/pull/69) ([zwimer](https://github.com/zwimer))
 - Fix signal and message bugs [\#68](https://github.com/zwimer/DrShadowStack/pull/68) ([zwimer](https://github.com/zwimer))

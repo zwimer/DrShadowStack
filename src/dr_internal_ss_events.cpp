@@ -35,7 +35,7 @@ static void on_ret(app_pc, const app_pc target_addr) {
 		Sym::print("return address", target_addr);
 		Utilities::log_error(	"*** Shadow stack mistmach detected! ***\n"
 								"Attempting to return to ", (void *) target_addr,
-								"\n\tShadow stack is empty!\n");
+								"\n\tShadow stack is empty!\n" );
 		Group::terminate(nullptr);
 	}
 

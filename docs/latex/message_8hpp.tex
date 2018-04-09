@@ -8,7 +8,7 @@
 \begin{DoxyCompactItemize}
 \item 
 class \hyperlink{class_message}{Message}
-\begin{DoxyCompactList}\small\item\em A class used for defining all message types. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em A class used for defining all message types Messages come in two forms. \end{DoxyCompactList}\item 
 class \hyperlink{class_message_1_1_msg}{Message\+::\+Msg}
 \begin{DoxyCompactList}\small\item\em Defines the types of messages which can be sent. \end{DoxyCompactList}\item 
 struct \hyperlink{struct_message_1_1_msg_1_1_message_type}{Message\+::\+Msg\+::\+Message\+Type$<$ only\+\_\+header, Info $>$}
@@ -33,7 +33,7 @@ struct \hyperlink{struct_message_1_1_thread_info}{Message\+::\+Thread\+Info}
 \begin{DoxyCompactItemize}
 \item 
 \#define \hyperlink{message_8hpp_a70eafdf190b8f3be16349543fe1b39ae}{P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE}~( sizeof(void $\ast$) )
-\begin{DoxyCompactList}\small\item\em The size of a pointer in the target program. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em The size of a pointer in the target program To run on 32 bit programs, change this value! \end{DoxyCompactList}\item 
 \#define \hyperlink{message_8hpp_ac119f42bacd57152815371e9527d1059}{M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+L\+E\+N\+G\+TH}~4
 \begin{DoxyCompactList}\small\item\em The number of characters a message header can be. \end{DoxyCompactList}\item 
 \#define \hyperlink{message_8hpp_aeca90e1c1c62b70670514ffc18c9dfd4}{M\+E\+S\+S\+A\+G\+E\+\_\+\+S\+I\+ZE}~(\hyperlink{message_8hpp_a70eafdf190b8f3be16349543fe1b39ae}{P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE} + \hyperlink{message_8hpp_ac119f42bacd57152815371e9527d1059}{M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+L\+E\+N\+G\+TH})
@@ -95,9 +95,9 @@ The size of a message.
 \subsubsection[{\texorpdfstring{P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE}{POINTER_SIZE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE~( sizeof(void $\ast$) )}\hypertarget{message_8hpp_a70eafdf190b8f3be16349543fe1b39ae}{}\label{message_8hpp_a70eafdf190b8f3be16349543fe1b39ae}
 
 
-The size of a pointer in the target program. 
+The size of a pointer in the target program To run on 32 bit programs, change this value! 
 
-To run on 32 bit programs, change this value! 
+
 
 \subsection{Function Documentation}
 \index{message.\+hpp@{message.\+hpp}!recv\+\_\+msg@{recv\+\_\+msg}}

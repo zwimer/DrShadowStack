@@ -13,9 +13,9 @@ A static class holding the group functions.
 \begin{DoxyCompactItemize}
 \item 
 static void \hyperlink{struct_group_a9e2d7e0c56696de4592f1b166188c10a}{setup} ()
-\begin{DoxyCompactList}\small\item\em Setup the group. \end{DoxyCompactList}\item 
-static void \hyperlink{struct_group_a8867a6d9f7987d3db83bf193bf42f858}{terminate} (const char $\ast$const msg, bool is\+\_\+error=false)
-\begin{DoxyCompactList}\small\item\em Terminates the process group via S\+I\+G\+K\+I\+LL. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Setup the group This function should N\+OT be called by the dynamorio client. \end{DoxyCompactList}\item 
+static void \hyperlink{struct_group_a3538b661d252144dab134aa5aba74b18}{terminate} (const char $\ast$const msg, bool is\+\_\+error=true)
+\begin{DoxyCompactList}\small\item\em Terminates the process group via S\+I\+G\+K\+I\+LL If is\+\_\+error is set to true, msg is logged to the E\+R\+R\+OR file, otherwise it is logged via \hyperlink{class_utilities_ae8efd2e8950fe6641d87296b8120d246}{Utilities\+::message} If msg is nullptr, no message is passed. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -36,21 +36,21 @@ A static class holding the group functions.
 )\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{struct_group_a9e2d7e0c56696de4592f1b166188c10a}{}\label{struct_group_a9e2d7e0c56696de4592f1b166188c10a}
 
 
-Setup the group. 
+Setup the group This function should N\+OT be called by the dynamorio client. 
 
-This function should N\+OT be called by the dynamorio client. By then the group will already be set up! This function first sets up the process group Then change the default signal handlers of all non-\/excluded signals to terminate the group when called. Also sets up the group refrence counter. This function is {\bfseries N\+OT} thread safe, and should never be run after threading / forking has occured! \index{Group@{Group}!terminate@{terminate}}
+By then the group will already be set up! This function first sets up the process group Then change the default signal handlers of all non-\/excluded signals to terminate the group when called. Also sets up the group refrence counter. This function is {\bfseries N\+OT} thread safe, and should never be run after threading / forking has occured! \index{Group@{Group}!terminate@{terminate}}
 \index{terminate@{terminate}!Group@{Group}}
-\subsubsection[{\texorpdfstring{terminate(const char $\ast$const msg, bool is\+\_\+error=false)}{terminate(const char *const msg, bool is_error=false)}}]{\setlength{\rightskip}{0pt plus 5cm}void Group\+::terminate (
+\subsubsection[{\texorpdfstring{terminate(const char $\ast$const msg, bool is\+\_\+error=true)}{terminate(const char *const msg, bool is_error=true)}}]{\setlength{\rightskip}{0pt plus 5cm}void Group\+::terminate (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$const}]{msg, }
-\item[{bool}]{is\+\_\+error = {\ttfamily false}}
+\item[{bool}]{is\+\_\+error = {\ttfamily true}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{struct_group_a8867a6d9f7987d3db83bf193bf42f858}{}\label{struct_group_a8867a6d9f7987d3db83bf193bf42f858}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{struct_group_a3538b661d252144dab134aa5aba74b18}{}\label{struct_group_a3538b661d252144dab134aa5aba74b18}
 
 
-Terminates the process group via S\+I\+G\+K\+I\+LL. 
+Terminates the process group via S\+I\+G\+K\+I\+LL If is\+\_\+error is set to true, msg is logged to the E\+R\+R\+OR file, otherwise it is logged via \hyperlink{class_utilities_ae8efd2e8950fe6641d87296b8120d246}{Utilities\+::message} If msg is nullptr, no message is passed. 
 
-If is\+\_\+error is set to true, msg is logged to the E\+R\+R\+OR file, otherwise it is logged via \hyperlink{class_utilities_ae8efd2e8950fe6641d87296b8120d246}{Utilities\+::message} If msg is nullptr, no message is passed. If this function ends up calling itself, immediate process group termination will occur 
+If this function ends up calling itself, immediate process group termination will occur \hyperlink{struct_group_a9e2d7e0c56696de4592f1b166188c10a}{setup()} {\bfseries D\+O\+ES N\+OT} have to be called before this function in every process. However, it {\bfseries M\+U\+ST} be called by Dr\+Shadow\+Stack once first 
 
 \subsection{Member Data Documentation}
 \index{Group@{Group}!setup\+\_\+complete@{setup\+\_\+complete}}

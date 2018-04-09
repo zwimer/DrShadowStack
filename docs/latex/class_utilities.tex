@@ -13,30 +13,32 @@ A general class for utilities.
 \begin{DoxyCompactItemize}
 \item 
 static void \hyperlink{class_utilities_aa448e199bdc43fe62e9b9b989a7f667b}{setup} (const bool clear\+\_\+log)
-\begin{DoxyCompactList}\small\item\em Sets up the utilities class. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets up the utilities class If clear\+\_\+log, the log will be cleared on setup If this function fails, it exists {\itshape O\+N\+LY} the current process. \end{DoxyCompactList}\item 
+static size\+\_\+t \hyperlink{class_utilities_a4c14339a4ea155685e379f750fba3806}{get\+\_\+page\+\_\+size} ()
+\begin{DoxyCompactList}\small\item\em Returns the system page size. \end{DoxyCompactList}\item 
 static void \hyperlink{class_utilities_a5308da50597c93aad2b1ca2ecfbcb723}{err} (const char $\ast$const s)
-\begin{DoxyCompactList}\small\item\em To be called in case of an error. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em To be called in case of an error Prints log s to the error file, perrors, then kills the process group. \end{DoxyCompactList}\item 
 static void \hyperlink{class_utilities_a22c85a2970e168ca0b9ad6fd86752792}{assert} (const bool b, const char $\ast$const s)
 \begin{DoxyCompactList}\small\item\em assert b, if false call program\+\_\+err(s) \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename... Args$>$ }\\static void \hyperlink{class_utilities_ad7251bf1dd140719a5ff384d81dc4ac0}{verbose\+\_\+log} (\hyperlink{struct_args}{Args} \&\&...args)
-\begin{DoxyCompactList}\small\item\em Logs the arguments as cout would to the log file if not null. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Logs the arguments as cout would to the log file if not null Ends the printed line(s) with a newline then flushes the buffer This function only runs if V\+E\+R\+B\+O\+SE is defined. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename... Args$>$ }\\static void \hyperlink{class_utilities_a996db67175e47946e80539602c2ca6ee}{log} (\hyperlink{struct_args}{Args} \&\&...args)
-\begin{DoxyCompactList}\small\item\em Logs the arguments as cout would to the log file if not null. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Logs the arguments as cout would to the log file if not null Ends the printed line(s) with a newline then flushes the buffer On faliure, silently fails (since it cannot write out) \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename... Args$>$ }\\static void \hyperlink{class_utilities_ae8efd2e8950fe6641d87296b8120d246}{message} (\hyperlink{struct_args}{Args} \&\&...args)
-\begin{DoxyCompactList}\small\item\em Prints the arguments as cout would to the stdout and log files. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Prints the arguments as cout would to the stdout and log files Ends the printed line(s) with a newline then flushes the buffer If either file pointer is null, that file is skipped On faliure, silently fails (since it cannot write out) \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename... Args$>$ }\\static void \hyperlink{class_utilities_a3db9e78ec85d66d104cbf451706e1dbe}{log\+\_\+error} (\hyperlink{struct_args}{Args} \&\&...args)
-\begin{DoxyCompactList}\small\item\em Prints the arguments as cout would to the error and log files. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Prints the arguments as cout would to the error and log files Ends the printed line(s) with a newline then flushes the buffer If either file pointer is null, that file is skipped On faliure, silently fails (since it cannot write out) \end{DoxyCompactList}\item 
 static void \hyperlink{class_utilities_a384728ae9b72982c1351d881ba7ff007}{enable\+\_\+multi\+\_\+thread\+\_\+or\+\_\+process\+\_\+mode} ()
 \begin{DoxyCompactList}\small\item\em Once this is called, T\+I\+Ds will be printed with each message. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static pid\+\_\+t \hyperlink{class_utilities_a93f3699cf92128c66efa084ff1399a45}{get\+\_\+tid} ()
-\begin{DoxyCompactList}\small\item\em Define a gettid function. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Define a gettid function On failure, disables multi\+\_\+threaded / functionality (to continue logging) then terminates the group. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename... Args$>$ }\\static void \hyperlink{class_utilities_a7085b246ac1d31d8d3ac16663e6718d9}{write\+\_\+log} (F\+I\+LE $\ast$const f, \hyperlink{struct_args}{Args} \&\&...args)
-\begin{DoxyCompactList}\small\item\em A wrapper that writes args to f if f is not null. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em A wrapper that writes args to f if f is not null Ends the printed line(s) with a newline then flushes the buffer On faliure, silently fails (since it cannot write out) If the process is multithreaded or has forked, prints the T\+ID first. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename... Args$>$ }\\static void \hyperlink{class_utilities_a0763f59c16f6eb83b9c0e8abe014287a}{write\+\_\+log\+\_\+helper} (std\+::stringstream \&stream, \hyperlink{struct_args}{Args} \&\&...args)
-\begin{DoxyCompactList}\small\item\em Adds the arguments to the stream. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Adds the arguments to the stream Ends the printed line(s) with a newline then flushes the buffer If the process is multithreaded or has forked, prints the T\+ID first. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\static void \hyperlink{class_utilities_ae816a2f7a656a433f6204687bff59a6c}{write\+\_\+log\+\_\+helper} (std\+::stringstream \&stream, T \&\&val)
 \begin{DoxyCompactList}\small\item\em A specialiation of write\+\_\+log\+\_\+helper that has only one template argument. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename Head , typename... Tail$>$ }\\static void \hyperlink{class_utilities_a6b7a8d8b77768fde23f66d4f7a57c1c6}{write\+\_\+log\+\_\+helper} (std\+::stringstream \&stream, Head \&\&head, Tail \&\&...tail)
@@ -47,11 +49,11 @@ static pid\+\_\+t \hyperlink{class_utilities_a93f3699cf92128c66efa084ff1399a45}{
 static bool \hyperlink{class_utilities_af893d8dcd5bb1ba3fc72fc108536bcbc}{is\+\_\+multi\+\_\+thread\+\_\+or\+\_\+proccess} = false
 \begin{DoxyCompactList}\small\item\em Notes whether or not any threading / forking has happened yet. \end{DoxyCompactList}\item 
 static F\+I\+LE $\ast$ \hyperlink{class_utilities_a63ce9d08b6459cd102bb368a274aca07}{log\+\_\+file} = nullptr
-\begin{DoxyCompactList}\small\item\em The log file. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em The log file This must be defined before \hyperlink{shadow__stack_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main()} \end{DoxyCompactList}\item 
 static F\+I\+LE $\ast$const \hyperlink{class_utilities_a224eea0a234ac9877a8334f74fc89ef0}{stdout\+\_\+file} = \hyperlink{constants_8hpp_a195ca3987a60992c5abfc663cd37151d}{S\+T\+D\+O\+U\+T\+\_\+\+F\+I\+LE}
-\begin{DoxyCompactList}\small\item\em The stdout file. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em The stdout file This must be defined before \hyperlink{shadow__stack_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main()} \end{DoxyCompactList}\item 
 static F\+I\+LE $\ast$const \hyperlink{class_utilities_afc3b1cf892b76cede8fa87bfdd17533c}{error\+\_\+file} = \hyperlink{constants_8hpp_a9fdff3d78b754d4b831816d0560dbb57}{E\+R\+R\+O\+R\+\_\+\+F\+I\+LE}
-\begin{DoxyCompactList}\small\item\em The error file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The error file This must be defined before \hyperlink{shadow__stack_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main()} \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -90,9 +92,20 @@ Once this is called, T\+I\+Ds will be printed with each message.
 )\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{class_utilities_a5308da50597c93aad2b1ca2ecfbcb723}{}\label{class_utilities_a5308da50597c93aad2b1ca2ecfbcb723}
 
 
-To be called in case of an error. 
+To be called in case of an error Prints log s to the error file, perrors, then kills the process group. 
 
-Prints log s to the error file, perrors, then kills the process group \index{Utilities@{Utilities}!get\+\_\+tid@{get\+\_\+tid}}
+\index{Utilities@{Utilities}!get\+\_\+page\+\_\+size@{get\+\_\+page\+\_\+size}}
+\index{get\+\_\+page\+\_\+size@{get\+\_\+page\+\_\+size}!Utilities@{Utilities}}
+\subsubsection[{\texorpdfstring{get\+\_\+page\+\_\+size()}{get_page_size()}}]{\setlength{\rightskip}{0pt plus 5cm}size\+\_\+t Utilities\+::get\+\_\+page\+\_\+size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{class_utilities_a4c14339a4ea155685e379f750fba3806}{}\label{class_utilities_a4c14339a4ea155685e379f750fba3806}
+
+
+Returns the system page size. 
+
+\index{Utilities@{Utilities}!get\+\_\+tid@{get\+\_\+tid}}
 \index{get\+\_\+tid@{get\+\_\+tid}!Utilities@{Utilities}}
 \subsubsection[{\texorpdfstring{get\+\_\+tid()}{get_tid()}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t Utilities\+::get\+\_\+tid (
 \begin{DoxyParamCaption}
@@ -101,9 +114,9 @@ Prints log s to the error file, perrors, then kills the process group \index{Uti
 )\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{class_utilities_a93f3699cf92128c66efa084ff1399a45}{}\label{class_utilities_a93f3699cf92128c66efa084ff1399a45}
 
 
-Define a gettid function. 
+Define a gettid function On failure, disables multi\+\_\+threaded / functionality (to continue logging) then terminates the group. 
 
-On failure, disables multi\+\_\+threaded / functionality (to continue logging) then terminates the group \index{Utilities@{Utilities}!log@{log}}
+\index{Utilities@{Utilities}!log@{log}}
 \index{log@{log}!Utilities@{Utilities}}
 \subsubsection[{\texorpdfstring{log(\+Args \&\&...\+args)}{log(Args &&...args)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename... Args$>$ static void Utilities\+::log (
 \begin{DoxyParamCaption}
@@ -112,9 +125,9 @@ On failure, disables multi\+\_\+threaded / functionality (to continue logging) t
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{class_utilities_a996db67175e47946e80539602c2ca6ee}{}\label{class_utilities_a996db67175e47946e80539602c2ca6ee}
 
 
-Logs the arguments as cout would to the log file if not null. 
+Logs the arguments as cout would to the log file if not null Ends the printed line(s) with a newline then flushes the buffer On faliure, silently fails (since it cannot write out) 
 
-Ends the printed line(s) with a newline then flushes the buffer On faliure, silently fails (since it cannot write out) \index{Utilities@{Utilities}!log\+\_\+error@{log\+\_\+error}}
+\index{Utilities@{Utilities}!log\+\_\+error@{log\+\_\+error}}
 \index{log\+\_\+error@{log\+\_\+error}!Utilities@{Utilities}}
 \subsubsection[{\texorpdfstring{log\+\_\+error(\+Args \&\&...\+args)}{log_error(Args &&...args)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename... Args$>$ static void Utilities\+::log\+\_\+error (
 \begin{DoxyParamCaption}
@@ -123,9 +136,9 @@ Ends the printed line(s) with a newline then flushes the buffer On faliure, sile
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{class_utilities_a3db9e78ec85d66d104cbf451706e1dbe}{}\label{class_utilities_a3db9e78ec85d66d104cbf451706e1dbe}
 
 
-Prints the arguments as cout would to the error and log files. 
+Prints the arguments as cout would to the error and log files Ends the printed line(s) with a newline then flushes the buffer If either file pointer is null, that file is skipped On faliure, silently fails (since it cannot write out) 
 
-Ends the printed line(s) with a newline then flushes the buffer If either file pointer is null, that file is skipped On faliure, silently fails (since it cannot write out) \index{Utilities@{Utilities}!message@{message}}
+\index{Utilities@{Utilities}!message@{message}}
 \index{message@{message}!Utilities@{Utilities}}
 \subsubsection[{\texorpdfstring{message(\+Args \&\&...\+args)}{message(Args &&...args)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename... Args$>$ static void Utilities\+::message (
 \begin{DoxyParamCaption}
@@ -134,9 +147,9 @@ Ends the printed line(s) with a newline then flushes the buffer If either file p
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{class_utilities_ae8efd2e8950fe6641d87296b8120d246}{}\label{class_utilities_ae8efd2e8950fe6641d87296b8120d246}
 
 
-Prints the arguments as cout would to the stdout and log files. 
+Prints the arguments as cout would to the stdout and log files Ends the printed line(s) with a newline then flushes the buffer If either file pointer is null, that file is skipped On faliure, silently fails (since it cannot write out) 
 
-Ends the printed line(s) with a newline then flushes the buffer If either file pointer is null, that file is skipped On faliure, silently fails (since it cannot write out) \index{Utilities@{Utilities}!setup@{setup}}
+\index{Utilities@{Utilities}!setup@{setup}}
 \index{setup@{setup}!Utilities@{Utilities}}
 \subsubsection[{\texorpdfstring{setup(const bool clear\+\_\+log)}{setup(const bool clear_log)}}]{\setlength{\rightskip}{0pt plus 5cm}void Utilities\+::setup (
 \begin{DoxyParamCaption}
@@ -145,13 +158,9 @@ Ends the printed line(s) with a newline then flushes the buffer If either file p
 )\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{class_utilities_aa448e199bdc43fe62e9b9b989a7f667b}{}\label{class_utilities_aa448e199bdc43fe62e9b9b989a7f667b}
 
 
-Sets up the utilities class. 
+Sets up the utilities class If clear\+\_\+log, the log will be cleared on setup If this function fails, it exists {\itshape O\+N\+LY} the current process. 
 
-A singleton constructor.
-
-If clear\+\_\+log, the log will be cleared op setup If s is null, just terminates the group
-
-This exists so that if a global \hyperlink{class_utilities}{Utilities} is declared it will setup everyhing needed for the class \index{Utilities@{Utilities}!verbose\+\_\+log@{verbose\+\_\+log}}
+\index{Utilities@{Utilities}!verbose\+\_\+log@{verbose\+\_\+log}}
 \index{verbose\+\_\+log@{verbose\+\_\+log}!Utilities@{Utilities}}
 \subsubsection[{\texorpdfstring{verbose\+\_\+log(\+Args \&\&...\+args)}{verbose_log(Args &&...args)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename... Args$>$ static void Utilities\+::verbose\+\_\+log (
 \begin{DoxyParamCaption}
@@ -160,9 +169,9 @@ This exists so that if a global \hyperlink{class_utilities}{Utilities} is declar
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{class_utilities_ad7251bf1dd140719a5ff384d81dc4ac0}{}\label{class_utilities_ad7251bf1dd140719a5ff384d81dc4ac0}
 
 
-Logs the arguments as cout would to the log file if not null. 
+Logs the arguments as cout would to the log file if not null Ends the printed line(s) with a newline then flushes the buffer This function only runs if V\+E\+R\+B\+O\+SE is defined. 
 
-Ends the printed line(s) with a newline then flushes the buffer This function only runs if V\+E\+R\+B\+O\+SE is defined \index{Utilities@{Utilities}!write\+\_\+log@{write\+\_\+log}}
+\index{Utilities@{Utilities}!write\+\_\+log@{write\+\_\+log}}
 \index{write\+\_\+log@{write\+\_\+log}!Utilities@{Utilities}}
 \subsubsection[{\texorpdfstring{write\+\_\+log(\+F\+I\+L\+E $\ast$const f, Args \&\&...\+args)}{write_log(FILE *const f, Args &&...args)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename... Args$>$ void Utilities\+::write\+\_\+log (
 \begin{DoxyParamCaption}
@@ -172,9 +181,9 @@ Ends the printed line(s) with a newline then flushes the buffer This function on
 )\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{class_utilities_a7085b246ac1d31d8d3ac16663e6718d9}{}\label{class_utilities_a7085b246ac1d31d8d3ac16663e6718d9}
 
 
-A wrapper that writes args to f if f is not null. 
+A wrapper that writes args to f if f is not null Ends the printed line(s) with a newline then flushes the buffer On faliure, silently fails (since it cannot write out) If the process is multithreaded or has forked, prints the T\+ID first. 
 
-Ends the printed line(s) with a newline then flushes the buffer On faliure, silently fails (since it cannot write out) If the process is multithreaded or has forked, prints the T\+ID first \index{Utilities@{Utilities}!write\+\_\+log\+\_\+helper@{write\+\_\+log\+\_\+helper}}
+\index{Utilities@{Utilities}!write\+\_\+log\+\_\+helper@{write\+\_\+log\+\_\+helper}}
 \index{write\+\_\+log\+\_\+helper@{write\+\_\+log\+\_\+helper}!Utilities@{Utilities}}
 \subsubsection[{\texorpdfstring{write\+\_\+log\+\_\+helper(std\+::stringstream \&stream, Args \&\&...\+args)}{write_log_helper(std::stringstream &stream, Args &&...args)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename... Args$>$ static void Utilities\+::write\+\_\+log\+\_\+helper (
 \begin{DoxyParamCaption}
@@ -184,9 +193,9 @@ Ends the printed line(s) with a newline then flushes the buffer On faliure, sile
 )\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{class_utilities_a0763f59c16f6eb83b9c0e8abe014287a}{}\label{class_utilities_a0763f59c16f6eb83b9c0e8abe014287a}
 
 
-Adds the arguments to the stream. 
+Adds the arguments to the stream Ends the printed line(s) with a newline then flushes the buffer If the process is multithreaded or has forked, prints the T\+ID first. 
 
-Ends the printed line(s) with a newline then flushes the buffer If the process is multithreaded or has forked, prints the T\+ID first \index{Utilities@{Utilities}!write\+\_\+log\+\_\+helper@{write\+\_\+log\+\_\+helper}}
+\index{Utilities@{Utilities}!write\+\_\+log\+\_\+helper@{write\+\_\+log\+\_\+helper}}
 \index{write\+\_\+log\+\_\+helper@{write\+\_\+log\+\_\+helper}!Utilities@{Utilities}}
 \subsubsection[{\texorpdfstring{write\+\_\+log\+\_\+helper(std\+::stringstream \&stream, T \&\&val)}{write_log_helper(std::stringstream &stream, T &&val)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ static void Utilities\+::write\+\_\+log\+\_\+helper (
 \begin{DoxyParamCaption}
@@ -219,9 +228,9 @@ A specialiation of write\+\_\+log\+\_\+helper that has multiple template argumen
 \subsubsection[{\texorpdfstring{error\+\_\+file}{error_file}}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+LE $\ast$const Utilities\+::error\+\_\+file = {\bf E\+R\+R\+O\+R\+\_\+\+F\+I\+LE}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{class_utilities_afc3b1cf892b76cede8fa87bfdd17533c}{}\label{class_utilities_afc3b1cf892b76cede8fa87bfdd17533c}
 
 
-The error file. 
+The error file This must be defined before \hyperlink{shadow__stack_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main()} 
 
-This must be defined before \hyperlink{shadow__stack_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main()} \index{Utilities@{Utilities}!is\+\_\+multi\+\_\+thread\+\_\+or\+\_\+proccess@{is\+\_\+multi\+\_\+thread\+\_\+or\+\_\+proccess}}
+\index{Utilities@{Utilities}!is\+\_\+multi\+\_\+thread\+\_\+or\+\_\+proccess@{is\+\_\+multi\+\_\+thread\+\_\+or\+\_\+proccess}}
 \index{is\+\_\+multi\+\_\+thread\+\_\+or\+\_\+proccess@{is\+\_\+multi\+\_\+thread\+\_\+or\+\_\+proccess}!Utilities@{Utilities}}
 \subsubsection[{\texorpdfstring{is\+\_\+multi\+\_\+thread\+\_\+or\+\_\+proccess}{is_multi_thread_or_proccess}}]{\setlength{\rightskip}{0pt plus 5cm}bool Utilities\+::is\+\_\+multi\+\_\+thread\+\_\+or\+\_\+proccess = false\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{class_utilities_af893d8dcd5bb1ba3fc72fc108536bcbc}{}\label{class_utilities_af893d8dcd5bb1ba3fc72fc108536bcbc}
 
@@ -233,16 +242,16 @@ Notes whether or not any threading / forking has happened yet.
 \subsubsection[{\texorpdfstring{log\+\_\+file}{log_file}}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+LE $\ast$ Utilities\+::log\+\_\+file = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{class_utilities_a63ce9d08b6459cd102bb368a274aca07}{}\label{class_utilities_a63ce9d08b6459cd102bb368a274aca07}
 
 
-The log file. 
+The log file This must be defined before \hyperlink{shadow__stack_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main()} 
 
-This must be defined before \hyperlink{shadow__stack_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main()} \index{Utilities@{Utilities}!stdout\+\_\+file@{stdout\+\_\+file}}
+\index{Utilities@{Utilities}!stdout\+\_\+file@{stdout\+\_\+file}}
 \index{stdout\+\_\+file@{stdout\+\_\+file}!Utilities@{Utilities}}
 \subsubsection[{\texorpdfstring{stdout\+\_\+file}{stdout_file}}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+LE $\ast$const Utilities\+::stdout\+\_\+file = {\bf S\+T\+D\+O\+U\+T\+\_\+\+F\+I\+LE}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{class_utilities_a224eea0a234ac9877a8334f74fc89ef0}{}\label{class_utilities_a224eea0a234ac9877a8334f74fc89ef0}
 
 
-The stdout file. 
+The stdout file This must be defined before \hyperlink{shadow__stack_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main()} 
 
-This must be defined before \hyperlink{shadow__stack_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main()} 
+
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
