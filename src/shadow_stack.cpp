@@ -17,7 +17,7 @@
 
 // Calls setup functions. 
 // The order of these functions matters !
-inline void run_before_everything() {
+static inline void run_before_everything() {
 
 	// Setup utilities
 	Utilities::setup(true);
