@@ -1,5 +1,4 @@
 #include "external_stack_server.hpp"
-#include "data_stack.hpp"
 #include "constants.hpp"
 #include "utilities.hpp"
 #include "message.hpp"
@@ -10,6 +9,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <string>
+#include <stack>
 #include <map>
 
 // Remove assert macro
@@ -25,7 +25,7 @@ using Ret = Message::Ret;
 
 
 // The type of a stack used to hold all the pointers
-typedef DataStack::Stack<const char *> pointer_stack;
+typedef std::stack<const char *> pointer_stack;
 
 // The type of a message handling function
 // It will take in the message send and the socket of the client
