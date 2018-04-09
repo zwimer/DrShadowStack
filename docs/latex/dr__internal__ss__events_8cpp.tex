@@ -9,13 +9,11 @@
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-static void \hyperlink{dr__internal__ss__events_8cpp_a8161a26ec065b8c83d2f42637896162c}{on\+\_\+call} (const app\+\_\+pc ret\+\_\+to\+\_\+addr)
+void \hyperlink{dr__internal__ss__events_8cpp_a273951c2f48526aefe80467812c06bf0}{on\+\_\+call} (const app\+\_\+pc ret\+\_\+to\+\_\+addr)
 \item 
-static void \hyperlink{dr__internal__ss__events_8cpp_ac3b510b4eb4f19ab3f68d8183f9d802b}{on\+\_\+ret} (app\+\_\+pc, const app\+\_\+pc target\+\_\+addr)
+void \hyperlink{dr__internal__ss__events_8cpp_a355e86d607356d27d9e8e6a1b70340db}{on\+\_\+ret} (app\+\_\+pc, const app\+\_\+pc target\+\_\+addr)
 \item 
-static void \hyperlink{dr__internal__ss__events_8cpp_ac865060ad09d7ce8d78ee609d322a6e1}{kernel\+\_\+xfer\+\_\+event\+\_\+handler} (void $\ast$, const dr\+\_\+kernel\+\_\+xfer\+\_\+info\+\_\+t $\ast$info)
-\item 
-dr\+\_\+emit\+\_\+flags\+\_\+t \hyperlink{dr__internal__ss__events_8cpp_a34e05a4b90b22002c7fb2c942c2ec517}{internal\+\_\+event\+\_\+app\+\_\+instruction} (void $\ast$drcontext, void $\ast$tag, instrlist\+\_\+t $\ast$bb, instr\+\_\+t $\ast$instr, bool for\+\_\+trace, bool translating, void $\ast$user\+\_\+data)
+void \hyperlink{dr__internal__ss__events_8cpp_a3ab8756aab33706f6a6bf31d0d893add}{on\+\_\+signal} ()
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -25,42 +23,28 @@ std\+::stack$<$ app\+\_\+pc $>$ \hyperlink{dr__internal__ss__events_8cpp_a4d533d
 
 
 \subsection{Function Documentation}
-\index{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp}!internal\+\_\+event\+\_\+app\+\_\+instruction@{internal\+\_\+event\+\_\+app\+\_\+instruction}}
-\index{internal\+\_\+event\+\_\+app\+\_\+instruction@{internal\+\_\+event\+\_\+app\+\_\+instruction}!dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp}}
-\subsubsection[{\texorpdfstring{internal\+\_\+event\+\_\+app\+\_\+instruction(void $\ast$drcontext, void $\ast$tag, instrlist\+\_\+t $\ast$bb, instr\+\_\+t $\ast$instr, bool for\+\_\+trace, bool translating, void $\ast$user\+\_\+data)}{internal_event_app_instruction(void *drcontext, void *tag, instrlist_t *bb, instr_t *instr, bool for_trace, bool translating, void *user_data)}}]{\setlength{\rightskip}{0pt plus 5cm}dr\+\_\+emit\+\_\+flags\+\_\+t internal\+\_\+event\+\_\+app\+\_\+instruction (
-\begin{DoxyParamCaption}
-\item[{void $\ast$}]{drcontext, }
-\item[{void $\ast$}]{tag, }
-\item[{instrlist\+\_\+t $\ast$}]{bb, }
-\item[{instr\+\_\+t $\ast$}]{instr, }
-\item[{bool}]{for\+\_\+trace, }
-\item[{bool}]{translating, }
-\item[{void $\ast$}]{user\+\_\+data}
-\end{DoxyParamCaption}
-)}\hypertarget{dr__internal__ss__events_8cpp_a34e05a4b90b22002c7fb2c942c2ec517}{}\label{dr__internal__ss__events_8cpp_a34e05a4b90b22002c7fb2c942c2ec517}
-\index{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp}!kernel\+\_\+xfer\+\_\+event\+\_\+handler@{kernel\+\_\+xfer\+\_\+event\+\_\+handler}}
-\index{kernel\+\_\+xfer\+\_\+event\+\_\+handler@{kernel\+\_\+xfer\+\_\+event\+\_\+handler}!dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp}}
-\subsubsection[{\texorpdfstring{kernel\+\_\+xfer\+\_\+event\+\_\+handler(void $\ast$, const dr\+\_\+kernel\+\_\+xfer\+\_\+info\+\_\+t $\ast$info)}{kernel_xfer_event_handler(void *, const dr_kernel_xfer_info_t *info)}}]{\setlength{\rightskip}{0pt plus 5cm}static void kernel\+\_\+xfer\+\_\+event\+\_\+handler (
-\begin{DoxyParamCaption}
-\item[{void $\ast$}]{, }
-\item[{const dr\+\_\+kernel\+\_\+xfer\+\_\+info\+\_\+t $\ast$}]{info}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__internal__ss__events_8cpp_ac865060ad09d7ce8d78ee609d322a6e1}{}\label{dr__internal__ss__events_8cpp_ac865060ad09d7ce8d78ee609d322a6e1}
 \index{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp}!on\+\_\+call@{on\+\_\+call}}
 \index{on\+\_\+call@{on\+\_\+call}!dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp}}
-\subsubsection[{\texorpdfstring{on\+\_\+call(const app\+\_\+pc ret\+\_\+to\+\_\+addr)}{on_call(const app_pc ret_to_addr)}}]{\setlength{\rightskip}{0pt plus 5cm}static void on\+\_\+call (
+\subsubsection[{\texorpdfstring{on\+\_\+call(const app\+\_\+pc ret\+\_\+to\+\_\+addr)}{on_call(const app_pc ret_to_addr)}}]{\setlength{\rightskip}{0pt plus 5cm}void on\+\_\+call (
 \begin{DoxyParamCaption}
 \item[{const app\+\_\+pc}]{ret\+\_\+to\+\_\+addr}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__internal__ss__events_8cpp_a8161a26ec065b8c83d2f42637896162c}{}\label{dr__internal__ss__events_8cpp_a8161a26ec065b8c83d2f42637896162c}
+)}\hypertarget{dr__internal__ss__events_8cpp_a273951c2f48526aefe80467812c06bf0}{}\label{dr__internal__ss__events_8cpp_a273951c2f48526aefe80467812c06bf0}
 \index{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp}!on\+\_\+ret@{on\+\_\+ret}}
 \index{on\+\_\+ret@{on\+\_\+ret}!dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp}}
-\subsubsection[{\texorpdfstring{on\+\_\+ret(app\+\_\+pc, const app\+\_\+pc target\+\_\+addr)}{on_ret(app_pc, const app_pc target_addr)}}]{\setlength{\rightskip}{0pt plus 5cm}static void on\+\_\+ret (
+\subsubsection[{\texorpdfstring{on\+\_\+ret(app\+\_\+pc, const app\+\_\+pc target\+\_\+addr)}{on_ret(app_pc, const app_pc target_addr)}}]{\setlength{\rightskip}{0pt plus 5cm}void on\+\_\+ret (
 \begin{DoxyParamCaption}
 \item[{app\+\_\+pc}]{, }
 \item[{const app\+\_\+pc}]{target\+\_\+addr}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__internal__ss__events_8cpp_ac3b510b4eb4f19ab3f68d8183f9d802b}{}\label{dr__internal__ss__events_8cpp_ac3b510b4eb4f19ab3f68d8183f9d802b}
+)}\hypertarget{dr__internal__ss__events_8cpp_a355e86d607356d27d9e8e6a1b70340db}{}\label{dr__internal__ss__events_8cpp_a355e86d607356d27d9e8e6a1b70340db}
+\index{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp}!on\+\_\+signal@{on\+\_\+signal}}
+\index{on\+\_\+signal@{on\+\_\+signal}!dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+internal\+\_\+ss\+\_\+events.\+cpp}}
+\subsubsection[{\texorpdfstring{on\+\_\+signal()}{on_signal()}}]{\setlength{\rightskip}{0pt plus 5cm}void on\+\_\+signal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{dr__internal__ss__events_8cpp_a3ab8756aab33706f6a6bf31d0d893add}{}\label{dr__internal__ss__events_8cpp_a3ab8756aab33706f6a6bf31d0d893add}
 
 
 \subsection{Variable Documentation}

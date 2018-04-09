@@ -1,26 +1,18 @@
 \hypertarget{dr__external__ss__events_8cpp}{}\section{src/dr\+\_\+external\+\_\+ss\+\_\+events.cpp File Reference}
 \label{dr__external__ss__events_8cpp}\index{src/dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{src/dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}}
+{\ttfamily \#include \char`\"{}dr\+\_\+shadow\+\_\+stack\+\_\+client.\+hpp\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}dr\+\_\+external\+\_\+ss\+\_\+events.\+hpp\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}quick\+\_\+socket.\+hpp\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}utilities.\+hpp\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}message.\+hpp\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}drmgr.\+h\char`\"{}}\\*
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
-\item 
-static void \hyperlink{dr__external__ss__events_8cpp_ac865060ad09d7ce8d78ee609d322a6e1}{kernel\+\_\+xfer\+\_\+event\+\_\+handler} (void $\ast$, const dr\+\_\+kernel\+\_\+xfer\+\_\+info\+\_\+t $\ast$info)
 \item 
 static void \hyperlink{dr__external__ss__events_8cpp_a8161a26ec065b8c83d2f42637896162c}{on\+\_\+call} (const app\+\_\+pc ret\+\_\+to\+\_\+addr)
 \item 
 static void \hyperlink{dr__external__ss__events_8cpp_a42c8b67f8f85fd6bad5bd11892c0d5bc}{on\+\_\+ret} (const app\+\_\+pc instr\+\_\+addr, const app\+\_\+pc target\+\_\+addr)
 \item 
-void \hyperlink{dr__external__ss__events_8cpp_ac2cfa3642a80b1480f624e8ed7b36b5c}{fork\+\_\+event} (void $\ast$)
-\item 
-void \hyperlink{dr__external__ss__events_8cpp_ad3db9de884a3b901180efbc6a522c737}{thread\+\_\+event} (void $\ast$)
-\item 
-dr\+\_\+emit\+\_\+flags\+\_\+t \hyperlink{dr__external__ss__events_8cpp_a14668a99e9c1c591ee2ae89b26748bdf}{external\+\_\+event\+\_\+app\+\_\+instruction} (void $\ast$drcontext, void $\ast$tag, instrlist\+\_\+t $\ast$bb, instr\+\_\+t $\ast$instr, bool for\+\_\+trace, bool translating, void $\ast$user\+\_\+data)
-\item 
-void \hyperlink{dr__external__ss__events_8cpp_a655c944988bd65e5216f857f33e2f174}{exit\+\_\+event} ()
+static void \hyperlink{dr__external__ss__events_8cpp_ab8a1f864d0acbfeb7d67994f67cbba97}{on\+\_\+signal} ()
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -30,41 +22,6 @@ static int \hyperlink{dr__external__ss__events_8cpp_a5903d0b282fc5eae503de618f89
 
 
 \subsection{Function Documentation}
-\index{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}!exit\+\_\+event@{exit\+\_\+event}}
-\index{exit\+\_\+event@{exit\+\_\+event}!dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}}
-\subsubsection[{\texorpdfstring{exit\+\_\+event()}{exit_event()}}]{\setlength{\rightskip}{0pt plus 5cm}void exit\+\_\+event (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}\hypertarget{dr__external__ss__events_8cpp_a655c944988bd65e5216f857f33e2f174}{}\label{dr__external__ss__events_8cpp_a655c944988bd65e5216f857f33e2f174}
-\index{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}!external\+\_\+event\+\_\+app\+\_\+instruction@{external\+\_\+event\+\_\+app\+\_\+instruction}}
-\index{external\+\_\+event\+\_\+app\+\_\+instruction@{external\+\_\+event\+\_\+app\+\_\+instruction}!dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}}
-\subsubsection[{\texorpdfstring{external\+\_\+event\+\_\+app\+\_\+instruction(void $\ast$drcontext, void $\ast$tag, instrlist\+\_\+t $\ast$bb, instr\+\_\+t $\ast$instr, bool for\+\_\+trace, bool translating, void $\ast$user\+\_\+data)}{external_event_app_instruction(void *drcontext, void *tag, instrlist_t *bb, instr_t *instr, bool for_trace, bool translating, void *user_data)}}]{\setlength{\rightskip}{0pt plus 5cm}dr\+\_\+emit\+\_\+flags\+\_\+t external\+\_\+event\+\_\+app\+\_\+instruction (
-\begin{DoxyParamCaption}
-\item[{void $\ast$}]{drcontext, }
-\item[{void $\ast$}]{tag, }
-\item[{instrlist\+\_\+t $\ast$}]{bb, }
-\item[{instr\+\_\+t $\ast$}]{instr, }
-\item[{bool}]{for\+\_\+trace, }
-\item[{bool}]{translating, }
-\item[{void $\ast$}]{user\+\_\+data}
-\end{DoxyParamCaption}
-)}\hypertarget{dr__external__ss__events_8cpp_a14668a99e9c1c591ee2ae89b26748bdf}{}\label{dr__external__ss__events_8cpp_a14668a99e9c1c591ee2ae89b26748bdf}
-\index{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}!fork\+\_\+event@{fork\+\_\+event}}
-\index{fork\+\_\+event@{fork\+\_\+event}!dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}}
-\subsubsection[{\texorpdfstring{fork\+\_\+event(void $\ast$)}{fork_event(void *)}}]{\setlength{\rightskip}{0pt plus 5cm}void fork\+\_\+event (
-\begin{DoxyParamCaption}
-\item[{void $\ast$}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{dr__external__ss__events_8cpp_ac2cfa3642a80b1480f624e8ed7b36b5c}{}\label{dr__external__ss__events_8cpp_ac2cfa3642a80b1480f624e8ed7b36b5c}
-\index{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}!kernel\+\_\+xfer\+\_\+event\+\_\+handler@{kernel\+\_\+xfer\+\_\+event\+\_\+handler}}
-\index{kernel\+\_\+xfer\+\_\+event\+\_\+handler@{kernel\+\_\+xfer\+\_\+event\+\_\+handler}!dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}}
-\subsubsection[{\texorpdfstring{kernel\+\_\+xfer\+\_\+event\+\_\+handler(void $\ast$, const dr\+\_\+kernel\+\_\+xfer\+\_\+info\+\_\+t $\ast$info)}{kernel_xfer_event_handler(void *, const dr_kernel_xfer_info_t *info)}}]{\setlength{\rightskip}{0pt plus 5cm}static void kernel\+\_\+xfer\+\_\+event\+\_\+handler (
-\begin{DoxyParamCaption}
-\item[{void $\ast$}]{, }
-\item[{const dr\+\_\+kernel\+\_\+xfer\+\_\+info\+\_\+t $\ast$}]{info}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__external__ss__events_8cpp_ac865060ad09d7ce8d78ee609d322a6e1}{}\label{dr__external__ss__events_8cpp_ac865060ad09d7ce8d78ee609d322a6e1}
 \index{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}!on\+\_\+call@{on\+\_\+call}}
 \index{on\+\_\+call@{on\+\_\+call}!dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}}
 \subsubsection[{\texorpdfstring{on\+\_\+call(const app\+\_\+pc ret\+\_\+to\+\_\+addr)}{on_call(const app_pc ret_to_addr)}}]{\setlength{\rightskip}{0pt plus 5cm}static void on\+\_\+call (
@@ -80,13 +37,13 @@ static int \hyperlink{dr__external__ss__events_8cpp_a5903d0b282fc5eae503de618f89
 \item[{const app\+\_\+pc}]{target\+\_\+addr}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__external__ss__events_8cpp_a42c8b67f8f85fd6bad5bd11892c0d5bc}{}\label{dr__external__ss__events_8cpp_a42c8b67f8f85fd6bad5bd11892c0d5bc}
-\index{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}!thread\+\_\+event@{thread\+\_\+event}}
-\index{thread\+\_\+event@{thread\+\_\+event}!dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}}
-\subsubsection[{\texorpdfstring{thread\+\_\+event(void $\ast$)}{thread_event(void *)}}]{\setlength{\rightskip}{0pt plus 5cm}void thread\+\_\+event (
+\index{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}!on\+\_\+signal@{on\+\_\+signal}}
+\index{on\+\_\+signal@{on\+\_\+signal}!dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}}
+\subsubsection[{\texorpdfstring{on\+\_\+signal()}{on_signal()}}]{\setlength{\rightskip}{0pt plus 5cm}static void on\+\_\+signal (
 \begin{DoxyParamCaption}
-\item[{void $\ast$}]{}
+{}
 \end{DoxyParamCaption}
-)}\hypertarget{dr__external__ss__events_8cpp_ad3db9de884a3b901180efbc6a522c737}{}\label{dr__external__ss__events_8cpp_ad3db9de884a3b901180efbc6a522c737}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__external__ss__events_8cpp_ab8a1f864d0acbfeb7d67994f67cbba97}{}\label{dr__external__ss__events_8cpp_ab8a1f864d0acbfeb7d67994f67cbba97}
 
 
 \subsection{Variable Documentation}

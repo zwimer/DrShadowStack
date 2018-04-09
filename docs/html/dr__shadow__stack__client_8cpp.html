@@ -87,25 +87,38 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">dr_shadow_stack_client.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="dr__internal__ss__events_8hpp_source.html">dr_internal_ss_events.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="dr__shadow__stack__client_8hpp_source.html">dr_shadow_stack_client.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dr__internal__ss__events_8hpp_source.html">dr_internal_ss_events.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="dr__external__ss__events_8hpp_source.html">dr_external_ss_events.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="constants_8hpp_source.html">constants.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="utilities_8hpp_source.html">utilities.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ss__mode_8hpp_source.html">ss_mode.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="group_8hpp_source.html">group.hpp</a>&quot;</code><br />
-<code>#include &quot;dr_api.h&quot;</code><br />
 <code>#include &quot;drmgr.h&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:aac9783a08023b07655542e354ed2cb42"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__shadow__stack__client_8cpp.html#aac9783a08023b07655542e354ed2cb42">run_before_everything</a> ()</td></tr>
+<tr class="separator:aac9783a08023b07655542e354ed2cb42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac865060ad09d7ce8d78ee609d322a6e1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__shadow__stack__client_8cpp.html#ac865060ad09d7ce8d78ee609d322a6e1">kernel_xfer_event_handler</a> (void *, const dr_kernel_xfer_info_t *info)</td></tr>
+<tr class="separator:ac865060ad09d7ce8d78ee609d322a6e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0aaea6e47ff2dc8fb1587381292ba5b5"><td class="memItemLeft" align="right" valign="top">static dr_emit_flags_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__shadow__stack__client_8cpp.html#a0aaea6e47ff2dc8fb1587381292ba5b5">event_app_instruction</a> (void *drcontext, void *tag, instrlist_t *bb, instr_t *instr, bool for_trace, bool translating, void *user_data)</td></tr>
+<tr class="separator:a0aaea6e47ff2dc8fb1587381292ba5b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac27bdb8c91453a10aea3bc778eb98f19"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__shadow__stack__client_8cpp.html#ac27bdb8c91453a10aea3bc778eb98f19">exit_event</a> ()</td></tr>
+<tr class="separator:ac27bdb8c91453a10aea3bc778eb98f19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b938c98dd186cc94eef6880f9e3c3e9"><td class="memItemLeft" align="right" valign="top">DR_EXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__shadow__stack__client_8cpp.html#a2b938c98dd186cc94eef6880f9e3c3e9">dr_client_main</a> (client_id_t id, int argc, const char *argv[])</td></tr>
-<tr class="memdesc:a2b938c98dd186cc94eef6880f9e3c3e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The main client function This function dynamically 'injects' the shadow stack.  <a href="#a2b938c98dd186cc94eef6880f9e3c3e9">More...</a><br /></td></tr>
 <tr class="separator:a2b938c98dd186cc94eef6880f9e3c3e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a8127cbb76109ee48fe6e8ff96f57caab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_s_s_handlers.html">SSHandlers</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dr__shadow__stack__client_8cpp.html#a8127cbb76109ee48fe6e8ff96f57caab">handlers</a> = nullptr</td></tr>
+<tr class="separator:a8127cbb76109ee48fe6e8ff96f57caab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a2b938c98dd186cc94eef6880f9e3c3e9"></a>
@@ -138,7 +151,162 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The main client function This function dynamically 'injects' the shadow stack. </p>
+</div>
+</div>
+<a class="anchor" id="a0aaea6e47ff2dc8fb1587381292ba5b5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static dr_emit_flags_t event_app_instruction </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>drcontext</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>tag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">instrlist_t *&#160;</td>
+          <td class="paramname"><em>bb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">instr_t *&#160;</td>
+          <td class="paramname"><em>instr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>for_trace</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>translating</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>user_data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac27bdb8c91453a10aea3bc778eb98f19"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void exit_event </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac865060ad09d7ce8d78ee609d322a6e1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void kernel_xfer_event_handler </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const dr_kernel_xfer_info_t *&#160;</td>
+          <td class="paramname"><em>info</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aac9783a08023b07655542e354ed2cb42"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void run_before_everything </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="a8127cbb76109ee48fe6e8ff96f57caab"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_s_s_handlers.html">SSHandlers</a>* handlers = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
