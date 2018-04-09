@@ -117,8 +117,8 @@ void Group::setup() {
 
 	// setup_group() was already called
 	else {
-		terminate("ERROR: setup is complete already. "
-			"Terminating program...\n");
+		terminate( "ERROR: setup is complete already.\n"
+					"\tTerminating program...\n");
 	}
 
 	// Nothing went wrong
