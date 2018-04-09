@@ -29,8 +29,8 @@ void Sym::finish() {
     Utilities::assert( drsym_exit() == DRSYM_SUCCESS, "drsym_exit() failed." );
 }
 
-/// Print symbol information for the what is located at addr
-/** description is a description of what the address addr points to */
+// Print symbol information for the what is located at addr
+//  description is a description of what the address addr points to
 void Sym::print( const char * const description, const app_pc addr ) {
  
 	// Print out the description

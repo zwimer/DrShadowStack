@@ -113,6 +113,7 @@ endif()
 add_library(${SS_SUPPORT_LIB} SHARED 
 	quick_socket.cpp
 	utilities.cpp
+	ss_mode.cpp
 	message.cpp
 	group.cpp
 	)

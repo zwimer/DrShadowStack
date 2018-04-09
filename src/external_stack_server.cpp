@@ -49,43 +49,43 @@ void add_wildcard(pointer_stack & stk, const char * const, const int) {
 
 // Called when a 'call' was detected
 void call_handler(pointer_stack & stk, const char * const buffer, const int) {
-	/* const char * const addr = * ((char **) buffer); */
-	/* Utilities::verbose_log("(server) Push(", (void *) addr, ")"); */
-	/* stk.push(addr); */
+	const char * const addr = * ((char **) buffer);
+	Utilities::verbose_log("(server) Push(", (void *) addr, ")");
+	stk.push(addr);
 }
 
 // Called when a 'ret' was detected
 void ret_handler(pointer_stack & stk, const char * const buffer, const int sock) {
 
-/* 	// Log the address */
-/* 	const char * const addr = * ((char **) buffer); */
-/* 	Utilities::verbose_log("(server) Pop(", (void *) addr,")\n"); */
+	// Log the address
+	const char * const addr = * ((char **) buffer);
+	Utilities::verbose_log("(server) Pop(", (void *) addr,")\n");
 
-/* 	// If the stack is empty, error */
-/* 	if ( stk.empty() ) { */
-/* 		Utilities::log_error( 	"*** Shadow stack mistmach detected! ***\n" */
-/* 								"Attempting to return to ", (void *) addr, */ 
-/* 								"\n\tShadow Stack is empty.\n" ); */
-/* 		Group::terminate(nullptr); */
-/* 	} */
+	// If the stack is empty, error
+	if ( stk.empty() ) {
+		Utilities::log_error( 	"*** Shadow stack mistmach detected! ***\n"
+								"Attempting to return to ", (void *) addr, 
+								"\n\tShadow Stack is empty.\n" );
+		Group::terminate(nullptr);
+	}
 	
-/* 	// If the top of the stack is a wildcard, */ 
-/* 	// we are returning from a signal handler */
-/* 	const char * const top = stk.top(); */
-/* 	if ( top == (char *) WILDCARD ) { */
-/* 		Utilities::verbose_log("Wildcard detected, returning from signal handler allowed."); */
-/* 	} */
+	// If the top of the stack is a wildcard, 
+	// we are returning from a signal handler
+	const char * const top = stk.top();
+	if ( top == (char *) WILDCARD ) {
+		Utilities::verbose_log("Wildcard detected, returning from signal handler allowed.");
+	}
 
-/* 	// If the return address is incorrect, error */
-/* 	else if ( addr != top ) { */
-/* 		Utilities::log_error(	"*** Shadow stack mistmach detected! ***\n" */
-/* 								"Attempting to return to ", (void *) addr, */
-/* 								"\n\tTop of shadow stack is ", (void *) top, "\n" ); */
-/* 		Group::terminate(nullptr); */
-/* 	} */
+	// If the return address is incorrect, error
+	else if ( addr != top ) {
+		Utilities::log_error(	"*** Shadow stack mistmach detected! ***\n"
+								"Attempting to return to ", (void *) addr,
+								"\n\tTop of shadow stack is ", (void *) top, "\n" );
+		Group::terminate(nullptr);
+	}
 
-/* 	// If everything is valid, pop the stack */
-/* 	stk.pop(); */
+	// If everything is valid, pop the stack
+	stk.pop();
 
 	// Tell the client proccess it may continue
 	const int bytes_sent = write(sock, Continue::message, Continue::size);
