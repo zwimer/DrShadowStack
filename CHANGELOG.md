@@ -4,6 +4,7 @@
 
 **Implemented enhancements:**
 
+- Development on windows \r\n [\#80](https://github.com/zwimer/DrShadowStack/issues/80)
 - ss\_mode internal + mprotect [\#74](https://github.com/zwimer/DrShadowStack/issues/74)
 - Convert IO to use streams [\#61](https://github.com/zwimer/DrShadowStack/issues/61)
 - Do not generate unique path [\#58](https://github.com/zwimer/DrShadowStack/issues/58)
@@ -47,6 +48,7 @@
 
 **Merged pull requests:**
 
+- Develop [\#78](https://github.com/zwimer/DrShadowStack/pull/78) ([zwimer](https://github.com/zwimer))
 - Mode class [\#76](https://github.com/zwimer/DrShadowStack/pull/76) ([zwimer](https://github.com/zwimer))
 - Typos [\#75](https://github.com/zwimer/DrShadowStack/pull/75) ([zwimer](https://github.com/zwimer))
 - Documentation [\#73](https://github.com/zwimer/DrShadowStack/pull/73) ([zwimer](https://github.com/zwimer))
