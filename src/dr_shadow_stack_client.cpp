@@ -59,7 +59,7 @@ static inline void run_before_everything() {
 }
 
 // Called whenever a signal is called. Adds a wildcard to the shadow stack
-// Note: the reason we use this instead of the signal event is this ignores ignored signals
+// Note: the reason we use this instead of the event is this ignores ignored signals
 static void kernel_xfer_event_handler( void *, const dr_kernel_xfer_info_t *info ) {
 	if ( info->type == DR_XFER_SIGNAL_DELIVERY ) {
 		Utilities::verbose_log( "Caught sig ", info->sig, " - ", strsignal( info->sig ),
@@ -74,8 +74,8 @@ static void kernel_xfer_event_handler( void *, const dr_kernel_xfer_info_t *info
 // or a ret is seen, the call and ret handlers are inserted
 // before said instruction. Note: an app_pc is defined in comments
 static dr_emit_flags_t event_app_instruction( void *drcontext, void *tag, instrlist_t *bb,
-                                              instr_t *instr, bool for_trace, bool translating,
-                                              void *user_data ) {
+                                              instr_t *instr, bool for_trace,
+                                              bool translating, void *user_data ) {
 
 	// Concerning DynamoRIO's app_pc type. From their source:
 	//   include/dr_defines.h:typedef byte * app_pc;

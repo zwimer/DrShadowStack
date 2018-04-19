@@ -27,7 +27,8 @@ static void on_ret( const app_pc instr_addr, const app_pc target_addr ) {
 }
 
 // Called whenever a signal is called. Adds a wildcard to the shadow stack
-// Note: the reason we use this instead of the signal event is this ignores ignored signals
+// Note: the reason we use this instead of the signal event is this ignores ignored
+// signals
 static void on_signal() { send_msg<Message::NewSignal>( sock ); }
 
 

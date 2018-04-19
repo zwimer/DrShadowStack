@@ -60,8 +60,8 @@ void Sym::print( const char *const description, const app_pc addr ) {
 	sym.name = name;
 
 	// Look up the symbol
-	drsym_error_t symres =
-	    drsym_lookup_address( data->full_path, addr - data->start, &sym, DRSYM_DEFAULT_FLAGS );
+	drsym_error_t symres = drsym_lookup_address( data->full_path, addr - data->start,
+	                                             &sym, DRSYM_DEFAULT_FLAGS );
 
 	// Switch on symres
 	switch ( symres ) {
@@ -80,7 +80,8 @@ void Sym::print( const char *const description, const app_pc addr ) {
 
 		// If the sym is known, continue on
 		case DRSYM_SUCCESS:
-		case DRSYM_ERROR_LINE_NOT_AVAILABLE:; /* No fall through, so we need a semioclon */
+		case DRSYM_ERROR_LINE_NOT_AVAILABLE:; /* No fall through, so we need a semioclon
+		                                       */
 	}
 
 	// Determine the name of the module
