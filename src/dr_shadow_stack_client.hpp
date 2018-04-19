@@ -9,26 +9,24 @@
 /** A class used to contain mode specific function definitions
  * Specifically, the event handlers this client must used */
 class SSHandlers final {
-private:
-
+  private:
 	/** The type 'on call' funciton signature */
-	typedef void ( * const on_call_signature ) (const app_pc ret_to_addr);
+	typedef void ( *const on_call_signature )( const app_pc ret_to_addr );
 
 	/** The type 'on ret' funciton signature */
-	typedef void ( * const on_ret_signature ) (	const app_pc instr_addr, 
-												const app_pc target_addr );
+	typedef void ( *const on_ret_signature )( const app_pc instr_addr,
+	                                          const app_pc target_addr );
 
 	/** The type 'on signal' funciton signature */
-	typedef void ( * const on_signal_signature ) ();
+	typedef void ( *const on_signal_signature )();
 
-public:
-
+  public:
 	/** Delete default constructor */
 	SSHandlers() = delete;
 
 	/** Constructor */
-	SSHandlers(	const on_call_signature c, const on_ret_signature r, 
-				const on_signal_signature s );
+	SSHandlers( const on_call_signature c, const on_ret_signature r,
+	            const on_signal_signature s );
 
 	/** The 'on call' handler */
 	const on_call_signature on_call;
@@ -40,7 +38,7 @@ public:
 	const on_signal_signature on_signal;
 
 	/** Returns true if all function pointers are non-null */
-	bool is_valid ();
+	bool is_valid();
 };
 
 

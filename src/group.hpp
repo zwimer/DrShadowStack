@@ -15,17 +15,16 @@
  *  Note: this should be used as a backup, terminate_group
  *  should still be called if termination is desired! */
 class TerminateOnDestruction final {
-private:
-
+  private:
 	// Delete unwanted 'constructors'
-	TerminateOnDestruction(TerminateOnDestruction && ) = delete;
-	TerminateOnDestruction(const TerminateOnDestruction & ) = delete;
-	TerminateOnDestruction & operator=(const TerminateOnDestruction & ) = delete;
+	TerminateOnDestruction( TerminateOnDestruction && ) = delete;
+	TerminateOnDestruction( const TerminateOnDestruction & ) = delete;
+	TerminateOnDestruction &operator=( const TerminateOnDestruction & ) = delete;
 
 	// If enabled, terminate_group on destruction
 	bool enabled;
-public:
 
+  public:
 	/** Constructor
 	 *  Enabled terminateion on destruction by default */
 	TerminateOnDestruction();
@@ -53,8 +52,8 @@ struct Group {
 	 *  By then the group will already be set up!
 	 *  This function first sets up the process group
 	 *  Then change the default signal handlers of all non-excluded
-	 *  signals to terminate the group when called. Also sets up 
-	 *  the group refrence counter. This function is **NOT** thread 
+	 *  signals to terminate the group when called. Also sets up
+	 *  the group refrence counter. This function is **NOT** thread
 	 *  safe, and should never be run after threading / forking has occured! */
 	static void setup();
 
@@ -62,14 +61,13 @@ struct Group {
 	 *  If is_error is set to true, msg is logged to the
 	 *  ERROR file, otherwise it is logged via Utilities::message
 	 *  If msg is nullptr, no message is passed.
-	 *  If this function ends up calling itself, 
+	 *  If this function ends up calling itself,
 	 *  immediate process group termination will occur
-	 *  setup() **DOES NOT** have to be called before this function 
+	 *  setup() **DOES NOT** have to be called before this function
 	 *  in every process. However, it **MUST** be called by DrShadowStack once first */
-	[[ noreturn ]] static void terminate(const char * const msg, bool is_error = true);
+	[[noreturn]] static void terminate( const char *const msg, bool is_error = true );
 
-private:
-
+  private:
 	/** Used to tell if the process group has started */
 	static bool setup_complete;
 };
