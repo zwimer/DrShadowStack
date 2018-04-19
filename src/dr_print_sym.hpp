@@ -7,16 +7,14 @@
 
 /** Wrap symbols in a static class */
 struct Sym {
-private:
-
+  private:
 	/** For clarity of the dependency injection below */
-	using PrintFn = void (*) (const char * const format, ...);
+	using PrintFn = void ( * )( const char *const format, ... );
 
 	/** Record if syms is already setup */
 	static bool setup;
 
-public:
-
+  public:
 	/** Disable construction */
 	Sym() = delete;
 
@@ -29,7 +27,7 @@ public:
 
 	/** Print symbol information for the what is located at addr
 	 *  description is a description of what the address addr points to */
-	static void print( const char * const description, const app_pc addr );
+	static void print( const char *const description, const app_pc addr );
 };
 
 #endif

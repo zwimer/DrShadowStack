@@ -35,8 +35,7 @@
 struct Args {
 
 	/** Constructor */
-	Args(	SSMode && mode_, const std::string & targ, 
-			std::vector<std::string> & targ_args );
+	Args( SSMode &&mode_, const std::string &targ, std::vector<std::string> &targ_args );
 
 	/** The shadow stack mode */
 	const SSMode mode;
@@ -57,7 +56,7 @@ struct Args {
 
 
 /** Returns an args_t containing the parsed arguments */
-Args parse_args(const int argc, const char * const argv[]);
+Args parse_args( const int argc, const char *const argv[] );
 
 
 #endif

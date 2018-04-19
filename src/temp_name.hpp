@@ -1,6 +1,6 @@
 /** @file */
 #ifndef __TEMP_NAME_HPP__
-#define  __TEMP_NAME_HPP__
+#define __TEMP_NAME_HPP__
 
 #include <string>
 

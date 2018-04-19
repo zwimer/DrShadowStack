@@ -7,7 +7,7 @@
  *  Sock must be the file descriptor to the unix domain
  *  server that connects the shadow stack program to the
  *  dynamorio client managing the program to be run */
-void start_external_shadow_stack(const int sock);
+void start_external_shadow_stack( const int sock );
 
 
 #endif

@@ -16,16 +16,16 @@
 /** A tiny struct that represents a shadow stack mode */
 struct SSMode final {
 
-	/** The constructor 
+	/** The constructor
 	 *  Reads the mode in from m and stores a copy of it */
-	SSMode(const char * const m);
+	SSMode( const char *const m );
 
 	/** Disable the default constructor */
 	SSMode() = delete;
 
 
 	/** The mode */
-	const char * const str;
+	const char *const str;
 
 	/** True if mode = internal */
 	const bool is_internal;
@@ -50,20 +50,18 @@ struct SSMode final {
 
 /** A compile time strcmp
  *  Recursively checks if the first characters of the strings match */
-static constexpr bool str_equal( const char * const s1, 	
-								 const char * const s2 ) {
-	return (s1[0] != s2[0]) ? false :
-		(s1[0] == 0) ? true : str_equal(s1 + 1, s2 + 1);
+static constexpr bool str_equal( const char *const s1, const char *const s2 ) {
+	return ( s1[0] != s2[0] ) ? false : ( s1[0] == 0 ) ? true : str_equal( s1 + 1, s2 + 1 );
 }
 
 
 /** Verify the mode flags are not equal */
-static_assert( ! str_equal(INTERNAL_MODE_FLAG, EXTERNAL_MODE_FLAG),
-				"internal mode flag cannot equal external mode flag");
-static_assert( ! str_equal(INTERNAL_MODE_FLAG, PROT_INTERNAL_MODE_FLAG),
-				"internal mode flag cannot equal protected internal mode flag");
-static_assert( ! str_equal(PROT_INTERNAL_MODE_FLAG, EXTERNAL_MODE_FLAG),
-				"protected iternal mode flag cannot equal external mode flag");
+static_assert( !str_equal( INTERNAL_MODE_FLAG, EXTERNAL_MODE_FLAG ),
+               "internal mode flag cannot equal external mode flag" );
+static_assert( !str_equal( INTERNAL_MODE_FLAG, PROT_INTERNAL_MODE_FLAG ),
+               "internal mode flag cannot equal protected internal mode flag" );
+static_assert( !str_equal( PROT_INTERNAL_MODE_FLAG, EXTERNAL_MODE_FLAG ),
+               "protected iternal mode flag cannot equal external mode flag" );
 
 
 #endif

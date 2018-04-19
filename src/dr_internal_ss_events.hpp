@@ -9,7 +9,8 @@
 namespace InternalSS {
 
 	/** Setup the internal stack server for the DynamoRIO client */
-	void setup(SSHandlers ** const handlers, const char * const);
-};
+	void setup( SSHandlers **const handlers, const char *const );
+}; // namespace InternalSS
+
 
 #endif

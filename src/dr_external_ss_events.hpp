@@ -9,7 +9,8 @@
 namespace ExternalSS {
 
 	/** Setup the external stack server for the DynamoRIO client */
-	void setup(SSHandlers ** const handlers, const char * const);
-};
+	void setup( SSHandlers **const handlers, const char *const );
+}; // namespace ExternalSS
+
 
 #endif
