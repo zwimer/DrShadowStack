@@ -80,8 +80,7 @@ void set_default_signal_handler( void ( *handler )( int sig ) ) {
 
 
 // Constructor. Enabled terminateion on destruction by default
-TerminateOnDestruction::TerminateOnDestruction()
-    : enabled( true ) {}
+TerminateOnDestruction::TerminateOnDestruction() : enabled( true ) {}
 
 // On destruction, terminate the group if enabled
 TerminateOnDestruction::~TerminateOnDestruction() {
