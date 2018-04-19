@@ -32,6 +32,7 @@ static inline void run_before_everything() {
 
 // Start's the program passed in via drrun
 [[noreturn]] void start_program( const Args input_args, char *socket_path ) {
+
 	// Construct args to give to exec
 	std::vector<const char *> exec_args;
 
@@ -70,8 +71,8 @@ static inline void run_before_everything() {
 	Utilities::err( "execvp() failed." );
 }
 
-    // Setup and start the external client
-    [[noreturn]] void start_external_client( const Args &args ) {
+// Setup and start the external client
+[[noreturn]] void start_external_client( const Args &args ) {
 
 	// Setup a unix server
 	// Technically, between generating the name name and the
