@@ -139,13 +139,13 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a70eafdf190b8f3be16349543fe1b39ae"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="message_8hpp.html#a70eafdf190b8f3be16349543fe1b39ae">POINTER_SIZE</a>&#160;&#160;&#160;( sizeof(void *) )</td></tr>
+<tr class="memitem:a70eafdf190b8f3be16349543fe1b39ae"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="message_8hpp.html#a70eafdf190b8f3be16349543fe1b39ae">POINTER_SIZE</a>&#160;&#160;&#160;( sizeof( void * ) )</td></tr>
 <tr class="memdesc:a70eafdf190b8f3be16349543fe1b39ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">The size of a pointer in the target program To run on 32 bit programs, change this value!  <a href="#a70eafdf190b8f3be16349543fe1b39ae">More...</a><br /></td></tr>
 <tr class="separator:a70eafdf190b8f3be16349543fe1b39ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac119f42bacd57152815371e9527d1059"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="message_8hpp.html#ac119f42bacd57152815371e9527d1059">MESSAGE_HEADER_LENGTH</a>&#160;&#160;&#160;4</td></tr>
 <tr class="memdesc:ac119f42bacd57152815371e9527d1059"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of characters a message header can be.  <a href="#ac119f42bacd57152815371e9527d1059">More...</a><br /></td></tr>
 <tr class="separator:ac119f42bacd57152815371e9527d1059"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeca90e1c1c62b70670514ffc18c9dfd4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="message_8hpp.html#aeca90e1c1c62b70670514ffc18c9dfd4">MESSAGE_SIZE</a>&#160;&#160;&#160;(<a class="el" href="message_8hpp.html#a70eafdf190b8f3be16349543fe1b39ae">POINTER_SIZE</a> + <a class="el" href="message_8hpp.html#ac119f42bacd57152815371e9527d1059">MESSAGE_HEADER_LENGTH</a>)</td></tr>
+<tr class="memitem:aeca90e1c1c62b70670514ffc18c9dfd4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="message_8hpp.html#aeca90e1c1c62b70670514ffc18c9dfd4">MESSAGE_SIZE</a>&#160;&#160;&#160;( <a class="el" href="message_8hpp.html#a70eafdf190b8f3be16349543fe1b39ae">POINTER_SIZE</a> + <a class="el" href="message_8hpp.html#ac119f42bacd57152815371e9527d1059">MESSAGE_HEADER_LENGTH</a> )</td></tr>
 <tr class="memdesc:aeca90e1c1c62b70670514ffc18c9dfd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The size of a message.  <a href="#aeca90e1c1c62b70670514ffc18c9dfd4">More...</a><br /></td></tr>
 <tr class="separator:aeca90e1c1c62b70670514ffc18c9dfd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a557da6efaea4f48fbee7baa4413337d3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="message_8hpp.html#a557da6efaea4f48fbee7baa4413337d3">MESSAGE_INTERNALS</a>(HEADER_ONLY)</td></tr>
@@ -199,7 +199,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">                    \</div><div class="line">            static <span class="keyword">const</span> constexpr <span class="keywordtype">bool</span> header_only = HEADER_ONLY;          \                           \</div><div class="line">            static <span class="keyword">const</span> constexpr <span class="keywordtype">int</span> size = <a class="code" href="message_8hpp.html#aeca90e1c1c62b70670514ffc18c9dfd4">MESSAGE_SIZE</a>;                 \                               \</div><div class="line">            static <span class="keyword">const</span> constexpr <span class="keywordtype">char</span> * <span class="keyword">const</span> header = Info::header;      \                       \</div><div class="line">            static_assert( strlen(Info::header) == <a class="code" href="message_8hpp.html#ac119f42bacd57152815371e9527d1059">MESSAGE_HEADER_LENGTH</a>,   \</div><div class="line">                <span class="stringliteral">&quot;Header is of wrong size.&quot;</span> );                               \                           \</div><div class="line">            MessageType&lt;HEADER_ONLY, Info&gt;() = <span class="keyword">delete</span>;</div><div class="ttc" id="message_8hpp_html_ac119f42bacd57152815371e9527d1059"><div class="ttname"><a href="message_8hpp.html#ac119f42bacd57152815371e9527d1059">MESSAGE_HEADER_LENGTH</a></div><div class="ttdeci">#define MESSAGE_HEADER_LENGTH</div><div class="ttdoc">The number of characters a message header can be. </div><div class="ttdef"><b>Definition:</b> message.hpp:24</div></div>
+<b>Value:</b><div class="fragment"><div class="line">                                             \</div><div class="line">    static <span class="keyword">const</span> constexpr <span class="keywordtype">bool</span> header_only = HEADER_ONLY;                                    \                                                     \</div><div class="line">    static <span class="keyword">const</span> constexpr <span class="keywordtype">int</span> size = <a class="code" href="message_8hpp.html#aeca90e1c1c62b70670514ffc18c9dfd4">MESSAGE_SIZE</a>;                                           \                                                          \</div><div class="line">    static <span class="keyword">const</span> constexpr <span class="keywordtype">char</span> *<span class="keyword">const</span> header = Info::header;                                 \                                                \</div><div class="line">    static_assert( strlen( Info::header ) == <a class="code" href="message_8hpp.html#ac119f42bacd57152815371e9527d1059">MESSAGE_HEADER_LENGTH</a>,                           \</div><div class="line">                   <span class="stringliteral">&quot;Header is of wrong size.&quot;</span> );                                              \                                                     \</div><div class="line">    MessageType&lt;HEADER_ONLY, Info&gt;() = <span class="keyword">delete</span>;</div><div class="ttc" id="message_8hpp_html_ac119f42bacd57152815371e9527d1059"><div class="ttname"><a href="message_8hpp.html#ac119f42bacd57152815371e9527d1059">MESSAGE_HEADER_LENGTH</a></div><div class="ttdeci">#define MESSAGE_HEADER_LENGTH</div><div class="ttdoc">The number of characters a message header can be. </div><div class="ttdef"><b>Definition:</b> message.hpp:24</div></div>
 <div class="ttc" id="message_8hpp_html_aeca90e1c1c62b70670514ffc18c9dfd4"><div class="ttname"><a href="message_8hpp.html#aeca90e1c1c62b70670514ffc18c9dfd4">MESSAGE_SIZE</a></div><div class="ttdeci">#define MESSAGE_SIZE</div><div class="ttdoc">The size of a message. </div><div class="ttdef"><b>Definition:</b> message.hpp:27</div></div>
 </div><!-- fragment -->
 <p>The internals of a message. </p>
@@ -212,7 +212,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define MESSAGE_SIZE&#160;&#160;&#160;(<a class="el" href="message_8hpp.html#a70eafdf190b8f3be16349543fe1b39ae">POINTER_SIZE</a> + <a class="el" href="message_8hpp.html#ac119f42bacd57152815371e9527d1059">MESSAGE_HEADER_LENGTH</a>)</td>
+          <td class="memname">#define MESSAGE_SIZE&#160;&#160;&#160;( <a class="el" href="message_8hpp.html#a70eafdf190b8f3be16349543fe1b39ae">POINTER_SIZE</a> + <a class="el" href="message_8hpp.html#ac119f42bacd57152815371e9527d1059">MESSAGE_HEADER_LENGTH</a> )</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -226,7 +226,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define POINTER_SIZE&#160;&#160;&#160;( sizeof(void *) )</td>
+          <td class="memname">#define POINTER_SIZE&#160;&#160;&#160;( sizeof( void * ) )</td>
         </tr>
       </table>
 </div><div class="memdoc">

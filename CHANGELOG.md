@@ -48,6 +48,7 @@
 
 **Merged pull requests:**
 
+- .gitattributes [\#79](https://github.com/zwimer/DrShadowStack/pull/79) ([zwimer](https://github.com/zwimer))
 - Develop [\#78](https://github.com/zwimer/DrShadowStack/pull/78) ([zwimer](https://github.com/zwimer))
 - Mode class [\#76](https://github.com/zwimer/DrShadowStack/pull/76) ([zwimer](https://github.com/zwimer))
 - Typos [\#75](https://github.com/zwimer/DrShadowStack/pull/75) ([zwimer](https://github.com/zwimer))
