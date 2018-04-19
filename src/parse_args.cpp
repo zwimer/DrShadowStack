@@ -12,7 +12,7 @@ using namespace boost::program_options;
 
 /*********************************************************/
 /*                                                       */
-/*	  				Helper functions					 */
+/*                     Helper functions                  */
 /*                                                       */
 /*********************************************************/
 
@@ -111,7 +111,7 @@ variables_map parse_args_helper( const int argc, const char *const argv[],
 
 /*********************************************************/
 /*                                                       */
-/*	  					 From header					 */
+/*                       From header                     */
 /*                                                       */
 /*********************************************************/
 
