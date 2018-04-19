@@ -37,7 +37,7 @@ typedef void ( *message_handler )( pointer_stack &stk, const char *const buffer,
 
 /*********************************************************/
 /*                                                       */
-/*                    Not in header file				 */
+/*                    Not in header file                 */
 /*                                                       */
 /*********************************************************/
 
