@@ -32,11 +32,11 @@ struct \hyperlink{struct_message_1_1_thread_info}{Message\+::\+Thread\+Info}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{message_8hpp_a70eafdf190b8f3be16349543fe1b39ae}{P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE}~( sizeof(void $\ast$) )
+\#define \hyperlink{message_8hpp_a70eafdf190b8f3be16349543fe1b39ae}{P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE}~( sizeof( void $\ast$ ) )
 \begin{DoxyCompactList}\small\item\em The size of a pointer in the target program To run on 32 bit programs, change this value! \end{DoxyCompactList}\item 
 \#define \hyperlink{message_8hpp_ac119f42bacd57152815371e9527d1059}{M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+L\+E\+N\+G\+TH}~4
 \begin{DoxyCompactList}\small\item\em The number of characters a message header can be. \end{DoxyCompactList}\item 
-\#define \hyperlink{message_8hpp_aeca90e1c1c62b70670514ffc18c9dfd4}{M\+E\+S\+S\+A\+G\+E\+\_\+\+S\+I\+ZE}~(\hyperlink{message_8hpp_a70eafdf190b8f3be16349543fe1b39ae}{P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE} + \hyperlink{message_8hpp_ac119f42bacd57152815371e9527d1059}{M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+L\+E\+N\+G\+TH})
+\#define \hyperlink{message_8hpp_aeca90e1c1c62b70670514ffc18c9dfd4}{M\+E\+S\+S\+A\+G\+E\+\_\+\+S\+I\+ZE}~( \hyperlink{message_8hpp_a70eafdf190b8f3be16349543fe1b39ae}{P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE} + \hyperlink{message_8hpp_ac119f42bacd57152815371e9527d1059}{M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+L\+E\+N\+G\+TH} )
 \begin{DoxyCompactList}\small\item\em The size of a message. \end{DoxyCompactList}\item 
 \#define \hyperlink{message_8hpp_a557da6efaea4f48fbee7baa4413337d3}{M\+E\+S\+S\+A\+G\+E\+\_\+\+I\+N\+T\+E\+R\+N\+A\+LS}(H\+E\+A\+D\+E\+R\+\_\+\+O\+N\+LY)
 \begin{DoxyCompactList}\small\item\em The internals of a message. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -70,14 +70,18 @@ The number of characters a message header can be.
 )}\hypertarget{message_8hpp_a557da6efaea4f48fbee7baa4413337d3}{}\label{message_8hpp_a557da6efaea4f48fbee7baa4413337d3}
 {\bfseries Value\+:}
 \begin{DoxyCode}
-                    \(\backslash\)
-            static \textcolor{keyword}{const} constexpr \textcolor{keywordtype}{bool} header\_only = HEADER\_ONLY;          \(\backslash\)                           \(\backslash\)
-            static \textcolor{keyword}{const} constexpr \textcolor{keywordtype}{int} size = \hyperlink{message_8hpp_aeca90e1c1c62b70670514ffc18c9dfd4}{MESSAGE\_SIZE};                 \(\backslash\)                               
-      \(\backslash\)
-            static \textcolor{keyword}{const} constexpr \textcolor{keywordtype}{char} * \textcolor{keyword}{const} header = Info::header;      \(\backslash\)                       \(\backslash\)
-            static\_assert( strlen(Info::header) == \hyperlink{message_8hpp_ac119f42bacd57152815371e9527d1059}{MESSAGE\_HEADER\_LENGTH},  \(\backslash\)
-                \textcolor{stringliteral}{"Header is of wrong size."} );                               \(\backslash\)                           \(\backslash\)
-            MessageType<HEADER\_ONLY, Info>() = \textcolor{keyword}{delete};
+                                             \(\backslash\)
+    static \textcolor{keyword}{const} constexpr \textcolor{keywordtype}{bool} header\_only = HEADER\_ONLY;                                    \(\backslash\)            
+                                               \(\backslash\)
+    static \textcolor{keyword}{const} constexpr \textcolor{keywordtype}{int} size = \hyperlink{message_8hpp_aeca90e1c1c62b70670514ffc18c9dfd4}{MESSAGE\_SIZE};                                           \(\backslash\)
+                                                                \(\backslash\)
+    static \textcolor{keyword}{const} constexpr \textcolor{keywordtype}{char} *\textcolor{keyword}{const} header = Info::header;                                 \(\backslash\)            
+                                          \(\backslash\)
+    static\_assert( strlen( Info::header ) == \hyperlink{message_8hpp_ac119f42bacd57152815371e9527d1059}{MESSAGE\_HEADER\_LENGTH},                   
+              \(\backslash\)
+                   \textcolor{stringliteral}{"Header is of wrong size."} );                                              \(\backslash\)            
+                                               \(\backslash\)
+    MessageType<HEADER\_ONLY, Info>() = \textcolor{keyword}{delete};
 \end{DoxyCode}
 
 
@@ -85,14 +89,14 @@ The internals of a message.
 
 We use a macro to enforce consistency \index{message.\+hpp@{message.\+hpp}!M\+E\+S\+S\+A\+G\+E\+\_\+\+S\+I\+ZE@{M\+E\+S\+S\+A\+G\+E\+\_\+\+S\+I\+ZE}}
 \index{M\+E\+S\+S\+A\+G\+E\+\_\+\+S\+I\+ZE@{M\+E\+S\+S\+A\+G\+E\+\_\+\+S\+I\+ZE}!message.\+hpp@{message.\+hpp}}
-\subsubsection[{\texorpdfstring{M\+E\+S\+S\+A\+G\+E\+\_\+\+S\+I\+ZE}{MESSAGE_SIZE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+E\+S\+S\+A\+G\+E\+\_\+\+S\+I\+ZE~({\bf P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE} + {\bf M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+L\+E\+N\+G\+TH})}\hypertarget{message_8hpp_aeca90e1c1c62b70670514ffc18c9dfd4}{}\label{message_8hpp_aeca90e1c1c62b70670514ffc18c9dfd4}
+\subsubsection[{\texorpdfstring{M\+E\+S\+S\+A\+G\+E\+\_\+\+S\+I\+ZE}{MESSAGE_SIZE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+E\+S\+S\+A\+G\+E\+\_\+\+S\+I\+ZE~( {\bf P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE} + {\bf M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+L\+E\+N\+G\+TH} )}\hypertarget{message_8hpp_aeca90e1c1c62b70670514ffc18c9dfd4}{}\label{message_8hpp_aeca90e1c1c62b70670514ffc18c9dfd4}
 
 
 The size of a message. 
 
 \index{message.\+hpp@{message.\+hpp}!P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE@{P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE}}
 \index{P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE@{P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE}!message.\+hpp@{message.\+hpp}}
-\subsubsection[{\texorpdfstring{P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE}{POINTER_SIZE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE~( sizeof(void $\ast$) )}\hypertarget{message_8hpp_a70eafdf190b8f3be16349543fe1b39ae}{}\label{message_8hpp_a70eafdf190b8f3be16349543fe1b39ae}
+\subsubsection[{\texorpdfstring{P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE}{POINTER_SIZE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+I\+N\+T\+E\+R\+\_\+\+S\+I\+ZE~( sizeof( void $\ast$ ) )}\hypertarget{message_8hpp_a70eafdf190b8f3be16349543fe1b39ae}{}\label{message_8hpp_a70eafdf190b8f3be16349543fe1b39ae}
 
 
 The size of a pointer in the target program To run on 32 bit programs, change this value! 

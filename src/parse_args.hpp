@@ -9,7 +9,7 @@
 
 /*********************************************************/
 /*                                                       */
-/*	  				   Argument keys					 */
+/*                     Argument keys                     */
 /*                                                       */
 /*********************************************************/
 
@@ -26,7 +26,7 @@
 
 /*********************************************************/
 /*                                                       */
-/*	  				Expected arguments					 */
+/*                   Expected arguments                  */
 /*                                                       */
 /*********************************************************/
 
@@ -35,8 +35,7 @@
 struct Args {
 
 	/** Constructor */
-	Args(	SSMode && mode_, const std::string & targ, 
-			std::vector<std::string> & targ_args );
+	Args( SSMode &&mode_, const std::string &targ, std::vector<std::string> &targ_args );
 
 	/** The shadow stack mode */
 	const SSMode mode;
@@ -51,13 +50,13 @@ struct Args {
 
 /*********************************************************/
 /*                                                       */
-/*	  				Function declarations				 */
+/*                  Function declarations                */
 /*                                                       */
 /*********************************************************/
 
 
 /** Returns an args_t containing the parsed arguments */
-Args parse_args(const int argc, const char * const argv[]);
+Args parse_args( const int argc, const char *const argv[] );
 
 
 #endif
