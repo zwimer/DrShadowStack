@@ -13,7 +13,8 @@ std::string temp_name() {
 	// Create the model to be used
 	static constexpr const int basename_size = 50;
 	static const fs::path tmp_dir = fs::temp_directory_path();
-	static const fs::path model( tmp_dir.string() + "/" + std::string( 50, '%' ).c_str() );
+	static const fs::path model( tmp_dir.string() + "/" +
+	                             std::string( 50, '%' ).c_str() );
 
 	// Generate the unique path
 	try {

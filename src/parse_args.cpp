@@ -86,8 +86,8 @@ variables_map parse_args_helper( const int argc, const char *const argv[],
 
 		// If no mode was specified, use the default.
 		if ( args.count( MODE ) == 0 ) {
-			args.insert(
-			    std::make_pair( MODE, variable_value( std::string( DEFAULT_MODE ), false ) ) );
+			args.insert( std::make_pair(
+			    MODE, variable_value( std::string( DEFAULT_MODE ), false ) ) );
 		}
 
 		// Collect all unregistered and positional
@@ -136,5 +136,6 @@ Args parse_args( const int argc, const char *const argv[] ) {
 	}
 
 	// Extract the arguments and return the result
-	return std::move( Args( std::move( mode ), vm[TARGET].as<std::string>(), target_args ) );
+	return std::move(
+	    Args( std::move( mode ), vm[TARGET].as<std::string>(), target_args ) );
 }

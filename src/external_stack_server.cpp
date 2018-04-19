@@ -74,7 +74,8 @@ void ret_handler( pointer_stack &stk, const char *const buffer, const int sock )
 	// we are returning from a signal handler
 	const char *const top = stk.top();
 	if ( top == (char *) WILDCARD ) {
-		Utilities::verbose_log( "Wildcard detected, returning from signal handler allowed." );
+		Utilities::verbose_log(
+		    "Wildcard detected, returning from signal handler allowed." );
 	}
 
 	// If the return address is incorrect, error
@@ -156,7 +157,8 @@ void start_external_shadow_stack( const int sock ) {
 		const auto function_ptr = call_correct_function[message_type];
 		Utilities::verbose_log( "Got message header: ",
 		                        std::string( buffer, MESSAGE_HEADER_LENGTH ) );
-		Utilities::assert( function_ptr != nullptr, "Sever recieved wrong type of message!" );
+		Utilities::assert( function_ptr != nullptr,
+		                   "Sever recieved wrong type of message!" );
 		function_ptr( stk, &buffer[MESSAGE_HEADER_LENGTH], sock );
 	}
 

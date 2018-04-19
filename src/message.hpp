@@ -64,7 +64,8 @@ class Message final {
 		/** Copies n bytes from src into dst during static initilization
 		 *  If src is less than n bytes, fills the rest of dst with zeros.
 		 *  It will return dst so that dst can be assigned to a static initalization */
-		static const char *set_length( char *const dst, const char *const src, const int n );
+		static const char *set_length( char *const dst, const char *const src,
+		                               const int n );
 
 		/** A templated message class
 		 *  A valid message is defined by constructing a MessageType around it */
@@ -182,9 +183,10 @@ template <typename T> char Message::Msg::MessageType<true, T>::internal[size] = 
 
 // Initalize MessageType<true, Info>::message
 template <typename T>
-const char *const Message::Msg::MessageType<true, T>::message = set_length(
-    Message::Msg::MessageType<true, T>::internal, Message::Msg::MessageType<true, T>::header,
-    Message::Msg::MessageType<true, T>::size );
+const char *const Message::Msg::MessageType<true, T>::message =
+    set_length( Message::Msg::MessageType<true, T>::internal,
+                Message::Msg::MessageType<true, T>::header,
+                Message::Msg::MessageType<true, T>::size );
 
 
 /*********************************************************/

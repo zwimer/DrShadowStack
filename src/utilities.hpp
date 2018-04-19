@@ -131,13 +131,15 @@ class Utilities {
 
 
 	/** A specialiation of write_log_helper that has only one template argument */
-	template <typename T> static void write_log_helper( std::stringstream &stream, T &&val ) {
+	template <typename T>
+	static void write_log_helper( std::stringstream &stream, T &&val ) {
 		stream << val;
 	}
 
 	/** A specialiation of write_log_helper that has multiple template arguments */
 	template <typename Head, typename... Tail>
-	static void write_log_helper( std::stringstream &stream, Head &&head, Tail &&... tail ) {
+	static void write_log_helper( std::stringstream &stream, Head &&head,
+	                              Tail &&... tail ) {
 		stream << head;
 		write_log_helper( stream, std::forward<Tail>( tail )... );
 	}

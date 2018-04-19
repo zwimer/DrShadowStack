@@ -51,7 +51,8 @@ struct SSMode final {
 /** A compile time strcmp
  *  Recursively checks if the first characters of the strings match */
 static constexpr bool str_equal( const char *const s1, const char *const s2 ) {
-	return ( s1[0] != s2[0] ) ? false : ( s1[0] == 0 ) ? true : str_equal( s1 + 1, s2 + 1 );
+	return ( s1[0] != s2[0] ) ? false :
+	                            ( s1[0] == 0 ) ? true : str_equal( s1 + 1, s2 + 1 );
 }
 
 

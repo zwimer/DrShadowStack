@@ -72,7 +72,8 @@ void on_ret( app_pc, const app_pc target_addr ) {
 }
 
 // Called whenever a signal is called. Adds a wildcard to the shadow stack
-// Note: the reason we use this instead of the signal event is this ignores ignored signals
+// Note: the reason we use this instead of the signal event is this ignores ignored
+// signals
 void on_signal() { shadow_stack.push( (app_pc) WILDCARD ); }
 
 
