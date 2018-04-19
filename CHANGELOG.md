@@ -40,6 +40,7 @@
 **Closed issues:**
 
 - Add a version [\#39](https://github.com/zwimer/DrShadowStack/issues/39)
+- Code formatting [\#35](https://github.com/zwimer/DrShadowStack/issues/35)
 - Implement process reference counter for external SS [\#34](https://github.com/zwimer/DrShadowStack/issues/34)
 - Enable basic forking / threading for internal SS [\#32](https://github.com/zwimer/DrShadowStack/issues/32)
 - Remap signals [\#22](https://github.com/zwimer/DrShadowStack/issues/22)
