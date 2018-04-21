@@ -49,6 +49,7 @@
 
 **Merged pull requests:**
 
+- Format2 [\#84](https://github.com/zwimer/DrShadowStack/pull/84) ([zwimer](https://github.com/zwimer))
 - Format [\#82](https://github.com/zwimer/DrShadowStack/pull/82) ([zwimer](https://github.com/zwimer))
 - .gitattributes [\#79](https://github.com/zwimer/DrShadowStack/pull/79) ([zwimer](https://github.com/zwimer))
 - Develop [\#78](https://github.com/zwimer/DrShadowStack/pull/78) ([zwimer](https://github.com/zwimer))
