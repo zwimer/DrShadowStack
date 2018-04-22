@@ -58,7 +58,7 @@ if(NOT (DEFINED DynamoRIO_DIR))
 	set(DynamoRIO_DIR ${DynamoRIO_DIR_manual})
 endif()
 if(NOT (DEFINED DDRRUN_PATH))
-	set(DDRRUN_PATH ${DRRUN_PATH_manual})
+	set(DRRUN_PATH ${DRRUN_PATH_manual})
 endif()
 
 
