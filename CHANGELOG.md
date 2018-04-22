@@ -39,6 +39,7 @@
 
 **Closed issues:**
 
+- Version automation [\#94](https://github.com/zwimer/DrShadowStack/issues/94)
 - Automate doc generation [\#83](https://github.com/zwimer/DrShadowStack/issues/83)
 - Add a version [\#39](https://github.com/zwimer/DrShadowStack/issues/39)
 - Continuous Integration [\#37](https://github.com/zwimer/DrShadowStack/issues/37)
@@ -51,6 +52,8 @@
 
 **Merged pull requests:**
 
+- Readme [\#93](https://github.com/zwimer/DrShadowStack/pull/93) ([zwimer](https://github.com/zwimer))
+- Travis [\#91](https://github.com/zwimer/DrShadowStack/pull/91) ([zwimer](https://github.com/zwimer))
 - Cleanup [\#89](https://github.com/zwimer/DrShadowStack/pull/89) ([zwimer](https://github.com/zwimer))
 - Cleanup [\#88](https://github.com/zwimer/DrShadowStack/pull/88) ([zwimer](https://github.com/zwimer))
 - Travis [\#86](https://github.com/zwimer/DrShadowStack/pull/86) ([zwimer](https://github.com/zwimer))

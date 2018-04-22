@@ -1,14 +1,16 @@
 #!/bin/sh
 set -e
+cd $TRAVIS_BUILD_DIR
 
 # Get the current gh-pages branch
 git clone -b gh-pages https://git@$GH_REPO_REF
+rm -rf ./docs | true
 
 # Generate docs
-rm -rf ./docs/* | true
-cd $TRAVIS_BUILD_DIR
+echo 'Reading version...'
+PROJECT_VERSION=$(cat VERSION | tr -d '[:space:]')
 echo 'Generating Doxygen code documentation...'
-doxygen > doxygen.log
+( cat Doxyfile ; echo "PROJECT_NUMBER=$PROJECT_VERSION" ) | doxygen - > doxygen.log
 
 # Move docs into the repo
 cd $GH_REPO_NAME
