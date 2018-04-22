@@ -3,7 +3,6 @@ set -e
 
 github_changelog_generator -u zwimer -p DrShadowStack
 git add ./CHANGELOG.md
-git status
 
 git remote rm origin
 git remote add origin https://zwimer:$GH_REPO_TOKEN@github.com/zwimer/DrShadowStack
