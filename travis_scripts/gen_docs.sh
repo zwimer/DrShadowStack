@@ -1,26 +1,26 @@
 #!/bin/sh
 set -e
 
-# Create a clean working directory for this script.
-mkdir code_docs
-cd code_docs
-
 # Get the current gh-pages branch
 git clone -b gh-pages https://git@$GH_REPO_REF
+
+# Generate docs
+rm -rf ./docs/* | true
+cd $TRAVIS_BUILD_DIR
+echo 'Generating Doxygen code documentation...'
+doxygen 2>&1 | tee doxygen.log
+
+# Move docs into the repo
 cd $GH_REPO_NAME
+rm -rf ./docs/* | true
+mv ../doxygen.log .
+mv ../docs .
+touch .nojekyll
 
 # Git config
 git config --global push.default simple
 git config user.name "Travis CI"
 git config user.email "travis@travis-ci.org"
-
-# Clear branch
-find . -maxdepth 1 | grep -v '^\.*$' | grep '^index.html$' xargs rm
-touch .nojekyll
-
-# Generate docs
-echo 'Generating Doxygen code documentation...'
-doxygen $DOXYFILE 2>&1 | tee doxygen.log
 
 # Only upload if Doxygen successfully created the documentation.
 # Check this by verifying that the html directory and the file html/index.html
@@ -29,7 +29,8 @@ if [ -d "html" ] && [ -f "html/index.html" ]; then
 
     echo 'Uploading documentation to the gh-pages branch...'
     git add -A
-    git commit -m "Deploy code docs to GitHub Pages Travis build: ${TRAVIS_BUILD_NUMBER}" -m "Commit: ${TRAVIS_COMMIT}"
+	git status
+    git commit -m "Deploy code docs to GitHub Pages Travis build: ${TRAVIS_BUILD_NUMBER}" -m "Commit: ${TRAVIS_COMMIT}" | true
 
     # The ouput is redirected to /dev/null to hide any sensitive credential data
     # that might otherwise be exposed.
