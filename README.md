@@ -1,5 +1,7 @@
 # DrShadowStack
 
+[![Build Status](https://travis-ci.org/zwimer/DrShadowStack.svg?branch=master)](https://travis-ci.org/zwimer/DrShadowStack)
+
 DrShadowStack is a software defined dynamic shadow stack implemented via DynamoRIO. DrShadowStack implements a shadow stack any binary given to it, provided the file has an ELF header. If the program attempts to return to a corrupted return address, DrShadowStack will terminate the entire process group (which it sets up). DrShadowStack can handle multi-threaded processes, processes that fork, processes that call any variation of exec. All of these processes will also be protected by DrShadowStack.
 
 # Table of Contents
@@ -77,4 +79,4 @@ Additional documentation of DrShadowStack can be found in the [wiki](https://git
 
 ## Developers
 
-Additional documentation to each component of DrShadowStack is built via [Doxygen](http://www.stack.nl/~dimitri/doxygen/), and hosted [here](https://zwimer.com/DrShadowStack).
+Additional documentation to each component of DrShadowStack is built automatically via [Travis CI](https://travis-ci.org/) utilizing [Doxygen](http://www.stack.nl/~dimitri/doxygen/), and hosted [here](https://zwimer.com/DrShadowStack).
