@@ -38,7 +38,8 @@ PROJECT_NAME           = "Shadow Stack"
 # could be handy for archiving the generated documentation or if some version
 # control system is used.
 
-PROJECT_NUMBER         = 0.1
+# This should automatically be set !
+PROJECT_NUMBER         = "ERROR. Version not set!"
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description
 # for a project that appears at the top of each page and should give viewer a
