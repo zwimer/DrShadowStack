@@ -52,6 +52,7 @@
 
 **Merged pull requests:**
 
+- Version [\#95](https://github.com/zwimer/DrShadowStack/pull/95) ([zwimer](https://github.com/zwimer))
 - Readme [\#93](https://github.com/zwimer/DrShadowStack/pull/93) ([zwimer](https://github.com/zwimer))
 - Travis [\#91](https://github.com/zwimer/DrShadowStack/pull/91) ([zwimer](https://github.com/zwimer))
 - Cleanup [\#89](https://github.com/zwimer/DrShadowStack/pull/89) ([zwimer](https://github.com/zwimer))
