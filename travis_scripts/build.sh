@@ -4,8 +4,8 @@ set -e
 cd $TRAVIS_BUILD_DIR
 
 git clone https://github.com/DynamoRIO/dynamorio.git | true
-ls -la
 cd dynamorio
+
 if [ -d ./build ]; then
 	echo 'DynamoRIO cached'
 	cd build
