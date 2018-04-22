@@ -1,0 +1,38 @@
+dist: trusty
+sudo: required
+
+branches:
+  only:
+    - gh-pages
+    - /.*/
+
+# Cache
+cache:
+    directories:    
+        $TRAVIS_BUILD_DIR/dynamorio
+
+# Environment variables
+env:
+  global:
+    - GH_REPO_NAME: DrShadowStack
+    - GH_REPO_REF: github.com/zwimer/DrShadowStack.git
+
+# Install dependencies
+install:
+  - sudo apt-get update
+  - sudo apt-get install --yes doxygen graphviz
+  - sudo apt-get install --yes libboost-all-dev
+  - sudo apt-get install --yes cmake
+  # - gem install github_changelog_generator
+
+# Build your code
+script:
+  - set -e
+  - cd $TRAVIS_BUILD_DIR
+  - ./travis_scripts/setup.sh
+  - ./travis_scripts/build.sh
+  - ./travis_scripts/gen_docs.sh
+  # - ./travis_scripts/update_changelog.sh
+
+# Generate and deploy documentation
+# after_success:

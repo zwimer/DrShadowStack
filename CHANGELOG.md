@@ -39,7 +39,9 @@
 
 **Closed issues:**
 
+- Automate doc generation [\#83](https://github.com/zwimer/DrShadowStack/issues/83)
 - Add a version [\#39](https://github.com/zwimer/DrShadowStack/issues/39)
+- Continuous Integration [\#37](https://github.com/zwimer/DrShadowStack/issues/37)
 - Code formatting [\#35](https://github.com/zwimer/DrShadowStack/issues/35)
 - Implement process reference counter for external SS [\#34](https://github.com/zwimer/DrShadowStack/issues/34)
 - Enable basic forking / threading for internal SS [\#32](https://github.com/zwimer/DrShadowStack/issues/32)
@@ -49,6 +51,8 @@
 
 **Merged pull requests:**
 
+- Modular change of paths [\#85](https://github.com/zwimer/DrShadowStack/pull/85) ([zwimer](https://github.com/zwimer))
+- Format2 [\#84](https://github.com/zwimer/DrShadowStack/pull/84) ([zwimer](https://github.com/zwimer))
 - Format [\#82](https://github.com/zwimer/DrShadowStack/pull/82) ([zwimer](https://github.com/zwimer))
 - .gitattributes [\#79](https://github.com/zwimer/DrShadowStack/pull/79) ([zwimer](https://github.com/zwimer))
 - Develop [\#78](https://github.com/zwimer/DrShadowStack/pull/78) ([zwimer](https://github.com/zwimer))
