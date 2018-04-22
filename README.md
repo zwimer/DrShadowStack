@@ -1,5 +1,7 @@
 # DrShadowStack
 
+[![Build Status](https://travis-ci.org/zwimer/DrShadowStack.svg?branch=master)](https://travis-ci.org/zwimer/DrShadowStack)
+
 DrShadowStack is a software defined dynamic shadow stack implemented via DynamoRIO. DrShadowStack implements a shadow stack any binary given to it, provided the file has an ELF header. If the program attempts to return to a corrupted return address, DrShadowStack will terminate the entire process group (which it sets up). DrShadowStack can handle multi-threaded processes, processes that fork, processes that call any variation of exec. All of these processes will also be protected by DrShadowStack.
 
 # Table of Contents
@@ -13,7 +15,7 @@ DrShadowStack is a software defined dynamic shadow stack implemented via DynamoR
 
 ## Requirements
 
-1. This project utilizes [DynamoRIO](https://github.com/DynamoRIO/dynamorio). Installation instructions may be found [here](https://github.com/DynamoRIO/dynamorio/wiki/How-To-Build).
+1. This project utilizes [DynamoRIO](https://github.com/DynamoRIO/dynamorio) version `7.0.17636`. This release can be found [here](https://github.com/DynamoRIO/dynamorio/releases/download/cronbuild-7.0.17636/DynamoRIO-x86_64-Linux-7.0.17636-0.tar.gz).
 2. This project utilizes the C++ library [Boost](https://boost.org). This library can be built from source, as explained [here](https://www.boost.org/doc/libs/1_66_0/more/getting_started/unix-variants.html). On [Ubuntu 16.04](http://releases.ubuntu.com/16.04.4/), this library can be installed as follows:
 ```bash
 sudo apt-get update && sudo apt-get install libboost-all-dev
@@ -77,4 +79,4 @@ Additional documentation of DrShadowStack can be found in the [wiki](https://git
 
 ## Developers
 
-Additional documentation to each component of DrShadowStack is built via [Doxygen](http://www.stack.nl/~dimitri/doxygen/), and hosted [here](https://zwimer.com/DrShadowStack).
+Additional documentation to each component of DrShadowStack is built automatically via [Travis CI](https://travis-ci.org/) utilizing [Doxygen](http://www.stack.nl/~dimitri/doxygen/), and hosted [here](https://zwimer.com/DrShadowStack).
