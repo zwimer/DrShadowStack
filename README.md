@@ -79,4 +79,6 @@ Additional documentation of DrShadowStack can be found in the [wiki](https://git
 
 ## Developers
 
+Before pushing any code, please run the `run-before-push.sh` script. This will automatically update the changelog and format all `C++` code.
+
 Additional documentation to each component of DrShadowStack is built automatically via [Travis CI](https://travis-ci.org/) utilizing [Doxygen](http://www.stack.nl/~dimitri/doxygen/), and hosted [here](https://zwimer.com/DrShadowStack).
