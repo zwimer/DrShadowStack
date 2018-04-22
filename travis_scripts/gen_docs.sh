@@ -8,7 +8,7 @@ git clone -b gh-pages https://git@$GH_REPO_REF
 rm -rf ./docs/* | true
 cd $TRAVIS_BUILD_DIR
 echo 'Generating Doxygen code documentation...'
-doxygen 2>&1 | tee doxygen.log
+doxygen > doxygen.log
 
 # Move docs into the repo
 cd $GH_REPO_NAME
