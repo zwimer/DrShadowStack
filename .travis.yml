@@ -1,4 +1,5 @@
-sudo: false
+dist: trusty
+sudo: required
 
 # Blacklist
 branches:
@@ -13,21 +14,16 @@ env:
     - GH_REPO_REF: github.com/zwimer/DrShadowStack.git
 
 # Install dependencies
-addons:
-  apt:
-    packages:
-      - doxygen
-      - doxygen-doc
-      - doxygen-latex
-      - doxygen-gui
-      - graphviz
+install:
+  - sudo apt-get update
+  - sudo apt-get install --yes doxygen graphviz
 
 # Build your code e.g. by calling make
-# script:
-#   - make
-
-# Generate and deploy documentation
-after_success:
+script:
+  - set -e
   - cd $TRAVIS_BUILD_DIR
   - chmod +x gen_docs.sh
   - ./gen_docs.sh
+
+# Generate and deploy documentation
+# after_success:

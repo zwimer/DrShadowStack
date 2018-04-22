@@ -15,7 +15,7 @@ git config user.name "Travis CI"
 git config user.email "travis@travis-ci.org"
 
 # Clear branch
-rm -rf *
+find . -maxdepth 1 | grep -v '^\.*$' | grep '^index.html$' xargs rm
 touch .nojekyll
 
 # Generate docs
