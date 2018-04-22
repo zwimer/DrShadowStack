@@ -51,6 +51,9 @@
 
 **Merged pull requests:**
 
+- Cleanup [\#89](https://github.com/zwimer/DrShadowStack/pull/89) ([zwimer](https://github.com/zwimer))
+- Cleanup [\#88](https://github.com/zwimer/DrShadowStack/pull/88) ([zwimer](https://github.com/zwimer))
+- Travis [\#86](https://github.com/zwimer/DrShadowStack/pull/86) ([zwimer](https://github.com/zwimer))
 - Modular change of paths [\#85](https://github.com/zwimer/DrShadowStack/pull/85) ([zwimer](https://github.com/zwimer))
 - Format2 [\#84](https://github.com/zwimer/DrShadowStack/pull/84) ([zwimer](https://github.com/zwimer))
 - Format [\#82](https://github.com/zwimer/DrShadowStack/pull/82) ([zwimer](https://github.com/zwimer))
