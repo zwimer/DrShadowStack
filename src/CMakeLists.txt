@@ -39,15 +39,15 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(PROGRAM_NAME DrShadowStack)
 project(${PROGRAM_NAME})
 
-# Set the program version
-set(PROGRAM_VERSION 0.1)
-
-
 # Default mode: int for internal, ext for external
 set(DEFAULT_MODE int)
 
 
-# The name of the client shared library for DynamoRio
+# Set the program version
+file(READ ../VERSION PROGRAM_VERSION)
+string(STRIP "${PROGRAM_VERSION}" PROGRAM_VERSION)
+
+# The name of the client shared library for DynamoRIO
 set(SS_DR_CLIENT_SO ss_dr_client)
 
 # The name of the support library
