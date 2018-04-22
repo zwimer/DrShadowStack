@@ -8,8 +8,9 @@ cmake_minimum_required(VERSION 3.5)
 
 
 # Location of DynamoRIO and drrun
-set(DynamoRIO_DIR /home/vagrant/dynamorio/build/cmake)
-set(DRRUN_PATH /home/vagrant/dynamorio/build/bin64/drrun)
+# These will be ignored if DynamoRIO_DIR / DRRUN_PATH are set via the command line
+set(DynamoRIO_DIR_manual /home/vagrant/dynamorio/build/cmake)
+set(DRRUN_PATH_manual /home/vagrant/dynamorio/build/bin64/drrun)
 
 
 ### Developer options below ###
@@ -52,12 +53,21 @@ set(SS_DR_CLIENT_SO ss_dr_client)
 # The name of the support library
 set(SS_SUPPORT_LIB ss_support)
 
+# Choose the proper DynamoRIO dir and drrun path
+if(NOT (DEFINED DynamoRIO_DIR))
+	set(DynamoRIO_DIR ${DynamoRIO_DIR_manual})
+endif()
+if(NOT (DEFINED DDRRUN_PATH))
+	set(DDRRUN_PATH ${DRRUN_PATH_manual})
+endif()
+
 
 #################################################
 #												#
 #				Automated - General				#
 #												#
 #################################################
+
 
 
 # Find packages
