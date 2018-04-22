@@ -14,8 +14,8 @@ echo "Getting latest DynamoRIO 7.0.0"
 wget 'https://github.com/DynamoRIO/dynamorio/releases/download/release_7_0_0_rc1/DynamoRIO-Linux-7.0.0-RC1.tar.gz' -nv
 
 echo "Expanding it..."
-tar -zxf *.gz
-cd $(ls | grep -v 'tar')
+tar -zxf DynamoRIO-Linux-7.0.0-RC1.tar.gz
+cd DynamoRIO-Linux-7.0.0-RC1
 DR=$(pwd)
 
 echo "Building DrShadowStack..."
