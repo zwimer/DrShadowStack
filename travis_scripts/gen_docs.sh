@@ -13,16 +13,12 @@ echo 'Generating Doxygen code documentation...'
 ( cat Doxyfile ; echo "PROJECT_NUMBER=$PROJECT_VERSION" ) | doxygen - > doxygen.log
 
 # Move docs into the repo
+echo 'Generating docs...'
 cd $GH_REPO_NAME
 rm -rf ./docs/* | true
 mv ../doxygen.log .
 mv ../docs .
 touch .nojekyll
-
-# Git config
-git config --global push.default simple
-git config user.name "Travis CI"
-git config user.email "travis@travis-ci.org"
 
 # Only upload if Doxygen successfully created the documentation.
 # Check this by verifying that the html directory and the file html/index.html
