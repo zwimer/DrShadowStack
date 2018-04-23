@@ -24,4 +24,4 @@ script:
   - ./travis_scripts/setup.sh
   - ./travis_scripts/build.sh
   - ./travis_scripts/gen_docs.sh
-  - ./travis_scripts/update_current_commit.sh
+  - ./travis_scripts/update_current_commit.sh # Must be run last
