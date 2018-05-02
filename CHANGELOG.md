@@ -24,6 +24,7 @@
 
 **Fixed bugs:**
 
+- Program freezes on target call to execve [\#101](https://github.com/zwimer/DrShadowStack/issues/101)
 - Message bug - Wrong size message sent [\#67](https://github.com/zwimer/DrShadowStack/issues/67)
 - Process RC created twice [\#65](https://github.com/zwimer/DrShadowStack/issues/65)
 - External logging failed [\#60](https://github.com/zwimer/DrShadowStack/issues/60)
@@ -54,6 +55,7 @@
 
 **Merged pull requests:**
 
+- Travis [\#100](https://github.com/zwimer/DrShadowStack/pull/100) ([zwimer](https://github.com/zwimer))
 - Create PULL\_REQUEST\_TEMPLATE.md [\#98](https://github.com/zwimer/DrShadowStack/pull/98) ([zwimer](https://github.com/zwimer))
 - Create ISSUE\_TEMPLATE.md [\#97](https://github.com/zwimer/DrShadowStack/pull/97) ([zwimer](https://github.com/zwimer))
 - Create CONTRIBUTING.md [\#96](https://github.com/zwimer/DrShadowStack/pull/96) ([zwimer](https://github.com/zwimer))
