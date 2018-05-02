@@ -120,8 +120,11 @@ DR_EXPORT void dr_client_main( client_id_t id, int argc, const char *argv[] ) {
 	run_before_everything();
 Utilities::message("START");
 	TerminateOnDestruction tod;
-	Utilities::assert( argc == 3, "Incorrect usage of dr_client_main\n"
-	                              "Expected args: <Mode> <Socket path or empty string>" );
+	Utilities::assert( argc == 2, "Incorrect usage of dr_client_main\n"
+	                              "Expected args: <Mode>" );
+	const char * const socket_path = getenv(DR_SS_ENV);
+	Utilities::log(	DR_SS_ENV " environment variable has value: ",
+					socket_path == nullptr ? "<null>" : socket_path);
 
 	// Extract the mode
 	const SSMode mode( argv[1] );
@@ -129,10 +132,10 @@ Utilities::message("START");
 
 	// Call the proper setup function
 	if ( mode.is_internal ) {
-		InternalSS::setup( &handlers, argv[2] );
+		InternalSS::setup( &handlers, socket_path );
 	}
 	else if ( mode.is_external ) {
-		ExternalSS::setup( &handlers, argv[2] );
+		ExternalSS::setup( &handlers, socket_path );
 	}
 	else {
 		Group::terminate( "Unimplemented mode passed to the client" );

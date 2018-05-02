@@ -100,7 +100,7 @@ void ExternalSS::setup( SSHandlers **const handlers, const char *const socket_pa
 	// Setup the socket
 	Utilities::log( "Client connecting to ", socket_path );
 	sock = QS::create_client( socket_path );
-write(6, "test\n", 5);
+/* write(6, "test\n", 5); */
 Utilities::message("SOCK", sock);
 
 	// Hook syscalls
