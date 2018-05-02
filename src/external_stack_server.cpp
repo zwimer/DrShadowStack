@@ -50,16 +50,13 @@ void add_wildcard( pointer_stack &stk, const char *const, const int ) {
 	stk.push( (char *) WILDCARD );
 }
 
-#if 0
 // Clears the stack whenever execve is called
 void clear_stack(  pointer_stack &stk, const char *const, const int ) {
-	Utilities::verbose_log( "(server) Execve syscall detected, clearing shadow stack!" );
-	Utilities::message( "(server) Execve syscall detected, clearing shadow stack!" );
+	Utilities::verbose_log( "(server) execve syscall detected, clearing shadow stack!" );
 	while (stk.size()) {
 		stk.pop();
 	}
 }
-#endif
 
 // Called when a 'call' was detected
 void call_handler( pointer_stack &stk, const char *const buffer, const int ) {
@@ -137,7 +134,7 @@ void start_external_shadow_stack( const int sock ) {
 	std::map<std::string, message_handler> call_correct_function{
 		{ std::string( NewSignal::header ), add_wildcard },
 		/* { std::string( Thread::header ), thread_handler }, */
-		/* { std::string( Execve::header ), clear_stack}, */
+		{ std::string( Execve::header ), clear_stack},
 		/* { std::string( Fork::header ), fork_handler }, */
 		{ std::string( Call::header ), call_handler },
 		{ std::string( Ret::header ), ret_handler }
@@ -172,6 +169,10 @@ void start_external_shadow_stack( const int sock ) {
 		const auto function_ptr = call_correct_function[message_type];
 		Utilities::verbose_log( "Got message header: ",
 		                        std::string( buffer, MESSAGE_HEADER_LENGTH ) );
+		if ( function_ptr == nullptr ) {
+			Utilities::log_error( "Sever recieved wrong type of message.",
+		 					"\n\tMessage header was: ", message_type );
+		}
 		Utilities::assert( function_ptr != nullptr,
 		                   "Sever recieved wrong type of message!" );
 		function_ptr( stk, &buffer[MESSAGE_HEADER_LENGTH], sock );

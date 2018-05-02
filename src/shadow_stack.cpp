@@ -56,13 +56,15 @@ static inline void run_before_everything() {
 	// Null terminate the array
 	exec_args.push_back( nullptr );
 
-	// Specify the socket path
-  	Utilities::assert( setenv(DR_SS_ENV, socket_path , true) == 0, "setenv() failed" );
-	Utilities::log( DR_SS_ENV " environment variable set to ", socket_path );
+	// Specify the socket path and fd
+  	Utilities::assert( setenv(DR_SS_ENV_SOCK, socket_path , true) == 0, "setenv() failed" );
+	Utilities::log( DR_SS_ENV_SOCK " environment variable set to ", socket_path );
+  	Utilities::assert( setenv(DR_SS_ENV_FD, "", true) == 0, "setenv() failed" );
+	Utilities::log( DR_SS_ENV_FD " environment variable set to \"\"" );
 
 	// Log the action then flush the buffers
 	std::stringstream pnt;
-	pnt << "Starting dr_run\nCalling execvp on: ";
+	pnt << "Starting dr_run\n\tCalling execvp on: ";
 	for ( unsigned long i = 0; i < exec_args.size() - 1; ++i ) {
 		pnt << exec_args[i] << ' ';
 	}
@@ -124,6 +126,14 @@ int main( int argc, char *argv[] ) {
 	// Setup then handle arguments
 	run_before_everything();
 	const Args args = parse_args( argc, argv );
+
+	// Delete dr_ss environment variables
+	while ( getenv( DR_SS_ENV_SOCK ) != nullptr ) {
+		unsetenv( DR_SS_ENV_SOCK );
+	}
+	while ( getenv( DR_SS_ENV_FD ) != nullptr ) {
+		unsetenv( DR_SS_ENV_FD );
+	}
 
 	// We check for the return statuses of functions, so ignore sigpipe
 	Utilities::assert( signal( SIGCHLD, SIG_IGN ) != SIG_ERR, "signal() failed." );

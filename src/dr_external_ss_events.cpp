@@ -2,6 +2,7 @@
 #include "dr_external_ss_events.hpp"
 #include "quick_socket.hpp"
 #include "utilities.hpp"
+#include "constants.hpp"
 #include "message.hpp"
 
 #include "drmgr.h"
@@ -59,31 +60,51 @@ static bool syscall_filter(void *drcontext, int sysnum) {
 }
 
 // Called before execve is called
-static inline void on_execve(bool pre) {
+static inline void on_execve( void * drcontext, bool pre) {
+
+	// Send the execve message
 	send_msg<Message::Execve>( sock );
+
+	// Get the enviornment
+	const char ** const env = (const char **) dr_syscall_get_param(drcontext, 2);
+
+	// Locate the DR_SS_ENV_FD
+	const char ** next;
+	const size_t len = strlen(DR_SS_ENV_FD);
+	for ( next = env; strncmp(*next, DR_SS_ENV_FD, len) != 0; ++next ) {}
+
+	// Replace the variable's value with our desired value
+	const char * const fd_str = getenv( DR_SS_ENV_FD );
+	Utilities::assert( fd_str != nullptr, "DR_SS_ENV_FD not set on call to execve" );
+	std::stringstream s;
+	s << DR_SS_ENV_FD << "=" << fd_str;
+	*next = strdup(s.str().c_str());
+
+	// Update the syscall's arguments
+	dr_syscall_set_param(drcontext, 2, (reg_t) env);
 }
 
 
 // Called whenever an interesting syscall is found
 // This just delegates to the syscall specific function
-static inline void syscall_event( const int sysnum, const bool pre ) {
+static inline void syscall_event(void * drcontext, const int sysnum, const bool pre ) {
 	switch(sysnum) {
 		case SYS_execve:
-			on_execve(pre);
+			on_execve(drcontext, pre);
 		default:
 			/* Need a ; as this is the last statement */ ;
 	};
 }
 
 // Called before every interesting syscall
-static bool pre_syscall_event( void *, const int sysnum) {
-	syscall_event(sysnum, true);
+static bool pre_syscall_event( void * drcontext, const int sysnum) {
+	syscall_event(drcontext, sysnum, true);
 	return true;
 }
 
 // Called after every interesting syscall
-static void post_syscall_event( void *, const int sysnum) {
-	syscall_event(sysnum, false);
+static void post_syscall_event( void * drcontext, const int sysnum) {
+	syscall_event(drcontext, sysnum, false);
 }
 
 /*********************************************************/
@@ -98,10 +119,20 @@ void ExternalSS::setup( SSHandlers **const handlers, const char *const socket_pa
 	*handlers = new SSHandlers( on_call, on_ret, on_signal );
 
 	// Setup the socket
-	Utilities::log( "Client connecting to ", socket_path );
-	sock = QS::create_client( socket_path );
-/* write(6, "test\n", 5); */
-Utilities::message("SOCK", sock);
+	const char * const fd_str = getenv( DR_SS_ENV_FD );
+	Utilities::assert( fd_str != nullptr, "getenv() failed." );
+	if ( fd_str[0] != (char) 0 ) {
+		Utilities::log( "Existing socket connected detected: ", socket_path );
+		sock = stoi(std::string(fd_str));
+		Utilities::log( "\t- Using file descriptor ", sock, " as socket fd, as it is already connected...");
+	}
+	else {
+		Utilities::log( "Client connecting to ", socket_path );
+		sock = QS::create_client( socket_path );
+		const auto sock_str = std::to_string(sock);
+		Utilities::assert( setenv( DR_SS_ENV_FD, sock_str.c_str(), true ) == 0, "setenv() failed." );
+		Utilities::log( "Set environment variable " DR_SS_ENV_FD " to ", sock_str );
+	}
 
 	// Hook syscalls
 	Utilities::log( "Hooking syscalls..." );
