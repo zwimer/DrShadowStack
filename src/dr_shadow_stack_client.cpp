@@ -118,6 +118,7 @@ DR_EXPORT void dr_client_main( client_id_t id, int argc, const char *argv[] ) {
 
 	// Setup the client
 	run_before_everything();
+Utilities::message("START");
 	TerminateOnDestruction tod;
 	Utilities::assert( argc == 3, "Incorrect usage of dr_client_main\n"
 	                              "Expected args: <Mode> <Socket path or empty string>" );
