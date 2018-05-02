@@ -31,7 +31,7 @@ static inline void run_before_everything() {
 }
 
 // Start's the program passed in via drrun
-[[noreturn]] void start_program( const Args input_args, char *socket_path ) {
+[[noreturn]] void start_program( const Args input_args, const char *socket_path ) {
 
 	// Construct args to give to exec
 	std::vector<const char *> exec_args;
@@ -43,7 +43,6 @@ static inline void run_before_everything() {
 	// ShadowStack dynamorio client + args
 	exec_args.push_back( DYNAMORIO_CLIENT_SO );
 	exec_args.push_back( input_args.mode.str );
-	exec_args.push_back( socket_path );
 
 	// Specify target a.out
 	exec_args.push_back( "--" );
@@ -57,9 +56,16 @@ static inline void run_before_everything() {
 	// Null terminate the array
 	exec_args.push_back( nullptr );
 
+	// Specify the socket path and fd
+	Utilities::assert( setenv( DR_SS_ENV_SOCK, socket_path, true ) == 0,
+	                   "setenv() failed" );
+	Utilities::log( DR_SS_ENV_SOCK " environment variable set to \"", socket_path, '"' );
+	Utilities::assert( setenv( DR_SS_ENV_FD, "", true ) == 0, "setenv() failed" );
+	Utilities::log( DR_SS_ENV_FD " environment variable set to \"\"" );
+
 	// Log the action then flush the buffers
 	std::stringstream pnt;
-	pnt << "Starting dr_run\nCalling execvp on: ";
+	pnt << "Starting dr_run\n\tCalling execvp on: ";
 	for ( unsigned long i = 0; i < exec_args.size() - 1; ++i ) {
 		pnt << exec_args[i] << ' ';
 	}
@@ -82,7 +88,7 @@ static inline void run_before_everything() {
 	const int sock = QS::create_server( server_name.c_str() );
 
 	// Just in case an exception occurs, setup a class
-	// whose desctructor will terminate the group
+	// whose destructor will terminate the group
 	TerminateOnDestruction tod;
 
 	// Fork
@@ -122,6 +128,14 @@ int main( int argc, char *argv[] ) {
 	run_before_everything();
 	const Args args = parse_args( argc, argv );
 
+	// Delete dr_ss environment variables
+	while ( getenv( DR_SS_ENV_SOCK ) != nullptr ) {
+		unsetenv( DR_SS_ENV_SOCK );
+	}
+	while ( getenv( DR_SS_ENV_FD ) != nullptr ) {
+		unsetenv( DR_SS_ENV_FD );
+	}
+
 	// We check for the return statuses of functions, so ignore sigpipe
 	Utilities::assert( signal( SIGCHLD, SIG_IGN ) != SIG_ERR, "signal() failed." );
 	Utilities::assert( signal( SIGPIPE, SIG_IGN ) != SIG_ERR, "signal() failed." );
@@ -133,8 +147,8 @@ int main( int argc, char *argv[] ) {
 
 	// If the shadow stack should be internal, start it
 	if ( args.mode.is_internal ) {
-		char buf[10];
-		start_program( args, buf );
+		const char null = 0;
+		start_program( args, &null );
 	}
 
 	// If the shadow stack should be external

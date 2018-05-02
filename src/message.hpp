@@ -120,12 +120,6 @@ class Message final {
 
 	// General Headers
 
-	/** A class containing the header of NewSignal message */
-	struct NewSignalInfo final {
-		/** The header of the NewSignal message */
-		static constexpr const char *const header = "NEWS";
-	};
-
 	/** A class containing the header of Continue message */
 	struct ContinueInfo final {
 		/** The header of the Continue message */
@@ -142,6 +136,19 @@ class Message final {
 	struct RetInfo final {
 		/** The header of the Ret message */
 		static const constexpr char *const header = "RET-";
+	};
+
+
+	/** A class containing the header of NewSignal message */
+	struct NewSignalInfo final {
+		/** The header of the NewSignal message */
+		static constexpr const char *const header = "NEWS";
+	};
+
+	/** A class containing the header of Execve message */
+	struct ExecveInfo final {
+		/** The header of the Execve message */
+		static constexpr const char *const header = "EXEC";
 	};
 
 	/** A class containing the header of Fork message */
@@ -171,6 +178,8 @@ class Message final {
 
 	/** A typedef for the new signal message */
 	typedef Msg::HeaderOnly<NewSignalInfo> NewSignal;
+	/** A typedef for the execve message */
+	typedef Msg::HeaderOnly<ExecveInfo> Execve;
 	/** A typedef for the fork message */
 	typedef Msg::HeaderOnly<ForkInfo> Fork;
 	/** A typedef for the thread message */
@@ -222,7 +231,7 @@ template <typename Msg> void recv_msg( const int sock ) {
 }
 
 /** Reads a only Msg from sock
- *  This function is **NOT** reentrant */
+ *  This function is **NOT** re-entrant */
 template <typename Msg> const char *recv_msg_and_body( const int sock ) {
 	static_assert( Msg::header_only == false, "wrong recv_msg called." );
 	static char buffer[Msg::size];

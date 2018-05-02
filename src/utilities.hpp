@@ -100,11 +100,20 @@ class Utilities {
 	/** Prints the arguments as cout would to the error and log files
 	 *  Ends the printed line(s) with a newline then flushes the buffer
 	 *  If either file pointer is null, that file is skipped
-	 *  On faliure, silently fails (since it cannot write out) */
+	 *  On failure, silently fails (since it cannot write out) */
 	template <typename... Args> static void log_error( Args &&... args ) {
 		write_log( log_file, std::forward<Args>( args )... );
 		write_log( error_file, std::forward<Args>( args )... );
 	}
+
+#ifdef DEBUG_MODE
+	/** The same thing as log_error
+	 *  This function is easy to seach for and will not
+	 *  work for a release build, ensure no clutter remains */
+	template <typename... Args> static void debug( Args &&... args ) {
+		log_error( std::forward<Args>( args )... );
+	}
+#endif
 
 	/** Once this is called, TIDs will be printed with each message */
 	static void enable_multi_thread_or_process_mode();
@@ -112,7 +121,7 @@ class Utilities {
   private:
 	/** A wrapper that writes args to f if f is not null
 	 *  Ends the printed line(s) with a newline then flushes the buffer
-	 *  On faliure, silently fails (since it cannot write out)
+	 *  On failure, silently fails (since it cannot write out)
 	 *  If the process is multithreaded or has forked, prints the TID first */
 	template <typename... Args> static void write_log( FILE *const f, Args &&... args );
 
@@ -130,13 +139,13 @@ class Utilities {
 	/*********************************************************/
 
 
-	/** A specialiation of write_log_helper that has only one template argument */
+	/** A specialization of write_log_helper that has only one template argument */
 	template <typename T>
 	static void write_log_helper( std::stringstream &stream, T &&val ) {
 		stream << val;
 	}
 
-	/** A specialiation of write_log_helper that has multiple template arguments */
+	/** A specialization of write_log_helper that has multiple template arguments */
 	template <typename Head, typename... Tail>
 	static void write_log_helper( std::stringstream &stream, Head &&head,
 	                              Tail &&... tail ) {
@@ -153,7 +162,7 @@ class Utilities {
 
 
 // Write the arguments to f if f is not null
-// On faliure, silently fails (since it cannot write out)
+// On failure, silently fails (since it cannot write out)
 template <typename... Args> void Utilities::write_log( FILE *const f, Args &&... args ) {
 	if ( f != nullptr ) {
 
