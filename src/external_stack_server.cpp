@@ -19,6 +19,7 @@
 // For brevity
 using NewSignal = Message::NewSignal;
 using Continue = Message::Continue;
+using Execve = Message::Execve;
 using Thread = Message::Thread;
 using Fork = Message::Fork;
 using Call = Message::Call;
@@ -45,8 +46,20 @@ typedef void ( *message_handler )( pointer_stack &stk, const char *const buffer,
 // Called whenever a signal is sent to the client
 // Signal handlers have no 'call', so we add a wildcard
 void add_wildcard( pointer_stack &stk, const char *const, const int ) {
+	Utilities::verbose_log( "(server) Signal detected, adding wildcard!" );
 	stk.push( (char *) WILDCARD );
 }
+
+#if 0
+// Clears the stack whenever execve is called
+void clear_stack(  pointer_stack &stk, const char *const, const int ) {
+	Utilities::verbose_log( "(server) Execve syscall detected, clearing shadow stack!" );
+	Utilities::message( "(server) Execve syscall detected, clearing shadow stack!" );
+	while (stk.size()) {
+		stk.pop();
+	}
+}
+#endif
 
 // Called when a 'call' was detected
 void call_handler( pointer_stack &stk, const char *const buffer, const int ) {
@@ -90,16 +103,16 @@ void ret_handler( pointer_stack &stk, const char *const buffer, const int sock )
 	// If everything is valid, pop the stack
 	stk.pop();
 
-	// Tell the client proccess it may continue
+	// Tell the client process it may continue
 	const int bytes_sent = write( sock, Continue::message, Continue::size );
 	Utilities::assert( bytes_sent == Continue::size, "write() failed." );
 }
 
+#if 0
 // Called when the process forks
 void fork_handler( pointer_stack &stk, const char *const buffer, const int ) {
 	// TODO
 	/* new_proc_handler(); */
-	Utilities::log_error( "fork_handler" );
 	Utilities::log_error( "FORK_HANDLER" );
 }
 
@@ -112,6 +125,7 @@ void thread_handler( pointer_stack &stk, const char *const buffer, const int ) {
 	/* new_proc_handler(); */
 	Utilities::log_error( "THREAD_HANDLER" );
 }
+#endif
 
 
 // The external shadow stack function
@@ -122,8 +136,9 @@ void start_external_shadow_stack( const int sock ) {
 	// Create the message handling function map and populate it
 	std::map<std::string, message_handler> call_correct_function{
 		{ std::string( NewSignal::header ), add_wildcard },
-		{ std::string( Thread::header ), thread_handler },
-		{ std::string( Fork::header ), fork_handler },
+		/* { std::string( Thread::header ), thread_handler }, */
+		/* { std::string( Execve::header ), clear_stack}, */
+		/* { std::string( Fork::header ), fork_handler }, */
 		{ std::string( Call::header ), call_handler },
 		{ std::string( Ret::header ), ret_handler }
 	};

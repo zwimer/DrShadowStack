@@ -82,7 +82,7 @@ static inline void run_before_everything() {
 	const int sock = QS::create_server( server_name.c_str() );
 
 	// Just in case an exception occurs, setup a class
-	// whose desctructor will terminate the group
+	// whose destructor will terminate the group
 	TerminateOnDestruction tod;
 
 	// Fork

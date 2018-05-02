@@ -104,6 +104,7 @@ pid_t Utilities::get_tid() {
 		is_multi_thread_or_proccess = false;
 		Group::terminate( "get_tid() failed." );
 	}
+	return ret;
 }
 
 // Once this is called, TIDs will be printed with each message
