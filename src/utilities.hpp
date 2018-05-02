@@ -106,6 +106,14 @@ class Utilities {
 		write_log( error_file, std::forward<Args>( args )... );
 	}
 
+#ifdef DEBUG_MODE
+	/** The same thing as log_error, but easy to seach for and
+	 *   remove all instances off due to the different name */
+	template <typename... Args> static void debug( Args &&... args ) {
+		log_error( std::forward<Args>( args )... );
+	}
+#endif
+
 	/** Once this is called, TIDs will be printed with each message */
 	static void enable_multi_thread_or_process_mode();
 
