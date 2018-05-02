@@ -31,7 +31,7 @@ static inline void run_before_everything() {
 }
 
 // Start's the program passed in via drrun
-[[noreturn]] void start_program( const Args input_args, char *socket_path ) {
+[[noreturn]] void start_program( const Args input_args, const char *socket_path ) {
 
 	// Construct args to give to exec
 	std::vector<const char *> exec_args;
@@ -58,7 +58,7 @@ static inline void run_before_everything() {
 
 	// Specify the socket path and fd
   	Utilities::assert( setenv(DR_SS_ENV_SOCK, socket_path , true) == 0, "setenv() failed" );
-	Utilities::log( DR_SS_ENV_SOCK " environment variable set to ", socket_path );
+	Utilities::log( DR_SS_ENV_SOCK " environment variable set to \"", socket_path, '"' );
   	Utilities::assert( setenv(DR_SS_ENV_FD, "", true) == 0, "setenv() failed" );
 	Utilities::log( DR_SS_ENV_FD " environment variable set to \"\"" );
 
@@ -146,8 +146,8 @@ int main( int argc, char *argv[] ) {
 
 	// If the shadow stack should be internal, start it
 	if ( args.mode.is_internal ) {
-		char buf[10];
-		start_program( args, buf );
+		const char null = 0;
+		start_program( args, &null );
 	}
 
 	// If the shadow stack should be external
