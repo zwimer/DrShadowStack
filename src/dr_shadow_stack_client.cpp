@@ -121,9 +121,10 @@ DR_EXPORT void dr_client_main( client_id_t id, int argc, const char *argv[] ) {
 	TerminateOnDestruction tod;
 	Utilities::assert( argc == 2, "Incorrect usage of dr_client_main\n"
 	                              "Expected args: <Mode>" );
-	const char * const socket_path = getenv(DR_SS_ENV_SOCK);
+	const char *const socket_path = getenv( DR_SS_ENV_SOCK );
 	Utilities::assert( socket_path != nullptr, "getenv() failed." );
-	Utilities::log(	DR_SS_ENV_SOCK " environment variable has value: \"", socket_path, '"' );
+	Utilities::log( DR_SS_ENV_SOCK " environment variable has value: \"", socket_path,
+	                '"' );
 
 	// Extract the mode
 	const SSMode mode( argv[1] );

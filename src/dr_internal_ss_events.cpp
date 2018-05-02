@@ -77,9 +77,7 @@ void on_ret( app_pc, const app_pc target_addr ) {
 // Called whenever a signal is called. Adds a wildcard to the shadow stack
 // Note: the reason we use this instead of the signal event is this ignores ignored
 // signals
-void on_signal() {
-	shadow_stack.push( (app_pc) WILDCARD );
-}
+void on_signal() { shadow_stack.push( (app_pc) WILDCARD ); }
 
 
 /*********************************************************/
@@ -90,8 +88,8 @@ void on_signal() {
 
 
 // This function dictates what syscall is interesting
-static bool syscall_filter(void *drcontext, int sysnum) {
-	switch(sysnum) {
+static bool syscall_filter( void *drcontext, int sysnum ) {
+	switch ( sysnum ) {
 		/* case SYS_fork: */
 		/* case SYS_vfork: */
 		/* case SYS_clone: */
@@ -103,9 +101,9 @@ static bool syscall_filter(void *drcontext, int sysnum) {
 }
 
 // Called before execve is called
-static inline void on_execve( void * drcontext, bool) {
+static inline void on_execve( void *drcontext, bool ) {
 	Utilities::verbose_log( "execve syscall detected, clearing shadow stack!" );
-	while( shadow_stack.size() ) {
+	while ( shadow_stack.size() ) {
 		shadow_stack.pop();
 	}
 }
@@ -113,24 +111,24 @@ static inline void on_execve( void * drcontext, bool) {
 
 // Called whenever an interesting syscall is found
 // This just delegates to the syscall specific function
-static inline void syscall_event(void * drcontext, const int sysnum, const bool pre ) {
-	switch(sysnum) {
+static inline void syscall_event( void *drcontext, const int sysnum, const bool pre ) {
+	switch ( sysnum ) {
 		case SYS_execve:
-			on_execve(drcontext, pre);
+			on_execve( drcontext, pre );
 		default:
-			/* Need a ; as this is the last statement */ ;
+		    /* Need a ; as this is the last statement */;
 	};
 }
 
 // Called before every interesting syscall
-static bool pre_syscall_event( void * drcontext, const int sysnum) {
-	syscall_event(drcontext, sysnum, true);
+static bool pre_syscall_event( void *drcontext, const int sysnum ) {
+	syscall_event( drcontext, sysnum, true );
 	return true;
 }
 
 // Called after every interesting syscall
-static void post_syscall_event( void * drcontext, const int sysnum) {
-	syscall_event(drcontext, sysnum, false);
+static void post_syscall_event( void *drcontext, const int sysnum ) {
+	syscall_event( drcontext, sysnum, false );
 }
 
 
@@ -150,7 +148,7 @@ void InternalSS::setup( SSHandlers **const handlers, const char *const socket_pa
 
 	// Hook syscalls
 	Utilities::log( "Hooking syscalls..." );
-	dr_register_filter_syscall_event(syscall_filter);
-	drmgr_register_pre_syscall_event(pre_syscall_event);
-	drmgr_register_post_syscall_event(post_syscall_event);
+	dr_register_filter_syscall_event( syscall_filter );
+	drmgr_register_pre_syscall_event( pre_syscall_event );
+	drmgr_register_post_syscall_event( post_syscall_event );
 }

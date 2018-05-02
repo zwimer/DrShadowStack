@@ -57,9 +57,10 @@ static inline void run_before_everything() {
 	exec_args.push_back( nullptr );
 
 	// Specify the socket path and fd
-  	Utilities::assert( setenv(DR_SS_ENV_SOCK, socket_path , true) == 0, "setenv() failed" );
+	Utilities::assert( setenv( DR_SS_ENV_SOCK, socket_path, true ) == 0,
+	                   "setenv() failed" );
 	Utilities::log( DR_SS_ENV_SOCK " environment variable set to \"", socket_path, '"' );
-  	Utilities::assert( setenv(DR_SS_ENV_FD, "", true) == 0, "setenv() failed" );
+	Utilities::assert( setenv( DR_SS_ENV_FD, "", true ) == 0, "setenv() failed" );
 	Utilities::log( DR_SS_ENV_FD " environment variable set to \"\"" );
 
 	// Log the action then flush the buffers
