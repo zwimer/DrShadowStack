@@ -63,6 +63,11 @@
  *  The reason it is not an argument is because it is possible
  *  for a client's main function to run multiple times with the
  *  same arguments. We can change the environment between runs though! */
-#define DR_SS_ENV "DR_SS_ENV_VAR"
+#define DR_SS_ENV_SOCK "DR_SS_ENV_SOCK_VAR"
+
+/** The environment variable used to store the file descriptor that
+ *  links to the server. This is not closed on exec, but variables that
+ *  say which fd to use are lost, so we store it in the environment */
+#define DR_SS_ENV_FD "DR_SS_ENV_FD_VAR"
 
 #endif

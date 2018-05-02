@@ -109,6 +109,6 @@ pid_t Utilities::get_tid() {
 
 // Once this is called, TIDs will be printed with each message
 void Utilities::enable_multi_thread_or_process_mode() {
-	log( "Multi-process/threading logging enabled" );
 	is_multi_thread_or_proccess = true;
+	log( "Multi-process/threading logging enabled" );
 }
