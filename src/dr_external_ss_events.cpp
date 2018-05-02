@@ -63,7 +63,8 @@ static bool syscall_filter(void *drcontext, int sysnum) {
 static inline void on_execve( void * drcontext, bool pre) {
 
 	// Send the execve message
-	send_msg<Message::Execve>( sock );
+	/* send_msg<Message::Execve>( sock ); */
+sleep(1);
 
 	// Get the enviornment
 	const char ** const env = (const char **) dr_syscall_get_param(drcontext, 2);
