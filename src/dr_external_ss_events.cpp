@@ -60,11 +60,10 @@ static bool syscall_filter(void *drcontext, int sysnum) {
 }
 
 // Called before execve is called
-static inline void on_execve( void * drcontext, bool pre) {
+static inline void on_execve( void * drcontext, bool) {
 
 	// Send the execve message
-	/* send_msg<Message::Execve>( sock ); */
-sleep(1);
+	send_msg<Message::Execve>( sock );
 
 	// Get the enviornment
 	const char ** const env = (const char **) dr_syscall_get_param(drcontext, 2);
@@ -137,7 +136,7 @@ void ExternalSS::setup( SSHandlers **const handlers, const char *const socket_pa
 
 	// Hook syscalls
 	Utilities::log( "Hooking syscalls..." );
-    dr_register_filter_syscall_event(syscall_filter);
-    drmgr_register_pre_syscall_event(pre_syscall_event);
-    drmgr_register_post_syscall_event(post_syscall_event);
+	dr_register_filter_syscall_event(syscall_filter);
+	drmgr_register_pre_syscall_event(pre_syscall_event);
+	drmgr_register_post_syscall_event(post_syscall_event);
 }
