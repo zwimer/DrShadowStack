@@ -107,8 +107,9 @@ class Utilities {
 	}
 
 #ifdef DEBUG_MODE
-	/** The same thing as log_error, but easy to seach for and
-	 *   remove all instances off due to the different name */
+	/** The same thing as log_error
+	 *  This function is easy to seach for and will not
+	 *  work for a release build, ensure no clutter remains */
 	template <typename... Args> static void debug( Args &&... args ) {
 		log_error( std::forward<Args>( args )... );
 	}
