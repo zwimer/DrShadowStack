@@ -17,8 +17,8 @@ set(DRRUN_PATH_manual /home/vagrant/dynamorio/build/bin64/drrun)
 
 
 # Debug mode options. Comment out to disable
-set(DEBUG_MODE "VERBOSE")
-#set(DEBUG_MODE "ON")
+#set(DEBUG_MODE "VERBOSE")
+set(DEBUG_MODE "ON")
 
 # The name of the log file (only used for DEBUG_MODE)
 set(DR_SS_LOG_FILE "dr_shadow_stack.log")
@@ -120,7 +120,7 @@ endif()
 
 
 # Create the .so
-add_library(${SS_SUPPORT_LIB} SHARED 
+add_library(${SS_SUPPORT_LIB} SHARED
 	quick_socket.cpp
 	utilities.cpp
 	ss_mode.cpp
@@ -137,7 +137,7 @@ add_library(${SS_SUPPORT_LIB} SHARED
 
 
 # Create the .so
-add_library(${SS_DR_CLIENT_SO} SHARED 
+add_library(${SS_DR_CLIENT_SO} SHARED
 	dr_shadow_stack_client.cpp
 	dr_internal_ss_events.cpp
 	dr_external_ss_events.cpp
