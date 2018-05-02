@@ -43,7 +43,6 @@ static inline void run_before_everything() {
 	// ShadowStack dynamorio client + args
 	exec_args.push_back( DYNAMORIO_CLIENT_SO );
 	exec_args.push_back( input_args.mode.str );
-	exec_args.push_back( socket_path );
 
 	// Specify target a.out
 	exec_args.push_back( "--" );
@@ -56,6 +55,10 @@ static inline void run_before_everything() {
 
 	// Null terminate the array
 	exec_args.push_back( nullptr );
+
+	// Specify the socket path
+  	Utilities::assert( setenv(DR_SS_ENV, socket_path , true) == 0, "setenv() failed" );
+	Utilities::log( DR_SS_ENV " environment variable set to ", socket_path );
 
 	// Log the action then flush the buffers
 	std::stringstream pnt;
