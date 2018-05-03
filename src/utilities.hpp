@@ -36,7 +36,6 @@ class Utilities {
 	static FILE *const error_file;
 
   public:
-
 	/** Sets up the utilities class
 	 *  If clear_log, the log will be cleared on setup
 	 *  If this function fails, it exists *ONLY* the current process */
