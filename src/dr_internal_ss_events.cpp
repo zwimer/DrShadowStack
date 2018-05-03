@@ -8,20 +8,27 @@
 
 #include <syscall.h>
 #include <stack>
+#include <map>
 
 
+// A map to shadow stacks, one per thread.
 // The stack of shadow stacks that holds the return addresses of the program
 // Everytime a signal handler is called, a shadow stack is pushed with a wildcard
 // Everytime we return from a signal handler, the stack pops a wildcard
-std::stack<app_pc> shadow_stack;
+std::map<pid_t, std::stack<app_pc>> shadow_stacks;
 
+
+// Returns the shadow stack for the current thread
+static inline std::stack<app_pc> &get_shadow_stack() {
+	return shadow_stacks[QuickTID::fetch( dr_get_current_drcontext() )];
+}
 
 // The call handler.
 // This function is called whenever a call instruction is about
 // to execute. This function is static for optimization reasons */
 void on_call( const app_pc ret_to_addr ) {
 	Utilities::verbose_log( "Call @ ", (void *) ret_to_addr );
-	shadow_stack.push( ret_to_addr );
+	get_shadow_stack().push( ret_to_addr );
 }
 
 // The ret handler.
@@ -33,6 +40,7 @@ void on_ret( app_pc, const app_pc target_addr ) {
 	Utilities::verbose_log( "Ret to ", (void *) target_addr );
 
 	// If the shadow stack is empty, we cannot return
+	auto &shadow_stack = get_shadow_stack();
 	if ( shadow_stack.empty() ) {
 		TerminateOnDestruction tod;
 		Sym::print( "return address", target_addr );
@@ -77,7 +85,7 @@ void on_ret( app_pc, const app_pc target_addr ) {
 // Called whenever a signal is called. Adds a wildcard to the shadow stack
 // Note: the reason we use this instead of the signal event is this ignores ignored
 // signals
-void on_signal() { shadow_stack.push( (app_pc) WILDCARD ); }
+void on_signal() { get_shadow_stack().push( (app_pc) WILDCARD ); }
 
 
 /*********************************************************/
@@ -103,6 +111,7 @@ static bool syscall_filter( void *drcontext, int sysnum ) {
 // Called before execve is called
 static inline void on_execve( void *drcontext, bool ) {
 	Utilities::verbose_log( "execve syscall detected, clearing shadow stack!" );
+	auto &shadow_stack = get_shadow_stack();
 	while ( shadow_stack.size() ) {
 		shadow_stack.pop();
 	}
