@@ -19,8 +19,8 @@ std::map<pid_t, std::stack<app_pc>> shadow_stacks;
 
 
 // Returns the shadow stack for the current thread
-static inline std::stack<app_pc> & get_shadow_stack() {
-	return shadow_stacks[QuickTID::fetch(dr_get_current_drcontext())];
+static inline std::stack<app_pc> &get_shadow_stack() {
+	return shadow_stacks[QuickTID::fetch( dr_get_current_drcontext() )];
 }
 
 // The call handler.
@@ -40,7 +40,7 @@ void on_ret( app_pc, const app_pc target_addr ) {
 	Utilities::verbose_log( "Ret to ", (void *) target_addr );
 
 	// If the shadow stack is empty, we cannot return
-	auto & shadow_stack = get_shadow_stack();
+	auto &shadow_stack = get_shadow_stack();
 	if ( shadow_stack.empty() ) {
 		TerminateOnDestruction tod;
 		Sym::print( "return address", target_addr );
@@ -111,7 +111,7 @@ static bool syscall_filter( void *drcontext, int sysnum ) {
 // Called before execve is called
 static inline void on_execve( void *drcontext, bool ) {
 	Utilities::verbose_log( "execve syscall detected, clearing shadow stack!" );
-	auto & shadow_stack = get_shadow_stack();
+	auto &shadow_stack = get_shadow_stack();
 	while ( shadow_stack.size() ) {
 		shadow_stack.pop();
 	}

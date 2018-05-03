@@ -43,16 +43,16 @@ void QuickTID::setup() {
 
 // Gets the tid of the current thread quickly
 //  Records if in tls if it has yet to be seen
-pid_t QuickTID::fetch(void * drcontext) {
+pid_t QuickTID::fetch( void *drcontext ) {
 	Utilities::assert( is_setup == true, "QuickTid::setup was never called." );
-	const pid_t * const tid_ptr = (pid_t *) drmgr_get_tls_field(drcontext, tls_index);
+	const pid_t *const tid_ptr = (pid_t *) drmgr_get_tls_field( drcontext, tls_index );
 	if ( tid_ptr != nullptr ) {
 		return *tid_ptr;
 	}
-	pid_t * const tid_ptr_new = new pid_t;
+	pid_t *const tid_ptr_new = new pid_t;
 	*tid_ptr_new = Utilities::get_tid();
-	Utilities::assert(drmgr_set_tls_field(drcontext, tls_index, tid_ptr_new),
-		"drmgr_set_tls_field() failed.");
+	Utilities::assert( drmgr_set_tls_field( drcontext, tls_index, tid_ptr_new ),
+	                   "drmgr_set_tls_field() failed." );
 	return *tid_ptr_new;
 }
 
@@ -152,7 +152,8 @@ DR_EXPORT void dr_client_main( client_id_t id, int argc, const char *argv[] ) {
 	                              "Expected args: <Mode>" );
 	const char *const socket_path = getenv( DR_SS_ENV_SOCK );
 	Utilities::assert( socket_path != nullptr, "getenv() failed." );
-	Utilities::log( DR_SS_ENV_SOCK " environment variable has value: \"", socket_path, '"' );
+	Utilities::log( DR_SS_ENV_SOCK " environment variable has value: \"", socket_path,
+	                '"' );
 
 	// Extract the mode
 	const SSMode mode( argv[1] );

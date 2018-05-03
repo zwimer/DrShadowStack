@@ -45,17 +45,15 @@ class SSHandlers final {
  *  This class will store the result of a gettid call in
  *  thread local storage, avoiding the overhead of calling */
 class QuickTID {
-public:
-
+  public:
 	/** Called to setup the class */
 	static void setup();
 
 	/** Gets the tid of the current thread quickly
 	 *  Records if in tls if it has yet to be seen */
-	static pid_t fetch(void * drcontext);
+	static pid_t fetch( void *drcontext );
 
-private:
-
+  private:
 	/** True if setup was called, false otherwise */
 	static bool is_setup;
 

@@ -44,6 +44,7 @@
 - Version automation [\#94](https://github.com/zwimer/DrShadowStack/issues/94)
 - Auto-changelog [\#87](https://github.com/zwimer/DrShadowStack/issues/87)
 - Automate doc generation [\#83](https://github.com/zwimer/DrShadowStack/issues/83)
+- Internal shadow stack on\_clone [\#71](https://github.com/zwimer/DrShadowStack/issues/71)
 - Add a version [\#39](https://github.com/zwimer/DrShadowStack/issues/39)
 - Continuous Integration [\#37](https://github.com/zwimer/DrShadowStack/issues/37)
 - Code formatting [\#35](https://github.com/zwimer/DrShadowStack/issues/35)
@@ -55,6 +56,7 @@
 
 **Merged pull requests:**
 
+- Execve [\#102](https://github.com/zwimer/DrShadowStack/pull/102) ([zwimer](https://github.com/zwimer))
 - Travis [\#100](https://github.com/zwimer/DrShadowStack/pull/100) ([zwimer](https://github.com/zwimer))
 - Create PULL\_REQUEST\_TEMPLATE.md [\#98](https://github.com/zwimer/DrShadowStack/pull/98) ([zwimer](https://github.com/zwimer))
 - Create ISSUE\_TEMPLATE.md [\#97](https://github.com/zwimer/DrShadowStack/pull/97) ([zwimer](https://github.com/zwimer))
