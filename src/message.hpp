@@ -170,27 +170,27 @@ class Message final {
 	}
 
 	/** A typedef for the continue message */
-	typedef Msg::HeaderOnly<ContinueInfo> Continue;
+	typedef const Msg::HeaderOnly<ContinueInfo> Continue;
 	/** A typedef for the call message */
-	typedef Msg::WithBody<CallInfo> Call;
+	typedef const Msg::WithBody<CallInfo> Call;
 	/** A typedef for the ret message */
-	typedef Msg::WithBody<RetInfo> Ret;
+	typedef const Msg::WithBody<RetInfo> Ret;
 
 	/** A typedef for the new signal message */
-	typedef Msg::HeaderOnly<NewSignalInfo> NewSignal;
+	typedef const Msg::HeaderOnly<NewSignalInfo> NewSignal;
 	/** A typedef for the execve message */
-	typedef Msg::HeaderOnly<ExecveInfo> Execve;
+	typedef const Msg::HeaderOnly<ExecveInfo> Execve;
 	/** A typedef for the fork message */
-	typedef Msg::HeaderOnly<ForkInfo> Fork;
+	typedef const Msg::HeaderOnly<ForkInfo> Fork;
 	/** A typedef for the thread message */
-	typedef Msg::HeaderOnly<ThreadInfo> Thread;
+	typedef const Msg::HeaderOnly<ThreadInfo> Thread;
 };
 
 
-// Initalize MessageType<true, Info>::internal
+/** Initalize MessageType<true, Info>::internal */
 template <typename T> char Message::Msg::MessageType<true, T>::internal[size] = {};
 
-// Initalize MessageType<true, Info>::message
+/** Initalize MessageType<true, Info>::message */
 template <typename T>
 const char *const Message::Msg::MessageType<true, T>::message =
     set_length( Message::Msg::MessageType<true, T>::internal,

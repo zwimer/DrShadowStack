@@ -35,19 +35,17 @@ class Utilities {
 	 *  This must be defined before main() */
 	static FILE *const error_file;
 
-	/** Define a gettid function
-	 *  On failure, disables multi_threaded / functionality
-	 *  (to continue logging) then terminates the group */
-	static pid_t get_tid();
-
   public:
+
 	/** Sets up the utilities class
 	 *  If clear_log, the log will be cleared on setup
 	 *  If this function fails, it exists *ONLY* the current process */
 	static void setup( const bool clear_log );
 
-	/** Returns the system page size */
-	static size_t get_page_size();
+	/** Define a gettid function
+	 *  On failure, disables multi_threaded / functionality
+	 *  (to continue logging) then terminates the group */
+	static pid_t get_tid();
 
 	/*********************************************************/
 	/*                                                       */
