@@ -38,7 +38,27 @@ class SSHandlers final {
 	const on_signal_signature on_signal;
 
 	/** Returns true if all function pointers are non-null */
-	bool is_valid();
+	bool is_valid() const;
+};
+
+/** A static class used to rapidly get the tid of the current thread
+ *  This class will store the result of a gettid call in
+ *  thread local storage, avoiding the overhead of calling */
+class QuickTID {
+  public:
+	/** Called to setup the class */
+	static void setup();
+
+	/** Gets the tid of the current thread quickly
+	 *  Records if in tls if it has yet to be seen */
+	static pid_t fetch( void *drcontext );
+
+  private:
+	/** True if setup was called, false otherwise */
+	static bool is_setup;
+
+	/** The index of tls the local tids are stored at */
+	static int tls_index;
 };
 
 
