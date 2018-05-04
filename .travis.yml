@@ -15,13 +15,13 @@ env:
 # Install dependencies
 install:
   - set -e
-  - ./travis_scripts/install.sh
+  - ./travis-scripts/install.sh
 
 # Build and test
 script:
   - set -e
   - cd $TRAVIS_BUILD_DIR
-  - ./travis_scripts/setup.sh
-  - ./travis_scripts/build.sh
-  - ./travis_scripts/gen_docs.sh
-  - ./travis_scripts/update_current_commit.sh # Must be run last
+  - ./travis-scripts/setup.sh
+  - ./travis-scripts/build.sh
+  - ./travis-scripts/gen_docs.sh
+  - ./travis-scripts/update_current_commit.sh # Must be run last
