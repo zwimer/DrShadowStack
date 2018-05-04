@@ -8,9 +8,6 @@
 
 #include "drmgr.h"
 
-// Initalize static variables
-bool QuickTID::is_setup = false;
-int QuickTID::tls_index = -1;
 
 // The mode specific shadow stack events to be used.
 SSHandlers *handlers = nullptr;
@@ -31,29 +28,6 @@ SSHandlers::SSHandlers( SSHandlers::on_call_signature c, SSHandlers::on_ret_sign
 // Returns true if all function pointers are non-null
 bool SSHandlers::is_valid() const {
 	return ( on_call != nullptr ) && ( on_ret != nullptr ) && ( on_signal != nullptr );
-}
-
-// Setup the QuickTID class
-void QuickTID::setup() {
-	Utilities::assert( is_setup == false, "QuickTid::setup was called twice." );
-	tls_index = drmgr_register_tls_field();
-	Utilities::assert( tls_index != -1, "drmgr_register_tls_field() failed." );
-	is_setup = true;
-}
-
-// Gets the tid of the current thread quickly
-//  Records if in tls if it has yet to be seen
-pid_t QuickTID::fetch( void *drcontext ) {
-	Utilities::assert( is_setup == true, "QuickTid::setup was never called." );
-	const pid_t *const tid_ptr = (pid_t *) drmgr_get_tls_field( drcontext, tls_index );
-	if ( tid_ptr != nullptr ) {
-		return *tid_ptr;
-	}
-	pid_t *const tid_ptr_new = new pid_t;
-	*tid_ptr_new = Utilities::get_tid();
-	Utilities::assert( drmgr_set_tls_field( drcontext, tls_index, tid_ptr_new ),
-	                   "drmgr_set_tls_field() failed." );
-	return *tid_ptr_new;
 }
 
 
@@ -99,9 +73,9 @@ static void kernel_xfer_event_handler( void *, const dr_kernel_xfer_info_t *info
 // called once for each instruction in it. If either a call
 // or a ret is seen, the call and ret handlers are inserted
 // before said instruction. Note: an app_pc is defined in comments
-static dr_emit_flags_t event_app_instruction( void *drcontext, void *tag, instrlist_t *bb,
-                                              instr_t *instr, bool for_trace,
-                                              bool translating, void *user_data ) {
+static dr_emit_flags_t event_app_instruction( void *drcontext, void * /*tag*/, instrlist_t *bb,
+                                              instr_t *instr, bool /*for_trace*/,
+                                              bool /*translating*/, void * /*user_data*/ ) {
 
 	// Concerning DynamoRIO's app_pc type. From their source:
 	//   include/dr_defines.h:typedef byte * app_pc;
@@ -140,12 +114,11 @@ static void exit_event() {
 
 // The main client function
 // This function dynamically 'injects' the shadow stack
-DR_EXPORT void dr_client_main( client_id_t id, int argc, const char *argv[] ) {
+DR_EXPORT void dr_client_main( client_id_t,  int argc, const char *argv[] ) {
 
-	// Setup the client
+	// Setup the client and drmgr
 	run_before_everything();
 	TerminateOnDestruction tod;
-	QuickTID::setup();
 
 	// Error checking
 	Utilities::assert( argc == 2, "Incorrect usage of dr_client_main\n"
@@ -174,6 +147,7 @@ DR_EXPORT void dr_client_main( client_id_t id, int argc, const char *argv[] ) {
 	Utilities::assert( handlers->is_valid(), "SSHandlers setup incomplete" );
 
 	// Register events
+	Utilities::log("Registering events...");
 	dr_register_exit_event( exit_event );
 	drmgr_register_kernel_xfer_event( kernel_xfer_event_handler );
 
