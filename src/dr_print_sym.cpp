@@ -80,8 +80,8 @@ void Sym::print( const char *const description, const app_pc addr ) {
 
 		// If the sym is known, continue on
 		case DRSYM_SUCCESS:
-		case DRSYM_ERROR_LINE_NOT_AVAILABLE:; /* No fall through, so we need a semioclon
-		                                       */
+		case DRSYM_ERROR_LINE_NOT_AVAILABLE:
+		    /* No fall through, so we need a semioclon */;
 	}
 
 	// Determine the name of the module

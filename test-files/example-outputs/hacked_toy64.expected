@@ -1,0 +1,16 @@
+4118: *** Shadow stack mistmach detected! ***
+Attempting to return to 0x4005f6
+	Top of shadow stack is 0x7f0cb88e7830
+
+4118: Printing symbol information for top of shadow stack...
+4118: Address: 0x7f0cb88e7830
+	- Module: libc.so.6
+	- Symbol: __libc_start_main + 240
+	- No line specific information available.
+
+4118: Printing symbol information for return address...
+4118: Address: 0x4005f6
+	- Module: hacked_toy64
+	- Symbol: win + 0
+	- File: ../csu/libc-start.c
+	- Line: 325 + 0

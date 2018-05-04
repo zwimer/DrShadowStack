@@ -38,6 +38,15 @@ static inline void run_before_everything() {
 
 	// Drrun a client
 	exec_args.push_back( DRRUN_PATH );
+#ifdef DEBUG_MODE
+	/* clang-format off */
+#	ifdef DR_DEBUG_LOG_LEVEL
+	exec_args.push_back( "-debug" );
+	exec_args.push_back( "-ops" );
+	exec_args.push_back( "-loglevel " DR_DEBUG_LOG_LEVEL );
+#	endif
+	/* clang-format on */
+#endif
 	exec_args.push_back( "-c" );
 
 	// ShadowStack dynamorio client + args

@@ -15,7 +15,7 @@ bool Group::setup_complete = false;
 
 // Signals whose handlers should not be changed
 /* clang-format off */
-const static std::set<int> no_change{ 
+const static std::set<int> no_change{
 	SIGKILL,
 	SIGSTOP,
 	SIGURG,
