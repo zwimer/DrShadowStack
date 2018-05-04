@@ -9,7 +9,9 @@ var searchData=
   ['ssmode',['SSMode',['../struct_s_s_mode.html#acf06136523caccfa31298e20db0980ce',1,'SSMode::SSMode(const char *const m)'],['../struct_s_s_mode.html#ab0b59c6a937b185e602dc4b252c0f036',1,'SSMode::SSMode()=delete']]],
   ['start_5fexternal_5fclient',['start_external_client',['../shadow__stack_8cpp.html#af11cbb19bd7940f8e1b5243d0f0389e6',1,'shadow_stack.cpp']]],
   ['start_5fexternal_5fshadow_5fstack',['start_external_shadow_stack',['../external__stack__server_8cpp.html#a252e11ac536869ac19a832791df111a7',1,'start_external_shadow_stack(const int sock):&#160;external_stack_server.cpp'],['../external__stack__server_8hpp.html#a252e11ac536869ac19a832791df111a7',1,'start_external_shadow_stack(const int sock):&#160;external_stack_server.cpp']]],
-  ['start_5fprogram',['start_program',['../shadow__stack_8cpp.html#ad203fd9b387f4d1de99b47d7b3135dc9',1,'shadow_stack.cpp']]],
+  ['start_5fprogram',['start_program',['../shadow__stack_8cpp.html#a4baf596a31a07c218ed81a561a794233',1,'shadow_stack.cpp']]],
   ['str_5fequal',['str_equal',['../ss__mode_8hpp.html#aeefadcfa43a02760a17171e91775a1c0',1,'ss_mode.hpp']]],
-  ['sym',['Sym',['../struct_sym.html#aa2c1e0336fc028030e91c380230a0ae3',1,'Sym']]]
+  ['sym',['Sym',['../struct_sym.html#aa2c1e0336fc028030e91c380230a0ae3',1,'Sym']]],
+  ['syscall_5fevent',['syscall_event',['../dr__external__ss__events_8cpp.html#a5e90bf64a984c9d9470a708654f6d3f1',1,'syscall_event(void *drcontext, const int sysnum, const bool pre):&#160;dr_external_ss_events.cpp'],['../dr__internal__ss__events_8cpp.html#a5e90bf64a984c9d9470a708654f6d3f1',1,'syscall_event(void *drcontext, const int sysnum, const bool pre):&#160;dr_internal_ss_events.cpp']]],
+  ['syscall_5ffilter',['syscall_filter',['../dr__external__ss__events_8cpp.html#acbe5076af8a833b738738e84cda2fabc',1,'syscall_filter(void *, int sysnum):&#160;dr_external_ss_events.cpp'],['../dr__internal__ss__events_8cpp.html#acbe5076af8a833b738738e84cda2fabc',1,'syscall_filter(void *, int sysnum):&#160;dr_internal_ss_events.cpp']]]
 ];

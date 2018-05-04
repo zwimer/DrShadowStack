@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['retinfo',['RetInfo',['../struct_message_1_1_ret_info.html',1,'Message']]]
+  ['newsignalinfo',['NewSignalInfo',['../struct_message_1_1_new_signal_info.html',1,'Message']]]
 ];

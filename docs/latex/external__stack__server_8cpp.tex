@@ -1,134 +1,129 @@
-\hypertarget{external__stack__server_8cpp}{}\section{src/external\+\_\+stack\+\_\+server.cpp File Reference}
-\label{external__stack__server_8cpp}\index{src/external\+\_\+stack\+\_\+server.\+cpp@{src/external\+\_\+stack\+\_\+server.\+cpp}}
-{\ttfamily \#include \char`\"{}external\+\_\+stack\+\_\+server.\+hpp\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}constants.\+hpp\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}utilities.\+hpp\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}message.\+hpp\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}group.\+hpp\char`\"{}}\\*
-{\ttfamily \#include $<$sys/socket.\+h$>$}\\*
-{\ttfamily \#include $<$sys/types.\+h$>$}\\*
-{\ttfamily \#include $<$unistd.\+h$>$}\\*
-{\ttfamily \#include $<$stdio.\+h$>$}\\*
+\hypertarget{external__stack__server_8cpp}{\section{src/external\-\_\-stack\-\_\-server.cpp File Reference}
+\label{external__stack__server_8cpp}\index{src/external\-\_\-stack\-\_\-server.\-cpp@{src/external\-\_\-stack\-\_\-server.\-cpp}}
+}
+{\ttfamily \#include \char`\"{}external\-\_\-stack\-\_\-server.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}constants.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}utilities.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}message.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}group.\-hpp\char`\"{}}\\*
+{\ttfamily \#include $<$sys/socket.\-h$>$}\\*
+{\ttfamily \#include $<$sys/types.\-h$>$}\\*
+{\ttfamily \#include $<$unistd.\-h$>$}\\*
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
 {\ttfamily \#include $<$string$>$}\\*
 {\ttfamily \#include $<$stack$>$}\\*
 {\ttfamily \#include $<$map$>$}\\*
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-using \hyperlink{external__stack__server_8cpp_ae9be84814199431b661da0379b3a3883}{New\+Signal} = \hyperlink{class_message_a1eb217095ab4b8fede7aed3c9fb0787c}{Message\+::\+New\+Signal}
+using \hyperlink{external__stack__server_8cpp_ae9be84814199431b661da0379b3a3883}{New\-Signal} = \hyperlink{class_message_ae40f0243fd15231d8f44931e4adf7d3e}{Message\-::\-New\-Signal}
 \item 
-using \hyperlink{external__stack__server_8cpp_a7169d6206004f5e46aba26d60d62eee7}{Continue} = \hyperlink{class_message_a3575d142bf847cc5a7aecd718434fe4f}{Message\+::\+Continue}
+using \hyperlink{external__stack__server_8cpp_a7169d6206004f5e46aba26d60d62eee7}{Continue} = \hyperlink{class_message_a40b27db67cec30a7b6f4dbdf76e5add2}{Message\-::\-Continue}
 \item 
-using \hyperlink{external__stack__server_8cpp_a0fee3307098ce7f7bb5172a2e0fc493c}{Thread} = \hyperlink{class_message_ab425362459d8d4440f14d6e02e8c6566}{Message\+::\+Thread}
+using \hyperlink{external__stack__server_8cpp_a6092917fc45004f931da93d0c2a83f54}{Execve} = \hyperlink{class_message_a0cb7454c0388a6df9b83b205b58028cf}{Message\-::\-Execve}
 \item 
-using \hyperlink{external__stack__server_8cpp_a5ddb62131fe15320b8a7ebb3e1d62a11}{Fork} = \hyperlink{class_message_af7272b7d937a8248ca0fe6148044e9dc}{Message\+::\+Fork}
+using \hyperlink{external__stack__server_8cpp_a0fee3307098ce7f7bb5172a2e0fc493c}{Thread} = \hyperlink{class_message_ae1a764549f29ec802d15e731ea78e397}{Message\-::\-Thread}
 \item 
-using \hyperlink{external__stack__server_8cpp_a513fde2ffb5af8a0eb87285b5b984806}{Call} = \hyperlink{class_message_a65eabf9d1dcd603d2e7c14c5274a5bdb}{Message\+::\+Call}
+using \hyperlink{external__stack__server_8cpp_a5ddb62131fe15320b8a7ebb3e1d62a11}{Fork} = \hyperlink{class_message_ab60a0847afbe9dcef7cf5cd87d52ca4a}{Message\-::\-Fork}
 \item 
-using \hyperlink{external__stack__server_8cpp_af7c770b1088609ccee1dbc5fa67fe3d3}{Ret} = \hyperlink{class_message_a40df5862ba4d83b310c203e0873c15eb}{Message\+::\+Ret}
+using \hyperlink{external__stack__server_8cpp_a513fde2ffb5af8a0eb87285b5b984806}{Call} = \hyperlink{class_message_a2f9064959df252bdfddff485438cfa4e}{Message\-::\-Call}
 \item 
-typedef std\+::stack$<$ const char $\ast$ $>$ \hyperlink{external__stack__server_8cpp_a7ad69d2104372457e0bfbbb85270bbf5}{pointer\+\_\+stack}
+using \hyperlink{external__stack__server_8cpp_af7c770b1088609ccee1dbc5fa67fe3d3}{Ret} = \hyperlink{class_message_a7b1c7a41faeee12f538921a50e4c7d1b}{Message\-::\-Ret}
 \item 
-typedef void($\ast$ \hyperlink{external__stack__server_8cpp_a4eabf750db6f4ffaa36b0d220ef5573a}{message\+\_\+handler}) (\hyperlink{external__stack__server_8cpp_a7ad69d2104372457e0bfbbb85270bbf5}{pointer\+\_\+stack} \&stk, const char $\ast$const buffer, const int \hyperlink{dr__external__ss__events_8cpp_a5903d0b282fc5eae503de618f896b5e1}{sock})
+typedef std\-::stack$<$ const char $\ast$ $>$ \hyperlink{external__stack__server_8cpp_a7ad69d2104372457e0bfbbb85270bbf5}{pointer\-\_\-stack}
+\item 
+typedef void($\ast$ \hyperlink{external__stack__server_8cpp_a4e10fe3986e6a962d7807ad24fb89aa5}{message\-\_\-handler} )(\hyperlink{external__stack__server_8cpp_a7ad69d2104372457e0bfbbb85270bbf5}{pointer\-\_\-stack} \&stk, const char $\ast$const buffer, const int \hyperlink{dr__external__ss__events_8cpp_a5903d0b282fc5eae503de618f896b5e1}{sock})
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{external__stack__server_8cpp_a16e6cb03a038b20dc4841be2ec703cc6}{add\+\_\+wildcard} (\hyperlink{external__stack__server_8cpp_a7ad69d2104372457e0bfbbb85270bbf5}{pointer\+\_\+stack} \&stk, const char $\ast$const, const int)
+void \hyperlink{external__stack__server_8cpp_a16e6cb03a038b20dc4841be2ec703cc6}{add\-\_\-wildcard} (\hyperlink{external__stack__server_8cpp_a7ad69d2104372457e0bfbbb85270bbf5}{pointer\-\_\-stack} \&stk, const char $\ast$const, const int)
 \item 
-void \hyperlink{external__stack__server_8cpp_a546b54317e4b7a17ae735149f4b56612}{call\+\_\+handler} (\hyperlink{external__stack__server_8cpp_a7ad69d2104372457e0bfbbb85270bbf5}{pointer\+\_\+stack} \&stk, const char $\ast$const buffer, const int)
+void \hyperlink{external__stack__server_8cpp_af7e3813937f25103c9152eeb7ea84f2a}{clear\-\_\-stack} (\hyperlink{external__stack__server_8cpp_a7ad69d2104372457e0bfbbb85270bbf5}{pointer\-\_\-stack} \&stk, const char $\ast$const, const int)
 \item 
-void \hyperlink{external__stack__server_8cpp_a0a3a7fc816db1ee68fc8559eff029356}{ret\+\_\+handler} (\hyperlink{external__stack__server_8cpp_a7ad69d2104372457e0bfbbb85270bbf5}{pointer\+\_\+stack} \&stk, const char $\ast$const buffer, const int \hyperlink{dr__external__ss__events_8cpp_a5903d0b282fc5eae503de618f896b5e1}{sock})
+void \hyperlink{external__stack__server_8cpp_a546b54317e4b7a17ae735149f4b56612}{call\-\_\-handler} (\hyperlink{external__stack__server_8cpp_a7ad69d2104372457e0bfbbb85270bbf5}{pointer\-\_\-stack} \&stk, const char $\ast$const buffer, const int)
 \item 
-void \hyperlink{external__stack__server_8cpp_a982a481632c7cb255658096b753e3d65}{fork\+\_\+handler} (\hyperlink{external__stack__server_8cpp_a7ad69d2104372457e0bfbbb85270bbf5}{pointer\+\_\+stack} \&stk, const char $\ast$const buffer, const int)
+void \hyperlink{external__stack__server_8cpp_a0a3a7fc816db1ee68fc8559eff029356}{ret\-\_\-handler} (\hyperlink{external__stack__server_8cpp_a7ad69d2104372457e0bfbbb85270bbf5}{pointer\-\_\-stack} \&stk, const char $\ast$const buffer, const int \hyperlink{dr__external__ss__events_8cpp_a5903d0b282fc5eae503de618f896b5e1}{sock})
 \item 
-void \hyperlink{external__stack__server_8cpp_a2c50333d2b76707fb0068ddfe0743f11}{thread\+\_\+handler} (\hyperlink{external__stack__server_8cpp_a7ad69d2104372457e0bfbbb85270bbf5}{pointer\+\_\+stack} \&stk, const char $\ast$const buffer, const int)
-\item 
-void \hyperlink{external__stack__server_8cpp_a252e11ac536869ac19a832791df111a7}{start\+\_\+external\+\_\+shadow\+\_\+stack} (const int \hyperlink{dr__external__ss__events_8cpp_a5903d0b282fc5eae503de618f896b5e1}{sock})
+void \hyperlink{external__stack__server_8cpp_a252e11ac536869ac19a832791df111a7}{start\-\_\-external\-\_\-shadow\-\_\-stack} (const int \hyperlink{dr__external__ss__events_8cpp_a5903d0b282fc5eae503de618f896b5e1}{sock})
 \begin{DoxyCompactList}\small\item\em The function for running the external shadow stack sever Sock must be the file descriptor to the unix domain server that connects the shadow stack program to the dynamorio client managing the program to be run. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Typedef Documentation}
-\index{external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}!Call@{Call}}
-\index{Call@{Call}!external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}}
-\subsubsection[{\texorpdfstring{Call}{Call}}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf Call} =  {\bf Message\+::\+Call}}\hypertarget{external__stack__server_8cpp_a513fde2ffb5af8a0eb87285b5b984806}{}\label{external__stack__server_8cpp_a513fde2ffb5af8a0eb87285b5b984806}
-\index{external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}!Continue@{Continue}}
-\index{Continue@{Continue}!external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}}
-\subsubsection[{\texorpdfstring{Continue}{Continue}}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf Continue} =  {\bf Message\+::\+Continue}}\hypertarget{external__stack__server_8cpp_a7169d6206004f5e46aba26d60d62eee7}{}\label{external__stack__server_8cpp_a7169d6206004f5e46aba26d60d62eee7}
-\index{external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}!Fork@{Fork}}
-\index{Fork@{Fork}!external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}}
-\subsubsection[{\texorpdfstring{Fork}{Fork}}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf Fork} =  {\bf Message\+::\+Fork}}\hypertarget{external__stack__server_8cpp_a5ddb62131fe15320b8a7ebb3e1d62a11}{}\label{external__stack__server_8cpp_a5ddb62131fe15320b8a7ebb3e1d62a11}
-\index{external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}!message\+\_\+handler@{message\+\_\+handler}}
-\index{message\+\_\+handler@{message\+\_\+handler}!external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}}
-\subsubsection[{\texorpdfstring{message\+\_\+handler}{message_handler}}]{\setlength{\rightskip}{0pt plus 5cm}typedef void( $\ast$ message\+\_\+handler) ({\bf pointer\+\_\+stack} \&stk, const char $\ast$const buffer, const int {\bf sock})}\hypertarget{external__stack__server_8cpp_a4eabf750db6f4ffaa36b0d220ef5573a}{}\label{external__stack__server_8cpp_a4eabf750db6f4ffaa36b0d220ef5573a}
-\index{external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}!New\+Signal@{New\+Signal}}
-\index{New\+Signal@{New\+Signal}!external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}}
-\subsubsection[{\texorpdfstring{New\+Signal}{NewSignal}}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf New\+Signal} =  {\bf Message\+::\+New\+Signal}}\hypertarget{external__stack__server_8cpp_ae9be84814199431b661da0379b3a3883}{}\label{external__stack__server_8cpp_ae9be84814199431b661da0379b3a3883}
-\index{external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}!pointer\+\_\+stack@{pointer\+\_\+stack}}
-\index{pointer\+\_\+stack@{pointer\+\_\+stack}!external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}}
-\subsubsection[{\texorpdfstring{pointer\+\_\+stack}{pointer_stack}}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\+::stack$<$const char $\ast$$>$ {\bf pointer\+\_\+stack}}\hypertarget{external__stack__server_8cpp_a7ad69d2104372457e0bfbbb85270bbf5}{}\label{external__stack__server_8cpp_a7ad69d2104372457e0bfbbb85270bbf5}
-\index{external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}!Ret@{Ret}}
-\index{Ret@{Ret}!external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}}
-\subsubsection[{\texorpdfstring{Ret}{Ret}}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf Ret} =  {\bf Message\+::\+Ret}}\hypertarget{external__stack__server_8cpp_af7c770b1088609ccee1dbc5fa67fe3d3}{}\label{external__stack__server_8cpp_af7c770b1088609ccee1dbc5fa67fe3d3}
-\index{external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}!Thread@{Thread}}
-\index{Thread@{Thread}!external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}}
-\subsubsection[{\texorpdfstring{Thread}{Thread}}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf Thread} =  {\bf Message\+::\+Thread}}\hypertarget{external__stack__server_8cpp_a0fee3307098ce7f7bb5172a2e0fc493c}{}\label{external__stack__server_8cpp_a0fee3307098ce7f7bb5172a2e0fc493c}
+\hypertarget{external__stack__server_8cpp_a513fde2ffb5af8a0eb87285b5b984806}{\index{external\-\_\-stack\-\_\-server.\-cpp@{external\-\_\-stack\-\_\-server.\-cpp}!Call@{Call}}
+\index{Call@{Call}!external_stack_server.cpp@{external\-\_\-stack\-\_\-server.\-cpp}}
+\subsubsection[{Call}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf Call} =  {\bf Message\-::\-Call}}}\label{external__stack__server_8cpp_a513fde2ffb5af8a0eb87285b5b984806}
+\hypertarget{external__stack__server_8cpp_a7169d6206004f5e46aba26d60d62eee7}{\index{external\-\_\-stack\-\_\-server.\-cpp@{external\-\_\-stack\-\_\-server.\-cpp}!Continue@{Continue}}
+\index{Continue@{Continue}!external_stack_server.cpp@{external\-\_\-stack\-\_\-server.\-cpp}}
+\subsubsection[{Continue}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf Continue} =  {\bf Message\-::\-Continue}}}\label{external__stack__server_8cpp_a7169d6206004f5e46aba26d60d62eee7}
+\hypertarget{external__stack__server_8cpp_a6092917fc45004f931da93d0c2a83f54}{\index{external\-\_\-stack\-\_\-server.\-cpp@{external\-\_\-stack\-\_\-server.\-cpp}!Execve@{Execve}}
+\index{Execve@{Execve}!external_stack_server.cpp@{external\-\_\-stack\-\_\-server.\-cpp}}
+\subsubsection[{Execve}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf Execve} =  {\bf Message\-::\-Execve}}}\label{external__stack__server_8cpp_a6092917fc45004f931da93d0c2a83f54}
+\hypertarget{external__stack__server_8cpp_a5ddb62131fe15320b8a7ebb3e1d62a11}{\index{external\-\_\-stack\-\_\-server.\-cpp@{external\-\_\-stack\-\_\-server.\-cpp}!Fork@{Fork}}
+\index{Fork@{Fork}!external_stack_server.cpp@{external\-\_\-stack\-\_\-server.\-cpp}}
+\subsubsection[{Fork}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf Fork} =  {\bf Message\-::\-Fork}}}\label{external__stack__server_8cpp_a5ddb62131fe15320b8a7ebb3e1d62a11}
+\hypertarget{external__stack__server_8cpp_a4e10fe3986e6a962d7807ad24fb89aa5}{\index{external\-\_\-stack\-\_\-server.\-cpp@{external\-\_\-stack\-\_\-server.\-cpp}!message\-\_\-handler@{message\-\_\-handler}}
+\index{message\-\_\-handler@{message\-\_\-handler}!external_stack_server.cpp@{external\-\_\-stack\-\_\-server.\-cpp}}
+\subsubsection[{message\-\_\-handler}]{\setlength{\rightskip}{0pt plus 5cm}typedef void( $\ast$ message\-\_\-handler)({\bf pointer\-\_\-stack} \&stk, const char $\ast$const buffer, const int {\bf sock})}}\label{external__stack__server_8cpp_a4e10fe3986e6a962d7807ad24fb89aa5}
+\hypertarget{external__stack__server_8cpp_ae9be84814199431b661da0379b3a3883}{\index{external\-\_\-stack\-\_\-server.\-cpp@{external\-\_\-stack\-\_\-server.\-cpp}!New\-Signal@{New\-Signal}}
+\index{New\-Signal@{New\-Signal}!external_stack_server.cpp@{external\-\_\-stack\-\_\-server.\-cpp}}
+\subsubsection[{New\-Signal}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf New\-Signal} =  {\bf Message\-::\-New\-Signal}}}\label{external__stack__server_8cpp_ae9be84814199431b661da0379b3a3883}
+\hypertarget{external__stack__server_8cpp_a7ad69d2104372457e0bfbbb85270bbf5}{\index{external\-\_\-stack\-\_\-server.\-cpp@{external\-\_\-stack\-\_\-server.\-cpp}!pointer\-\_\-stack@{pointer\-\_\-stack}}
+\index{pointer\-\_\-stack@{pointer\-\_\-stack}!external_stack_server.cpp@{external\-\_\-stack\-\_\-server.\-cpp}}
+\subsubsection[{pointer\-\_\-stack}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\-::stack$<$const char $\ast$$>$ {\bf pointer\-\_\-stack}}}\label{external__stack__server_8cpp_a7ad69d2104372457e0bfbbb85270bbf5}
+\hypertarget{external__stack__server_8cpp_af7c770b1088609ccee1dbc5fa67fe3d3}{\index{external\-\_\-stack\-\_\-server.\-cpp@{external\-\_\-stack\-\_\-server.\-cpp}!Ret@{Ret}}
+\index{Ret@{Ret}!external_stack_server.cpp@{external\-\_\-stack\-\_\-server.\-cpp}}
+\subsubsection[{Ret}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf Ret} =  {\bf Message\-::\-Ret}}}\label{external__stack__server_8cpp_af7c770b1088609ccee1dbc5fa67fe3d3}
+\hypertarget{external__stack__server_8cpp_a0fee3307098ce7f7bb5172a2e0fc493c}{\index{external\-\_\-stack\-\_\-server.\-cpp@{external\-\_\-stack\-\_\-server.\-cpp}!Thread@{Thread}}
+\index{Thread@{Thread}!external_stack_server.cpp@{external\-\_\-stack\-\_\-server.\-cpp}}
+\subsubsection[{Thread}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf Thread} =  {\bf Message\-::\-Thread}}}\label{external__stack__server_8cpp_a0fee3307098ce7f7bb5172a2e0fc493c}
 
 
 \subsection{Function Documentation}
-\index{external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}!add\+\_\+wildcard@{add\+\_\+wildcard}}
-\index{add\+\_\+wildcard@{add\+\_\+wildcard}!external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}}
-\subsubsection[{\texorpdfstring{add\+\_\+wildcard(pointer\+\_\+stack \&stk, const char $\ast$const, const int)}{add_wildcard(pointer_stack &stk, const char *const, const int)}}]{\setlength{\rightskip}{0pt plus 5cm}void add\+\_\+wildcard (
+\hypertarget{external__stack__server_8cpp_a16e6cb03a038b20dc4841be2ec703cc6}{\index{external\-\_\-stack\-\_\-server.\-cpp@{external\-\_\-stack\-\_\-server.\-cpp}!add\-\_\-wildcard@{add\-\_\-wildcard}}
+\index{add\-\_\-wildcard@{add\-\_\-wildcard}!external_stack_server.cpp@{external\-\_\-stack\-\_\-server.\-cpp}}
+\subsubsection[{add\-\_\-wildcard}]{\setlength{\rightskip}{0pt plus 5cm}void add\-\_\-wildcard (
 \begin{DoxyParamCaption}
-\item[{{\bf pointer\+\_\+stack} \&}]{stk, }
+\item[{{\bf pointer\-\_\-stack} \&}]{stk, }
 \item[{const char $\ast$}]{const, }
 \item[{const int}]{}
 \end{DoxyParamCaption}
-)}\hypertarget{external__stack__server_8cpp_a16e6cb03a038b20dc4841be2ec703cc6}{}\label{external__stack__server_8cpp_a16e6cb03a038b20dc4841be2ec703cc6}
-\index{external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}!call\+\_\+handler@{call\+\_\+handler}}
-\index{call\+\_\+handler@{call\+\_\+handler}!external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}}
-\subsubsection[{\texorpdfstring{call\+\_\+handler(pointer\+\_\+stack \&stk, const char $\ast$const buffer, const int)}{call_handler(pointer_stack &stk, const char *const buffer, const int)}}]{\setlength{\rightskip}{0pt plus 5cm}void call\+\_\+handler (
+)}}\label{external__stack__server_8cpp_a16e6cb03a038b20dc4841be2ec703cc6}
+\hypertarget{external__stack__server_8cpp_a546b54317e4b7a17ae735149f4b56612}{\index{external\-\_\-stack\-\_\-server.\-cpp@{external\-\_\-stack\-\_\-server.\-cpp}!call\-\_\-handler@{call\-\_\-handler}}
+\index{call\-\_\-handler@{call\-\_\-handler}!external_stack_server.cpp@{external\-\_\-stack\-\_\-server.\-cpp}}
+\subsubsection[{call\-\_\-handler}]{\setlength{\rightskip}{0pt plus 5cm}void call\-\_\-handler (
 \begin{DoxyParamCaption}
-\item[{{\bf pointer\+\_\+stack} \&}]{stk, }
+\item[{{\bf pointer\-\_\-stack} \&}]{stk, }
 \item[{const char $\ast$const}]{buffer, }
 \item[{const int}]{}
 \end{DoxyParamCaption}
-)}\hypertarget{external__stack__server_8cpp_a546b54317e4b7a17ae735149f4b56612}{}\label{external__stack__server_8cpp_a546b54317e4b7a17ae735149f4b56612}
-\index{external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}!fork\+\_\+handler@{fork\+\_\+handler}}
-\index{fork\+\_\+handler@{fork\+\_\+handler}!external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}}
-\subsubsection[{\texorpdfstring{fork\+\_\+handler(pointer\+\_\+stack \&stk, const char $\ast$const buffer, const int)}{fork_handler(pointer_stack &stk, const char *const buffer, const int)}}]{\setlength{\rightskip}{0pt plus 5cm}void fork\+\_\+handler (
+)}}\label{external__stack__server_8cpp_a546b54317e4b7a17ae735149f4b56612}
+\hypertarget{external__stack__server_8cpp_af7e3813937f25103c9152eeb7ea84f2a}{\index{external\-\_\-stack\-\_\-server.\-cpp@{external\-\_\-stack\-\_\-server.\-cpp}!clear\-\_\-stack@{clear\-\_\-stack}}
+\index{clear\-\_\-stack@{clear\-\_\-stack}!external_stack_server.cpp@{external\-\_\-stack\-\_\-server.\-cpp}}
+\subsubsection[{clear\-\_\-stack}]{\setlength{\rightskip}{0pt plus 5cm}void clear\-\_\-stack (
 \begin{DoxyParamCaption}
-\item[{{\bf pointer\+\_\+stack} \&}]{stk, }
-\item[{const char $\ast$const}]{buffer, }
+\item[{{\bf pointer\-\_\-stack} \&}]{stk, }
+\item[{const char $\ast$}]{const, }
 \item[{const int}]{}
 \end{DoxyParamCaption}
-)}\hypertarget{external__stack__server_8cpp_a982a481632c7cb255658096b753e3d65}{}\label{external__stack__server_8cpp_a982a481632c7cb255658096b753e3d65}
-\index{external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}!ret\+\_\+handler@{ret\+\_\+handler}}
-\index{ret\+\_\+handler@{ret\+\_\+handler}!external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}}
-\subsubsection[{\texorpdfstring{ret\+\_\+handler(pointer\+\_\+stack \&stk, const char $\ast$const buffer, const int sock)}{ret_handler(pointer_stack &stk, const char *const buffer, const int sock)}}]{\setlength{\rightskip}{0pt plus 5cm}void ret\+\_\+handler (
+)}}\label{external__stack__server_8cpp_af7e3813937f25103c9152eeb7ea84f2a}
+\hypertarget{external__stack__server_8cpp_a0a3a7fc816db1ee68fc8559eff029356}{\index{external\-\_\-stack\-\_\-server.\-cpp@{external\-\_\-stack\-\_\-server.\-cpp}!ret\-\_\-handler@{ret\-\_\-handler}}
+\index{ret\-\_\-handler@{ret\-\_\-handler}!external_stack_server.cpp@{external\-\_\-stack\-\_\-server.\-cpp}}
+\subsubsection[{ret\-\_\-handler}]{\setlength{\rightskip}{0pt plus 5cm}void ret\-\_\-handler (
 \begin{DoxyParamCaption}
-\item[{{\bf pointer\+\_\+stack} \&}]{stk, }
+\item[{{\bf pointer\-\_\-stack} \&}]{stk, }
 \item[{const char $\ast$const}]{buffer, }
 \item[{const int}]{sock}
 \end{DoxyParamCaption}
-)}\hypertarget{external__stack__server_8cpp_a0a3a7fc816db1ee68fc8559eff029356}{}\label{external__stack__server_8cpp_a0a3a7fc816db1ee68fc8559eff029356}
-\index{external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}!start\+\_\+external\+\_\+shadow\+\_\+stack@{start\+\_\+external\+\_\+shadow\+\_\+stack}}
-\index{start\+\_\+external\+\_\+shadow\+\_\+stack@{start\+\_\+external\+\_\+shadow\+\_\+stack}!external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}}
-\subsubsection[{\texorpdfstring{start\+\_\+external\+\_\+shadow\+\_\+stack(const int sock)}{start_external_shadow_stack(const int sock)}}]{\setlength{\rightskip}{0pt plus 5cm}void start\+\_\+external\+\_\+shadow\+\_\+stack (
+)}}\label{external__stack__server_8cpp_a0a3a7fc816db1ee68fc8559eff029356}
+\hypertarget{external__stack__server_8cpp_a252e11ac536869ac19a832791df111a7}{\index{external\-\_\-stack\-\_\-server.\-cpp@{external\-\_\-stack\-\_\-server.\-cpp}!start\-\_\-external\-\_\-shadow\-\_\-stack@{start\-\_\-external\-\_\-shadow\-\_\-stack}}
+\index{start\-\_\-external\-\_\-shadow\-\_\-stack@{start\-\_\-external\-\_\-shadow\-\_\-stack}!external_stack_server.cpp@{external\-\_\-stack\-\_\-server.\-cpp}}
+\subsubsection[{start\-\_\-external\-\_\-shadow\-\_\-stack}]{\setlength{\rightskip}{0pt plus 5cm}void start\-\_\-external\-\_\-shadow\-\_\-stack (
 \begin{DoxyParamCaption}
 \item[{const int}]{sock}
 \end{DoxyParamCaption}
-)}\hypertarget{external__stack__server_8cpp_a252e11ac536869ac19a832791df111a7}{}\label{external__stack__server_8cpp_a252e11ac536869ac19a832791df111a7}
+)}}\label{external__stack__server_8cpp_a252e11ac536869ac19a832791df111a7}
 
 
 The function for running the external shadow stack sever Sock must be the file descriptor to the unix domain server that connects the shadow stack program to the dynamorio client managing the program to be run. 
 
-\index{external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}!thread\+\_\+handler@{thread\+\_\+handler}}
-\index{thread\+\_\+handler@{thread\+\_\+handler}!external\+\_\+stack\+\_\+server.\+cpp@{external\+\_\+stack\+\_\+server.\+cpp}}
-\subsubsection[{\texorpdfstring{thread\+\_\+handler(pointer\+\_\+stack \&stk, const char $\ast$const buffer, const int)}{thread_handler(pointer_stack &stk, const char *const buffer, const int)}}]{\setlength{\rightskip}{0pt plus 5cm}void thread\+\_\+handler (
-\begin{DoxyParamCaption}
-\item[{{\bf pointer\+\_\+stack} \&}]{stk, }
-\item[{const char $\ast$const}]{buffer, }
-\item[{const int}]{}
-\end{DoxyParamCaption}
-)}\hypertarget{external__stack__server_8cpp_a2c50333d2b76707fb0068ddfe0743f11}{}\label{external__stack__server_8cpp_a2c50333d2b76707fb0068ddfe0743f11}

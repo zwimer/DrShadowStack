@@ -1,81 +1,82 @@
-\hypertarget{dr__shadow__stack__client_8cpp}{}\section{src/dr\+\_\+shadow\+\_\+stack\+\_\+client.cpp File Reference}
-\label{dr__shadow__stack__client_8cpp}\index{src/dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp@{src/dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp}}
-{\ttfamily \#include \char`\"{}dr\+\_\+shadow\+\_\+stack\+\_\+client.\+hpp\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}dr\+\_\+internal\+\_\+ss\+\_\+events.\+hpp\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}dr\+\_\+external\+\_\+ss\+\_\+events.\+hpp\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}constants.\+hpp\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}utilities.\+hpp\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}ss\+\_\+mode.\+hpp\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}group.\+hpp\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}drmgr.\+h\char`\"{}}\\*
+\hypertarget{dr__shadow__stack__client_8cpp}{\section{src/dr\-\_\-shadow\-\_\-stack\-\_\-client.cpp File Reference}
+\label{dr__shadow__stack__client_8cpp}\index{src/dr\-\_\-shadow\-\_\-stack\-\_\-client.\-cpp@{src/dr\-\_\-shadow\-\_\-stack\-\_\-client.\-cpp}}
+}
+{\ttfamily \#include \char`\"{}dr\-\_\-shadow\-\_\-stack\-\_\-client.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}dr\-\_\-internal\-\_\-ss\-\_\-events.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}dr\-\_\-external\-\_\-ss\-\_\-events.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}constants.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}utilities.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}ss\-\_\-mode.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}group.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}drmgr.\-h\char`\"{}}\\*
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-static void \hyperlink{dr__shadow__stack__client_8cpp_aac9783a08023b07655542e354ed2cb42}{run\+\_\+before\+\_\+everything} ()
+static void \hyperlink{dr__shadow__stack__client_8cpp_aac9783a08023b07655542e354ed2cb42}{run\-\_\-before\-\_\-everything} ()
 \item 
-static void \hyperlink{dr__shadow__stack__client_8cpp_ac865060ad09d7ce8d78ee609d322a6e1}{kernel\+\_\+xfer\+\_\+event\+\_\+handler} (void $\ast$, const dr\+\_\+kernel\+\_\+xfer\+\_\+info\+\_\+t $\ast$info)
+static void \hyperlink{dr__shadow__stack__client_8cpp_ac865060ad09d7ce8d78ee609d322a6e1}{kernel\-\_\-xfer\-\_\-event\-\_\-handler} (void $\ast$, const dr\-\_\-kernel\-\_\-xfer\-\_\-info\-\_\-t $\ast$info)
 \item 
-static dr\+\_\+emit\+\_\+flags\+\_\+t \hyperlink{dr__shadow__stack__client_8cpp_a0aaea6e47ff2dc8fb1587381292ba5b5}{event\+\_\+app\+\_\+instruction} (void $\ast$drcontext, void $\ast$tag, instrlist\+\_\+t $\ast$bb, instr\+\_\+t $\ast$instr, bool for\+\_\+trace, bool translating, void $\ast$user\+\_\+data)
+static dr\-\_\-emit\-\_\-flags\-\_\-t \hyperlink{dr__shadow__stack__client_8cpp_a25d865dcf852d0dd0515263816b9cc78}{event\-\_\-app\-\_\-instruction} (void $\ast$drcontext, void $\ast$, instrlist\-\_\-t $\ast$bb, instr\-\_\-t $\ast$instr, bool, bool, void $\ast$)
 \item 
-static void \hyperlink{dr__shadow__stack__client_8cpp_ac27bdb8c91453a10aea3bc778eb98f19}{exit\+\_\+event} ()
+static void \hyperlink{dr__shadow__stack__client_8cpp_ac27bdb8c91453a10aea3bc778eb98f19}{exit\-\_\-event} ()
 \item 
-D\+R\+\_\+\+E\+X\+P\+O\+RT void \hyperlink{dr__shadow__stack__client_8cpp_a2b938c98dd186cc94eef6880f9e3c3e9}{dr\+\_\+client\+\_\+main} (client\+\_\+id\+\_\+t id, int argc, const char $\ast$argv\mbox{[}$\,$\mbox{]})
+D\-R\-\_\-\-E\-X\-P\-O\-R\-T void \hyperlink{dr__shadow__stack__client_8cpp_ae1053288ed0b09116d9bf281c74d0445}{dr\-\_\-client\-\_\-main} (client\-\_\-id\-\_\-t, int argc, const char $\ast$argv\mbox{[}$\,$\mbox{]})
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_s_s_handlers}{S\+S\+Handlers} $\ast$ \hyperlink{dr__shadow__stack__client_8cpp_a8127cbb76109ee48fe6e8ff96f57caab}{handlers} = nullptr
+\hyperlink{class_s_s_handlers}{S\-S\-Handlers} $\ast$ \hyperlink{dr__shadow__stack__client_8cpp_a8127cbb76109ee48fe6e8ff96f57caab}{handlers} = nullptr
 \end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
-\index{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp@{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp}!dr\+\_\+client\+\_\+main@{dr\+\_\+client\+\_\+main}}
-\index{dr\+\_\+client\+\_\+main@{dr\+\_\+client\+\_\+main}!dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp@{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp}}
-\subsubsection[{\texorpdfstring{dr\+\_\+client\+\_\+main(client\+\_\+id\+\_\+t id, int argc, const char $\ast$argv[])}{dr_client_main(client_id_t id, int argc, const char *argv[])}}]{\setlength{\rightskip}{0pt plus 5cm}D\+R\+\_\+\+E\+X\+P\+O\+RT void dr\+\_\+client\+\_\+main (
+\hypertarget{dr__shadow__stack__client_8cpp_ae1053288ed0b09116d9bf281c74d0445}{\index{dr\-\_\-shadow\-\_\-stack\-\_\-client.\-cpp@{dr\-\_\-shadow\-\_\-stack\-\_\-client.\-cpp}!dr\-\_\-client\-\_\-main@{dr\-\_\-client\-\_\-main}}
+\index{dr\-\_\-client\-\_\-main@{dr\-\_\-client\-\_\-main}!dr_shadow_stack_client.cpp@{dr\-\_\-shadow\-\_\-stack\-\_\-client.\-cpp}}
+\subsubsection[{dr\-\_\-client\-\_\-main}]{\setlength{\rightskip}{0pt plus 5cm}D\-R\-\_\-\-E\-X\-P\-O\-R\-T void dr\-\_\-client\-\_\-main (
 \begin{DoxyParamCaption}
-\item[{client\+\_\+id\+\_\+t}]{id, }
+\item[{client\-\_\-id\-\_\-t}]{, }
 \item[{int}]{argc, }
 \item[{const char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
 \end{DoxyParamCaption}
-)}\hypertarget{dr__shadow__stack__client_8cpp_a2b938c98dd186cc94eef6880f9e3c3e9}{}\label{dr__shadow__stack__client_8cpp_a2b938c98dd186cc94eef6880f9e3c3e9}
-\index{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp@{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp}!event\+\_\+app\+\_\+instruction@{event\+\_\+app\+\_\+instruction}}
-\index{event\+\_\+app\+\_\+instruction@{event\+\_\+app\+\_\+instruction}!dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp@{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp}}
-\subsubsection[{\texorpdfstring{event\+\_\+app\+\_\+instruction(void $\ast$drcontext, void $\ast$tag, instrlist\+\_\+t $\ast$bb, instr\+\_\+t $\ast$instr, bool for\+\_\+trace, bool translating, void $\ast$user\+\_\+data)}{event_app_instruction(void *drcontext, void *tag, instrlist_t *bb, instr_t *instr, bool for_trace, bool translating, void *user_data)}}]{\setlength{\rightskip}{0pt plus 5cm}static dr\+\_\+emit\+\_\+flags\+\_\+t event\+\_\+app\+\_\+instruction (
+)}}\label{dr__shadow__stack__client_8cpp_ae1053288ed0b09116d9bf281c74d0445}
+\hypertarget{dr__shadow__stack__client_8cpp_a25d865dcf852d0dd0515263816b9cc78}{\index{dr\-\_\-shadow\-\_\-stack\-\_\-client.\-cpp@{dr\-\_\-shadow\-\_\-stack\-\_\-client.\-cpp}!event\-\_\-app\-\_\-instruction@{event\-\_\-app\-\_\-instruction}}
+\index{event\-\_\-app\-\_\-instruction@{event\-\_\-app\-\_\-instruction}!dr_shadow_stack_client.cpp@{dr\-\_\-shadow\-\_\-stack\-\_\-client.\-cpp}}
+\subsubsection[{event\-\_\-app\-\_\-instruction}]{\setlength{\rightskip}{0pt plus 5cm}static dr\-\_\-emit\-\_\-flags\-\_\-t event\-\_\-app\-\_\-instruction (
 \begin{DoxyParamCaption}
 \item[{void $\ast$}]{drcontext, }
-\item[{void $\ast$}]{tag, }
-\item[{instrlist\+\_\+t $\ast$}]{bb, }
-\item[{instr\+\_\+t $\ast$}]{instr, }
-\item[{bool}]{for\+\_\+trace, }
-\item[{bool}]{translating, }
-\item[{void $\ast$}]{user\+\_\+data}
+\item[{void $\ast$}]{, }
+\item[{instrlist\-\_\-t $\ast$}]{bb, }
+\item[{instr\-\_\-t $\ast$}]{instr, }
+\item[{bool}]{, }
+\item[{bool}]{, }
+\item[{void $\ast$}]{}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__shadow__stack__client_8cpp_a0aaea6e47ff2dc8fb1587381292ba5b5}{}\label{dr__shadow__stack__client_8cpp_a0aaea6e47ff2dc8fb1587381292ba5b5}
-\index{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp@{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp}!exit\+\_\+event@{exit\+\_\+event}}
-\index{exit\+\_\+event@{exit\+\_\+event}!dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp@{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp}}
-\subsubsection[{\texorpdfstring{exit\+\_\+event()}{exit_event()}}]{\setlength{\rightskip}{0pt plus 5cm}static void exit\+\_\+event (
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{dr__shadow__stack__client_8cpp_a25d865dcf852d0dd0515263816b9cc78}
+\hypertarget{dr__shadow__stack__client_8cpp_ac27bdb8c91453a10aea3bc778eb98f19}{\index{dr\-\_\-shadow\-\_\-stack\-\_\-client.\-cpp@{dr\-\_\-shadow\-\_\-stack\-\_\-client.\-cpp}!exit\-\_\-event@{exit\-\_\-event}}
+\index{exit\-\_\-event@{exit\-\_\-event}!dr_shadow_stack_client.cpp@{dr\-\_\-shadow\-\_\-stack\-\_\-client.\-cpp}}
+\subsubsection[{exit\-\_\-event}]{\setlength{\rightskip}{0pt plus 5cm}static void exit\-\_\-event (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__shadow__stack__client_8cpp_ac27bdb8c91453a10aea3bc778eb98f19}{}\label{dr__shadow__stack__client_8cpp_ac27bdb8c91453a10aea3bc778eb98f19}
-\index{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp@{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp}!kernel\+\_\+xfer\+\_\+event\+\_\+handler@{kernel\+\_\+xfer\+\_\+event\+\_\+handler}}
-\index{kernel\+\_\+xfer\+\_\+event\+\_\+handler@{kernel\+\_\+xfer\+\_\+event\+\_\+handler}!dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp@{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp}}
-\subsubsection[{\texorpdfstring{kernel\+\_\+xfer\+\_\+event\+\_\+handler(void $\ast$, const dr\+\_\+kernel\+\_\+xfer\+\_\+info\+\_\+t $\ast$info)}{kernel_xfer_event_handler(void *, const dr_kernel_xfer_info_t *info)}}]{\setlength{\rightskip}{0pt plus 5cm}static void kernel\+\_\+xfer\+\_\+event\+\_\+handler (
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{dr__shadow__stack__client_8cpp_ac27bdb8c91453a10aea3bc778eb98f19}
+\hypertarget{dr__shadow__stack__client_8cpp_ac865060ad09d7ce8d78ee609d322a6e1}{\index{dr\-\_\-shadow\-\_\-stack\-\_\-client.\-cpp@{dr\-\_\-shadow\-\_\-stack\-\_\-client.\-cpp}!kernel\-\_\-xfer\-\_\-event\-\_\-handler@{kernel\-\_\-xfer\-\_\-event\-\_\-handler}}
+\index{kernel\-\_\-xfer\-\_\-event\-\_\-handler@{kernel\-\_\-xfer\-\_\-event\-\_\-handler}!dr_shadow_stack_client.cpp@{dr\-\_\-shadow\-\_\-stack\-\_\-client.\-cpp}}
+\subsubsection[{kernel\-\_\-xfer\-\_\-event\-\_\-handler}]{\setlength{\rightskip}{0pt plus 5cm}static void kernel\-\_\-xfer\-\_\-event\-\_\-handler (
 \begin{DoxyParamCaption}
 \item[{void $\ast$}]{, }
-\item[{const dr\+\_\+kernel\+\_\+xfer\+\_\+info\+\_\+t $\ast$}]{info}
+\item[{const dr\-\_\-kernel\-\_\-xfer\-\_\-info\-\_\-t $\ast$}]{info}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__shadow__stack__client_8cpp_ac865060ad09d7ce8d78ee609d322a6e1}{}\label{dr__shadow__stack__client_8cpp_ac865060ad09d7ce8d78ee609d322a6e1}
-\index{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp@{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp}!run\+\_\+before\+\_\+everything@{run\+\_\+before\+\_\+everything}}
-\index{run\+\_\+before\+\_\+everything@{run\+\_\+before\+\_\+everything}!dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp@{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp}}
-\subsubsection[{\texorpdfstring{run\+\_\+before\+\_\+everything()}{run_before_everything()}}]{\setlength{\rightskip}{0pt plus 5cm}static void run\+\_\+before\+\_\+everything (
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{dr__shadow__stack__client_8cpp_ac865060ad09d7ce8d78ee609d322a6e1}
+\hypertarget{dr__shadow__stack__client_8cpp_aac9783a08023b07655542e354ed2cb42}{\index{dr\-\_\-shadow\-\_\-stack\-\_\-client.\-cpp@{dr\-\_\-shadow\-\_\-stack\-\_\-client.\-cpp}!run\-\_\-before\-\_\-everything@{run\-\_\-before\-\_\-everything}}
+\index{run\-\_\-before\-\_\-everything@{run\-\_\-before\-\_\-everything}!dr_shadow_stack_client.cpp@{dr\-\_\-shadow\-\_\-stack\-\_\-client.\-cpp}}
+\subsubsection[{run\-\_\-before\-\_\-everything}]{\setlength{\rightskip}{0pt plus 5cm}static void run\-\_\-before\-\_\-everything (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{dr__shadow__stack__client_8cpp_aac9783a08023b07655542e354ed2cb42}{}\label{dr__shadow__stack__client_8cpp_aac9783a08023b07655542e354ed2cb42}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{dr__shadow__stack__client_8cpp_aac9783a08023b07655542e354ed2cb42}
 
 
 \subsection{Variable Documentation}
-\index{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp@{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp}!handlers@{handlers}}
-\index{handlers@{handlers}!dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp@{dr\+\_\+shadow\+\_\+stack\+\_\+client.\+cpp}}
-\subsubsection[{\texorpdfstring{handlers}{handlers}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+S\+Handlers}$\ast$ handlers = nullptr}\hypertarget{dr__shadow__stack__client_8cpp_a8127cbb76109ee48fe6e8ff96f57caab}{}\label{dr__shadow__stack__client_8cpp_a8127cbb76109ee48fe6e8ff96f57caab}
+\hypertarget{dr__shadow__stack__client_8cpp_a8127cbb76109ee48fe6e8ff96f57caab}{\index{dr\-\_\-shadow\-\_\-stack\-\_\-client.\-cpp@{dr\-\_\-shadow\-\_\-stack\-\_\-client.\-cpp}!handlers@{handlers}}
+\index{handlers@{handlers}!dr_shadow_stack_client.cpp@{dr\-\_\-shadow\-\_\-stack\-\_\-client.\-cpp}}
+\subsubsection[{handlers}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\-S\-Handlers}$\ast$ handlers = nullptr}}\label{dr__shadow__stack__client_8cpp_a8127cbb76109ee48fe6e8ff96f57caab}

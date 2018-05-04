@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['message_5fhandler',['message_handler',['../external__stack__server_8cpp.html#a4eabf750db6f4ffaa36b0d220ef5573a',1,'external_stack_server.cpp']]]
+  ['headeronly',['HeaderOnly',['../class_message_1_1_msg.html#a56cc5b2c5d898b85e97b1f3a46ab3999',1,'Message::Msg']]]
 ];

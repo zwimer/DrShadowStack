@@ -1,5 +1,6 @@
-\hypertarget{class_message_1_1_msg}{}\section{Message\+:\+:Msg Class Reference}
-\label{class_message_1_1_msg}\index{Message\+::\+Msg@{Message\+::\+Msg}}
+\hypertarget{class_message_1_1_msg}{\section{Message\-:\-:Msg Class Reference}
+\label{class_message_1_1_msg}\index{Message\-::\-Msg@{Message\-::\-Msg}}
+}
 
 
 Defines the types of messages which can be sent.  
@@ -8,23 +9,23 @@ Defines the types of messages which can be sent.
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{struct_message_1_1_msg_1_1_message_type}{Message\+Type}
-\begin{DoxyCompactList}\small\item\em A templated message class A valid message is defined by constructing a \hyperlink{struct_message_1_1_msg_1_1_message_type}{Message\+Type} around it. \end{DoxyCompactList}\item 
-struct \hyperlink{struct_message_1_1_msg_1_1_message_type_3_01false_00_01_info_01_4}{Message\+Type$<$ false, Info $>$}
+struct \hyperlink{struct_message_1_1_msg_1_1_message_type}{Message\-Type}
+\begin{DoxyCompactList}\small\item\em A templated message class A valid message is defined by constructing a \hyperlink{struct_message_1_1_msg_1_1_message_type}{Message\-Type} around it. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_message_1_1_msg_1_1_message_type_3_01false_00_01_info_01_4}{Message\-Type$<$ false, Info $>$}
 \begin{DoxyCompactList}\small\item\em A specification for non-\/header only messages. \end{DoxyCompactList}\item 
-struct \hyperlink{struct_message_1_1_msg_1_1_message_type_3_01true_00_01_info_01_4}{Message\+Type$<$ true, Info $>$}
+struct \hyperlink{struct_message_1_1_msg_1_1_message_type_3_01true_00_01_info_01_4}{Message\-Type$<$ true, Info $>$}
 \begin{DoxyCompactList}\small\item\em A specification for header only messages. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$typename T $>$ }\\using \hyperlink{class_message_1_1_msg_a56cc5b2c5d898b85e97b1f3a46ab3999}{Header\+Only} = \hyperlink{struct_message_1_1_msg_1_1_message_type}{Message\+Type}$<$ true, T $>$
+{\footnotesize template$<$typename T $>$ }\\using \hyperlink{class_message_1_1_msg_a56cc5b2c5d898b85e97b1f3a46ab3999}{Header\-Only} = \hyperlink{struct_message_1_1_msg_1_1_message_type}{Message\-Type}$<$ true, T $>$
 \begin{DoxyCompactList}\small\item\em A typedef for header only type. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\using \hyperlink{class_message_1_1_msg_a385691f2f7fc10f0b4c1544b8892a6c9}{With\+Body} = \hyperlink{struct_message_1_1_msg_1_1_message_type}{Message\+Type}$<$ false, T $>$
+{\footnotesize template$<$typename T $>$ }\\using \hyperlink{class_message_1_1_msg_a385691f2f7fc10f0b4c1544b8892a6c9}{With\-Body} = \hyperlink{struct_message_1_1_msg_1_1_message_type}{Message\-Type}$<$ false, T $>$
 \begin{DoxyCompactList}\small\item\em A typedef for non-\/header only type. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static const char $\ast$ \hyperlink{class_message_1_1_msg_adacbbaadf7d1f920e837d07d3dd39725}{set\+\_\+length} (char $\ast$const dst, const char $\ast$const src, const int n)
+static const char $\ast$ \hyperlink{class_message_1_1_msg_adacbbaadf7d1f920e837d07d3dd39725}{set\-\_\-length} (char $\ast$const dst, const char $\ast$const src, const int n)
 \begin{DoxyCompactList}\small\item\em Copies n bytes from src into dst during static initilization If src is less than n bytes, fills the rest of dst with zeros. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -32,16 +33,16 @@ static const char $\ast$ \hyperlink{class_message_1_1_msg_adacbbaadf7d1f920e837d
 Defines the types of messages which can be sent. 
 
 \subsection{Member Typedef Documentation}
-\index{Message\+::\+Msg@{Message\+::\+Msg}!Header\+Only@{Header\+Only}}
-\index{Header\+Only@{Header\+Only}!Message\+::\+Msg@{Message\+::\+Msg}}
-\subsubsection[{\texorpdfstring{Header\+Only}{HeaderOnly}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ using {\bf Message\+::\+Msg\+::\+Header\+Only} =  {\bf Message\+Type}$<$true, T$>$}\hypertarget{class_message_1_1_msg_a56cc5b2c5d898b85e97b1f3a46ab3999}{}\label{class_message_1_1_msg_a56cc5b2c5d898b85e97b1f3a46ab3999}
+\hypertarget{class_message_1_1_msg_a56cc5b2c5d898b85e97b1f3a46ab3999}{\index{Message\-::\-Msg@{Message\-::\-Msg}!Header\-Only@{Header\-Only}}
+\index{Header\-Only@{Header\-Only}!Message::Msg@{Message\-::\-Msg}}
+\subsubsection[{Header\-Only}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ using {\bf Message\-::\-Msg\-::\-Header\-Only} =  {\bf Message\-Type}$<$true, T$>$}}\label{class_message_1_1_msg_a56cc5b2c5d898b85e97b1f3a46ab3999}
 
 
 A typedef for header only type. 
 
-\index{Message\+::\+Msg@{Message\+::\+Msg}!With\+Body@{With\+Body}}
-\index{With\+Body@{With\+Body}!Message\+::\+Msg@{Message\+::\+Msg}}
-\subsubsection[{\texorpdfstring{With\+Body}{WithBody}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ using {\bf Message\+::\+Msg\+::\+With\+Body} =  {\bf Message\+Type}$<$false, T$>$}\hypertarget{class_message_1_1_msg_a385691f2f7fc10f0b4c1544b8892a6c9}{}\label{class_message_1_1_msg_a385691f2f7fc10f0b4c1544b8892a6c9}
+\hypertarget{class_message_1_1_msg_a385691f2f7fc10f0b4c1544b8892a6c9}{\index{Message\-::\-Msg@{Message\-::\-Msg}!With\-Body@{With\-Body}}
+\index{With\-Body@{With\-Body}!Message::Msg@{Message\-::\-Msg}}
+\subsubsection[{With\-Body}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ using {\bf Message\-::\-Msg\-::\-With\-Body} =  {\bf Message\-Type}$<$false, T$>$}}\label{class_message_1_1_msg_a385691f2f7fc10f0b4c1544b8892a6c9}
 
 
 A typedef for non-\/header only type. 
@@ -49,22 +50,22 @@ A typedef for non-\/header only type.
 
 
 \subsection{Member Function Documentation}
-\index{Message\+::\+Msg@{Message\+::\+Msg}!set\+\_\+length@{set\+\_\+length}}
-\index{set\+\_\+length@{set\+\_\+length}!Message\+::\+Msg@{Message\+::\+Msg}}
-\subsubsection[{\texorpdfstring{set\+\_\+length(char $\ast$const dst, const char $\ast$const src, const int n)}{set_length(char *const dst, const char *const src, const int n)}}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ Message\+::\+Msg\+::set\+\_\+length (
+\hypertarget{class_message_1_1_msg_adacbbaadf7d1f920e837d07d3dd39725}{\index{Message\-::\-Msg@{Message\-::\-Msg}!set\-\_\-length@{set\-\_\-length}}
+\index{set\-\_\-length@{set\-\_\-length}!Message::Msg@{Message\-::\-Msg}}
+\subsubsection[{set\-\_\-length}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ Message\-::\-Msg\-::set\-\_\-length (
 \begin{DoxyParamCaption}
 \item[{char $\ast$const}]{dst, }
 \item[{const char $\ast$const}]{src, }
 \item[{const int}]{n}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{class_message_1_1_msg_adacbbaadf7d1f920e837d07d3dd39725}{}\label{class_message_1_1_msg_adacbbaadf7d1f920e837d07d3dd39725}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{class_message_1_1_msg_adacbbaadf7d1f920e837d07d3dd39725}
 
 
 Copies n bytes from src into dst during static initilization If src is less than n bytes, fills the rest of dst with zeros. 
 
 It will return dst so that dst can be assigned to a static initalization 
 
-The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-src/\hyperlink{message_8hpp}{message.\+hpp}\item 
-src/\hyperlink{message_8cpp}{message.\+cpp}\end{DoxyCompactItemize}
+src/\hyperlink{message_8hpp}{message.\-hpp}\item 
+src/\hyperlink{message_8cpp}{message.\-cpp}\end{DoxyCompactItemize}

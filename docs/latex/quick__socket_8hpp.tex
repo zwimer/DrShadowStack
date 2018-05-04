@@ -1,16 +1,17 @@
-\hypertarget{quick__socket_8hpp}{}\section{src/quick\+\_\+socket.hpp File Reference}
-\label{quick__socket_8hpp}\index{src/quick\+\_\+socket.\+hpp@{src/quick\+\_\+socket.\+hpp}}
+\hypertarget{quick__socket_8hpp}{\section{src/quick\-\_\-socket.hpp File Reference}
+\label{quick__socket_8hpp}\index{src/quick\-\_\-socket.\-hpp@{src/quick\-\_\-socket.\-hpp}}
+}
 \subsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
- \hyperlink{namespace_q_s}{QS}
+\hyperlink{namespace_q_s}{Q\-S}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{namespace_q_s_a2076a50ca1402320c07d752e8b26caec}{Q\+S\+::create\+\_\+server} (const char $\ast$fname)
+int \hyperlink{namespace_q_s_a2076a50ca1402320c07d752e8b26caec}{Q\-S\-::create\-\_\-server} (const char $\ast$fname)
 \begin{DoxyCompactList}\small\item\em Create a unix socket at fname, and a server for it Returns the server file descriptor. \end{DoxyCompactList}\item 
-int \hyperlink{namespace_q_s_a506085f54f85632d5cef32833b717245}{Q\+S\+::create\+\_\+client} (const char $\ast$const sock\+\_\+name)
-\begin{DoxyCompactList}\small\item\em Create a client for a unix socket Joins the unix socked located at sock\+\_\+name Returns the file descriptor for the client. \end{DoxyCompactList}\item 
-int \hyperlink{namespace_q_s_a5e19c1f3d38617f70f20030770ae46a8}{Q\+S\+::accept\+\_\+client} (const int \hyperlink{dr__external__ss__events_8cpp_a5903d0b282fc5eae503de618f896b5e1}{sock})
+int \hyperlink{namespace_q_s_a506085f54f85632d5cef32833b717245}{Q\-S\-::create\-\_\-client} (const char $\ast$const sock\-\_\-name)
+\begin{DoxyCompactList}\small\item\em Create a client for a unix socket Joins the unix socked located at sock\-\_\-name Returns the file descriptor for the client. \end{DoxyCompactList}\item 
+int \hyperlink{namespace_q_s_a5e19c1f3d38617f70f20030770ae46a8}{Q\-S\-::accept\-\_\-client} (const int \hyperlink{dr__external__ss__events_8cpp_a5903d0b282fc5eae503de618f896b5e1}{sock})
 \begin{DoxyCompactList}\small\item\em Wait for a client to connect to sock Once the client connects, accept then return the file descriptor. \end{DoxyCompactList}\end{DoxyCompactItemize}

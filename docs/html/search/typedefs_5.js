@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['on_5fcall_5fsignature',['on_call_signature',['../class_s_s_handlers.html#ac55de17666a40e5d50d854ef65f01be9',1,'SSHandlers']]],
-  ['on_5fret_5fsignature',['on_ret_signature',['../class_s_s_handlers.html#ade1360265360f4e67c782a00951850ab',1,'SSHandlers']]],
-  ['on_5fsignal_5fsignature',['on_signal_signature',['../class_s_s_handlers.html#a63287bfa685457954f9bed08635dca2d',1,'SSHandlers']]]
+  ['newsignal',['NewSignal',['../class_message.html#ae40f0243fd15231d8f44931e4adf7d3e',1,'Message::NewSignal()'],['../external__stack__server_8cpp.html#ae9be84814199431b661da0379b3a3883',1,'NewSignal():&#160;external_stack_server.cpp']]]
 ];

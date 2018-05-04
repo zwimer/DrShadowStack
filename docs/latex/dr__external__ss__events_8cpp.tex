@@ -1,18 +1,32 @@
-\hypertarget{dr__external__ss__events_8cpp}{}\section{src/dr\+\_\+external\+\_\+ss\+\_\+events.cpp File Reference}
-\label{dr__external__ss__events_8cpp}\index{src/dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{src/dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}}
-{\ttfamily \#include \char`\"{}dr\+\_\+shadow\+\_\+stack\+\_\+client.\+hpp\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}dr\+\_\+external\+\_\+ss\+\_\+events.\+hpp\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}quick\+\_\+socket.\+hpp\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}utilities.\+hpp\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}message.\+hpp\char`\"{}}\\*
+\hypertarget{dr__external__ss__events_8cpp}{\section{src/dr\-\_\-external\-\_\-ss\-\_\-events.cpp File Reference}
+\label{dr__external__ss__events_8cpp}\index{src/dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp@{src/dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp}}
+}
+{\ttfamily \#include \char`\"{}dr\-\_\-shadow\-\_\-stack\-\_\-client.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}dr\-\_\-external\-\_\-ss\-\_\-events.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}quick\-\_\-socket.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}utilities.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}constants.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}message.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}drmgr.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$syscall.\-h$>$}\\*
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-static void \hyperlink{dr__external__ss__events_8cpp_a8161a26ec065b8c83d2f42637896162c}{on\+\_\+call} (const app\+\_\+pc ret\+\_\+to\+\_\+addr)
+static void \hyperlink{dr__external__ss__events_8cpp_a8161a26ec065b8c83d2f42637896162c}{on\-\_\-call} (const app\-\_\-pc ret\-\_\-to\-\_\-addr)
 \item 
-static void \hyperlink{dr__external__ss__events_8cpp_a42c8b67f8f85fd6bad5bd11892c0d5bc}{on\+\_\+ret} (const app\+\_\+pc instr\+\_\+addr, const app\+\_\+pc target\+\_\+addr)
+static void \hyperlink{dr__external__ss__events_8cpp_a1e7a7fadafc4c880ecbe5334c24570e8}{on\-\_\-ret} (const app\-\_\-pc, const app\-\_\-pc target\-\_\-addr)
 \item 
-static void \hyperlink{dr__external__ss__events_8cpp_ab8a1f864d0acbfeb7d67994f67cbba97}{on\+\_\+signal} ()
+static void \hyperlink{dr__external__ss__events_8cpp_ab8a1f864d0acbfeb7d67994f67cbba97}{on\-\_\-signal} ()
+\item 
+static bool \hyperlink{dr__external__ss__events_8cpp_acbe5076af8a833b738738e84cda2fabc}{syscall\-\_\-filter} (void $\ast$, int sysnum)
+\item 
+static void \hyperlink{dr__external__ss__events_8cpp_a462ff143d010101958ea57d56c2e8998}{on\-\_\-execve} (void $\ast$drcontext, bool)
+\item 
+static void \hyperlink{dr__external__ss__events_8cpp_a5e90bf64a984c9d9470a708654f6d3f1}{syscall\-\_\-event} (void $\ast$drcontext, const int sysnum, const bool pre)
+\item 
+static bool \hyperlink{dr__external__ss__events_8cpp_a3bf099bc92a9a98d1215fd107f74ad3f}{pre\-\_\-syscall\-\_\-event} (void $\ast$drcontext, const int sysnum)
+\item 
+static void \hyperlink{dr__external__ss__events_8cpp_ac1ced2703cfb4fa283064ad2b38913d9}{post\-\_\-syscall\-\_\-event} (void $\ast$drcontext, const int sysnum)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -22,31 +36,72 @@ static int \hyperlink{dr__external__ss__events_8cpp_a5903d0b282fc5eae503de618f89
 
 
 \subsection{Function Documentation}
-\index{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}!on\+\_\+call@{on\+\_\+call}}
-\index{on\+\_\+call@{on\+\_\+call}!dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}}
-\subsubsection[{\texorpdfstring{on\+\_\+call(const app\+\_\+pc ret\+\_\+to\+\_\+addr)}{on_call(const app_pc ret_to_addr)}}]{\setlength{\rightskip}{0pt plus 5cm}static void on\+\_\+call (
+\hypertarget{dr__external__ss__events_8cpp_a8161a26ec065b8c83d2f42637896162c}{\index{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp@{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp}!on\-\_\-call@{on\-\_\-call}}
+\index{on\-\_\-call@{on\-\_\-call}!dr_external_ss_events.cpp@{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp}}
+\subsubsection[{on\-\_\-call}]{\setlength{\rightskip}{0pt plus 5cm}static void on\-\_\-call (
 \begin{DoxyParamCaption}
-\item[{const app\+\_\+pc}]{ret\+\_\+to\+\_\+addr}
+\item[{const app\-\_\-pc}]{ret\-\_\-to\-\_\-addr}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__external__ss__events_8cpp_a8161a26ec065b8c83d2f42637896162c}{}\label{dr__external__ss__events_8cpp_a8161a26ec065b8c83d2f42637896162c}
-\index{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}!on\+\_\+ret@{on\+\_\+ret}}
-\index{on\+\_\+ret@{on\+\_\+ret}!dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}}
-\subsubsection[{\texorpdfstring{on\+\_\+ret(const app\+\_\+pc instr\+\_\+addr, const app\+\_\+pc target\+\_\+addr)}{on_ret(const app_pc instr_addr, const app_pc target_addr)}}]{\setlength{\rightskip}{0pt plus 5cm}static void on\+\_\+ret (
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{dr__external__ss__events_8cpp_a8161a26ec065b8c83d2f42637896162c}
+\hypertarget{dr__external__ss__events_8cpp_a462ff143d010101958ea57d56c2e8998}{\index{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp@{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp}!on\-\_\-execve@{on\-\_\-execve}}
+\index{on\-\_\-execve@{on\-\_\-execve}!dr_external_ss_events.cpp@{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp}}
+\subsubsection[{on\-\_\-execve}]{\setlength{\rightskip}{0pt plus 5cm}static void on\-\_\-execve (
 \begin{DoxyParamCaption}
-\item[{const app\+\_\+pc}]{instr\+\_\+addr, }
-\item[{const app\+\_\+pc}]{target\+\_\+addr}
+\item[{void $\ast$}]{drcontext, }
+\item[{bool}]{}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__external__ss__events_8cpp_a42c8b67f8f85fd6bad5bd11892c0d5bc}{}\label{dr__external__ss__events_8cpp_a42c8b67f8f85fd6bad5bd11892c0d5bc}
-\index{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}!on\+\_\+signal@{on\+\_\+signal}}
-\index{on\+\_\+signal@{on\+\_\+signal}!dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}}
-\subsubsection[{\texorpdfstring{on\+\_\+signal()}{on_signal()}}]{\setlength{\rightskip}{0pt plus 5cm}static void on\+\_\+signal (
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{dr__external__ss__events_8cpp_a462ff143d010101958ea57d56c2e8998}
+\hypertarget{dr__external__ss__events_8cpp_a1e7a7fadafc4c880ecbe5334c24570e8}{\index{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp@{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp}!on\-\_\-ret@{on\-\_\-ret}}
+\index{on\-\_\-ret@{on\-\_\-ret}!dr_external_ss_events.cpp@{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp}}
+\subsubsection[{on\-\_\-ret}]{\setlength{\rightskip}{0pt plus 5cm}static void on\-\_\-ret (
+\begin{DoxyParamCaption}
+\item[{const app\-\_\-pc}]{, }
+\item[{const app\-\_\-pc}]{target\-\_\-addr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{dr__external__ss__events_8cpp_a1e7a7fadafc4c880ecbe5334c24570e8}
+\hypertarget{dr__external__ss__events_8cpp_ab8a1f864d0acbfeb7d67994f67cbba97}{\index{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp@{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp}!on\-\_\-signal@{on\-\_\-signal}}
+\index{on\-\_\-signal@{on\-\_\-signal}!dr_external_ss_events.cpp@{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp}}
+\subsubsection[{on\-\_\-signal}]{\setlength{\rightskip}{0pt plus 5cm}static void on\-\_\-signal (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__external__ss__events_8cpp_ab8a1f864d0acbfeb7d67994f67cbba97}{}\label{dr__external__ss__events_8cpp_ab8a1f864d0acbfeb7d67994f67cbba97}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{dr__external__ss__events_8cpp_ab8a1f864d0acbfeb7d67994f67cbba97}
+\hypertarget{dr__external__ss__events_8cpp_ac1ced2703cfb4fa283064ad2b38913d9}{\index{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp@{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp}!post\-\_\-syscall\-\_\-event@{post\-\_\-syscall\-\_\-event}}
+\index{post\-\_\-syscall\-\_\-event@{post\-\_\-syscall\-\_\-event}!dr_external_ss_events.cpp@{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp}}
+\subsubsection[{post\-\_\-syscall\-\_\-event}]{\setlength{\rightskip}{0pt plus 5cm}static void post\-\_\-syscall\-\_\-event (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{drcontext, }
+\item[{const int}]{sysnum}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{dr__external__ss__events_8cpp_ac1ced2703cfb4fa283064ad2b38913d9}
+\hypertarget{dr__external__ss__events_8cpp_a3bf099bc92a9a98d1215fd107f74ad3f}{\index{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp@{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp}!pre\-\_\-syscall\-\_\-event@{pre\-\_\-syscall\-\_\-event}}
+\index{pre\-\_\-syscall\-\_\-event@{pre\-\_\-syscall\-\_\-event}!dr_external_ss_events.cpp@{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp}}
+\subsubsection[{pre\-\_\-syscall\-\_\-event}]{\setlength{\rightskip}{0pt plus 5cm}static bool pre\-\_\-syscall\-\_\-event (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{drcontext, }
+\item[{const int}]{sysnum}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{dr__external__ss__events_8cpp_a3bf099bc92a9a98d1215fd107f74ad3f}
+\hypertarget{dr__external__ss__events_8cpp_a5e90bf64a984c9d9470a708654f6d3f1}{\index{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp@{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp}!syscall\-\_\-event@{syscall\-\_\-event}}
+\index{syscall\-\_\-event@{syscall\-\_\-event}!dr_external_ss_events.cpp@{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp}}
+\subsubsection[{syscall\-\_\-event}]{\setlength{\rightskip}{0pt plus 5cm}static void syscall\-\_\-event (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{drcontext, }
+\item[{const int}]{sysnum, }
+\item[{const bool}]{pre}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{dr__external__ss__events_8cpp_a5e90bf64a984c9d9470a708654f6d3f1}
+\hypertarget{dr__external__ss__events_8cpp_acbe5076af8a833b738738e84cda2fabc}{\index{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp@{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp}!syscall\-\_\-filter@{syscall\-\_\-filter}}
+\index{syscall\-\_\-filter@{syscall\-\_\-filter}!dr_external_ss_events.cpp@{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp}}
+\subsubsection[{syscall\-\_\-filter}]{\setlength{\rightskip}{0pt plus 5cm}static bool syscall\-\_\-filter (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{, }
+\item[{int}]{sysnum}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{dr__external__ss__events_8cpp_acbe5076af8a833b738738e84cda2fabc}
 
 
 \subsection{Variable Documentation}
-\index{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}!sock@{sock}}
-\index{sock@{sock}!dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp@{dr\+\_\+external\+\_\+ss\+\_\+events.\+cpp}}
-\subsubsection[{\texorpdfstring{sock}{sock}}]{\setlength{\rightskip}{0pt plus 5cm}int sock = -\/1\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{dr__external__ss__events_8cpp_a5903d0b282fc5eae503de618f896b5e1}{}\label{dr__external__ss__events_8cpp_a5903d0b282fc5eae503de618f896b5e1}
+\hypertarget{dr__external__ss__events_8cpp_a5903d0b282fc5eae503de618f896b5e1}{\index{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp@{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp}!sock@{sock}}
+\index{sock@{sock}!dr_external_ss_events.cpp@{dr\-\_\-external\-\_\-ss\-\_\-events.\-cpp}}
+\subsubsection[{sock}]{\setlength{\rightskip}{0pt plus 5cm}int sock = -\/1\hspace{0.3cm}{\ttfamily [static]}}}\label{dr__external__ss__events_8cpp_a5903d0b282fc5eae503de618f896b5e1}
