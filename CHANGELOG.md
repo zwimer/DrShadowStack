@@ -4,6 +4,7 @@
 
 **Implemented enhancements:**
 
+- Allow DynamoRIO debugging [\#107](https://github.com/zwimer/DrShadowStack/issues/107)
 - Development on windows \r\n [\#80](https://github.com/zwimer/DrShadowStack/issues/80)
 - ss\_mode internal + mprotect [\#74](https://github.com/zwimer/DrShadowStack/issues/74)
 - Convert IO to use streams [\#61](https://github.com/zwimer/DrShadowStack/issues/61)
@@ -24,6 +25,7 @@
 
 **Fixed bugs:**
 
+- Hangs on threads - internal shadow stack [\#106](https://github.com/zwimer/DrShadowStack/issues/106)
 - Program freezes on target call to execve [\#101](https://github.com/zwimer/DrShadowStack/issues/101)
 - Message bug - Wrong size message sent [\#67](https://github.com/zwimer/DrShadowStack/issues/67)
 - Process RC created twice [\#65](https://github.com/zwimer/DrShadowStack/issues/65)
@@ -56,6 +58,7 @@
 
 **Merged pull requests:**
 
+- Thread local storage [\#105](https://github.com/zwimer/DrShadowStack/pull/105) ([zwimer](https://github.com/zwimer))
 - Execve [\#102](https://github.com/zwimer/DrShadowStack/pull/102) ([zwimer](https://github.com/zwimer))
 - Travis [\#100](https://github.com/zwimer/DrShadowStack/pull/100) ([zwimer](https://github.com/zwimer))
 - Create PULL\_REQUEST\_TEMPLATE.md [\#98](https://github.com/zwimer/DrShadowStack/pull/98) ([zwimer](https://github.com/zwimer))

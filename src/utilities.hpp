@@ -36,7 +36,6 @@ class Utilities {
 	static const int error_fd;
 
   public:
-
 	/** A known invalid file descriptor */
 	static constexpr const int invalid_fd = -2;
 
@@ -85,11 +84,11 @@ class Utilities {
 	/** Logs the arguments as cout would to the log file if not null
 	 *  Ends the printed line(s) with a newline then flushes the buffer
 	 *  This function only runs if DEBUG_MODE and VERBOSE are defined */
-	template <typename... Args> static void verbose_log(Args &&... args ) {
+	template <typename... Args> static void verbose_log( Args &&... args ) {
 		log( std::forward<Args>( args )... );
 	}
-#else
-	template <typename... Args> static void verbose_log( Args &&... ) { }
+#	else
+	template <typename... Args> static void verbose_log( Args &&... ) {}
 #	endif
 #endif
 
@@ -184,7 +183,7 @@ template <typename... Args> void Utilities::write_log( const int fd, Args &&... 
 		// Assert message errors must be nullptr to prevent a loop
 		const std::string str = stream.str();
 		const ssize_t len = str.size();
-		Utilities::assert( write(fd, str.c_str(), len ) == (ssize_t) len, nullptr );
+		Utilities::assert( write( fd, str.c_str(), len ) == (ssize_t) len, nullptr );
 	}
 }
 
