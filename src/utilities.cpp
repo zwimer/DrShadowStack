@@ -54,6 +54,7 @@ void Utilities::setup( const bool clear_log ) {
 		}
 		errno = old;
 	}
+
 	// Open the log file
 	const int fd = open( LOG_FILE, O_SYNC | O_CREAT | O_APPEND | O_CLOEXEC | O_WRONLY, 0640 );
 	if ( fd == -1 ) {

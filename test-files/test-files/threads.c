@@ -3,12 +3,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#define N 1000
+
+
 // Can be called by pthread, slowly prints a few numbers
 void * print_numbers(void * id) {
-	for ( int i = 0; i < 10; ++i ) {
+	for ( int i = 0; i < N; ++i ) {
 		printf("%s putting: %i\n", (char *) id, i);
 		fflush( 0 );
-		usleep(100*1000);
 	}
     return NULL;
 }
