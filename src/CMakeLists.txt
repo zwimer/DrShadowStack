@@ -19,8 +19,8 @@ set(DRRUN_PATH_default /home/vagrant/dynamorio/build/bin64/drrun)
 
 
 # Debug mode options. Comment out to disable
-set(DEBUG_MODE "VERBOSE")
-#set(DEBUG_MODE "ON")
+#set(DEBUG_MODE "VERBOSE")
+set(DEBUG_MODE "ON")
 
 # DynamoRIO debug log level (ignored if debug mode off)
 # If this is not set, then DR debug is not used
