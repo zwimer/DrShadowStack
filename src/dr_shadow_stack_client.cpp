@@ -73,9 +73,10 @@ static void kernel_xfer_event_handler( void *, const dr_kernel_xfer_info_t *info
 // called once for each instruction in it. If either a call
 // or a ret is seen, the call and ret handlers are inserted
 // before said instruction. Note: an app_pc is defined in comments
-static dr_emit_flags_t event_app_instruction( void *drcontext, void * /*tag*/, instrlist_t *bb,
-                                              instr_t *instr, bool /*for_trace*/,
-                                              bool /*translating*/, void * /*user_data*/ ) {
+static dr_emit_flags_t event_app_instruction( void *drcontext, void * /*tag*/,
+                                              instrlist_t *bb, instr_t *instr,
+                                              bool /*for_trace*/, bool /*translating*/,
+                                              void * /*user_data*/ ) {
 
 	// Concerning DynamoRIO's app_pc type. From their source:
 	//   include/dr_defines.h:typedef byte * app_pc;
@@ -114,7 +115,7 @@ static void exit_event() {
 
 // The main client function
 // This function dynamically 'injects' the shadow stack
-DR_EXPORT void dr_client_main( client_id_t,  int argc, const char *argv[] ) {
+DR_EXPORT void dr_client_main( client_id_t, int argc, const char *argv[] ) {
 
 	// Setup the client and drmgr
 	run_before_everything();
@@ -147,7 +148,7 @@ DR_EXPORT void dr_client_main( client_id_t,  int argc, const char *argv[] ) {
 	Utilities::assert( handlers->is_valid(), "SSHandlers setup incomplete" );
 
 	// Register events
-	Utilities::log("Registering events...");
+	Utilities::log( "Registering events..." );
 	dr_register_exit_event( exit_event );
 	drmgr_register_kernel_xfer_event( kernel_xfer_event_handler );
 

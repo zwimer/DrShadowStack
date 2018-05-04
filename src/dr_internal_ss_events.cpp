@@ -15,8 +15,8 @@
 // The shadow stack that holds the return addresses of the current thread
 // Everytime a signal handler is called, a shadow stack is pushed with a wildcard
 // Everytime we return from a signal handler, the stack pops a wildcard
-template<typename T> class TLS;
-TLS<std::stack<app_pc>> * shadow_stack;
+template <typename T> class TLS;
+TLS<std::stack<app_pc>> *shadow_stack;
 
 
 /*********************************************************/
@@ -29,30 +29,28 @@ TLS<std::stack<app_pc>> * shadow_stack;
 // A class used to wrap DynamoRIO's thread local storage
 // Stores assumes the object stored is a T. This is safe
 // for any T that has a default constructor
-template<typename T> class TLS {
+template <typename T> class TLS {
   public:
-
 	/** The constructor */
-	TLS(): tls_index(drmgr_register_tls_field()) {
+	TLS() : tls_index( drmgr_register_tls_field() ) {
 		Utilities::assert( tls_index != -1, "drmgr_register_tls_field() failed." );
 	}
 
 	/** Get a reference to the stored T
 	 *  If no drcontext is provided, this all will fetch it */
-	T & get(void * drcontext = nullptr) const {
-		drcontext = (drcontext == nullptr) ? dr_get_current_drcontext() : drcontext;
-		T * const ptr = (T *) drmgr_get_tls_field( drcontext, tls_index );
+	T &get( void *drcontext = nullptr ) const {
+		drcontext = ( drcontext == nullptr ) ? dr_get_current_drcontext() : drcontext;
+		T *const ptr = (T *) drmgr_get_tls_field( drcontext, tls_index );
 		if ( ptr != nullptr ) {
 			return *ptr;
 		}
-		T * const new_ptr = new T();
+		T *const new_ptr = new T();
 		Utilities::assert( drmgr_set_tls_field( drcontext, tls_index, (void *) new_ptr ),
-						   "drmgr_set_tls_field() failed." );
+		                   "drmgr_set_tls_field() failed." );
 		return *new_ptr;
 	}
 
   private:
-
 	/** The index of tls used for DynamoRIO's TLS API */
 	const int tls_index;
 };
@@ -82,7 +80,7 @@ void on_ret( app_pc, const app_pc target_addr ) {
 	Utilities::verbose_log( "Ret to ", (void *) target_addr );
 
 	// If the shadow stack is empty, we cannot return
-	std::stack<app_pc> & ss = shadow_stack->get();
+	std::stack<app_pc> &ss = shadow_stack->get();
 	if ( ss.empty() ) {
 		TerminateOnDestruction tod;
 		Sym::print( "return address", target_addr );
@@ -127,9 +125,7 @@ void on_ret( app_pc, const app_pc target_addr ) {
 // Called whenever a signal is called. Adds a wildcard to the shadow stack
 // Note: the reason we use this instead of the signal event is this ignores ignored
 // signals
-void on_signal() {
-	shadow_stack->get().push( (app_pc) WILDCARD );
-}
+void on_signal() { shadow_stack->get().push( (app_pc) WILDCARD ); }
 
 
 /*********************************************************/
@@ -155,7 +151,7 @@ static bool syscall_filter( void *, int sysnum ) {
 // Called before execve is called
 static inline void on_execve( void *, bool ) {
 	Utilities::verbose_log( "execve syscall detected, clearing shadow stack!" );
-	std::stack<app_pc> & ss = shadow_stack->get();
+	std::stack<app_pc> &ss = shadow_stack->get();
 	while ( ss.size() ) {
 		ss.pop();
 	}

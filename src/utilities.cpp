@@ -19,21 +19,21 @@
 bool Utilities::is_multi_thread_or_proccess = false;
 
 // Error checking
-int get_fd(FILE * const f);
+int get_fd( FILE *const f );
 int Utilities::log_fd = Utilities::invalid_fd;
-const int Utilities::error_fd = get_fd(ERROR_FILE);
-const int Utilities::stdout_fd = get_fd(STDOUT_FILE);
+const int Utilities::error_fd = get_fd( ERROR_FILE );
+const int Utilities::stdout_fd = get_fd( STDOUT_FILE );
 
 
 // fileno but with error checking
 // On failure, exits the process, not the group
-int get_fd(FILE * const f) {
+int get_fd( FILE *const f ) {
 	if ( f == nullptr ) {
 		return Utilities::invalid_fd;
 	}
-	const int ret = fileno(f);
+	const int ret = fileno( f );
 	if ( ret == -1 ) {
-		exit(EXIT_FAILURE);
+		exit( EXIT_FAILURE );
 	}
 	return ret;
 }
@@ -56,7 +56,8 @@ void Utilities::setup( const bool clear_log ) {
 	}
 
 	// Open the log file
-	const int fd = open( LOG_FILE, O_SYNC | O_CREAT | O_APPEND | O_CLOEXEC | O_WRONLY, 0640 );
+	const int fd =
+	    open( LOG_FILE, O_SYNC | O_CREAT | O_APPEND | O_CLOEXEC | O_WRONLY, 0640 );
 	if ( fd == -1 ) {
 		log_error( "open() failed." );
 		exit( EXIT_FAILURE );
