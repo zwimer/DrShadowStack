@@ -37,4 +37,5 @@
 
 # Directories
 **/build/*
+dr*.log
 old/*
