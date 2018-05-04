@@ -17,7 +17,7 @@
 
 
 /** The size of a pointer in the target program
- *  To run on 32 bit programs, change this value! */
+ *  Note: 64 bit can stil handle 32 bit programs */
 #define POINTER_SIZE ( sizeof( void * ) )
 
 /** The number of characters a message header can be */

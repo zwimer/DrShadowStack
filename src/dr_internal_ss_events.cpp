@@ -11,24 +11,66 @@
 #include <map>
 
 
-// A map to shadow stacks, one per thread.
-// The stack of shadow stacks that holds the return addresses of the program
+// A thread local shadow stack.
+// The shadow stack that holds the return addresses of the current thread
 // Everytime a signal handler is called, a shadow stack is pushed with a wildcard
 // Everytime we return from a signal handler, the stack pops a wildcard
-std::map<pid_t, std::stack<app_pc>> shadow_stacks;
+template<typename T> class TLS;
+TLS<std::stack<app_pc>> * shadow_stack;
 
 
-// Returns the shadow stack for the current thread
-static inline std::stack<app_pc> &get_shadow_stack() {
-	return shadow_stacks[QuickTID::fetch( dr_get_current_drcontext() )];
-}
+/*********************************************************/
+/*                                                       */
+/*                         TLS                           */
+/*                                                       */
+/*********************************************************/
+
+
+// A class used to wrap DynamoRIO's thread local storage
+// Stores assumes the object stored is a T. This is safe
+// for any T that has a default constructor
+template<typename T> class TLS {
+  public:
+
+	/** The constructor */
+	TLS(): tls_index(drmgr_register_tls_field()) {
+		Utilities::assert( tls_index != -1, "drmgr_register_tls_field() failed." );
+	}
+
+	/** Get a reference to the stored T
+	 *  If no drcontext is provided, this all will fetch it */
+	T & get(void * drcontext = nullptr) const {
+		drcontext = (drcontext == nullptr) ? dr_get_current_drcontext() : drcontext;
+		T * const ptr = (T *) drmgr_get_tls_field( drcontext, tls_index );
+		if ( ptr != nullptr ) {
+			return *ptr;
+		}
+		T * const new_ptr = new T();
+		Utilities::assert( drmgr_set_tls_field( drcontext, tls_index, (void *) new_ptr ),
+						   "drmgr_set_tls_field() failed." );
+		return *new_ptr;
+	}
+
+  private:
+
+	/** The index of tls used for DynamoRIO's TLS API */
+	const int tls_index;
+};
+
+
+/*********************************************************/
+/*                                                       */
+/*                        Handlers                       */
+/*                                                       */
+/*********************************************************/
+
 
 // The call handler.
 // This function is called whenever a call instruction is about
 // to execute. This function is static for optimization reasons */
 void on_call( const app_pc ret_to_addr ) {
 	Utilities::verbose_log( "Call @ ", (void *) ret_to_addr );
-	get_shadow_stack().push( ret_to_addr );
+	shadow_stack->get().push( ret_to_addr );
 }
 
 // The ret handler.
@@ -40,8 +82,8 @@ void on_ret( app_pc, const app_pc target_addr ) {
 	Utilities::verbose_log( "Ret to ", (void *) target_addr );
 
 	// If the shadow stack is empty, we cannot return
-	auto &shadow_stack = get_shadow_stack();
-	if ( shadow_stack.empty() ) {
+	std::stack<app_pc> & ss = shadow_stack->get();
+	if ( ss.empty() ) {
 		TerminateOnDestruction tod;
 		Sym::print( "return address", target_addr );
 		Utilities::log_error( "*** Shadow stack mistmach detected! ***\n"
@@ -51,16 +93,16 @@ void on_ret( app_pc, const app_pc target_addr ) {
 	}
 
 	// If the addresses match, return
-	const app_pc top = shadow_stack.top();
+	const app_pc top = ss.top();
 	if ( top == target_addr ) {
-		shadow_stack.pop();
+		ss.pop();
 		return;
 	}
 
 	// Check to see if the top of the stack is a wildcard
 	else if ( top == (app_pc) WILDCARD ) {
 		Utilities::verbose_log( "Wildcard detected. Returning from signal handler." );
-		shadow_stack.pop();
+		ss.pop();
 		return;
 	}
 
@@ -76,7 +118,7 @@ void on_ret( app_pc, const app_pc target_addr ) {
 		                      (void *) top, '\n' );
 
 		// Print out symbol information, then terminate the group
-		Sym::print( "top of shadow stack", (app_pc) shadow_stack.top() );
+		Sym::print( "top of shadow stack", (app_pc) ss.top() );
 		Sym::print( "return address", target_addr );
 		Group::terminate( nullptr );
 	}
@@ -85,7 +127,9 @@ void on_ret( app_pc, const app_pc target_addr ) {
 // Called whenever a signal is called. Adds a wildcard to the shadow stack
 // Note: the reason we use this instead of the signal event is this ignores ignored
 // signals
-void on_signal() { get_shadow_stack().push( (app_pc) WILDCARD ); }
+void on_signal() {
+	shadow_stack->get().push( (app_pc) WILDCARD );
+}
 
 
 /*********************************************************/
@@ -96,7 +140,7 @@ void on_signal() { get_shadow_stack().push( (app_pc) WILDCARD ); }
 
 
 // This function dictates what syscall is interesting
-static bool syscall_filter( void *drcontext, int sysnum ) {
+static bool syscall_filter( void *, int sysnum ) {
 	switch ( sysnum ) {
 		/* case SYS_fork: */
 		/* case SYS_vfork: */
@@ -109,11 +153,11 @@ static bool syscall_filter( void *drcontext, int sysnum ) {
 }
 
 // Called before execve is called
-static inline void on_execve( void *drcontext, bool ) {
+static inline void on_execve( void *, bool ) {
 	Utilities::verbose_log( "execve syscall detected, clearing shadow stack!" );
-	auto &shadow_stack = get_shadow_stack();
-	while ( shadow_stack.size() ) {
-		shadow_stack.pop();
+	std::stack<app_pc> & ss = shadow_stack->get();
+	while ( ss.size() ) {
+		ss.pop();
 	}
 }
 
@@ -149,11 +193,14 @@ static void post_syscall_event( void *drcontext, const int sysnum ) {
 
 
 // Setup the internal stack server for the DynamoRIO client
-void InternalSS::setup( SSHandlers **const handlers, const char *const socket_path ) {
+void InternalSS::setup( SSHandlers **const handlers, const char *const ) {
 
 	// Setup handlers
 	*handlers = new SSHandlers( on_call, on_ret, on_signal );
 	Sym::init();
+
+	// Setup shadow stack
+	shadow_stack = new TLS<std::stack<app_pc>>();
 
 	// Hook syscalls
 	Utilities::log( "Hooking syscalls..." );

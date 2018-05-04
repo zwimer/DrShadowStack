@@ -25,7 +25,7 @@ static void on_call( const app_pc ret_to_addr ) {
 // The ret handler.
 // This function is called whenever a ret instruction is about
 // to execute. This function is static for optimization reasons */
-static void on_ret( const app_pc instr_addr, const app_pc target_addr ) {
+static void on_ret( const app_pc, const app_pc target_addr ) {
 	Utilities::verbose_log( "(client) Ret to ", (void *) target_addr );
 	send_msg<Message::Ret>( sock, (char *) &target_addr );
 	(void) recv_msg<Message::Continue>( sock );
@@ -45,7 +45,7 @@ static void on_signal() { send_msg<Message::NewSignal>( sock ); }
 
 
 // This function dictates what syscall is interesting
-static bool syscall_filter( void *drcontext, int sysnum ) {
+static bool syscall_filter( void *, int sysnum ) {
 	switch ( sysnum ) {
 		/* case SYS_fork: */
 		/* case SYS_vfork: */
