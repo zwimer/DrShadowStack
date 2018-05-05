@@ -4,7 +4,8 @@ project(TestFiles C)
 if(DEFINED BITS)
 	message("BITS set to ${BITS}")
 else()
-	message("BITS is not defined!")
+	set(BITS 64)
+	message("BITS is not defined! Defaulting to ${BITS}")
 endif()
 
 #################################################
@@ -55,7 +56,3 @@ ENDFOREACH ( FNAME )
 
 # Link required libraries
 target_link_libraries ( threads Threads::Threads )
-
-
-# Write the test files names to a file called
-file ( WRITE exec_info "${CMAKE_CURRENT_BINARY_DIR}/;${TESTS}" )
