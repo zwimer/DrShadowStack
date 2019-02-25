@@ -6,12 +6,29 @@ DrShadowStack is a software defined dynamic shadow stack implemented via DynamoR
 
 # Table of Contents
 
+1. [Docker](#docker)
 1. [Requirements](#requirements)
 1. [Installation Instructions](#installation-instructions)
 1. [Usage](#usage)
 1. [Example](#example)
 1. [Documentation](#documentation)
 1. [Developers](#developers)
+
+## Docker
+A `Dockerfile` is provided with a pre-installed `DrShadowStack` binary. A docker image is also provided. It is hosted [here](https://cloud.docker.com/u/zwimer/repository/docker/zwimer/drshadowstack) on [dockerhub.com](dockerhub.com). To pull the docker image simply execute:
+```bash
+docker pull zwimer/drshadowstack
+```
+To run the container  simply execute:
+```bash
+docker run --rm -it zwimer/drshadowstack
+```
+If you would like to build the container yourself execute:
+```bash
+git clone https://github.com/zwimer/DrShadowStack && \
+cd DrShadowStack && \
+docker build -t zwimer/DrShadowStack .
+```
 
 ## Requirements
 

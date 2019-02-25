@@ -30,7 +30,7 @@ cd $GH_REPO_NAME
 
 # Format the code
 echo 'Formatting code...'
-clang-format-7 -i -style=file ./src/*pp
+clang-format-9 -i -style=file ./src/*pp
 git add ./src/
 
 # Update the change log
