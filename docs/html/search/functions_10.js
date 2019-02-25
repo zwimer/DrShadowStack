@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7eterminateondestruction',['~TerminateOnDestruction',['../class_terminate_on_destruction.html#a1e2e372004731b788bb9df84d618181f',1,'TerminateOnDestruction']]]
+  ['verbose_5flog',['verbose_log',['../class_utilities.html#ad7251bf1dd140719a5ff384d81dc4ac0',1,'Utilities']]]
 ];

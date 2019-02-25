@@ -83,6 +83,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>DrShadowStack is a software defined dynamic shadow stack implemented via DynamoRIO. DrShadowStack implements a shadow stack any binary given to it, provided the file has an ELF header. If the program attempts to return to a corrupted return address, DrShadowStack will terminate the entire process group (which it sets up). DrShadowStack can handle multi-threaded processes, processes that fork, processes that call any variation of exec. All of these processes will also be protected by DrShadowStack.</p>
 <h1>Table of Contents</h1>
 <ol type="1">
+<li><a href="#docker">Docker</a></li>
+</ol>
+<ol type="1">
 <li><a href="#requirements">Requirements</a></li>
 </ol>
 <ol type="1">
@@ -100,6 +103,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <ol type="1">
 <li><a href="#developers">Developers</a></li>
 </ol>
+<h2>Docker</h2>
+<p>A <code>Dockerfile</code> is provided with a pre-installed <code>DrShadowStack</code> binary. A docker image is also provided. It is hosted <a href="https://cloud.docker.com/u/zwimer/repository/docker/zwimer/drshadowstack">here</a> on <a href="dockerhub.com">dockerhub.com</a>. To pull the docker image simply execute: ```bash docker pull zwimer/drshadowstack ``` To run the container simply execute: ```bash docker run &ndash;rm -it zwimer/drshadowstack ``` If you would like to build the container yourself execute: ```bash git clone <a href="https://github.com/zwimer/DrShadowStack">https://github.com/zwimer/DrShadowStack</a> &amp;&amp; \ cd DrShadowStack &amp;&amp; \ docker build -t zwimer/DrShadowStack . ```</p>
 <h2>Requirements</h2>
 <ol type="1">
 <li>This project utilizes <a href="https://github.com/DynamoRIO/dynamorio">DynamoRIO</a> version <code>7.0.17636</code>. This release can be found <a href="https://github.com/DynamoRIO/dynamorio/releases/download/cronbuild-7.0.17636/DynamoRIO-x86_64-Linux-7.0.17636-0.tar.gz">here</a>.</li>

@@ -10,6 +10,11 @@ A general class for utilities.
 
 {\ttfamily \#include $<$utilities.\-hpp$>$}
 
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_utilities_1_1_unused}{Unused}
+\begin{DoxyCompactList}\small\item\em A struct used to eat unused arguments. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -23,6 +28,8 @@ static void \hyperlink{class_utilities_a22c85a2970e168ca0b9ad6fd86752792}{assert
 \begin{DoxyCompactList}\small\item\em assert b, if false call program\-\_\-err(s) \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename... Args$>$ }\\static void \hyperlink{class_utilities_a996db67175e47946e80539602c2ca6ee}{log} (\hyperlink{struct_args}{Args} \&\&...args)
 \begin{DoxyCompactList}\small\item\em Logs the arguments as cout would to the log file if not null Ends the printed line(s) with a newline then flushes the buffer On faliure, silently fails (since it cannot write out) \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Args$>$ }\\static void \hyperlink{class_utilities_ad7251bf1dd140719a5ff384d81dc4ac0}{verbose\-\_\-log} (\hyperlink{struct_args}{Args} \&\&...args)
+\begin{DoxyCompactList}\small\item\em Logs the arguments as cout would to the log file if not null Ends the printed line(s) with a newline then flushes the buffer This function only runs if D\-E\-B\-U\-G\-\_\-\-M\-O\-D\-E and V\-E\-R\-B\-O\-S\-E are defined. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename... Args$>$ }\\static void \hyperlink{class_utilities_ae8efd2e8950fe6641d87296b8120d246}{message} (\hyperlink{struct_args}{Args} \&\&...args)
 \begin{DoxyCompactList}\small\item\em Prints the arguments as cout would to the stdout and log files Ends the printed line(s) with a newline then flushes the buffer If either file descriptor is invalied, that file is skipped On faliure, silently fails (since it cannot write out) \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename... Args$>$ }\\static void \hyperlink{class_utilities_a3db9e78ec85d66d104cbf451706e1dbe}{log\-\_\-error} (\hyperlink{struct_args}{Args} \&\&...args)
@@ -150,6 +157,17 @@ Prints the arguments as cout would to the stdout and log files Ends the printed 
 
 
 Sets up the utilities class If clear\-\_\-log, the log will be cleared on setup If this function fails, it exists {\itshape O\-N\-L\-Y} the current process. 
+
+\hypertarget{class_utilities_ad7251bf1dd140719a5ff384d81dc4ac0}{\index{Utilities@{Utilities}!verbose\-\_\-log@{verbose\-\_\-log}}
+\index{verbose\-\_\-log@{verbose\-\_\-log}!Utilities@{Utilities}}
+\subsubsection[{verbose\-\_\-log}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename... Args$>$ static void Utilities\-::verbose\-\_\-log (
+\begin{DoxyParamCaption}
+\item[{{\bf Args} \&\&...}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{class_utilities_ad7251bf1dd140719a5ff384d81dc4ac0}
+
+
+Logs the arguments as cout would to the log file if not null Ends the printed line(s) with a newline then flushes the buffer This function only runs if D\-E\-B\-U\-G\-\_\-\-M\-O\-D\-E and V\-E\-R\-B\-O\-S\-E are defined. 
 
 \hypertarget{class_utilities_a0e04e18aadc16ac766d0e17145676455}{\index{Utilities@{Utilities}!write\-\_\-log@{write\-\_\-log}}
 \index{write\-\_\-log@{write\-\_\-log}!Utilities@{Utilities}}

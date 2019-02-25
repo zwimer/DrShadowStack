@@ -83,6 +83,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pri-static-methods">Static Private Member Functions</a> &#124;
@@ -98,6 +99,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p><code>#include &lt;<a class="el" href="utilities_8hpp_source.html">utilities.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_utilities_1_1_unused.html">Unused</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct used to eat unused arguments.  <a href="struct_utilities_1_1_unused.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:aa448e199bdc43fe62e9b9b989a7f667b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilities.html#aa448e199bdc43fe62e9b9b989a7f667b">setup</a> (const bool clear_log)</td></tr>
@@ -116,6 +123,10 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a996db67175e47946e80539602c2ca6ee"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_utilities.html#a996db67175e47946e80539602c2ca6ee">log</a> (<a class="el" href="struct_args.html">Args</a> &amp;&amp;...args)</td></tr>
 <tr class="memdesc:a996db67175e47946e80539602c2ca6ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs the arguments as cout would to the log file if not null Ends the printed line(s) with a newline then flushes the buffer On faliure, silently fails (since it cannot write out)  <a href="#a996db67175e47946e80539602c2ca6ee">More...</a><br/></td></tr>
 <tr class="separator:a996db67175e47946e80539602c2ca6ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7251bf1dd140719a5ff384d81dc4ac0"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:ad7251bf1dd140719a5ff384d81dc4ac0"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_utilities.html#ad7251bf1dd140719a5ff384d81dc4ac0">verbose_log</a> (<a class="el" href="struct_args.html">Args</a> &amp;&amp;...args)</td></tr>
+<tr class="memdesc:ad7251bf1dd140719a5ff384d81dc4ac0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs the arguments as cout would to the log file if not null Ends the printed line(s) with a newline then flushes the buffer This function only runs if DEBUG_MODE and VERBOSE are defined.  <a href="#ad7251bf1dd140719a5ff384d81dc4ac0">More...</a><br/></td></tr>
+<tr class="separator:ad7251bf1dd140719a5ff384d81dc4ac0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8efd2e8950fe6641d87296b8120d246"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
 <tr class="memitem:ae8efd2e8950fe6641d87296b8120d246"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_utilities.html#ae8efd2e8950fe6641d87296b8120d246">message</a> (<a class="el" href="struct_args.html">Args</a> &amp;&amp;...args)</td></tr>
 <tr class="memdesc:ae8efd2e8950fe6641d87296b8120d246"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the arguments as cout would to the stdout and log files Ends the printed line(s) with a newline then flushes the buffer If either file descriptor is invalied, that file is skipped On faliure, silently fails (since it cannot write out)  <a href="#ae8efd2e8950fe6641d87296b8120d246">More...</a><br/></td></tr>
@@ -390,6 +401,34 @@ template&lt;typename... Args&gt; </div>
 </div><div class="memdoc">
 
 <p>Sets up the utilities class If clear_log, the log will be cleared on setup If this function fails, it exists <em>ONLY</em> the current process. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad7251bf1dd140719a5ff384d81dc4ac0"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Args&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Utilities::verbose_log </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_args.html">Args</a> &amp;&amp;...&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Logs the arguments as cout would to the log file if not null Ends the printed line(s) with a newline then flushes the buffer This function only runs if DEBUG_MODE and VERBOSE are defined. </p>
 
 </div>
 </div>
