@@ -58,6 +58,8 @@
 
 **Merged pull requests:**
 
+- Can now compile without debugmode [\#112](https://github.com/zwimer/DrShadowStack/pull/112) ([zwimer](https://github.com/zwimer))
+- Fixes [\#109](https://github.com/zwimer/DrShadowStack/pull/109) ([zwimer](https://github.com/zwimer))
 - Thread local storage [\#105](https://github.com/zwimer/DrShadowStack/pull/105) ([zwimer](https://github.com/zwimer))
 - Execve [\#102](https://github.com/zwimer/DrShadowStack/pull/102) ([zwimer](https://github.com/zwimer))
 - Travis [\#100](https://github.com/zwimer/DrShadowStack/pull/100) ([zwimer](https://github.com/zwimer))

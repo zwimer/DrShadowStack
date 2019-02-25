@@ -52,7 +52,7 @@ class Utilities {
 	/** A struct used to eat unused arguments */
 	struct Unused {
 		/** The constructor */
-		template<typename ...unused> Unused(unused const & ... ) {}
+		template <typename... unused> Unused( unused const &... ) {}
 	};
 
 
@@ -95,7 +95,7 @@ class Utilities {
 		log( std::forward<Args>( args )... );
 #	endif
 #endif
-		Unused { args... };
+		Unused{ args... };
 	}
 
 	/** Prints the arguments as cout would to the stdout and log files
