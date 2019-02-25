@@ -1,22 +1,14 @@
 FROM ubuntu:16.04
 
 # Dependencies
-RUN    apt-get update \
-    && apt-get install -yq cmake make libboost-all-dev
-# TOOD
-# apt-get install libboost-program-options1.62.0
-# TOOD
-RUN apt-get install -yq wget
+RUN apt-get update
+RUN apt-get install -yq wget git g++ make cmake libboost-program-options1.58-dev libboost-filesystem1.58-dev
 
 # DynamoRIO
-RUN    wget https://github.com/DynamoRIO/dynamorio/releases/download/cronbuild-7.0.17636/DynamoRIO-x86_64-Linux-7.0.17636-0.tar.gz \
+RUN    wget --progress=bar:force https://github.com/DynamoRIO/dynamorio/releases/download/cronbuild-7.0.17636/DynamoRIO-x86_64-Linux-7.0.17636-0.tar.gz \
     && tar -xzf DynamoRIO-x86_64-Linux-7.0.17636-0.tar.gz
 
-# TOOD
-RUN apt-get install -yq git
-RUN apt-get install -yq g++
-
-# Clone abd build
+# Clone and build
 RUN    git clone https://github.com/zwimer/DrShadowStack \
     && mkdir DrShadowStack/src/build/ \
     && cd DrShadowStack/src/build/ \
@@ -27,5 +19,5 @@ RUN    git clone https://github.com/zwimer/DrShadowStack \
         .. \
     && make -j `nproc`
 
-# Drop in
-ENTRYPOINT cd ./DrShadowStack/src/build/ && /bin/bash
+# Add it to the path
+RUN ln -s /DrShadowStack/src/build/DrShadowStack /usr/bin/DrShadowStack
