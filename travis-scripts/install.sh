@@ -18,9 +18,7 @@ sudo apt-get install --yes libboost-program-options-dev libboost-filesystem-dev
 sudo apt-get install --yes cmake
 
 # Update current branch
-sudo apt-cache search .
-sudo apt-cache search . | grep clang-format
-sudo apt-get install --yes --force-yes clang-format-7
+sudo apt-get install --yes --force-yes clang-format-9
 gem install github_changelog_generator
 
 # Docs
