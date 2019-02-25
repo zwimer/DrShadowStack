@@ -49,6 +49,13 @@ class Utilities {
 	 *  (to continue logging) then terminates the group */
 	static pid_t get_tid();
 
+	/** A struct used to eat unused arguments */
+	struct Unused {
+		/** The constructor */
+		template<typename ...unused> Unused(unused const & ... ) {}
+	};
+
+
 	/*********************************************************/
 	/*                                                       */
 	/*                     Error checking                    */
@@ -79,18 +86,17 @@ class Utilities {
 		write_log( log_fd, std::forward<Args>( args )... );
 	}
 
-#ifdef DEBUG_MODE
-#	ifdef VERBOSE
 	/** Logs the arguments as cout would to the log file if not null
 	 *  Ends the printed line(s) with a newline then flushes the buffer
 	 *  This function only runs if DEBUG_MODE and VERBOSE are defined */
 	template <typename... Args> static void verbose_log( Args &&... args ) {
+#ifdef DEBUG_MODE
+#	ifdef VERBOSE
 		log( std::forward<Args>( args )... );
-	}
-#	else
-	template <typename... Args> static void verbose_log( Args &&... ) {}
 #	endif
 #endif
+		Unused { args... };
+	}
 
 	/** Prints the arguments as cout would to the stdout and log files
 	 *  Ends the printed line(s) with a newline then flushes the buffer

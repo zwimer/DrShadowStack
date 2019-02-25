@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.5)
 
 #################################################
-#												#
-#					Set by user 				#
-#												#
+#                                               #
+#                  Set by user                  #
+#                                               #
 #################################################
 
 
@@ -19,8 +19,8 @@ set(DRRUN_PATH_default /home/vagrant/dynamorio/build/bin64/drrun)
 
 
 # Debug mode options. Comment out to disable
-#set(DEBUG_MODE "VERBOSE")
-set(DEBUG_MODE "ON")
+# set(DEBUG_MODE "VERBOSE")
+# set(DEBUG_MODE "ON")
 
 # DynamoRIO debug log level (ignored if debug mode off)
 # If this is not set, then DR debug is not used
@@ -28,17 +28,17 @@ set(DEBUG_MODE "ON")
 #set(DR_DEBUG_LOG_LEVEL 4)
 
 # The name of the log file (only used for DEBUG_MODE)
-set(DR_SS_LOG_FILE "dr_shadow_stack.log")
+# set(DR_SS_LOG_FILE "dr_shadow_stack.log")
 
 # For YouCompleteMe vim plugin
 # Disable for non-developers
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+# set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 
 #################################################
-#												#
-#				Program Constants				#
-#												#
+#                                               #
+#               Program Constants               #
+#                                               #
 #################################################
 
 
@@ -62,17 +62,17 @@ set(SS_SUPPORT_LIB ss_support)
 
 # Choose the proper DynamoRIO dir and drrun path
 if(NOT (DEFINED DynamoRIO_DIR))
-	set(DynamoRIO_DIR ${DynamoRIO_DIR_default})
+    set(DynamoRIO_DIR ${DynamoRIO_DIR_default})
 endif()
-if(NOT (DEFINED DDRRUN_PATH))
-	set(DRRUN_PATH ${DRRUN_PATH_default})
+if(NOT (DEFINED DRRUN_PATH))
+    set(DRRUN_PATH ${DRRUN_PATH_default})
 endif()
 
 
 #################################################
-#												#
-#				Automated - General				#
-#												#
+#                                               #
+#              Automated - General              #
+#                                               #
 #################################################
 
 
@@ -98,64 +98,64 @@ add_definitions(-DDYNAMORIO_CLIENT_SO="${CMAKE_BINARY_DIR}/lib${SS_DR_CLIENT_SO}
 
 # If debug mode
 if(DEFINED DEBUG_MODE)
-	message("Debug Mode ON!")
+    message("Debug Mode ON!")
 
-	# If verbose
-	if(DEBUG_MODE STREQUAL "VERBOSE")
-		message("\t Verbose Debug Mode ON!")
-		add_definitions(-DVERBOSE)
-	endif()
+    # If verbose
+    if(DEBUG_MODE STREQUAL "VERBOSE")
+        message("\t Verbose Debug Mode ON!")
+        add_definitions(-DVERBOSE)
+    endif()
 
-	# If DynamoRIO debugging requested
-	if(DEFINED DR_DEBUG_LOG_LEVEL)
-		message("\t DynamoRIO debugging level set to " ${DR_DEBUG_LOG_LEVEL})
-		add_definitions(-DDR_DEBUG_LOG_LEVEL="${DR_DEBUG_LOG_LEVEL}")
-	endif()
+    # If DynamoRIO debugging requested
+    if(DEFINED DR_DEBUG_LOG_LEVEL)
+        message("\t DynamoRIO debugging level set to " ${DR_DEBUG_LOG_LEVEL})
+        add_definitions(-DDR_DEBUG_LOG_LEVEL="${DR_DEBUG_LOG_LEVEL}")
+    endif()
 
-	# Compile the program for debugging
-	set(CMAKE_BUILD_TYPE debug)
-	add_definitions(-DDEBUG_MODE)
-	add_definitions(-DLOG_FILE="${DR_SS_LOG_FILE}")
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -ggdb -Wno-unused-parameter")
+    # Compile the program for debugging
+    set(CMAKE_BUILD_TYPE debug)
+    add_definitions(-DDEBUG_MODE)
+    add_definitions(-DLOG_FILE="${DR_SS_LOG_FILE}")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -ggdb -Wno-unused-parameter")
 
 # Not debug mode
 else()
-	message("Debug Mode OFF!")
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
+    message("Debug Mode OFF!")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
 endif()
 
 
 #################################################
-#												#
-#			Creating the support lib			#
-#												#
+#                                               #
+#            Creating the support lib           #
+#                                               #
 #################################################
 
 
 # Create the .so
 add_library(${SS_SUPPORT_LIB} SHARED
-	quick_socket.cpp
-	utilities.cpp
-	ss_mode.cpp
-	message.cpp
-	group.cpp
-	)
+    quick_socket.cpp
+    utilities.cpp
+    ss_mode.cpp
+    message.cpp
+    group.cpp
+    )
 
 
 #################################################
-#												#
-#			Creating the client .so's			#
-#												#
+#                                               #
+#           Creating the client .so's           #
+#                                               #
 #################################################
 
 
 # Create the .so
 add_library(${SS_DR_CLIENT_SO} SHARED
-	dr_shadow_stack_client.cpp
-	dr_internal_ss_events.cpp
-	dr_external_ss_events.cpp
-	dr_print_sym.cpp
-	)
+    dr_shadow_stack_client.cpp
+    dr_internal_ss_events.cpp
+    dr_external_ss_events.cpp
+    dr_print_sym.cpp
+    )
 
 # Configure DynamoRIO
 configure_DynamoRIO_client(${SS_DR_CLIENT_SO})
@@ -167,19 +167,19 @@ target_link_libraries(${SS_DR_CLIENT_SO} ${SS_SUPPORT_LIB})
 
 
 #################################################
-#												#
-#			Creating the project .out			#
-#												#
+#                                               #
+#             Creating the project              #
+#                                               #
 #################################################
 
 
 # Build the shadow stack executable
 add_executable(${PROGRAM_NAME}
-	external_stack_server.cpp
-	shadow_stack.cpp
-	parse_args.cpp
-	temp_name.cpp
-	)
+    external_stack_server.cpp
+    shadow_stack.cpp
+    parse_args.cpp
+    temp_name.cpp
+    )
 
 # Link to the support library
 target_link_libraries(${PROGRAM_NAME} ${SS_SUPPORT_LIB} Boost::program_options Boost::filesystem)
