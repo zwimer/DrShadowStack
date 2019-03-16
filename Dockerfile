@@ -19,5 +19,15 @@ RUN    git clone https://github.com/zwimer/DrShadowStack \
         .. \
     && make -j `nproc`
 
+# Build test files
+RUN    cd DrShadowStack/test-files/ \
+    && mkdir build \
+    && cd build/ \
+    && cmake .. \
+    && make -j `nproc`
+
 # Add it to the path
 RUN ln -s /DrShadowStack/src/build/DrShadowStack /usr/bin/DrShadowStack
+
+# When entering the container
+CMD cd DrShadowStack/test-files/build && /bin/bash

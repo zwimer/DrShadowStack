@@ -4,7 +4,8 @@ project(TestFiles C)
 if(DEFINED BITS)
 	message("BITS set to ${BITS}")
 else()
-	message("BITS is not defined!")
+	set ( BITS 64 )
+	message("BITS is not defined! Defaulting to ${BITS}-bit")
 endif()
 
 #################################################
@@ -46,7 +47,7 @@ set ( CMAKE_C_FLAGS "-m${BITS}" )
 
 
 # Find packages
-find_package ( Threads )
+find_package ( Threads REQUIRED )
 
 # Compile each test case
 FOREACH ( FNAME ${TESTS} )
